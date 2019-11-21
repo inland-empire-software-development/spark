@@ -1,0 +1,23 @@
+{
+  "name": "edify",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "face-api.js": "^0.21.0",
+    "isomorphic-unfetch": "^3.0.0",
+    "js-cookie": "^2.2.1",
+    "jsonwebtoken": "^8.5.1",
+    "knex": "^0.20.2",
+    "mysql": "^2.17.1",
+    "next": "9.1.4",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
+    "react": "16.12.0",
+    "react-dom": "16.12.0"
+  }
+}
