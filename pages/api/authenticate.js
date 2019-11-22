@@ -1,8 +1,5 @@
-import {auth} from '../../utils/auth';
-import {db} from '../../lib/db';
 const jwt = require('jsonwebtoken');
 
-const jwtKey = 'my_secret_key';
 const jwtExpirySeconds = 300;
 
 const users = {
@@ -11,11 +8,10 @@ const users = {
 };
 
 export default (req, res) => {
-  const users = db('SELECT * FROM iesd_portal.users');
-  console.log(users);
 
   // Get credentials from JSON body
   const {username, password} = req.body;
+
   console.log("req body: ", req.body);
   if (!username || !password || users[username] !== password) {
     // return 401 error is username or password doesn't exist, or if password does
@@ -25,7 +21,7 @@ export default (req, res) => {
 
   // Create a new token with the username in the payload
   // and which expires 300 seconds after issue
-  const token = jwt.sign({username}, jwtKey, {
+  const token = jwt.sign({username}, process.env.JWTKEY, {
     algorithm: 'HS256',
     expiresIn: jwtExpirySeconds,
   });
