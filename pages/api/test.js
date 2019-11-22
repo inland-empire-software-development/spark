@@ -1,25 +1,28 @@
-var mysql = require('mysql');
+// const handleSignUp = require('../../controllers/handleSignUp');
+const User = require('../../models/user');
+const db = require('../../models');
 
-var con = mysql.createConnection({
-  host: "172.93.55.117",
-  database: "iesd_portal",
-  user: "root",
-  password: "Hpf15031!"
-});
+export default (req, res) => {
+  User.create({
+    firstname: 'james',
+    password: "shit",
+  })
+      .then(() => {
+        res.status(201);
+        res.send('wow');
+      })
+      .catch((err) => {
+        console.log(err.errors[0].message);
+        res.status(400).json(err.errors[0].message);
+      });
 
-export default async function handle(req, res) {
-  console.log('hello');
-  console.log(mysql);
- try {
-   con.connect(function(err) {
-     if (err) throw err;
-     console.log("Connected!");
-   });
+  // db.sequelize
+  // .sync()
+  // .then(function() {
+  //   console.log('Nice! Database looks fine');
+  // })
+  // .catch(function(err) {
+  //   console.log(err, 'Something went wrong with the Database Update!');
+  // });
 
-   // Return the results
-   res.status(200);
-   res.send('hello');
- } catch(error){
-   console.log(error);
- }
-}
+};
