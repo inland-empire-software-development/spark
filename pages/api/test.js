@@ -1,28 +1,18 @@
-// const handleSignUp = require('../../controllers/handleSignUp');
-const User = require('../../models/user');
-const db = require('../../models');
+const knex = require('knex')({
+  client: 'mysql',
+  connection: {
+    host : process.env.DBHOST,
+    user : process.env.DBUSER,
+    password : process.env.DBPASSWORD,
+    database : process.env.DBNAME
+  },
+  pool: { min: 0, max: 7 }
+});
 
 export default (req, res) => {
-  User.create({
-    firstname: 'james',
-    password: "shit",
-  })
-      .then(() => {
+  knex.select().from('users')
+      .then(data => {
         res.status(201);
-        res.send('wow');
-      })
-      .catch((err) => {
-        console.log(err.errors[0].message);
-        res.status(400).json(err.errors[0].message);
-      });
-
-  // db.sequelize
-  // .sync()
-  // .then(function() {
-  //   console.log('Nice! Database looks fine');
-  // })
-  // .catch(function(err) {
-  //   console.log(err, 'Something went wrong with the Database Update!');
-  // });
-
+        res.send(data);
+  })
 };
