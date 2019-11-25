@@ -1,37 +1,7 @@
-const bcrypt = require("bcryptjs");
+module.exports = {
+  user: function (db) {
+    const userCreateTable = `CREATE TABLE ${process.env.DBNAME}.user (id INT UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'Unique user ID to identify a single unique user', username VARCHAR(35) NOT NULL COMMENT 'Username should be unique ', password VARCHAR(255) NOT NULL, last_login DATETIME NOT NULL, creation_date DATETIME NOT NULL DEFAULT now(), token VARCHAR(255) NOT NULL, role VARCHAR(45) NOT NULL, PRIMARY KEY (id), UNIQUE INDEX id_UNIQUE (id ASC), UNIQUE INDEX username_UNIQUE (username ASC))`;
 
-module.exports = (sequelize, DataTypes) => {
-  const User = sequelize.define('User', {
-    id: {
-      type: DataTypes.UUIDV4,
-      unique: true,
-      primaryKey: true,
-    },
-    username: {
-      type: DataTypes.STRING,
-    },
-    password: {
-      type: DataTypes.STRING,
-    },
-    token: {
-      type: DataTypes.INTEGER,
-    },
-    creation_date: {
-      type: DataTypes.DATE,
-    },
-    last_login: {
-      type: DataTypes.DATE,
-    },
-    hooks: {
-      beforeCreate: (user) => {
-        user.password = bcrypt
-        .hashSync(user.password, bcrypt
-        .genSaltSync(10), null);
-      },
-    },
-  });
-
-  User.prototype.validPassword = function(password) {
-    return bcrypt.compareSync(password, this.password);
-  };
+    return db.createTable('user', userCreateTable);
+  },
 };
