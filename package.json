@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "setup": "node setup.js",
     "build": "next build",
     "start": "next start"
   },
