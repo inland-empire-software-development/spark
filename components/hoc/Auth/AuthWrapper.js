@@ -3,7 +3,7 @@ import auth from '../../../lib/auth';
 import fetch from 'isomorphic-unfetch';
 
 const AuthWrapper = (WrappedComponent) => (props) => {
-  const {children} = props;
+  const {children, url = '/'} = props;
   const [access, setAccess] = useState(false);
 
   useEffect(() => {
@@ -22,13 +22,21 @@ const AuthWrapper = (WrappedComponent) => (props) => {
     }
   }, []);
 
-  return (access &&
-      <div>
-        <WrappedComponent {...props}>
-          {props.children}
-        </WrappedComponent>
-      </div>
-  );
+  if (access && url) {
+    // redirect
+    console.log('redirecting');
+    return ('redirecting...')
+  } else if (access && !url) {
+    return (access &&
+        <div>
+          <WrappedComponent {...props}>
+            {props.children}
+          </WrappedComponent>
+        </div>
+    );
+  } else {
+    return("Not authorized!")
+  }
 };
 
 export default AuthWrapper;
