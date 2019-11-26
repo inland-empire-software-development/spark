@@ -1,15 +1,15 @@
-import React, { useState } from "react";
+import React, {useState, useEffect} from 'react';
+import Login from '../components/global/Login';
+import Auth from '../components/hoc/Auth/Auth';
 
-import Login from "../components/global/Login";
-import SignUp from "../components/global/SignUp";
+function Home() {
 
-function Home () {
   return (
-    <main>
-      <Login />
-    </main>
-
-
+        <Auth>
+          <main>
+            <Login/>
+          </main>
+        </Auth>
   );
 }
 

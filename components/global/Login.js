@@ -1,7 +1,6 @@
 import  React, {useEffect, useState} from 'react';
 import fetch from "isomorphic-unfetch";
 import cookie from "js-cookie";
-import {authorize} from '../../lib/authorize';
 
 function Login(){
   const [username, setUsername] = useState("");
@@ -12,33 +11,43 @@ function Login(){
     event.preventDefault();
 
     // API route that will handle signing in
-    const url = "/api/authenticate";
-
+    const url = "/api/login";
 
     try {
-      const response = await fetch(url, {
+      fetch(url, {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
         },
         body: JSON.stringify({username, password})
-      });
+      })
+      .then(response => response.json())
+      .then(response => {
+        const {token} = response;
 
-      if (response.status === 200) {
-        const {token, expiry} = await response.json();
-        console.log(token, expiry);
-
-        const authenticate = authorize({
-          token,
-          expiry: 300 * 1000
-        });
-
-        if (authenticate) {
-          console.log("authentication successful!");
-        } else {
-          console.log("user should sign up")
+        if (token) {
+          cookie.set('auth-token', response.token, {expires: 7});
+          cookie.set('auth-token-user', username, {expires: 7});
+          // TODO: redirect to profile page
         }
-      }
+
+      })
+
+      // if (response.status === 200) {
+      //   const {token, expiry} = await response.json();
+      //   console.log(token, expiry);
+      //
+      //   const authenticate = authorize({
+      //     token,
+      //     expiry: 300 * 1000
+      //   });
+      //
+      //   if (authenticate) {
+      //     console.log("authentication successful!");
+      //   } else {
+      //     console.log("user should sign up")
+      //   }
+      // }
 
     }
     catch (error) {
@@ -64,6 +73,7 @@ function Login(){
             name='username'
             value={username}
             onChange={event => setUsername(event.target.value)}
+            required={true}
           />
         </label>
 
@@ -74,6 +84,7 @@ function Login(){
             name='password'
             value={password}
             onChange={event => setPassword(event.target.value)}
+            required={true}
           />
         </label>
 
