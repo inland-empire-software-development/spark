@@ -1,9 +1,10 @@
 import React, {useState, useEffect} from 'react';
+import Router from 'next/router';
 import auth from '../../../lib/auth';
 import fetch from 'isomorphic-unfetch';
 
 const AuthWrapper = (WrappedComponent) => (props) => {
-  const {children, url = '/'} = props;
+  const {children, url} = props;
   const [access, setAccess] = useState(false);
 
   useEffect(() => {
@@ -22,21 +23,21 @@ const AuthWrapper = (WrappedComponent) => (props) => {
     }
   }, []);
 
-  if (access && url) {
-    // redirect
-    console.log('redirecting');
-    return ('redirecting...')
-  } else if (access && !url) {
-    return (access &&
-        <div>
-          <WrappedComponent {...props}>
-            {props.children}
-          </WrappedComponent>
-        </div>
-    );
-  } else {
-    return("Not authorized!")
-  }
+  const renderContent = (props) => {
+    if (access) {
+      return(
+          <div>
+            <WrappedComponent {...props}>
+              {props.children}
+            </WrappedComponent>
+          </div>
+      )
+    } else {
+      return ("No Access")
+    }
+  };
+
+  return(renderContent(props))
 };
 
 export default AuthWrapper;
