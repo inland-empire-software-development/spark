@@ -1,6 +1,6 @@
 function Footer() {
   return (
-      <footer className="uk-section bg-dark-gray white uk-padding-remove-bottom uk-position-bottom">
+      <footer className="uk-section bg-dark-gray offwhite uk-padding-remove-bottom uk-position-bottom">
         <div className="uk-container">
           <div className="uk-grid uk-grid-large" data-uk-grid="true">
             <div className="uk-width-1-2@m uk-first-column">

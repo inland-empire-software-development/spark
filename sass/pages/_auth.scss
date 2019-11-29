@@ -1,13 +1,11 @@
 #login-container {
   padding-top: 0;
 
-  #login-logo {
-    margin: 0 auto;
-    display: block;
-    max-width: 200px;
-  }
-
   .uk-card-body {
     min-height: 515px;
+  }
+
+  input {
+    font-size: 14px;
   }
 }

@@ -9,7 +9,10 @@
 'base/_animation';
 
 @import
-'pages/_login',
+'pages/_auth',
 'pages/_index';
+
+@import
+'components/_auth';
 
 @import '_shame';

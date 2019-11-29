@@ -81,13 +81,13 @@ $green: #02AE72;
   color: #626262;
 }
 .primary {
-  color: #EF806C;
+  color: #E87F47;
 }
 .secondary {
   color: #F4A77C;
 }
 .tertiary {
-  color: #EB8A50;
+  color: #EA844B;
 }
 .offwhite {
   color: #F3EFEE;
@@ -95,11 +95,11 @@ $green: #02AE72;
 
 // selection color
 ::selection {
-  background: $yellow; /* WebKit/Blink Browsers */
+  background: $primary; /* WebKit/Blink Browsers */
 }
 
 ::-moz-selection {
-  background: $yellow; /* Gecko Browsers */
+  background: $primary; /* Gecko Browsers */
 }
 
 // borders
