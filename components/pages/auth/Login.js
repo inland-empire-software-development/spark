@@ -7,19 +7,19 @@ function Login(){
         <form>
           <div className="uk-margin">
             <div className="uk-inline uk-width-1-1">
-              <span className="uk-form-icon" uk-icon="icon: user"></span>
-              <input className="uk-input uk-form-large" type="text" placeholder="username" />
+              <span className="uk-form-icon" uk-icon="icon: user"/>
+              <input className="uk-input uk-form-large" name="login-username" type="text" placeholder="username" />
             </div>
           </div>
           <div className="uk-margin">
             <div className="uk-inline uk-width-1-1">
-              <span className="uk-form-icon" uk-icon="icon: lock"></span>
-              <input className="uk-input uk-form-large" type="password" placeholder="password" />
+              <span className="uk-form-icon" uk-icon="icon: lock"/>
+              <input className="uk-input uk-form-large" name="login-password" type="password" placeholder="password" />
             </div>
           </div>
           <div className="uk-margin uk-grid-small uk-child-width-auto uk-grid">
             <label>
-              <input className="uk-checkbox" type="checkbox" /> Remember me
+              <input className="uk-checkbox" name="login-remember" type="checkbox" /> Remember me
             </label>
           </div>
           <div className="uk-margin uk-text-right@s uk-text-center uk-text-small">

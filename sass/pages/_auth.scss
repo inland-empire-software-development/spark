@@ -8,4 +8,25 @@
   input {
     font-size: 14px;
   }
+
+  .password-requirements {
+    font-size: 12px;
+
+    ul {
+      margin-top: 0;
+
+      [uk-icon="check"] {
+        position: relative;
+        top: -3px;
+        height: 0;
+        color: $green;
+      }
+    }
+  }
+
+  .password-valid {
+    border: 1px solid $green;
+    background-color: rgba(2, 174, 114, 0.2);
+  }
+
 }
