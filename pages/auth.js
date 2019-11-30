@@ -12,7 +12,7 @@ function Auth(){
           <div className="uk-container">
             <div className="uk-grid-margin uk-grid uk-grid-stack" uk-grid="true">
               <div className="uk-width-1-1@m">
-                <img id="login-logo" src="/images/login/icon-150.png" />
+                <img id="login-logo" src="/icon/icon-no-bg.svg" />
                 <div className="uk-margin uk-width-large uk-margin-auto uk-card uk-card-default uk-card-body">
                   <ul className="uk-tab uk-flex-center" uk-grid="true" uk-switcher="animation: uk-animation-fade">
                     <li><a href="#">Log In</a></li>

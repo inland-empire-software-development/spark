@@ -40,11 +40,29 @@ function Signup() {
     // check off the requirements that are met
     checkPasswordRequirements(password.value);
 
-    // let user know if ALL requirements were met
+    // if pattern is matched
+    if (pattern.test(password.value)) {
+      // let user know password is valid
+      password.classList.add('password-valid');
+      password.setCustomValidity('');
+    } else {
+      // remove styling if password is not valid
+      password.classList.remove('password-valid');
+      password.setCustomValidity('Password does not meet minimum requirements');
+    }
 
-    pattern.test(password.value) ?
-        password.classList.add('password-valid') :
-        password.classList.remove('password-valid');
+  };
+
+  const handlePasswordConfirmation = e => {
+
+    const password = document.querySelector('[name="signup-password"]');
+    const passwordConfirmation = document.querySelector('[name="signup-password-confirm"]');
+
+    if (password.value === passwordConfirmation.value) {
+      passwordConfirmation.setCustomValidity('');
+    } else {
+      passwordConfirmation.setCustomValidity('Passwords don\'t match');
+    }
 
   };
 
@@ -77,15 +95,14 @@ function Signup() {
             <div className="uk-inline uk-width-1-1">
               <span className="uk-form-icon" uk-icon="icon: lock"/>
               <input className="uk-input uk-form-large" onChange={e => handlePassword(e)}
-                     pattern="/(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{10,}/" type="password"
-                     placeholder="password" name="signup-password" required={true} minLength={10}/>
+                     type="password" placeholder="password" name="signup-password" required={true} minLength={10}/>
             </div>
           </div>
           <div className="uk-margin">
             <div className="uk-inline uk-width-1-1">
               <span className="uk-form-icon" uk-icon="icon: lock"/>
-              <input className="uk-input uk-form-large" type="password" placeholder="confirm password"
-                     name="signup-password-confirm" required={true}/>
+              <input className="uk-input uk-form-large" onKeyDown={e => handlePasswordConfirmation(e)}
+                     type="password" placeholder="confirm password" name="signup-password-confirm" required={true}/>
             </div>
           </div>
           <div className="uk-margin uk-grid-small uk-child-width-auto uk-grid">
