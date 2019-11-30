@@ -5,13 +5,39 @@ function Signup() {
     e.preventDefault();
 
     // get all required variables to submit new user request
-    const username = document.querySelector('[name="signup-username"]');
-    const email = document.querySelector('[name="signup-email"]');
-    const password = document.querySelector('[name="signup-password"]');
-    const passwordConfirm = document.querySelector('[name="signup-password-confirm"]');
-    const agree = document.querySelector('[name="signup-tos"]');
+    const username = document.querySelector('[name="signup-username"]').value;
+    const email = document.querySelector('[name="signup-email"]').value;
+    const password = document.querySelector('[name="signup-password"]').value;
 
-    console.log(e);
+    // API route that will handle signing in
+    const url = "/api/signup";
+
+    try {
+      fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({username, email, password, role: 'subscriber'})
+      })
+      .then(response => response.json())
+      .then(response => {
+        if (response.serverStatus && response.serverStatus === 2) {
+          if (document) {
+            document.location.href = "/"; // TODO: redirect to success screen
+          }
+        } else {
+          console.log('failure!'); // TODO: let user know how they failed, try again? redirect?
+        }
+      }).catch(error => console.log(error))
+
+    }
+    catch (error) {
+      console.error(
+          "You have an error in your code or there are Network issues.",
+          error,
+      );
+    }
   };
 
   const checkVisibilityToggle = (index, state) => {
@@ -101,13 +127,13 @@ function Signup() {
           <div className="uk-margin">
             <div className="uk-inline uk-width-1-1">
               <span className="uk-form-icon" uk-icon="icon: lock"/>
-              <input className="uk-input uk-form-large" onKeyDown={e => handlePasswordConfirmation(e)}
+              <input className="uk-input uk-form-large" onChange={e => handlePasswordConfirmation(e)}
                      type="password" placeholder="confirm password" name="signup-password-confirm" required={true}/>
             </div>
           </div>
           <div className="uk-margin uk-grid-small uk-child-width-auto uk-grid">
             <label>
-              <input className="uk-checkbox" type="checkbox" name="signup-tos"/> I agree the Terms and Conditions.
+              <input className="uk-checkbox" type="checkbox" name="signup-tos" required={true}/> I agree the Terms and Conditions.
             </label>
           </div>
           <div className="uk-margin">
