@@ -29,4 +29,20 @@
     background-color: rgba(2, 174, 114, 0.2);
   }
 
+  #spinner {
+    z-index: 1;
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(255, 255, 255, 0.8);
+
+    [uk-spinner] {
+      display: block;
+      position: relative;
+      top: 50%;
+      text-align: center;
+    }
+  }
+
+
 }

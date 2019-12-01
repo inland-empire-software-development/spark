@@ -8,6 +8,9 @@ import Recovery from '../components/pages/auth/Recovery';
 function Auth(){
   return(
       <div id="login-container" className="uk-section uk-position-top uk-flex uk-flex-middle uk-animation-fade" uk-height-viewport="true">
+        <div id="spinner" className="uk-hidden">
+          <div uk-spinner="ratio: 3"/>
+        </div>
         <div className="uk-width-1-1 login-section">
           <div className="uk-container">
             <div className="uk-grid-margin uk-grid uk-grid-stack" uk-grid="true">

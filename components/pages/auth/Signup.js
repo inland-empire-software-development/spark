@@ -4,37 +4,38 @@ function Signup() {
   const handleSignUp = e => {
     e.preventDefault();
 
+    // activate spinner
+    const spinner = document.getElementById('spinner');
+    spinner.classList.remove('uk-hidden');
+
     // get all required variables to submit new user request
     const username = document.querySelector('[name="signup-username"]').value;
     const email = document.querySelector('[name="signup-email"]').value;
     const password = document.querySelector('[name="signup-password"]').value;
 
     // API route that will handle signing in
-    const url = "/api/signup";
+    const url = '/api/signup';
 
     try {
       fetch(url, {
-        method: "POST",
+        method: 'POST',
         headers: {
-          "Content-Type": "application/json"
+          'Content-Type': 'application/json',
         },
-        body: JSON.stringify({username, email, password, role: 'subscriber'})
-      })
-      .then(response => response.json())
-      .then(response => {
+        body: JSON.stringify({username, email, password, role: 'subscriber'}),
+      }).then(response => response.json()).then(response => {
         if (response.serverStatus && response.serverStatus === 2) {
           if (document) {
-            document.location.href = "/"; // TODO: redirect to success screen
+            document.location.href = '/welcome';
           }
         } else {
-          console.log('failure!'); // TODO: let user know how they failed, try again? redirect?
+          spinner.classList.add('uk-hidden');   // TODO: let user know how they failed, try again? redirect?
         }
-      }).catch(error => console.log(error))
+      }).catch(error => console.log(error));
 
-    }
-    catch (error) {
+    } catch (error) {
       console.error(
-          "You have an error in your code or there are Network issues.",
+          'You have an error in your code or there are Network issues.',
           error,
       );
     }
@@ -79,15 +80,20 @@ function Signup() {
 
   };
 
-  const handlePasswordConfirmation = e => {
+  // Allows user to see the password
+  const showPassword = e => {
+    e.preventDefault();
 
     const password = document.querySelector('[name="signup-password"]');
-    const passwordConfirmation = document.querySelector('[name="signup-password-confirm"]');
+    const showPassword = document.querySelector('.show-password');
+    const type = password.getAttribute('type');
 
-    if (password.value === passwordConfirmation.value) {
-      passwordConfirmation.setCustomValidity('');
+    if (type === 'password') {
+      password.setAttribute('type', 'text');
+      showPassword.innerHTML = "hide password";
     } else {
-      passwordConfirmation.setCustomValidity('Passwords don\'t match');
+      password.setAttribute('type', 'password');
+      showPassword.innerHTML = "show password";
     }
 
   };
@@ -123,17 +129,12 @@ function Signup() {
               <input className="uk-input uk-form-large" onChange={e => handlePassword(e)}
                      type="password" placeholder="password" name="signup-password" required={true} minLength={10}/>
             </div>
-          </div>
-          <div className="uk-margin">
-            <div className="uk-inline uk-width-1-1">
-              <span className="uk-form-icon" uk-icon="icon: lock"/>
-              <input className="uk-input uk-form-large" onChange={e => handlePasswordConfirmation(e)}
-                     type="password" placeholder="confirm password" name="signup-password-confirm" required={true}/>
-            </div>
+            <small className="uk-align-right"><a href="#" className="show-password" onClick={e => showPassword(e)}>show password</a></small>
           </div>
           <div className="uk-margin uk-grid-small uk-child-width-auto uk-grid">
             <label>
-              <input className="uk-checkbox" type="checkbox" name="signup-tos" required={true}/> I agree the Terms and Conditions.
+              <input className="uk-checkbox" type="checkbox" name="signup-tos" required={true}/> I agree the Terms and
+              Conditions.
             </label>
           </div>
           <div className="uk-margin">
