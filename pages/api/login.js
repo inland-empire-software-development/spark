@@ -8,30 +8,34 @@ export default async (req, res) => {
 
   db.getUser(escape(username)).then(user => {
     if (!user) {
-      res.status(400);
-      res.send({message: "invalid user..."});
+      res.send({
+        message: 'invalid user...',
+        state: false,
+      });
       return false;
     }
 
     // if user successfully logged in
-    if (auth.verifyPassword(password,user.password)){
+    if (auth.verifyPassword(password, user.password)) {
       // create new token
       const token = auth.tokenize(username);
 
       // set token in redis
       client.setToken(username, token);
 
-      // set status
-      res.status(200);
-
       // send token back to save as a cookie in browser
-      res.send({token, username})
+      res.send({
+        token,
+        username,
+        state: true,
+      });
     } else {
-      res.status(400);
-      res.send({message: "unsuccessful login attempt!"})
+      res.send({
+        username,
+        state: false,
+      });
     }
 
   });
-
 
 }

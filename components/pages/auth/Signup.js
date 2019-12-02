@@ -1,6 +1,10 @@
 import React, {useState} from 'react';
+import Message from '../../global/Message';
 
 function Signup() {
+  const [message, setMessage] = useState({state: false, message: ""});
+
+  // headers template for api calls
   const headers = data => {
     return {
       method: 'POST',
@@ -10,6 +14,7 @@ function Signup() {
       body: JSON.stringify(data),
     };
   };
+
   // Handles the sign up process
   const handleSignUp = e => {
     e.preventDefault();
@@ -33,9 +38,17 @@ function Signup() {
             if (response.serverStatus && response.serverStatus === 2) {
               if (document) {
                 document.location.href = '/welcome';
+                setMessage({
+                  state: false,
+                  message: ""
+                })
               }
             } else {
               spinner.classList.add('uk-hidden');   // TODO: let user know how they failed, try again? redirect?
+              setMessage({
+                state: true,
+                message: "Error creating user, please contact an admin if it happens again."
+              })
             }
           }).
           catch(error => console.log(error));
@@ -52,7 +65,8 @@ function Signup() {
     e.preventDefault();
 
     // get all required variables to submit new user request
-    const username = document.querySelector('[name="signup-username"]').value;
+    const user = document.querySelector('[name="signup-username"]');
+    const username = user.value;
     const message = document.querySelector('[data-message="username"]');
 
     // API route that will handle signing in
@@ -61,8 +75,10 @@ function Signup() {
     fetch(url, headers({username})).then(response => response.json()).then(response => {
       if (!response) {
         message.style.visibility = 'hidden';
+        user.setCustomValidity('');
       } else {
         message.style.visibility = 'visible';
+        user.setCustomValidity('Username already in use, try another.');
       }
     }).catch(error => console.log(error));
   };
@@ -71,7 +87,8 @@ function Signup() {
     e.preventDefault();
 
     // get all required variables to submit new user request
-    const email = document.querySelector('[name="signup-email"]').value;
+    const address = document.querySelector('[name="signup-email"]');
+    const email = address.value;
     const message = document.querySelector('[data-message="email"]');
 
     // API route that will handle signing in
@@ -80,21 +97,23 @@ function Signup() {
     fetch(url, headers({email})).then(response => response.json()).then(response => {
       if (!response) {
         message.style.visibility = 'hidden';
+        address.setCustomValidity('');
       } else {
         message.style.visibility = 'visible';
+        address.setCustomValidity('Email already in use, try another.');
       }
     }).catch(error => console.log(error));
   };
 
   // Handles the visibility of the check marks for each requirement
-  const checkVisibilityToggle = (index, state) => {
+  const handleVisibilityToggle = (index, state) => {
     const requirement = document.querySelector(`[data-check="${index}"]`);
 
     state ? requirement.classList.remove('uk-hidden') : requirement.classList.add('uk-hidden');
   };
 
   // Handles the testing of individual requirements
-  const checkPasswordRequirements = password => {
+  const handleRequirements = password => {
     const check = {
       number: /\d/.test(password),
       lower: /[a-z]/.test(password),
@@ -103,7 +122,7 @@ function Signup() {
     };
 
     for (const requirement in check) {
-      checkVisibilityToggle(requirement, check[requirement]);
+      handleVisibilityToggle(requirement, check[requirement]);
     }
   };
 
@@ -113,7 +132,7 @@ function Signup() {
     const pattern = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{10,}$/;
 
     // check off the requirements that are met
-    checkPasswordRequirements(password.value);
+    handleRequirements(password.value);
 
     // if pattern is matched
     if (pattern.test(password.value)) {
@@ -148,6 +167,7 @@ function Signup() {
 
   return (
       <section className="auth-signup">
+        <Message message={message.message} hidden={message.state}/>
         <p className="uk-text-center">Sign up today. It's free!</p>
         <form onSubmit={e => handleSignUp(e)}>
           <div className="uk-margin uk-margin-remove-bottom">
