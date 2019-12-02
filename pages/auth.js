@@ -7,7 +7,7 @@ import Recovery from '../components/pages/auth/Recovery';
 
 function Auth(){
   return(
-      <div id="login-container" className="uk-section uk-position-top uk-flex uk-flex-middle uk-animation-fade" uk-height-viewport="true">
+      <div id="login-container" className="uk-section uk-position-top uk-flex uk-flex-middle uk-animation-fade" uk-height-viewport="true"> 
         <div id="spinner" className="uk-hidden">
           <div uk-spinner="ratio: 3"/>
         </div>

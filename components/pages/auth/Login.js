@@ -7,14 +7,14 @@ function Login(){
         <form>
           <div className="uk-margin">
             <div className="uk-inline uk-width-1-1">
-              <span className="uk-form-icon" uk-icon="icon: user"/>
-              <input className="uk-input uk-form-large" name="login-username" type="text" placeholder="username" />
+              <i className="uk-form-icon fal fa-user"/>
+              <input className="uk-input uk-form-large" name="login-username" type="text" autoComplete="username" placeholder="username" />
             </div>
           </div>
           <div className="uk-margin">
             <div className="uk-inline uk-width-1-1">
-              <span className="uk-form-icon" uk-icon="icon: lock"/>
-              <input className="uk-input uk-form-large" name="login-password" type="password" placeholder="password" />
+              <i className="uk-form-icon fal fa-lock-alt"/>
+              <input className="uk-input uk-form-large" name="login-password" type="password" autoComplete="current-password" placeholder="password" />
             </div>
           </div>
           <div className="uk-margin uk-grid-small uk-child-width-auto uk-grid">

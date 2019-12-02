@@ -3,12 +3,6 @@ import Document, {Html, Head, Main, NextScript} from 'next/document';
 import React from 'react';
 
 class main extends Document {
-  test() {
-    document.addEventListener('DOMContentLoaded', () => {
-      console.log('shit');
-    });
-  }
-
   render() {
     return (
       <Html>
@@ -30,6 +24,9 @@ class main extends Document {
           <meta name="msapplication-TileColor" content="#ffffff" />
           <meta name="msapplication-TileImage" content="/icon/ms-icon-144x144.png" />
           <meta name="theme-color" content="#ffffff" />
+
+          <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.11.2/css/all.css" />
+
         </Head>
 
         <body className="iesd">
