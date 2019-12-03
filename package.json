@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "setup": "node setup.js",
+    "development": "next start -p 5201",
     "build": "next build",
     "start": "next start",
     "lint": "./node_modules/.bin/eslint ./**/*.{js,jsx} --quiet || true",

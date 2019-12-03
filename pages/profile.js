@@ -1,15 +1,13 @@
-import React, {useState, useEffect} from 'react';
 import Auth from '../components/hoc/Auth/Auth';
 import '../sass/index.scss';
 
 function Profile() {
-
   return (
-      <Auth>
-        <main>
+    <Auth>
+      <main>
           Logged in
-        </main>
-      </Auth>
+      </main>
+    </Auth>
   );
 }
 

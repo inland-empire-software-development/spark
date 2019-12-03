@@ -6,7 +6,7 @@ export default async (req, res) => {
   // Get credentials from JSON body
   const {username, password} = req.body;
 
-  db.getUser(escape(username)).then(user => {
+  db.getUser(escape(username)).then((user) => {
     if (!user) {
       res.send({
         message: 'invalid user...',
@@ -35,7 +35,5 @@ export default async (req, res) => {
         state: false,
       });
     }
-
   });
-
-}
+};
