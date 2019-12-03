@@ -43,6 +43,7 @@
         "require-jsdoc": 0,
         "react/jsx-uses-vars": 2,
         "react-hooks/rules-of-hooks": "error",
-        "react-hooks/exhaustive-deps": "warn"
+        "react-hooks/exhaustive-deps": "warn",
+        "max-len": "off"
     }
 }
