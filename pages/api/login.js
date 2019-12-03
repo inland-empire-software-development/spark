@@ -7,7 +7,7 @@ export default async (req, res) => {
   res.setHeader("Cache-Control", "no-store, no-cache, must-revalidate, proxy-revalidate");
   res.setHeader("Content-Type", "application/javascript");
 
-  // messsages
+  // messages
   const invalid = {
     message: "invalid request",
   };
