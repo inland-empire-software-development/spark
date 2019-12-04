@@ -2,7 +2,7 @@
 import Document, {Html, Head, Main, NextScript} from 'next/document';
 import React from 'react';
 import fetch from "isomorphic-unfetch";
-import Spinner from "../components/global/Spinner";
+import Spinner from "../src/components/global/Spinner";
 
 const access = {state: undefined};
 

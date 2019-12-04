@@ -1,8 +1,8 @@
 import client from '../../lib/redis';
 import {pages} from '../../lib/config';
-import Spinner from '../../components/global/Spinner';
+import Spinner from '../../src/components/global/Spinner';
 import Router from 'next/router';
-import Unauthorized from '../../components/global/Unauthorized';
+import Unauthorized from '../../src/components/global/Unauthorized';
 
 export default async (req, res) => {
   const token = req.cookies['portal-token'];

@@ -1,8 +1,8 @@
 import '../sass/index.scss';
-import Login from '../components/pages/auth/Login';
-import Signup from '../components/pages/auth/Signup';
-import Recovery from '../components/pages/auth/Recovery';
-import Spinner from '../components/global/Spinner';
+import Login from '../src/components/pages/auth/Login';
+import Signup from '../src/components/pages/auth/Signup';
+import Recovery from '../src/components/pages/auth/Recovery';
+import Spinner from '../src/components/global/Spinner';
 
 function Authenticate() {
   return (
