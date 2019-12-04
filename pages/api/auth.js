@@ -1,15 +1,14 @@
 import client from '../../lib/redis';
 
 export default async (req, res) => {
-  const {token, user} = req.body;
+  const token = req.cookies['portal-token'];
+  const user = req.cookies['portal-user'];
+
+  console.log(req);
   const access = await client.checkToken(user, token);
 
-  res.setHeader("Cache-Control", "no-store, no-cache," +
-    " must-revalidate, proxy-revalidate");
-  res.setHeader("Content-Type", "application/javascript");
-  res.setHeader("Service-Worker-Allowed", "/");
-  res.statusCode = 200;
-
+  res.setHeader("Cache-Control", "no-store, no-cache, must-revalidate, proxy-revalidate");
+  res.status(200);
   res.send({
     access,
   });

@@ -1,9 +1,34 @@
 /* eslint-disable no-unused-vars */
 import Document, {Html, Head, Main, NextScript} from 'next/document';
 import React from 'react';
+import fetch from "isomorphic-unfetch";
+import Spinner from "../components/global/Spinner";
+
+const access = {state: undefined};
 
 class main extends Document {
-  render() {
+  static async getInitialProps( ctx ) {
+    const initialProps = await Document.getInitialProps(ctx);
+    const res = await fetch(`http://localhost:3000/api/auth`, {
+      method: "GET",
+    });
+
+    initialProps.access = await res.json();
+
+    return {...initialProps};
+  }
+
+  getPageName(props) {
+    return props['__NEXT_DATA__'].page.replace('/', '');
+  }
+
+  getUserState(props) {
+    return props.access ? 'logged-in' : 'logged-out';
+  }
+
+  render(props) {
+    const {access} = this.props;
+    console.log(access);
     return (
       <Html>
         <Head>
@@ -16,7 +41,7 @@ class main extends Document {
           <link rel="apple-touch-icon" sizes="144x144" href="/icon/apple-icon-144x144.png" />
           <link rel="apple-touch-icon" sizes="152x152" href="/icon/apple-icon-152x152.png" />
           <link rel="apple-touch-icon" sizes="180x180" href="/icon/apple-icon-180x180.png" />
-          <link rel="icon" type="image/png" sizes="192x192"  href="/icon/android-icon-192x192.png" />
+          <link rel="icon" type="image/png" sizes="192x192" href="/icon/android-icon-192x192.png" />
           <link rel="icon" type="image/png" sizes="32x32" href="/icon/favicon-32x32.png" />
           <link rel="icon" type="image/png" sizes="96x96" href="/icon/favicon-96x96.png" />
           <link rel="icon" type="image/png" sizes="16x16" href="/icon/favicon-16x16.png" />
@@ -29,7 +54,7 @@ class main extends Document {
 
         </Head>
 
-        <body className="iesd">
+        <body className={`portal-${this.getPageName(this.props)} ${this.getUserState(this.props)}`}>
           <Main />
           <NextScript />
 

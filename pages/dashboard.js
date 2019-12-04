@@ -1,12 +1,8 @@
-import Auth from "../components/hoc/Auth/Auth";
-
-function Dashboard() {
+function Dashboard(props) {
   return (
-    <Auth>
-      <main>
-        <h1>my dashboard</h1>
-      </main>
-    </Auth>
+    <main>
+      <h1>x</h1>
+    </main>
   );
 }
 
