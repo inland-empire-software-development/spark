@@ -7,33 +7,7 @@ import Spinner from "../src/components/global/Spinner";
 const access = {state: undefined};
 
 class main extends Document {
-  static async getInitialProps( ctx ) {
-    const initialProps = await Document.getInitialProps(ctx);
-    const {pathname} = ctx;
-    const res = await fetch(`http://localhost:3000/api/auth`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({pathname}),
-    });
-
-    initialProps.access = await res.json();
-
-    return {...initialProps};
-  }
-
-  getPageName(props) {
-    return props['__NEXT_DATA__'].page.replace('/', '');
-  }
-
-  getUserState(props) {
-    return props.access ? 'logged-in' : 'logged-out';
-  }
-
   render(props) {
-    const {access} = this.props;
-    console.log(access);
     return (
       <Html>
         <Head>
@@ -59,7 +33,7 @@ class main extends Document {
 
         </Head>
 
-        <body className={`portal-${this.getPageName(this.props)} ${this.getUserState(this.props)}`}>
+        <body className="portal">
           <Main />
           <NextScript />
 

@@ -1,28 +1,22 @@
 import client from '../../lib/redis';
-import {pages} from '../../lib/config';
-import Spinner from '../../src/components/global/Spinner';
-import Router from 'next/router';
-import Unauthorized from '../../src/components/global/Unauthorized';
 
 export default async (req, res) => {
   const token = req.cookies['portal-token'];
   const user = req.cookies['portal-user'];
   const access = await client.checkToken(user, token);
-  const {pathname} = req.body;
-  const noAuthRequired = pages.hasOwnProperty("shit");
+  const redirect = req.body.hasOwnProperty("redirect") ? req.body.redirect : false;
+  const secure = req.body.hasOwnProperty("secure") ? req.body.secure : true;
+
   const data = {
     user,
-    access
+    access,
+    secure,
+    redirect,
   };
 
   // if no authentication is required
-    // check if there is a page to redirect to
-    if (access && noAuthRequired && pages[pathname]) {
-      data.redirect = pages[pathname];
-    } else if (noAuthRequired && !pages[pathname]) {
-      data.access = true;
-      data.redirect = false;
-    }
+  // check if there is a page to redirect to
+
   //
   // // if logged in but reverse is false - render
   // // if logged out but reverse is true, render
@@ -40,8 +34,5 @@ export default async (req, res) => {
 
   res.setHeader("Cache-Control", "no-store, no-cache, must-revalidate, proxy-revalidate");
   res.status(200);
-  res.send({
-    access,
-    user
-  });
+  res.send(data);
 };
