@@ -1,33 +1,26 @@
-import React, {useState, useEffect} from "react";
-import auth from "../../../lib/auth";
+import {useState, useEffect} from "react";
 import fetch from "isomorphic-unfetch";
 import Unauthorized from "../../global/Unauthorized";
 import Router from "next/router";
+import Spinner from "../../global/Spinner";
 
 const AuthWrapper = (WrappedComponent) => (props) => {
   const {children, reverse = false, url = "/dashboard"} = props;
   // eslint-disable-next-line react-hooks/rules-of-hooks
-  const [access, setAccess] = useState(false);
+  const [access, setAccess] = useState(undefined);
 
   // eslint-disable-next-line react-hooks/rules-of-hooks
   useEffect(() => {
     // API route that will handle signing in
     const url = "/api/auth";
-    const {token, user} = auth.getInfo();
 
-    if (token && user) {
-      fetch(url, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({user, token}),
-      })
-          .then((response) => response.json())
-          .then((state) => {
-            setAccess(state.access);
-          });
-    }
+    fetch(url, {
+      method: "GET",
+    })
+        .then((response) => response.json())
+        .then((state) => {
+          setAccess(state.access);
+        });
   }, []);
 
   const renderContent = (props) => {
@@ -40,6 +33,9 @@ const AuthWrapper = (WrappedComponent) => (props) => {
     );
 
     console.log(access, reverse);
+
+    if (access === undefined) return <Spinner/>;
+
     // if logged in but reverse is false - render
     // if logged out but reverse is true, render
     if ((access && !reverse) || (!access && reverse) ) return content;
@@ -47,7 +43,8 @@ const AuthWrapper = (WrappedComponent) => (props) => {
     // if you have access and reverse is set to true,
     // redirect - default = dashboard
     if (access && reverse) {
-      return Router.push(url);
+      Router.push(url);
+      return <Spinner/>;
     }
 
     // user is not authorized
