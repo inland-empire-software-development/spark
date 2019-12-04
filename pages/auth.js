@@ -7,7 +7,6 @@ import Auth from '../components/hoc/Auth/Auth';
 
 function Authenticate() {
   return (
-    <Auth reverse={true}>
       <div id="login-container"
         className="uk-section uk-position-top uk-flex
         uk-flex-middle uk-animation-fade"
@@ -45,8 +44,6 @@ function Authenticate() {
           </div>
         </div>
       </div>
-    </Auth>
-
   );
 }
 

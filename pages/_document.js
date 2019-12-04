@@ -9,8 +9,13 @@ const access = {state: undefined};
 class main extends Document {
   static async getInitialProps( ctx ) {
     const initialProps = await Document.getInitialProps(ctx);
+    const {pathname} = ctx;
     const res = await fetch(`http://localhost:3000/api/auth`, {
-      method: "GET",
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({pathname}),
     });
 
     initialProps.access = await res.json();

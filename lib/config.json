@@ -1,0 +1,7 @@
+{
+  "pages": {
+    "/auth": "/dashboard",
+    "/":  false,
+    "/terms-of-service": false
+  }
+}
