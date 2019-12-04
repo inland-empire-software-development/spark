@@ -8,7 +8,7 @@ import fetch from "isomorphic-unfetch";
 
 export default class MyApp extends App {
   state = {
-    user: null,
+    user: false,
     access: false
   }
 
@@ -23,7 +23,9 @@ export default class MyApp extends App {
       body: JSON.stringify({pathname, redirect}),
     })
       .then(res => res.json())
-      .then(data => console.log(data));
+      .then(data => {
+        this.setState({user: data.user})
+      });
   };
 
   signIn = (username, password) => {
