@@ -1,25 +1,24 @@
+import '../sass/index.scss';
 import App from 'next/app';
 import Context from '../src/components/context';
 import Redirects from '../src/redirects';
-import '../sass/index.scss';
 import fetch from "isomorphic-unfetch";
+
 import Spinner from "../src/components/global/Spinner";
+import Unauthorized from "../src/components/global/Unauthorized";
+import Redirect from "../src/components/animation/Redirect";
 
 export default class Portal extends App {
   state = {
     user: null,
-    secure: true, // assume all pages are secure by default
     access: null,
     redirect: null,
+    public: null,
   };
 
   componentDidMount() {
     const {pathname} = this.props.router;
     const redirect = Redirects[pathname] ? Redirects[pathname].redirect : false;
-
-    if (process.env.DEBUG) {
-      console.log('redirect: ', redirect);
-    }
 
     fetch(`http://localhost:3000/api/auth`, {
       method: 'POST',
@@ -34,16 +33,38 @@ export default class Portal extends App {
         });
   };
 
+  sendToLogin(redirect) {
+    setTimeout(() => {
+      if (document) {
+        document.location.href = redirect;
+      }
+      console.log('redirecting...');
+    }, 1000);
+  }
+
   render() {
     const {Component, pageProps} = this.props;
-    const {access} = this.state;
+    const {access, user, redirect} = this.state;
 
-    if (access) {
-      return (
-        <Context.Provider value={{...this.state}}>
-          <Component {...pageProps} />
-        </Context.Provider>
-      );
+    // if access and user values have a value now
+    if (access !== null && user !== null && redirect !== null) {
+      // if user has access to page but there is a redirect
+      if (access && redirect) {
+        // send user to proper page if they're logged in
+        this.sendToLogin(redirect);
+
+        return <Redirect />;
+      } else if (access) {
+        return (
+          <Context.Provider value={{...this.state}}>
+            <Component {...pageProps} />
+          </Context.Provider>
+        );
+      } else if (!access) {
+        return <Unauthorized/>;
+      } else {
+        return 'error';
+      }
     } else {
       return <Spinner />;
     }

@@ -1,3 +1,4 @@
+// Animated loader when redirecting a user to another page.
 export default function Redirect() {
   return (
     <section id="redirect-animation">
@@ -10,7 +11,7 @@ export default function Redirect() {
         </span>
         <div className='base'>
           <span/>
-          <div className='face'></div>
+          <div className='face'/>
         </div>
       </div>
       <div className='longfazers'>

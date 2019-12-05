@@ -1,9 +1,12 @@
-import '../sass/index.scss';
 import Login from '../src/components/pages/auth/Login';
 import Signup from '../src/components/pages/auth/Signup';
 import Recovery from '../src/components/pages/auth/Recovery';
+import {useContext} from 'react';
+import Context from '../src/components/context';
 
 function Authenticate() {
+  const {user, access, redirect, secure} = useContext(Context);
+  console.log('user: ', user, ' access: ', access, ' secure: ', secure, ' redirect: ', redirect);
   return (
     <div id="login-container" className="uk-section uk-position-top uk-flex uk-flex-middle uk-animation-fade" uk-height-viewport="true">
       <div className="uk-width-1-1 login-section">
