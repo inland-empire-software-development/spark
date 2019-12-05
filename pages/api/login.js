@@ -38,7 +38,7 @@ export default async (req, res) => {
       client.setToken(username, token);
 
       // set HttpOnly cookie
-      res.setHeader('Set-Cookie', [`portal-token=${token}; HttpOnly`, `portal-user=${username}`]);
+      res.setHeader('Set-Cookie', [`portal-token=${token}; HttpOnly`, `portal-user=${username}; HttpOnly`]);
       res.send(valid);
       return true;
     } else {

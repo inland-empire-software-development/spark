@@ -1,20 +1,26 @@
-import React from 'react';
 import App from 'next/app';
-import Router from 'next/router';
 import Context from '../src/components/context';
-import Redirects from '../src/constants';
-
+import Redirects from '../src/redirects';
+import '../sass/index.scss';
 import fetch from "isomorphic-unfetch";
+import Spinner from "../src/components/global/Spinner";
 
-export default class MyApp extends App {
+export default class Portal extends App {
   state = {
-    user: false,
-    access: false
-  }
+    user: null,
+    secure: true, // assume all pages are secure by default
+    access: null,
+    redirect: null,
+  };
 
   componentDidMount() {
     const {pathname} = this.props.router;
-    const {redirect} = Redirects[pathname] || false;
+    const redirect = Redirects[pathname] ? Redirects[pathname].redirect : false;
+
+    if (process.env.DEBUG) {
+      console.log('redirect: ', redirect);
+    }
+
     fetch(`http://localhost:3000/api/auth`, {
       method: 'POST',
       headers: {
@@ -22,40 +28,24 @@ export default class MyApp extends App {
       },
       body: JSON.stringify({pathname, redirect}),
     })
-      .then(res => res.json())
-      .then(data => {
-        this.setState({user: data.user})
-      });
-  };
-
-  signIn = (username, password) => {
-    localStorage.setItem('coolapp-user', username);
-
-    this.setState(
-      {
-        user: username
-      },
-      () => {
-        Router.push('/');
-      }
-    );
-  };
-
-  signOut = () => {
-    localStorage.removeItem('coolapp-user');
-    this.setState({
-      user: null
-    });
-    Router.push('/signin');
+        .then((res) => res.json())
+        .then((data) => {
+          this.setState({...data, redirect});
+        });
   };
 
   render() {
-    const { Component, pageProps } = this.props;
+    const {Component, pageProps} = this.props;
+    const {access} = this.state;
 
-    return (
-      <Context.Provider value={{ user: this.state.user, signIn: this.signIn, signOut: this.signOut }}>
-        <Component {...pageProps} />
-      </Context.Provider>
-    );
+    if (access) {
+      return (
+        <Context.Provider value={{...this.state}}>
+          <Component {...pageProps} />
+        </Context.Provider>
+      );
+    } else {
+      return <Spinner />;
+    }
   }
 }

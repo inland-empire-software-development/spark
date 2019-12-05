@@ -1,8 +1,8 @@
 function Spinner(props) {
-  const {hidden = true} = props;
+  const {classes, ratio = 4} = props;
   return (
-    <div id="spinner" className={hidden ? "uk-hidden" : ""}>
-      <div uk-spinner="ratio: 3"/>
+    <div id="spinner" className={classes}>
+      <div uk-spinner={`ratio: ${ratio}`}/>
     </div>
   );
 }

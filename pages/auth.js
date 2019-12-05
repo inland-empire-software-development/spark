@@ -2,12 +2,10 @@ import '../sass/index.scss';
 import Login from '../src/components/pages/auth/Login';
 import Signup from '../src/components/pages/auth/Signup';
 import Recovery from '../src/components/pages/auth/Recovery';
-import Spinner from '../src/components/global/Spinner';
 
 function Authenticate() {
   return (
     <div id="login-container" className="uk-section uk-position-top uk-flex uk-flex-middle uk-animation-fade" uk-height-viewport="true">
-      <Spinner/>
       <div className="uk-width-1-1 login-section">
         <div className="uk-container">
           <div className="uk-grid-margin uk-grid uk-grid-stack" uk-grid="true">
