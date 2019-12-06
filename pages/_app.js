@@ -39,7 +39,7 @@ export default class Portal extends App {
         document.location.href = redirect;
       }
       console.log('redirecting...');
-    }, 1000);
+    }, 2000);
   }
 
   render() {
