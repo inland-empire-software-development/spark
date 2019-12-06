@@ -10,8 +10,6 @@ export default async (req, res) => {
     access, // is user authenticated / valid?
   };
 
-  console.log(data);
-
   res.setHeader("Cache-Control", "no-store, no-cache, must-revalidate, proxy-revalidate");
   res.status(200);
   res.send(data);

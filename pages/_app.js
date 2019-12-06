@@ -1,7 +1,7 @@
 import '../sass/index.scss';
 import App from 'next/app';
 import Context from '../src/context';
-import Redirects from '../src/redirects';
+import {redirects, unprotected} from '../src/pages';
 import fetch from "isomorphic-unfetch";
 
 import Unauthorized from "../src/components/global/Unauthorized";
@@ -13,23 +13,20 @@ export default class Portal extends App {
     user: null,
     access: null,
     redirect: null,
-    public: null,
+    isPublic: null,
   };
 
   componentDidMount() {
     const {pathname} = this.props.router;
-    const redirect = Redirects[pathname] ? Redirects[pathname].redirect : false;
+    const redirect = redirects[pathname] ? redirects[pathname].redirect : false;
+    const isPublic = unprotected.includes(pathname);
 
     fetch(`http://localhost:3000/api/auth`, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({pathname, redirect}),
     })
         .then((res) => res.json())
         .then((data) => {
-          this.setState({...data, redirect});
+          this.setState({...data, redirect, isPublic});
         });
   };
 
@@ -42,9 +39,10 @@ export default class Portal extends App {
     }, 2000);
   }
 
+
   render() {
     const {Component, pageProps} = this.props;
-    const {access, user, redirect} = this.state;
+    const {access, user, redirect, isPublic} = this.state;
 
     // if access and user values have a value now
     if (access !== null && user !== null && redirect !== null) {
@@ -54,7 +52,7 @@ export default class Portal extends App {
         this.sendToLogin(redirect);
 
         return <Redirect />;
-      } else if (access) {
+      } else if (access || isPublic) {
         return (
           <Context.Provider value={{...this.state}}>
             <Component {...pageProps} />
