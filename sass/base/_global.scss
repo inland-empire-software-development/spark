@@ -1,0 +1,29 @@
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+}
+
+* {
+  box-sizing: border-box;
+
+  &::before,
+  &::after {
+    box-sizing: border-box;
+  }
+}
+
+body {
+  overflow-x: hidden;
+}
+
+a {
+  color: $secondary;
+
+  &:hover {
+    color: $tertiary;
+  }
+}
+
+p {
+  z-index: 1;
+}

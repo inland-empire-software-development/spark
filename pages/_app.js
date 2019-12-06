@@ -4,9 +4,9 @@ import Context from '../src/components/context';
 import Redirects from '../src/redirects';
 import fetch from "isomorphic-unfetch";
 
-import Spinner from "../src/components/global/Spinner";
 import Unauthorized from "../src/components/global/Unauthorized";
 import Redirect from "../src/components/animation/Redirect";
+import Loader from "../src/components/animation/Loader";
 
 export default class Portal extends App {
   state = {
@@ -66,7 +66,7 @@ export default class Portal extends App {
         return 'error';
       }
     } else {
-      return <Spinner />;
+      return <Loader/>;
     }
   }
 }
