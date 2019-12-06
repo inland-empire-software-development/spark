@@ -23,13 +23,17 @@ function Login() {
       const {message, state} = response;
 
       if (state) {
-        console.log(response);
+        if (process.browser && UIkit) {
+          UIkit.notification("Success!", {status: "success", pos: 'top-left'});
+        }
 
         if (document) {
           // document.location.href = "/dashboard";
         }
       } else {
-        console.log('no access');
+        if (process.browser && UIkit) {
+          UIkit.notification("<i class=\"fas fa-exclamation-circle\"></i> Incorrect login, please try again.", {status: "danger", pos: 'top-left'});
+        }
       }
     });
   };
