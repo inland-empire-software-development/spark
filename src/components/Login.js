@@ -20,15 +20,16 @@ function Login() {
       },
       body: JSON.stringify({username, password}),
     }).then((response) => response.json()).then((response) => {
-      const {token, state} = response;
+      const {message, state} = response;
 
       if (state) {
-        cookie.set('auth-token', token, {expires: 7});
-        cookie.set('auth-token-user', username, {expires: 7});
+        console.log(message);
 
-        Router.push('/profile');
+        if (document) {
+          document.location.href = "/dashboard";
+        }
       } else {
-        // let user know failed user/pass
+        alert('Failed to log in, try again.')
       }
     });
   };

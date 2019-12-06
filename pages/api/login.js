@@ -9,9 +9,11 @@ export default async (req, res) => {
 
   // messages
   const invalid = {
+    state: true,
     message: "invalid request",
   };
   const valid = {
+    state: false,
     message: "valid request",
   };
 

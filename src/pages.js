@@ -3,5 +3,5 @@ module.exports = {
     "/": {redirect: false},
     "/auth": {redirect: "/dashboard"},
   },
-  unprotected: ["/", "/auth"],
+  unprotected: ["/", "/auth", "/logged-out"],
 };
