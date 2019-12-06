@@ -1,6 +1,6 @@
 import '../sass/index.scss';
 import App from 'next/app';
-import Context from '../src/components/context';
+import Context from '../src/context';
 import Redirects from '../src/redirects';
 import fetch from "isomorphic-unfetch";
 

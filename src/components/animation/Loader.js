@@ -1,6 +1,6 @@
 export default function Loader() {
   const offsetSupport = () => {
-    if (navigator) {
+    if (process.browser && navigator) {
       const isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
 
       if (!isChrome) {

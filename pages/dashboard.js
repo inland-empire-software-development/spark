@@ -1,5 +1,5 @@
 import {useContext} from 'react';
-import Context from '../src/components/context';
+import Context from '../src/context';
 
 function Dashboard(props) {
   const {user, access, redirect, secure} = useContext(Context);

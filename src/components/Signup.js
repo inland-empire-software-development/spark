@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import Message from '../../global/Message';
+import Message from './global/Message';
 
 function Signup() {
   const [message, setMessage] = useState({state: false, message: ""});

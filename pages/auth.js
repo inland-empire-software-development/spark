@@ -1,8 +1,8 @@
-import Login from '../src/components/pages/auth/Login';
-import Signup from '../src/components/pages/auth/Signup';
-import Recovery from '../src/components/pages/auth/Recovery';
+import Login from '../src/components/Login';
+import Signup from '../src/components/Signup';
+import Recovery from '../src/components/Recovery';
 import {useContext} from 'react';
-import Context from '../src/components/context';
+import Context from '../src/context';
 
 function Authenticate() {
   const {user, access, redirect, secure} = useContext(Context);
