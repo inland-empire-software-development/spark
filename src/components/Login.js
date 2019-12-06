@@ -20,15 +20,12 @@ function Login() {
       },
       body: JSON.stringify({username, password}),
     }).then((response) => response.json()).then((response) => {
-      const {message, state} = response;
+      const {state} = response;
 
       if (state) {
         if (process.browser && UIkit) {
           UIkit.notification("Success!", {status: "success", pos: 'top-left'});
-        }
-
-        if (document) {
-          // document.location.href = "/dashboard";
+          document.location.href = "/dashboard";
         }
       } else {
         if (process.browser && UIkit) {
