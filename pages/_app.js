@@ -42,10 +42,10 @@ export default class Portal extends App {
 
   render() {
     const {Component, pageProps} = this.props;
-    const {access, user, redirect, isPublic} = this.state;
+    const {access, redirect, isPublic} = this.state;
 
     // if access and user values have a value now
-    if (access !== null && user !== null && redirect !== null) {
+    if (access !== null && redirect !== null) {
       // if user has access to page but there is a redirect
       if (access && redirect) {
         // send user to proper page if they're logged in

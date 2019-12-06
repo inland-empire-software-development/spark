@@ -1,9 +1,9 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import fetch from 'isomorphic-unfetch';
-import cookie from 'js-cookie';
-import Router from 'next/router';
 
 function Login() {
+  const [message, setMessage] = useState('');
+
   const handleLogin = (e) => {
     e.preventDefault();
 
@@ -23,13 +23,13 @@ function Login() {
       const {message, state} = response;
 
       if (state) {
-        console.log(message);
+        console.log(response);
 
         if (document) {
-          document.location.href = "/dashboard";
+          // document.location.href = "/dashboard";
         }
       } else {
-        alert('Failed to log in, try again.')
+        console.log('no access');
       }
     });
   };
