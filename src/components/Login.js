@@ -1,9 +1,9 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import fetch from 'isomorphic-unfetch';
-import cookie from 'js-cookie';
-import Router from 'next/router';
 
 function Login() {
+  const [message, setMessage] = useState('');
+
   const handleLogin = (e) => {
     e.preventDefault();
 
@@ -20,15 +20,16 @@ function Login() {
       },
       body: JSON.stringify({username, password}),
     }).then((response) => response.json()).then((response) => {
-      const {token, state} = response;
+      const {message, state} = response;
 
       if (state) {
-        cookie.set('auth-token', token, {expires: 7});
-        cookie.set('auth-token-user', username, {expires: 7});
+        console.log(response);
 
-        Router.push('/profile');
+        if (document) {
+          // document.location.href = "/dashboard";
+        }
       } else {
-        // let user know failed user/pass
+        console.log('no access');
       }
     });
   };

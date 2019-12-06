@@ -1,24 +1,3 @@
-// These apply to all pages
-html {
-    scroll-behavior: smooth;
-
-    body {
-        overflow-x: hidden;
-    }
-}
-
-a {
-  color: $secondary;
-
-  &:hover {
-    color: $tertiary;
-  }
-}
-
-p {
-  z-index: 1;
-}
-
 .content {
   min-height: 400px;
   background-color: $white;

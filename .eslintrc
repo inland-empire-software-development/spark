@@ -12,10 +12,12 @@
         "window": true,
         "process": true
     },
+    "parser": "babel-eslint",
     "parserOptions": {
         "ecmaFeatures": {
             "jsx": true,
             "modules": true,
+            "classes": true,
             "spread": true,
             "restParams": true
         },

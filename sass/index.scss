@@ -1,23 +1,16 @@
 @import
-'vendors/uikit/scss/variables-theme.scss',
-'vendors/uikit/scss/mixins-theme.scss',
-'vendors/uikit/scss/uikit-theme.scss';
-
-@import
-'base/_colors',
-'base/_typography',
-'base/_animation';
-
-@import
-'pages/welcome',
-'pages/_index';
-
-@import
-'components/_auth';
-
-@import
-'components/global/_spinner',
-'components/global/_unauthorized',
-'components/global/_message';
-
-@import '_shame';
+  'vendors/uikit/scss/variables-theme.scss',
+  'vendors/uikit/scss/mixins-theme.scss',
+  'vendors/uikit/scss/uikit-theme.scss',
+  'base/_colors',
+  'base/_typography',
+  'base/_animation',
+  'pages/welcome',
+  'pages/_index',
+  'components/_auth',
+  'components/animation/_redirect',
+  'components/animation/_loader',
+  'components/global/_spinner',
+  'components/global/_unauthorized',
+  'components/global/_message',
+  '_shame';

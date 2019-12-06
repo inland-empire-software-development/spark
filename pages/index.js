@@ -1,7 +1,7 @@
 import '../sass/index.scss';
 
 import React, {useState, useEffect} from 'react';
-import Footer from '../components/pages/index/Footer';
+import Footer from '../src/components/pages/index/Footer';
 
 function Home() {
 

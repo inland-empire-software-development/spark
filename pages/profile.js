@@ -1,4 +1,4 @@
-import Auth from '../components/hoc/Auth/Auth';
+import Auth from '../src/components/hoc/Auth/Auth';
 import '../sass/index.scss';
 
 function Profile() {
