@@ -1,96 +1,118 @@
 // neutral colors
-$black: #000000;
-$dark-gray: #222222;
+$black: #000;
+$dark-gray: #222;
 $light-gray: #595959;
-$white: #FFFFFF;
+$white: #fff;
 
 // branding colors
-$dark-gray: #333333;
+$dark-gray: #333;
 $light-gray: #626262;
-$primary: #EF806C;
-$secondary: #F4A77C;
-$tertiary: #EB8A50;
-$offwhite: #F3EFEE;
+$primary: #ef806c;
+$secondary: #f4a77c;
+$tertiary: #eb8a50;
+$offwhite: #f3efee;
 
 // action colors
-$yellow: #F1AF21;
-$red: #EC2242;
-$blue: #3FB3E1;
-$green: #02AE72;
+$yellow: #f1af21;
+$red: #ec2242;
+$blue: #3fb3e1;
+$green: #02ae72;
 
 // branding colors
 .bg-yellow {
   background-color: $yellow;
 }
+
 .bg-red {
   background-color: $red;
 }
+
 .bg-blue {
   background-color: $blue;
 }
+
 .bg-green {
   background-color: $green;
 }
+
 .bg-black {
   background-color: $black;
 }
+
 .bg-white {
   background-color: $white;
 }
+
 .bg-dark-gray {
-  background-color: #333333;
+  background-color: #333;
 }
+
 .bg-light-gray {
   background-color: #626262;
 }
+
 .bg-primary {
-  background-color: #EF806C;
+  background-color: #ef806c;
 }
+
 .bg-secondary {
-  background-color: #F4A77C;
+  background-color: #f4a77c;
 }
+
 .bg-tertiary {
-  background-color: #EB8A50;
+  background-color: #eb8a50;
 }
+
 .bg-offwhite {
-  background-color: #F3EFEE;
+  background-color: #f3efee;
 }
 
 .black {
   color: $black !important;
 }
+
 .white {
   color: $white !important;
 }
+
 .yellow {
   color: $yellow;
 }
+
 .red {
   color: $red;
 }
+
 .blue {
   color: $blue;
 }
+
 .green {
   color: $green;
 }
+
 .dark-gray {
-  color: #333333;
+  color: #333;
 }
+
 .light-gray {
   color: #626262;
 }
+
 .primary {
-  color: #E87F47;
+  color: #e87f47;
 }
+
 .secondary {
-  color: #F4A77C;
+  color: #f4a77c;
 }
+
 .tertiary {
-  color: #EA844B;
+  color: #ea844b;
 }
+
 .offwhite {
-  color: #F3EFEE;
+  color: #f3efee;
 }
 
 // selection color
@@ -106,12 +128,15 @@ $green: #02AE72;
 .card-bar-blue {
   border-top: 3px solid $blue;
 }
+
 .card-bar-red {
   border-top: 3px solid $red;
 }
+
 .card-bar-green {
   border-top: 3px solid $green;
 }
+
 .card-bar-yellow {
   border-top: 3px solid $yellow;
 }
@@ -134,55 +159,71 @@ $green: #02AE72;
 .border-black {
   border-color: $black !important;
 }
+
 .border-white {
   border-color: $white !important;
 }
+
 .border-yellow {
   border-color: $yellow;
 }
+
 .border-red {
   border-color: $red;
 }
+
 .border-blue {
   border-color: $blue;
 }
+
 .border-green {
   border-color: $green;
 }
+
 .border-dark-gray {
-  border-color: #333333;
+  border-color: #333;
 }
+
 .border-light-gray {
   border-color: #626262;
 }
+
 .border-primary {
-  border-color: #EF806C;
+  border-color: #ef806c;
 }
+
 .border-secondary {
-  border-color: #F4A77C;
+  border-color: #f4a77c;
 }
+
 .border-tertiary {
-  border-color: #EB8A50;
+  border-color: #eb8a50;
 }
+
 .border-offwhite {
-  border-color: #F3EFEE;
+  border-color: #f3efee;
 }
 
 .border-size-1 {
   border-width: 1px;
 }
+
 .border-size-2 {
   border-width: 2px;
 }
+
 .border-size-3 {
   border-width: 3px;
 }
+
 .border-size-4 {
   border-width: 4px;
 }
+
 .border-size-5 {
   border-width: 5px;
 }
+
 .border-size-6 {
   border-width: 6px;
 }
