@@ -20,6 +20,7 @@
     "@zeit/next-sass": "^1.0.1",
     "app-root-path": "^3.0.0",
     "bcryptjs": "^2.4.3",
+    "bluebird": "^3.7.2",
     "dotenv": "^8.2.0",
     "face-api.js": "^0.21.0",
     "glob": "^7.1.6",
