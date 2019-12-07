@@ -10,10 +10,10 @@ function Dashboard(props) {
   console.log('user: ', user, ' access: ', access, ' secure: ', secure, ' redirect: ', redirect);
 
   return (
-    <main>
+    <div className="uk-container uk-margin-large-top">
       <h1>Hello {user}!</h1>
       <Logout/>
-    </main>
+    </div>
   );
 }
 

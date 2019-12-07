@@ -9,6 +9,20 @@
     font-size: 14px;
   }
 
+  .input-spinner {
+    position: absolute;
+    top: 15px;
+    left: -40px;
+  }
+
+  .input-spinner + i.fal.fa-check {
+    position: absolute;
+    left: -30px;
+    top: 20px;
+    color: $green;
+    font-size: 18px;
+  }
+
   .password-requirements {
     font-size: 12px;
 

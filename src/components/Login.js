@@ -1,14 +1,15 @@
-import React, {useState, useEffect} from 'react';
 import fetch from 'isomorphic-unfetch';
 
 function Login() {
-  const [message, setMessage] = useState('');
-
   const handleLogin = (e) => {
     e.preventDefault();
 
     const username = document.querySelector('[name="login-username"]').value;
     const password = document.querySelector('[name="login-password"]').value;
+    const spinner = document.getElementById('spinner');
+
+    // show spinner while working
+    spinner.classList.remove('uk-hidden');
 
     // API route that will handle signing in
     const url = '/api/login';
@@ -22,14 +23,20 @@ function Login() {
     }).then((response) => response.json()).then((response) => {
       const {state} = response;
 
+      // hide spinner as work is essentially done
+      spinner.classList.add('uk-hidden');
+
       if (state) {
         if (process.browser && UIkit) {
-          UIkit.notification("Success!", {status: "success", pos: 'top-left'});
           document.location.href = "/dashboard";
         }
       } else {
         if (process.browser && UIkit) {
-          UIkit.notification("<i class=\"fas fa-exclamation-circle\"></i> Incorrect login, please try again.", {status: "danger", pos: 'top-left'});
+          UIkit.notification({
+            message: `Incorrect login, please try again.`,
+            status: 'danger',
+            pos: 'top-left',
+            timeout: 5000});
         }
       }
     });
@@ -43,14 +50,14 @@ function Login() {
           <div className="uk-inline uk-width-1-1">
             <i className="uk-form-icon fal fa-user"/>
             <input className="uk-input uk-form-large" name="login-username" type="text" autoComplete="username"
-              placeholder="username"/>
+              placeholder="username" required/>
           </div>
         </div>
         <div className="uk-margin">
           <div className="uk-inline uk-width-1-1">
             <i className="uk-form-icon fal fa-lock-alt"/>
             <input className="uk-input uk-form-large" name="login-password" type="password"
-              autoComplete="current-password" placeholder="password"/>
+              autoComplete="current-password" placeholder="password" required/>
           </div>
         </div>
         <div className="uk-margin uk-text-right@s uk-text-center uk-text-small">

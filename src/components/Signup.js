@@ -1,8 +1,19 @@
-import React, {useState} from 'react';
+import {useState} from 'react';
 import Message from './global/Message';
 
 function Signup() {
   const [message, setMessage] = useState({state: false, message: ""});
+
+  // function that checks if class is found, proceed to do its magic
+  const handleToggle = (el, find, action) => {
+    if (action === 'add') {
+      if (!el.classList.contains(find)) {
+        el.classList.add(find);
+      }
+    } else if (action === 'remove') {
+      el.classList.remove(find);
+    }
+  };
 
   // headers template for api calls
   const headers = (data) => {
@@ -35,6 +46,8 @@ function Signup() {
       fetch(url, headers({username, email, password, role: 'subscriber'})).
           then((response) => response.json()).
           then((response) => {
+            spinner.classList.add('uk-hidden');
+
             if (response.serverStatus && response.serverStatus === 2) {
               if (document) {
                 document.location.href = '/welcome';
@@ -44,7 +57,6 @@ function Signup() {
                 });
               }
             } else {
-              spinner.classList.add('uk-hidden'); // TODO: let user know how they failed, try again? redirect?
               setMessage({
                 state: true,
                 message: "Error creating user, please contact an admin if it happens again.",
@@ -65,21 +77,33 @@ function Signup() {
 
     // get all required variables to submit new user request
     const user = document.querySelector('[name="signup-username"]');
+    const spinner = user.nextSibling;
+    const check = spinner.nextSibling;
     const username = user.value;
     const message = document.querySelector('[data-message="username"]');
+
+    handleToggle(spinner, 'uk-hidden', 'remove');
+    handleToggle(check, 'uk-hidden', 'add');
 
     // API route that will handle signing in
     const url = `/api/user?secret=${process.env.SECRET}`;
 
-    fetch(url, headers({username})).then((response) => response.json()).then((response) => {
-      if (!response) {
-        message.style.visibility = 'hidden';
-        user.setCustomValidity('');
-      } else {
-        message.style.visibility = 'visible';
-        user.setCustomValidity('Username already in use, try another.');
-      }
-    }).catch((error) => console.log(error));
+    fetch(url, headers({username}))
+        .then((response) => response.json())
+        .then((response) => {
+          handleToggle(spinner, 'uk-hidden', 'add');
+
+          if (!response && username.length !== 0) {
+            message.style.visibility = 'hidden';
+            user.setCustomValidity('');
+            handleToggle(check, 'uk-hidden', 'remove');
+          } else {
+            message.style.visibility = 'visible';
+            user.setCustomValidity('Username already in use, try another.');
+            handleToggle(check, 'uk-hidden', 'add');
+          }
+        })
+        .catch((error) => console.log(error));
   };
 
   const handleEmailCheck = (e) => {
@@ -88,20 +112,32 @@ function Signup() {
     // get all required variables to submit new user request
     const address = document.querySelector('[name="signup-email"]');
     const email = address.value;
+    const spinner = address.nextSibling;
+    const check = spinner.nextSibling;
     const message = document.querySelector('[data-message="email"]');
+
+    handleToggle(spinner, 'uk-hidden', 'remove');
+    handleToggle(check, 'uk-hidden', 'add');
 
     // API route that will handle signing in
     const url = `/api/email?secret=${process.env.SECRET}`;
 
-    fetch(url, headers({email})).then((response) => response.json()).then((response) => {
-      if (!response) {
-        message.style.visibility = 'hidden';
-        address.setCustomValidity('');
-      } else {
-        message.style.visibility = 'visible';
-        address.setCustomValidity('Email already in use, try another.');
-      }
-    }).catch((error) => console.log(error));
+    fetch(url, headers({email}))
+        .then((response) => response.json())
+        .then((response) => {
+          handleToggle(spinner, 'uk-hidden', 'add');
+
+          if (!response && email.length !== 0) {
+            message.style.visibility = 'hidden';
+            address.setCustomValidity('');
+            handleToggle(check, 'uk-hidden', 'remove');
+          } else {
+            message.style.visibility = 'visible';
+            address.setCustomValidity('Email already in use, try another.');
+            handleToggle(check, 'uk-hidden', 'add');
+          }
+        })
+        .catch((error) => console.log(error));
   };
 
   // Handles the visibility of the check marks for each requirement
@@ -121,7 +157,9 @@ function Signup() {
     };
 
     for (const requirement in check) {
-      handleVisibilityToggle(requirement, check[requirement]);
+      if (check.hasOwnProperty(requirement)) {
+        handleVisibilityToggle(requirement, check[requirement]);
+      }
     }
   };
 
@@ -153,6 +191,7 @@ function Signup() {
     const showPassword = document.querySelector('.show-password');
     const type = password.getAttribute('type');
 
+
     if (type === 'password') {
       password.setAttribute('type', 'text');
       showPassword.innerHTML = 'hide password';
@@ -174,6 +213,8 @@ function Signup() {
               required={true}
               onBlur={(e) => handleUserCheck(e)}
             />
+            <div className="input-spinner uk-hidden" uk-spinner="true"/>
+            <i className="fal fa-check uk-hidden"/>
           </div>
           <small className="user-message" data-message="username">
             <i className="uk-form-icon fal fa-exclamation-triangle"/>
@@ -187,6 +228,9 @@ function Signup() {
               required={true}
               onBlur={(e) => handleEmailCheck(e)}
             />
+            <div className="input-spinner uk-hidden" uk-spinner="true"/>
+            <i className="fal fa-check uk-hidden"/>
+
           </div>
           <small className="user-message" data-message="email">
             <i className="uk-form-icon fal fa-exclamation-triangle"/>

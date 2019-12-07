@@ -35,7 +35,7 @@ $colorLeft: $tertiary;
         height: 16px;
         display: block;
         background: $color;
-        box-shadow: 2px 2px 8px rgba($color, 0.09);
+        box-shadow: none;
         border-radius: 50%;
         transform: rotate(90deg);
         animation: move 6.9s linear infinite;
@@ -52,7 +52,6 @@ $colorLeft: $tertiary;
           top: 50%;
           left: 50%;
           margin: -7px 0 0 -7px;
-          box-shadow: inherit;
         }
 
         &::before {
@@ -91,7 +90,6 @@ $colorLeft: $tertiary;
       width: 16px;
       height: 16px;
       background: $color;
-      box-shadow: 2px 2px 8px rgba($color, 0.09);
       border-radius: 50%;
       animation: moveSvg 6.9s linear infinite;
       -webkit-filter: url(#goo);
@@ -111,7 +109,6 @@ $colorLeft: $tertiary;
         top: 50%;
         left: 50%;
         margin: -7px 0 0 -7px;
-        box-shadow: inherit;
       }
 
       &::before {
