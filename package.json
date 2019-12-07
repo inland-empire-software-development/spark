@@ -12,7 +12,7 @@
     "development": "next start -p 5201",
     "build": "next build",
     "start": "next start",
-    "lint": "./node_modules/.bin/eslint ./**/*.{js,jsx} --quiet || true",
+    "lint": "./node_modules/.bin/eslint ./**/*.{js,jsx} --quiet --fix || true",
     "test": "jest || true"
   },
   "dependencies": {

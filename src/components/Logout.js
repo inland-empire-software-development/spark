@@ -1,7 +1,6 @@
 import fetch from 'isomorphic-unfetch';
-import Router from 'next/router';
 
-export default function Logout(){
+export default function Logout() {
   const handleLogout = (e) => {
     e.preventDefault();
 
@@ -9,7 +8,7 @@ export default function Logout(){
     const url = '/api/logout';
 
     fetch(url, {
-      method: 'POST'
+      method: 'POST',
     }).then((response) => response.json()).then((response) => {
       const {message, state} = response;
 
@@ -20,14 +19,16 @@ export default function Logout(){
           document.location.href = "/logged-out";
         }
       }
-    }).catch(error => {
+    }).catch((error) => {
       console.log(error);
     });
   };
 
-  return(
-      <button className="uk-button" onClick={(e) => { handleLogout(e)}}>
+  return (
+    <button className="uk-button" onClick={(e) => {
+      handleLogout(e);
+    }}>
         logout
-      </button>
-  )
+    </button>
+  );
 }

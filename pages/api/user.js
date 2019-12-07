@@ -6,9 +6,9 @@ export default async (req, res) => {
 
 
   db.userExists(username)
-  .then(result => {
-    res.send(JSON.stringify(result));
-  }).catch(error => {
-    res.send(JSON.stringify(error));
-  })
-}
+      .then((result) => {
+        res.send(JSON.stringify(result));
+      }).catch((error) => {
+        res.send(JSON.stringify(error));
+      });
+};
