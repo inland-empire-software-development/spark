@@ -51,6 +51,7 @@
     margin: 0 auto;
     display: block;
     max-width: 75px;
+    filter: grayscale(1) brightness(0.5); //remove for production
   }
 
   .uk-card-default {

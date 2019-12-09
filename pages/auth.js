@@ -1,15 +1,17 @@
 import Login from '../src/components/Login';
 import Signup from '../src/components/Signup';
 import Recovery from '../src/components/Recovery';
-import {useContext} from 'react';
-import Context from '../src/context';
 import Spinner from '../src/components/global/Spinner';
+import SEO from "../next-seo.config";
+import {DefaultSeo} from "next-seo";
 
 function Authenticate() {
-  const {user, access, redirect, secure} = useContext(Context);
-  console.log('user: ', user, ' access: ', access, ' secure: ', secure, ' redirect: ', redirect);
   return (
     <div className="uk-container">
+      <DefaultSeo {...Object.assign(SEO, {
+        title: `Authenticate`,
+      })}
+      />
       <div id="login-container" className="uk-section uk-position-top uk-flex uk-flex-middle uk-animation-fade" uk-height-viewport="true">
         <div className="uk-width-1-1 login-section">
           <div className="uk-container">

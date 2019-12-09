@@ -1,7 +1,15 @@
 // Animated loader when redirecting a user to another page.
+import {DefaultSeo} from "next-seo";
+import SEO from "../../../next-seo.config";
+
 export default function Redirect() {
   return (
     <section id="redirect-animation">
+      <DefaultSeo {...Object.assign(SEO, {
+        title: "Redirecting...",
+      })}
+      />
+
       <div className="body">
         <span>
           <span />
