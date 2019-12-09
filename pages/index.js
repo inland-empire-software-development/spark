@@ -1,12 +1,10 @@
-import Footer from '../src/components/pages/index/Footer';
-
 function Home() {
   return (
-    <div id="page-index">
-      <Footer />
-
+    <div className="uk-container uk-margin-large-top">
+      <section>
+        <p>Home</p>
+      </section>
     </div>
-
   );
 }
 

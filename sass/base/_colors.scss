@@ -5,11 +5,11 @@ $light-gray: #595959;
 $white: #fff;
 
 // branding colors
-$dark-gray: #333;
+$dark-gray: #444;
 $light-gray: #626262;
-$primary: #ef806c;
-$secondary: #f4a77c;
-$tertiary: #eb8a50;
+$primary: #181818;
+$secondary: #222;
+$tertiary: #333;
 $offwhite: #f3efee;
 
 // action colors
@@ -44,27 +44,27 @@ $green: #02ae72;
 }
 
 .bg-dark-gray {
-  background-color: #333;
+  background-color: $dark-gray;
 }
 
 .bg-light-gray {
-  background-color: #626262;
+  background-color: $light-gray;
 }
 
 .bg-primary {
-  background-color: #ef806c;
+  background-color: $primary;
 }
 
 .bg-secondary {
-  background-color: #f4a77c;
+  background-color: $secondary;
 }
 
 .bg-tertiary {
-  background-color: #eb8a50;
+  background-color: $tertiary;
 }
 
 .bg-offwhite {
-  background-color: #f3efee;
+  background-color: $offwhite;
 }
 
 .black {
@@ -92,27 +92,27 @@ $green: #02ae72;
 }
 
 .dark-gray {
-  color: #333;
+  color: $dark-gray;
 }
 
 .light-gray {
-  color: #626262;
+  color: $light-gray;
 }
 
 .primary {
-  color: #e87f47;
+  color: $primary;
 }
 
 .secondary {
-  color: #f4a77c;
+  color: $secondary;
 }
 
 .tertiary {
-  color: #ea844b;
+  color: $tertiary;
 }
 
 .offwhite {
-  color: #f3efee;
+  color: $offwhite;
 }
 
 // selection color
