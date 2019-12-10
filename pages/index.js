@@ -1,10 +1,10 @@
 import {NextSeo} from 'next-seo';
 import Link from "next/link";
-import Footer from "../src/components/global/Footer";
+import Footer from '../src/components/global/Footer';
 
 function Home() {
   return (
-    <main>
+    <>
       <div className="uk-container uk-margin-large-top">
         <NextSeo
           config={{
@@ -18,9 +18,8 @@ function Home() {
           </Link>
         </section>
       </div>
-
       <Footer/>
-    </main>
+    </>
 
   );
 }

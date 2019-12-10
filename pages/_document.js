@@ -1,5 +1,6 @@
 import Document, {Html, Head, Main, NextScript} from 'next/document';
 import '../sass/index.scss';
+import Footer from '../src/components/global/Footer';
 
 class main extends Document {
   render(props) {
@@ -16,7 +17,6 @@ class main extends Document {
 
           <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.2.0/js/uikit.min.js"></script>
           <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.2.0/js/uikit-icons.min.js"></script>
-
         </body>
 
       </Html>
