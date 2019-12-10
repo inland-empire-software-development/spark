@@ -11,7 +11,7 @@ function Recovery() {
           </div>
         </div>
         <div className="uk-margin">
-          <button className="uk-button bg-primary white uk-button-large uk-width-1-1">Send Email</button>
+          <button className="uk-button bg-primary black uk-button-large uk-width-1-1">Send Email</button>
         </div>
         <div className="uk-text-small uk-text-center">
           <a href="#" uk-switcher-item="0">Back to login</a>

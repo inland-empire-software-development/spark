@@ -25,7 +25,7 @@ export default function Logout() {
   };
 
   return (
-    <button className="uk-button" onClick={(e) => {
+    <button className="uk-button black" onClick={(e) => {
       handleLogout(e);
     }}>
         logout

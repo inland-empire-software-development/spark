@@ -261,7 +261,7 @@ function Signup() {
           </label>
         </div>
         <div className="uk-margin">
-          <button className="uk-button bg-primary white uk-button-large uk-width-1-1">Create Account</button>
+          <button className="uk-button bg-primary black uk-button-large uk-width-1-1">Create Account</button>
         </div>
         <div className="uk-text-small uk-text-center">
             Already have an account? <a href="#" uk-switcher-item="0">Log in</a>

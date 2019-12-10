@@ -64,7 +64,7 @@ function Login() {
           <a href="#" uk-switcher-item="2">Forgot Password?</a>
         </div>
         <div className="uk-margin">
-          <button className="uk-button bg-primary white uk-button-large uk-width-1-1">Login</button>
+          <button className="uk-button bg-primary black uk-button-large uk-width-1-1">Login</button>
         </div>
         <div className="uk-text-small uk-text-center">
             Not registered? <a href="#" uk-switcher-item="1">Create an account</a>
