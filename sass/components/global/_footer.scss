@@ -1,9 +1,11 @@
 footer {
-  min-height: 50px;
   background-color: #dedede;
-  text-align: center;
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  left: 0;
+
+  &.stick {
+    position: absolute;
+    bottom: 0;
+    margin: 0 auto;
+    display: block;
+    width: 100%;
+  }
 }

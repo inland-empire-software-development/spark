@@ -208,47 +208,47 @@ function Signup() {
       <form onSubmit={(e) => handleSignUp(e)}>
         <div className="uk-margin uk-margin-remove-bottom">
           <div className="uk-inline uk-width-1-1">
-            <i className="uk-form-icon fal fa-user"/>
+            <i className="uk-form-icon fa fa-user"/>
             <input className="uk-input uk-form-large" type="text" autoComplete="user" placeholder="username" name="signup-username"
               required={true}
               onBlur={(e) => handleUserCheck(e)}
             />
             <div className="input-spinner uk-hidden" uk-spinner="true"/>
-            <i className="fal fa-check uk-hidden"/>
+            <i className="fa fa-check uk-hidden"/>
           </div>
           <small className="user-message" data-message="username">
-            <i className="uk-form-icon fal fa-exclamation-triangle"/>
+            <i className="uk-form-icon fa fa-exclamation-triangle"/>
               Name already in use, try another.
           </small>
         </div>
         <div className="uk-margin uk-margin-remove-bottom uk-margin-remove-top">
           <div className="uk-inline uk-width-1-1">
-            <i className="uk-form-icon fal fa-envelope"/>
+            <i className="uk-form-icon fa fa-envelope"/>
             <input className="uk-input uk-form-large" type="email" autoComplete="email" placeholder="email" name="signup-email"
               required={true}
               onBlur={(e) => handleEmailCheck(e)}
             />
             <div className="input-spinner uk-hidden" uk-spinner="true"/>
-            <i className="fal fa-check uk-hidden"/>
+            <i className="fa fa-check uk-hidden"/>
 
           </div>
           <small className="user-message" data-message="email">
-            <i className="uk-form-icon fal fa-exclamation-triangle"/>
+            <i className="uk-form-icon fa fa-exclamation-triangle"/>
               Email already in use, try another.
           </small>
         </div>
         <div className="uk-margin password-requirements uk-margin-remove-top">
           <p className="uk-margin-remove-bottom"><strong>Password Requirements</strong></p>
           <ul className="uk-margin-remove-bottom">
-            <li>At least one numeric character <i className="uk-hidden fal fa-check" data-check="number"/></li>
-            <li>At least one lowercase character <i className="uk-hidden fal fa-check" data-check="lower"/></li>
-            <li>At least one uppercase character <i className="uk-hidden fal fa-check" data-check="upper"/></li>
-            <li>At least 10 characters in length <i className="uk-hidden fal fa-check" data-check="length"/></li>
+            <li>At least one numeric character <i className="uk-hidden fa fa-check" data-check="number"/></li>
+            <li>At least one lowercase character <i className="uk-hidden fa fa-check" data-check="lower"/></li>
+            <li>At least one uppercase character <i className="uk-hidden fa fa-check" data-check="upper"/></li>
+            <li>At least 10 characters in length <i className="uk-hidden fa fa-check" data-check="length"/></li>
           </ul>
           <a href="#" className="show-password uk-align-right" onClick={(e) => showPassword(e)}>show password</a>
 
           <div className="uk-inline uk-width-1-1">
-            <i className="uk-form-icon fal fa-lock-alt"/>
+            <i className="uk-form-icon fa fa-lock-alt"/>
             <input className="uk-input uk-form-large" onChange={(e) => handlePassword(e)}
               type="password" placeholder="password" name="signup-password" autoComplete="current-password" required={true} minLength={10}/>
           </div>

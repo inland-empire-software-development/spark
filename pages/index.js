@@ -4,22 +4,24 @@ import Footer from '../src/components/global/Footer';
 
 function Home() {
   return (
-    <>
-      <div className="uk-container uk-margin-large-top">
-        <NextSeo
-          config={{
-            title: "Authenticate",
-          }}
-        />
-        <section>
-          <p>Home</p>
-          <Link href="/auth">
-            <button className="uk-button">Log in</button>
-          </Link>
-        </section>
-      </div>
-      <Footer/>
-    </>
+    <main>
+      <section>
+        <div className="uk-container" >
+          <NextSeo
+            config={{
+              title: "Authenticate",
+            }}
+          />
+          <section className="uk-padding">
+            <p>Home</p>
+            <Link href="/auth">
+              <button className="uk-button">Log in</button>
+            </Link>
+          </section>
+        </div>
+      </section>
+      <Footer stick={true}/>
+    </main>
 
   );
 }

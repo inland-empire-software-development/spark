@@ -1,5 +1,6 @@
 html {
   scroll-behavior: smooth;
+  height: 100%;
   -webkit-font-smoothing: antialiased;
 
   ::-webkit-scrollbar {
@@ -32,12 +33,24 @@ html {
   }
 }
 
-#__next {
+body {
+  overflow-x: hidden;
   height: 100%;
 }
 
-body {
-  overflow-x: hidden;
+main {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+section {
+  flex-grow: 1;
+}
+
+footer {
+  flex-shrink: 0;
 }
 
 p {

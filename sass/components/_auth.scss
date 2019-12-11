@@ -1,5 +1,9 @@
 #login-container {
   padding-top: 0;
+  width: 100%;
+  display: block;
+  position: relative;
+  margin: 0 auto;
 
   .uk-card-body {
     min-height: 515px;
@@ -9,7 +13,7 @@
     font-size: 14px;
   }
 
-  .input-spinner + i.fal.fa-check {
+  .input-spinner + i.fa.fa-check {
     position: absolute;
     left: -30px;
     top: 20px;

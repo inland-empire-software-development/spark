@@ -48,14 +48,14 @@ function Login() {
       <form onSubmit={(e) => handleLogin(e)}>
         <div className="uk-margin">
           <div className="uk-inline uk-width-1-1">
-            <i className="uk-form-icon fal fa-user"/>
+            <i className="uk-form-icon fa fa-user"/>
             <input className="uk-input uk-form-large" name="login-username" type="text" autoComplete="username"
               placeholder="username" required/>
           </div>
         </div>
         <div className="uk-margin">
           <div className="uk-inline uk-width-1-1">
-            <i className="uk-form-icon fal fa-lock-alt"/>
+            <i className="uk-form-icon fa fa-lock-alt"/>
             <input className="uk-input uk-form-large" name="login-password" type="password"
               autoComplete="current-password" placeholder="password" required/>
           </div>
