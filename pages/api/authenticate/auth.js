@@ -1,4 +1,4 @@
-import client from '../../lib/redis';
+import client from '../../../lib/redis';
 
 export default async (req, res) => {
   const token = req.cookies['portal-token'];

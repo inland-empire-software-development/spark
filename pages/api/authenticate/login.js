@@ -1,6 +1,6 @@
-import db from '../../lib/db';
-import auth from '../../lib/auth';
-import client from '../../lib/redis';
+import db from '../../../lib/db';
+import auth from '../../../lib/auth';
+import client from '../../../lib/redis';
 
 export default async (req, res) => {
   // set headers

@@ -40,7 +40,7 @@ function Signup() {
     const password = document.querySelector('[name="signup-password"]').value;
 
     // API route that will handle signing in
-    const url = '/api/signup';
+    const url = '/api/authenticate/signup';
 
     try {
       fetch(url, headers({username, email, password, role: 'subscriber'})).
@@ -86,7 +86,7 @@ function Signup() {
     handleToggle(check, 'uk-hidden', 'add');
 
     // API route that will handle signing in
-    const url = `/api/user?secret=${process.env.SECRET}`;
+    const url = `/api/validate/user?secret=${process.env.SECRET}`;
 
     fetch(url, headers({username}))
         .then((response) => response.json())
@@ -120,7 +120,7 @@ function Signup() {
     handleToggle(check, 'uk-hidden', 'add');
 
     // API route that will handle signing in
-    const url = `/api/email?secret=${process.env.SECRET}`;
+    const url = `/api/validate/email?secret=${process.env.SECRET}`;
 
     fetch(url, headers({email}))
         .then((response) => response.json())

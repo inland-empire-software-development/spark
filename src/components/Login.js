@@ -12,7 +12,7 @@ function Login() {
     spinner.classList.remove('uk-hidden');
 
     // API route that will handle signing in
-    const url = '/api/login';
+    const url = '/api/authenticate/login';
 
     fetch(url, {
       method: 'POST',

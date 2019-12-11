@@ -5,7 +5,7 @@ export default function Logout() {
     e.preventDefault();
 
     // API route that will handle signing out
-    const url = '/api/logout';
+    const url = '/api/authenticate/logout';
 
     fetch(url, {
       method: 'POST',
