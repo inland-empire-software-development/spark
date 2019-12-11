@@ -14,7 +14,7 @@ const transporter = nodemailer.createTransport({
 
 export default async (req, res) => {
   const mailOptions= {
-    from: '"Test Server" <test@example.com>',
+    from: '"Administrator" <admin@iesd.com>',
     to: 'lloanalas@outlook.com',
     subject: "Email Test",
     text: "This is an email test",
