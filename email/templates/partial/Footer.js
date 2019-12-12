@@ -10,7 +10,7 @@ function Footer() {
         </tr>
         <tr>
           <td className="content-block powered-by">
-            Powered by <a href="http://htmlemail.io">HTMLemail</a>.
+            Powered by <a href="http://htmlemail.io">nextjs-Authenticate</a>.
           </td>
         </tr>
       </table>

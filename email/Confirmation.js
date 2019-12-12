@@ -1,8 +1,9 @@
-import CSS from "./CSS";
+import uikitcss from "./CSS";
 import Footer from "./templates/partial/footer";
 import Button from "./templates/component/Button";
 
-const confirmation = () => {
+const confirmation = (props) => {
+  const {url = "", user = "there"} = props;
   return (
     <html>
       <head>
@@ -11,7 +12,7 @@ const confirmation = () => {
         <title>Simple Transactional Email</title>
 
         <style>
-          {CSS}
+          {uikitcss}
         </style>
       </head>
       <body className="">
@@ -27,11 +28,10 @@ const confirmation = () => {
                       <table role="presentation" border="0" cellPadding="0" cellSpacing="0">
                         <tr>
                           <td>
-                            <p>Hi there,</p>
-                            <p>Someone signed up with your email to use our service. Please confirm that </p>
-                            <Button align="left" url="http://google.com" label="Call To Action"/>
-                            <p>This is a really simple email template. Its sole purpose is to get the recipient to click the button with no distractions.</p>
-                            <p>Good luck! Hope it works.</p>
+                            <p>Hello {user},</p>
+                            <p>Your email was used to sign up for our service. Please confirm that it was you.</p>
+                            <p>After you confirm, you will be able to sign in.</p>
+                            <Button align="left" url={url} label="Confirm"/>
                           </td>
                         </tr>
                       </table>
