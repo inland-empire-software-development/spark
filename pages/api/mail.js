@@ -1,5 +1,6 @@
+import ReactDOMServer from 'react-dom/server';
+import confirmation from '../../email/confirmation';
 const nodemailer = require('nodemailer');
-
 const transporter = nodemailer.createTransport({
   host: process.env.MAILHOST,
   port: process.env.MAILPORT,
@@ -17,7 +18,7 @@ export default async (req, res) => {
     from: '"Administrator" <admin@iesd.com>',
     to: 'lloanalas@outlook.com',
     subject: "Email Test",
-    text: "This is an email test",
+    html: ReactDOMServer.renderToStaticMarkup(confirmation),
   };
 
 

@@ -1,6 +1,4 @@
 import Document, {Html, Head, Main, NextScript} from 'next/document';
-import '../sass/index.scss';
-import Footer from '../src/components/global/Footer';
 
 class main extends Document {
   render(props) {

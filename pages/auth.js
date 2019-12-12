@@ -4,7 +4,6 @@ import Recovery from '../src/components/Recovery';
 import Spinner from '../src/components/global/Spinner';
 import SEO from "../next-seo.config";
 import {DefaultSeo} from "next-seo";
-import Footer from '../src/components/global/Footer';
 
 function Authenticate() {
   return (
