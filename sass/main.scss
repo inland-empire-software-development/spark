@@ -1,0 +1,18 @@
+@import
+  '../node_modules/uikit/src/scss/variables-theme',
+  '../node_modules/uikit/src/scss/mixins-theme',
+  '../node_modules/uikit/src/scss/uikit-theme',
+  'base/_colors',
+  'base/_typography',
+  'base/_global',
+  'base/_animation',
+  'pages/welcome',
+  'pages/_index',
+  'components/_auth',
+  'components/animation/_redirect',
+  'components/animation/_loader',
+  'components/global/_spinner',
+  'components/global/_unauthorized',
+  'components/global/_message',
+  'components/global/_footer',
+  '_shame';

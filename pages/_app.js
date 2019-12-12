@@ -1,4 +1,4 @@
-import '../sass/index.scss';
+import '../sass/main.scss';
 import App from 'next/app';
 import Context from '../src/context';
 import {redirects, unprotected} from '../src/pages';
