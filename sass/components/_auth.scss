@@ -13,12 +13,18 @@
     font-size: 14px;
   }
 
-  .input-spinner + i.fa.fa-check {
+  .input-spinner {
     position: absolute;
-    left: -30px;
-    top: 20px;
-    color: $green;
-    font-size: 18px;
+    left: -36px;
+    top: 15px;
+
+    + i.fa.fa-check {
+      position: absolute;
+      left: -30px;
+      top: 20px;
+      color: $green;
+      font-size: 18px;
+    }
   }
 
   .password-requirements {
@@ -62,7 +68,9 @@
   }
 
   .uk-form-icon {
-    font-size: 16px;
+    font-size: 18px;
+    text-align: center;
+    line-height: 54px;
   }
 
   .user-message {

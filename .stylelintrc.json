@@ -2,6 +2,7 @@
   "extends": "stylelint-config-standard",
   "rules": {
     "max-line-length": null,
-    "no-descending-specificity": null
+    "no-descending-specificity": null,
+    "declaration-block-trailing-semicolon": null
   }
 }
