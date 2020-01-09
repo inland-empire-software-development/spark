@@ -1,0 +1,52 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "module": "esnext",
+    "jsx": "preserve",
+    "allowSyntheticDefaultImports": true,
+    "types": [
+      "node",
+      "next",
+      "UIkit"
+    ],
+    "lib": [
+      "esnext",
+      "dom"
+    ],
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "strict": true,
+    "allowJs": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true
+  },
+  "typeRoots": [
+    "node_modules/@types",
+    "@types",
+    "index.d.ts",
+  ],
+  "exclude": [
+    "node_modules",
+    "typings"
+  ],
+  "rules": {
+    "@typescript-eslint/member-naming": [
+      "error",
+      {
+        "private": "^__",
+        "protected": "^_"
+      }
+    ]
+  },
+  "include": [
+    "next-env.d.ts",
+    "index.d.ts",
+    "**/*.ts",
+    "**/*.tsx"
+  ]
+}

@@ -1,8 +1,8 @@
 sass/vendors
-.next
-assets
-docs
-node_modules
-
-lib/init-apollo.js
-lib/with-apollo-client.js
+.next/
+.idea/
+.vs/
+assets/
+docs/
+node_modules/
+node_modules/*

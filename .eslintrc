@@ -1,51 +1,49 @@
 {
-    "env": {
-        "browser": true,
-        "node": true,
-        "es6": true
-    },
-    "extends": ["google"],
-    "globals": {
-        "Atomics": "readonly",
-        "SharedArrayBuffer": "readonly",
-        "document": true,
-        "window": true,
-        "process": true
-    },
-    "parser": "babel-eslint",
-    "parserOptions": {
-        "ecmaFeatures": {
-            "jsx": true,
-            "modules": true,
-            "classes": true,
-            "spread": true,
-            "restParams": true
-        },
-        "ecmaVersion": 2018,
-        "sourceType": "module"
-    },
+    "parser": "@typescript-eslint/parser",
     "plugins": [
+        "@typescript-eslint",
         "react",
         "react-hooks"
-
     ],
+    "extends": [
+        "google",
+        "plugin:react/recommended",
+        "plugin:@typescript-eslint/recommended"
+    ],
+    "parserOptions": {
+        "ecmaVersion": 2019,
+        "sourceType": "module",
+        "ecmaFeatures": {
+            "jsx": true
+        }
+    },
+    "env": {
+        "es6": true,
+        "browser": true,
+        "node": true,
+        "jest": true
+    },
+    "settings": {
+        "react": {
+            "version": "detect"
+        }
+    },
     "rules": {
-        "react/jsx-filename-extension": [1, {
-            "extensions" : [".js", ".jsx"]
-        }],
+        "react/jsx-filename-extension": [1, { "extensions": [".js", ".ts", "tsx"] }],
+        "@typescript-eslint/explicit-function-return-type": "off",
+        "@typescript-eslint/explicit-member-accessibility": "off",
+        "@typescript-eslint/no-explicit-any": "off",
+        "@typescript-eslint/no-var-requires": "off",
+        "max-len": "off",
+        "no-mixed-spaces-and-tabs": 2,
         "quotes": 0,
+        "require-jsdoc": 0,
         "one-var": 0,
+        "react/prop-types": 0,
+        "react/react-in-jsx-scope": 0,
         "strict": 2,
         "camelcase": 2,
-        "import/no-unresolved": 0,
-        "no-mixed-spaces-and-tabs": 2,
-        "no-unused-vars": 2,
-        "no-console": 0,
-        "linebreak-style": 0,
-        "require-jsdoc": 0,
-        "react/jsx-uses-vars": 2,
-        "react-hooks/rules-of-hooks": "error",
-        "react-hooks/exhaustive-deps": "warn",
-        "max-len": "off"
-    }
+        "linebreak-style": 0
+    },
+    "overrides": []
 }
