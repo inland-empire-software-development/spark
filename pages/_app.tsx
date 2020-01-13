@@ -10,12 +10,17 @@ import Redirect from "../src/components/animation/Redirect";
 import Loader from "../src/components/animation/Loader";
 import {UserState} from "../";
 
-export default class MyApp extends App<{}, {}, UserState> {
-  state: UserState = {
+interface AppState extends UserState {
+  dataLoaded: boolean;
+}
+
+export default class MyApp extends App<{}, {}, AppState> {
+  state: AppState = {
     user: undefined,
     access: false,
     redirect: undefined,
     isPublic: false,
+    dataLoaded: false,
   };
 
   componentDidMount(): void {
@@ -28,7 +33,7 @@ export default class MyApp extends App<{}, {}, UserState> {
     })
         .then((res) => res.json())
         .then((data) => {
-          this.setState({...data, redirect, isPublic});
+          this.setState({...data, redirect, isPublic, dataLoaded: true});
         });
   };
 
@@ -43,29 +48,30 @@ export default class MyApp extends App<{}, {}, UserState> {
 
   render() {
     const {Component, pageProps} = this.props;
-    const {access, redirect, isPublic} = this.state;
+    const {access, redirect, isPublic, dataLoaded} = this.state;
 
-    if (!access && !redirect) {
-      return <Loader/>;
-    }
-    if (access && redirect) {
+    if (dataLoaded) {
+      if (access && redirect) {
       // send user to proper page if they're logged in
-      this.redirect(redirect);
+        this.redirect(redirect);
 
-      return <Redirect />;
-    } else if (access || isPublic) {
-      return (
-        <Context.Provider value={{...this.state}}>
-          <DefaultSeo {...SEO} />
-          <Component {...pageProps} />
-        </Context.Provider>
-      );
-    } else if (!access) {
-      return <Unauthorized/>;
+        return <Redirect />;
+      } else if (access || isPublic) {
+        return (
+          <Context.Provider value={{...this.state}}>
+            <DefaultSeo {...SEO} />
+            <Component {...pageProps} />
+          </Context.Provider>
+        );
+      } else if (!access) {
+        return <Unauthorized/>;
+      } else {
+        this.redirect("/authenticate");
+
+        return <Redirect/>;
+      }
     } else {
-      this.redirect("/authenticate");
-
-      return <Redirect/>;
+      return <Loader/>;
     }
   }
 }
