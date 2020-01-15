@@ -1,4 +1,4 @@
-# ✨   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                     Welcome to   Spark &nbsp;&nbsp;&nbsp;👋
+# ✨   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                     **Welcome to   Spark** &nbsp;&nbsp;&nbsp;👋&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;✨
 <p align="center">
   <img
     alt="Spark Logo"
@@ -26,19 +26,23 @@
 <p align="center">
   Welcome to the web app repo for the Spark non-profit organization.
 </p>
-
+## 🙋 **We Welcome Contributions**
 Spark is a nonprofit dedicated to growing the tech community in the Inland Empire. Our work involves helping community members gain the skills and tools necessary to find employment in the local tech industry.This is accomplished by utilizing a Learning management system. A learning management system (LMS) is a software application for the administration, documentation, tracking, reporting, and delivery of educational courses, training programs, or learning and development programs. The learning management system concept emerged directly from e-Learning. In pursuit of our mission, we strive to foster a climate of purposeful inclusion where members can feel safe, valued and given an opportunity to form meaningful connections with each other. To improve communities through free technical training and opportunities to gain experience through collaboration, networking and knowledge sharing.
 
-## 👨‍💻 Getting Started
+## 👨‍💻 **Getting Started**
 
 To get started, make sure to fill out the `.env` file with the appropriate information. Make sure that all prerequisites are met or application won't operate correctly.
 
 This authentication system has a couple of features that might be useful to build on top of. This system is not meant to be used as-is aesthetically, it's meant to be used as a base for your project. You get a headstart with your authentication system, not the UI.
 
 ![auth screenshot](https://raw.githubusercontent.com/lloan/next-authenticate/master/public/images/authentication-screenshot.png)
+## ⛑ **Getting Help**
 
+If you have any questions, please ask on our [Slack](https://ie-sd.slack.com). We welcome everyone to our Slack, so don't be afraid to join! Have fun coding!
 
-## ⟲ Prerequisites
+**<a href="https://bit.ly/2C0umfQ">Join link</a>**
+
+## ⟲ **Prerequisites**
 
 The minimum requirements to run this include:
 
@@ -46,7 +50,7 @@ The minimum requirements to run this include:
 - MySQL
 - Mail SMTP provider
 
-## 🌐 Installing
+## 🌐 **Installing**
 
 A step by step series of examples that tell you how to get a development env running.
 
@@ -69,7 +73,7 @@ yarn install
 yarn dev
 ```
 
-## 💡 Features
+## 💡 **Features**
 - Pages for authentication (login, logout, reset), dashboard, welcome, reset password, confirmation, home and logged-out. HTTPOnly token (JWT) used.
 - Protected pages which can be turned on and off by page.
 - Redirection system based on user authentication state.
@@ -81,7 +85,7 @@ yarn dev
 - ESLint and Stylelint for development.
 - React Context handles state at the parent level.
 
-## 🔨 Built With
+## 🔨 **Built With**
 * Next.js 9.0+ - A React framework
 * MySQL
 * Redis
@@ -98,12 +102,12 @@ For development:
 * Stylelint
 * Jest
 
-## 🤝 Contributing
+## 🤝 **Contributing**
 
 - If you want to contribute, please open up an issue.
 - If you start working on a feature, branch off of the `master` branch as it should be the most up-to-date.
 
-## 📓 Authors
+## 📓 **Authors**
 
 * **👤 Lloan Alas** - *Initial work* - [IESD](https://github.com/inland-empire-software-development)
 * **👤 Jacob Goodwin** - *IESD*
@@ -116,6 +120,6 @@ For development:
 * **👤 Raul Jauregui** - *IESD*
 See also the list of [contributors](https://github.com/lloan/next-authenticate/graphs/contributors) who participated in this project.
 
-## 🗒 License
+## 🗒 **License**
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
