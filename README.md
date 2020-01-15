@@ -1,4 +1,4 @@
-# ✨   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                     **Welcome to   Spark** &nbsp;&nbsp;&nbsp;👋&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;✨
+# ✨   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                     **Welcome to   Spark** &nbsp;&nbsp;&nbsp;👋&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;✨
 <p align="center">
   <img
     alt="Spark Logo"
@@ -26,6 +26,7 @@
 <p align="center">
   Welcome to the web app repo for the Spark non-profit organization.
 </p>
+
 ## 🙋 **We Welcome Contributions**
 Spark is a nonprofit dedicated to growing the tech community in the Inland Empire. Our work involves helping community members gain the skills and tools necessary to find employment in the local tech industry.This is accomplished by utilizing a Learning management system. A learning management system (LMS) is a software application for the administration, documentation, tracking, reporting, and delivery of educational courses, training programs, or learning and development programs. The learning management system concept emerged directly from e-Learning. In pursuit of our mission, we strive to foster a climate of purposeful inclusion where members can feel safe, valued and given an opportunity to form meaningful connections with each other. To improve communities through free technical training and opportunities to gain experience through collaboration, networking and knowledge sharing.
 
