@@ -1,13 +1,9 @@
-# Spark
-![auth screenshot](https://raw.githubusercontent.com/lloan/next-authenticate/master/public/images/spark.png)
+# ✨   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                     Welcome to   Spark &nbsp;&nbsp;&nbsp;👋
+![auth screenshot](https://raw.githubusercontent.com/inland-empire-software-development/spark/staging/public/images/spark.png)
 
-Is a Learning management system. A learning management system (LMS) is a software application for the administration, documentation, tracking, reporting, and delivery of educational courses, training programs, or learning and development programs. The learning management system concept emerged directly from e-Learning.
+Spark is a nonprofit dedicated to growing the tech community in the Inland Empire. Our work involves helping community members gain the skills and tools necessary to find employment in the local tech industry.This is accomplished by utilizing a Learning management system. A learning management system (LMS) is a software application for the administration, documentation, tracking, reporting, and delivery of educational courses, training programs, or learning and development programs. The learning management system concept emerged directly from e-Learning. In pursuit of our mission, we strive to foster a climate of purposeful inclusion where members can feel safe, valued and given an opportunity to form meaningful connections with each other. To improve communities through free technical training and opportunities to gain experience through collaboration, networking and knowledge sharing.
 
-# Next-Authenticate
-
-An authentication system built for use with [Next.js](https://github.com/zeit/next.js) - an awesome React framework.
-
-## Getting Started
+## 👨‍💻 Getting Started
 
 To get started, make sure to fill out the `.env` file with the appropriate information. Make sure that all prerequisites are met or application won't operate correctly.
 
@@ -16,7 +12,7 @@ This authentication system has a couple of features that might be useful to buil
 ![auth screenshot](https://raw.githubusercontent.com/lloan/next-authenticate/master/public/images/authentication-screenshot.png)
 
 
-## Prerequisites
+## ⟲ Prerequisites
 
 The minimum requirements to run this include:
 
@@ -24,7 +20,7 @@ The minimum requirements to run this include:
 - MySQL
 - Mail SMTP provider
 
-## Installing
+## 🌐 Installing
 
 A step by step series of examples that tell you how to get a development env running.
 
@@ -47,7 +43,7 @@ yarn install
 yarn dev
 ```
 
-## Features
+## 💡 Features
 - Pages for authentication (login, logout, reset), dashboard, welcome, reset password, confirmation, home and logged-out. HTTPOnly token (JWT) used.
 - Protected pages which can be turned on and off by page.
 - Redirection system based on user authentication state.
@@ -59,8 +55,7 @@ yarn dev
 - ESLint and Stylelint for development.
 - React Context handles state at the parent level.
 
-## Built With
-
+## 🔨 Built With
 * Next.js 9.0+ - A React framework
 * MySQL
 * Redis
@@ -77,17 +72,24 @@ For development:
 * Stylelint
 * Jest
 
-## Contributing
+## 🤝 Contributing
 
 - If you want to contribute, please open up an issue.
 - If you start working on a feature, branch off of the `master` branch as it should be the most up-to-date.
 
-## Authors
+## 📓 Authors
 
-* **Lloan Alas** - *Initial work* - [IESD](https://github.com/inland-empire-software-development)
-
+* **👤 Lloan Alas** - *Initial work* - [IESD](https://github.com/inland-empire-software-development)
+* **👤 Jacob Goodwin** - *IESD*
+* **👤 Tony Nguyeni** - *IESD*
+* **👤 Andy Mendez** - *IESD*
+* **👤 David Huang** - *IESD*
+* **👤 Katherine Orho** - *IESD*
+* **👤 Katherine Orho** - *IESD*
+* **👤 Greg** - *IESD*
+* **👤 Raul Jauregui** - *IESD*
 See also the list of [contributors](https://github.com/lloan/next-authenticate/graphs/contributors) who participated in this project.
 
-## License
+## 🗒 License
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
