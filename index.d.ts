@@ -35,7 +35,7 @@ export interface Notification extends UIkit.Notify {
 
 export default class NextAuthenticate extends Component<NextAuthenticateProps> { }
 
-export interface UserState {
+export interface MyAppContext {
     user: string | undefined;
     access: boolean;
     redirect: string | undefined;

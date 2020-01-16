@@ -8,19 +8,20 @@ import SEO from '../next-seo.config';
 import Unauthorized from "../src/components/global/Unauthorized";
 import Redirect from "../src/components/animation/Redirect";
 import Loader from "../src/components/animation/Loader";
-import {UserState} from "../";
+import {MyAppContext} from "../";
 
-interface AppState extends UserState {
-  dataLoaded: boolean;
+interface MyAppState extends MyAppContext {
+  isAccessAvailable: boolean;
+
 }
 
-export default class MyApp extends App<{}, {}, AppState> {
-  state: AppState = {
+export default class MyApp extends App<{}, {}, MyAppState> {
+  state: MyAppState = {
     user: undefined,
     access: false,
     redirect: undefined,
     isPublic: false,
-    dataLoaded: false,
+    isAccessAvailable: false,
   };
 
   componentDidMount(): void {
@@ -33,7 +34,7 @@ export default class MyApp extends App<{}, {}, AppState> {
     })
         .then((res) => res.json())
         .then((data) => {
-          this.setState({...data, redirect, isPublic, dataLoaded: true});
+          this.setState({...data, redirect, isPublic, isAccessAvailable: true});
         });
   };
 
@@ -48,13 +49,12 @@ export default class MyApp extends App<{}, {}, AppState> {
 
   render() {
     const {Component, pageProps} = this.props;
-    const {access, redirect, isPublic, dataLoaded} = this.state;
+    const {access, redirect, isPublic, isAccessAvailable} = this.state;
 
-    if (dataLoaded) {
+    if (isAccessAvailable) {
       if (access && redirect) {
-      // send user to proper page if they're logged in
+        // send user to proper page if they're logged in
         this.redirect(redirect);
-
         return <Redirect />;
       } else if (access || isPublic) {
         return (
@@ -67,11 +67,10 @@ export default class MyApp extends App<{}, {}, AppState> {
         return <Unauthorized/>;
       } else {
         this.redirect("/authenticate");
-
         return <Redirect/>;
       }
     } else {
-      return <Loader/>;
+      return <Loader />;
     }
   }
 }

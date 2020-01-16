@@ -1,5 +1,5 @@
 import {createContext} from 'react';
-import {UserState} from '../';
+import {MyAppContext} from '../';
 
 const defaultAuth = {
   user: undefined,
@@ -9,6 +9,6 @@ const defaultAuth = {
 };
 
 
-const Context = createContext<UserState>(defaultAuth);
+const Context = createContext<MyAppContext>(defaultAuth);
 
 export default Context;
