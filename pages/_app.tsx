@@ -11,8 +11,7 @@ import Loader from "../src/components/animation/Loader";
 import {MyAppContext} from "../";
 
 interface MyAppState extends MyAppContext {
-  isAccessAvailable: boolean;
-
+  isAccessFetched: boolean;
 }
 
 export default class MyApp extends App<{}, {}, MyAppState> {
@@ -21,7 +20,7 @@ export default class MyApp extends App<{}, {}, MyAppState> {
     access: false,
     redirect: undefined,
     isPublic: false,
-    isAccessAvailable: false,
+    isAccessFetched: false,
   };
 
   componentDidMount(): void {
@@ -34,7 +33,7 @@ export default class MyApp extends App<{}, {}, MyAppState> {
     })
         .then((res) => res.json())
         .then((data) => {
-          this.setState({...data, redirect, isPublic, isAccessAvailable: true});
+          this.setState({...data, redirect, isPublic, isAccessFetched: true});
         });
   };
 
@@ -49,9 +48,9 @@ export default class MyApp extends App<{}, {}, MyAppState> {
 
   render() {
     const {Component, pageProps} = this.props;
-    const {access, redirect, isPublic, isAccessAvailable} = this.state;
+    const {access, redirect, isPublic, isAccessFetched} = this.state;
 
-    if (isAccessAvailable) {
+    if (isAccessFetched) {
       if (access && redirect) {
         // send user to proper page if they're logged in
         this.redirect(redirect);
