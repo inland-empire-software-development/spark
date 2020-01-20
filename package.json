@@ -14,7 +14,8 @@
     "start": "next start",
     "lint": "./node_modules/.bin/eslint ./**/*.{js,ts,tsx} --quiet --fix || true",
     "test": "jest || true",
-    "reset": "rm -rf src/ sass/ pages/ node_modules/ yarn.lock models/ lib/ email/ && git reset --hard && yarn install"
+    "reset": "rm -rf src/ sass/ pages/ node_modules/ yarn.lock models/ lib/ email/ && git reset --hard && yarn install",
+    "storybook": "start-storybook -p 6006 -c .storybook"
   },
   "dependencies": {
     "@zeit/next-css": "^1.0.1",
@@ -41,6 +42,13 @@
     "uikit": "^3.2.4"
   },
   "devDependencies": {
+    "@babel/core": "^7.8.3",
+    "@storybook/addon-actions": "^5.3.6",
+    "@storybook/addon-knobs": "^5.3.6",
+    "@storybook/addon-links": "^5.3.6",
+    "@storybook/addon-notes": "^5.3.6",
+    "@storybook/addons": "^5.3.6",
+    "@storybook/react": "^5.3.6",
     "@types/next": "^9.0.0",
     "@types/next-seo": "^1.10.0",
     "@types/node": "^12.12.17",
@@ -50,6 +58,8 @@
     "@typescript-eslint/eslint-plugin": "^2.11.0",
     "@typescript-eslint/parser": "^2.11.0",
     "babel-eslint": "^10.0.3",
+    "babel-loader": "^8.0.6",
+    "babel-preset-react-app": "^9.1.0",
     "eslint": "^6.7.2",
     "eslint-config-google": "^0.14.0",
     "eslint-config-prettier": "^6.7.0",
