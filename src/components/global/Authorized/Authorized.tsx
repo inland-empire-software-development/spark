@@ -1,3 +1,5 @@
+import React from 'react';
+
 function Authorized(): JSX.Element {
   return (
     <main id="unauthorized">

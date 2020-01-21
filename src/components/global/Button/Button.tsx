@@ -42,6 +42,8 @@ function Button(props: Button) {
 
   const widths = ["small", "third", "half", "full"];
 
+
+  // TODO: make this component read cleaner - create function to genereate className
   return (
     // TODO: make it so internal links use Link component
     <a className={`${type} ${color} ${text} button-${widths[Number(width)]}
