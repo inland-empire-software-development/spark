@@ -51,6 +51,22 @@
   border: $blue solid 6px;
 }
 
+.hvr-ripple-out.border-primary::before {
+  border: $primary solid 6px;
+}
+
+.hvr-ripple-out.border-secondary::before {
+  border: $secondary solid 6px;
+}
+
+.hvr-ripple-out.border-tertiary::before {
+  border: $tertiary solid 6px;
+}
+
+.hvr-ripple-out.border-snow::before {
+  border: $snow solid 6px;
+}
+
 .hvr-ripple-out:hover::before,
 .hvr-ripple-out:focus::before,
 .hvr-ripple-out:active::before {
