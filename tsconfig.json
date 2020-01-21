@@ -7,6 +7,7 @@
     "types": [
       "node",
       "next",
+      "jest",
       "UIkit"
     ],
     "lib": [
@@ -32,7 +33,11 @@
   ],
   "exclude": [
     "node_modules",
-    "typings"
+    "typings",
+    "**/*.spec.ts",
+    "**/*.spec.tsx",
+    "**/*.test.ts",
+    "**/*.test.tsx"
   ],
   "rules": {
     "@typescript-eslint/member-naming": [
