@@ -8,12 +8,9 @@ export default {
   decorators: [withA11y],
 };
 
-export const Default = () =>
-  <section className="uk-margin-large-top">
-    <Authorized/>
-  </section>;
+export const AccessGranted = () => <Authorized/>;
 
-Default.story = {
+AccessGranted.story = {
   parameters: {
     notes: 'This component is used whenever a user has been access granted to something globally.',
   },

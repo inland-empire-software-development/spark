@@ -1,3 +1,5 @@
+@import '../../../style/variables.scss';
+
 #global-message {
   position: fixed;
   top: 0;
@@ -23,9 +25,9 @@
 }
 
 .uk-notification-message-warning {
-  border-left: 10px solid $yellow;
+  border-left: 10px solid  $yellow;
 }
 
 .uk-notification-message-primary {
-  border-left: 10px solid $blue;
+  border-left: 10px solid  $blue;
 }

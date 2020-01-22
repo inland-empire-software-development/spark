@@ -1,4 +1,5 @@
 import React from 'react';
+import './Button.scss';
 
 interface Button {
     link?: string | undefined;

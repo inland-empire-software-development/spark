@@ -1,3 +1,6 @@
+import React from 'react';
+import './Message.scss';
+
 function Message(props: any): JSX.Element {
   const getPriority = () => props.priority ? ['primary', 'blue', 'green', 'yellow', 'red'][props.priority] : 'secondary';
 

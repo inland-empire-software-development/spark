@@ -1,5 +1,5 @@
 import React, {useState, FormEvent} from 'react';
-import Message from '../global/Message';
+import Message from '../global/Message/Message';
 import Password from './Password';
 
 /**

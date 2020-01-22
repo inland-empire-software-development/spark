@@ -1,1 +1,1 @@
-import '!style-loader!css-loader!sass-loader!./scss-loader.scss';
+import "../src/style/base/_colors.scss";
