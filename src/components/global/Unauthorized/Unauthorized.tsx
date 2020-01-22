@@ -1,3 +1,4 @@
+import React from 'react';
 import SEO from "../../../../next-seo.config";
 import {DefaultSeo} from "next-seo";
 
