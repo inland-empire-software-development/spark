@@ -1,7 +1,12 @@
 import * as React from 'react';
 import {withA11y} from '@storybook/addon-a11y';
+import marked from 'marked';
+
 import "./Authorized.scss";
 import Authorized from '../Authorized/Authorized';
+
+const intro = require("./_intro.md");
+const design = require('./_design.md');
 
 export default {
   title: 'Authorized',
@@ -12,6 +17,6 @@ export const AccessGranted = () => <Authorized/>;
 
 AccessGranted.story = {
   parameters: {
-    notes: 'This component is used whenever a user has been access granted to something globally.',
+    notes: {"Introduction": marked(intro.default), 'Design Notes': marked(design.default)},
   },
 };
