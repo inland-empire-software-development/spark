@@ -1,11 +1,16 @@
 import React from 'react';
 import './Message.scss';
 
-function Message(props: any): JSX.Element {
-  const getPriority = () => props.priority ? ['primary', 'blue', 'green', 'yellow', 'red'][props.priority] : 'secondary';
+interface Message {
+  message: string;
+  priority: number;
+  hidden: boolean;
+}
 
+function Message(props: Message): JSX.Element {
+  const colors = ['dark-gray', 'light-gray', 'snow', 'blue', 'green', 'yellow', 'red', 'primary', 'secondary', 'tertiary'];
   return (
-    <section id="global-message" className={`bg-${getPriority()} ${!props.hidden ? "uk-hidden" : ""}`}>
+    <section id="global-message" className={`bg-${colors[props.priority]} ${props.hidden ? "uk-hidden" : ""}`}>
       <p>{props.message}</p>
     </section>
   );

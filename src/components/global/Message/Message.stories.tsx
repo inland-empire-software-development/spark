@@ -9,13 +9,26 @@ export default {
   decorators: [withA11y],
 };
 
-export const DefaultMessage = () =>
+// ['dark-gray', 'light-gray', 'snow', 'blue', 'green', 'yellow', 'red', 'primary', 'secondary', 'tertiary']
+export const BasicMessage = () =>
   <section className="uk-margin-large-top">
-    <Message/>
+    <Message message="This is a basic message. Index (0)." priority={0} hidden={false}/>
   </section>;
 
-DefaultMessage.story = {
-  parameters: {
-    notes: 'This component is used whenever a user has a message to be shown.',
-  },
-};
+export const ReminderMessage = () =>
+  <section className="uk-margin-large-top">
+    <Message message="This is a reminder message. Index (1)." priority={1} hidden={false}/>
+  </section>;
+
+
+export const ReminderAltMessage = () =>
+  <section className="uk-margin-large-top">
+    <Message message="This is an alternate reminder message. Index (2)." priority={2} hidden={false}/>
+  </section>;
+
+export const ConfirmationMessage = () =>
+  <section className="uk-margin-large-top">
+    <Message message="This is a confirmation message. Index (3)." priority={3} hidden={false}/>
+  </section>;
+
+

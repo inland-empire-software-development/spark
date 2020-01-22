@@ -8,6 +8,26 @@
   text-align: center;
   height: 28px;
   z-index: 99999;
+
+  &.bg-primary,
+  &.bg-secondary,
+  &.bg-tertiary,
+  &.bg-blue,
+  &.bg-red,
+  &.bg-yellow,
+  &.bg-green,
+  &.bg-light-gray,
+  &.bg-dark-gray {
+    p {
+      color: $snow;
+    }
+  }
+
+  &.bg-snow{
+    p {
+      color: $dark-gray;
+    }
+  }
 }
 
 .uk-notification-message {
