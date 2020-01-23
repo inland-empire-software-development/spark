@@ -1,6 +1,6 @@
 import fetch from 'isomorphic-unfetch';
 
-export default function Logout() {
+export default function LogOut() {
   const handleLogout = (e: any) => {
     e.preventDefault();
 

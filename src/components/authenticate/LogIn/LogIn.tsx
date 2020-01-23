@@ -1,9 +1,9 @@
 import fetch from 'isomorphic-unfetch';
 import {FormEvent} from 'react';
-import notify from '../utility/Notify';
-import {Message} from '../../..';
+import notify from '../../utility/Notify';
+import {Message} from '../../../../index';
 
-function Login(): JSX.Element {
+function LogIn(): JSX.Element {
   const handleLogin = (event: FormEvent) => {
     event.preventDefault();
     event.stopPropagation();
@@ -84,4 +84,4 @@ function Login(): JSX.Element {
   );
 }
 
-export default Login;
+export default LogIn;

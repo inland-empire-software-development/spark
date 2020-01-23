@@ -1,12 +1,12 @@
 import React, {useState, FormEvent} from 'react';
-import Message from '../global/Message/Message';
-import Password from './Password';
+import Message from '../../global/Message/Message';
+import Password from '../Password/Password';
 
 /**
- * Renders the signup component
+ * Renders the SignUp component
  * @constructor
  */
-function Signup(): JSX.Element {
+function SignUp(): JSX.Element {
   const [message, setMessage] = useState({status: false, message: ''});
 
   // toggles visibility of an element
@@ -222,4 +222,4 @@ function Signup(): JSX.Element {
   );
 }
 
-export default Signup;
+export default SignUp;
