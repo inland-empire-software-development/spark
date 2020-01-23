@@ -1,0 +1,95 @@
+#login-container {
+  padding-top: 0;
+  width: 100%;
+  display: block;
+  position: relative;
+  margin: 0 auto;
+
+  .uk-card-body {
+    min-height: 515px;
+  }
+
+  input {
+    font-size: 14px;
+  }
+
+  .input-spinner {
+    position: absolute;
+    left: -36px;
+    top: 15px;
+
+    + i.fa.fa-check {
+      position: absolute;
+      left: -30px;
+      top: 20px;
+      color: $green;
+      font-size: 18px;
+    }
+  }
+
+  .password-requirements {
+    font-size: 12px;
+
+    .show-password {
+      margin: 0;
+    }
+
+    ul {
+      margin-top: 0;
+
+      i {
+        position: relative;
+        height: 0;
+        color: $green;
+        left: 5px;
+      }
+    }
+  }
+
+  .password-valid {
+    border: 1px solid $green;
+    background-color: rgba(2, 174, 114, 0.05);
+  }
+
+  #login-logo {
+    margin: 0 auto;
+    display: block;
+    max-width: 75px;
+    filter: grayscale(1) brightness(0.5); //remove for production
+  }
+
+  .uk-card-default {
+    box-shadow: none;
+  }
+
+  .login-section {
+    position: absolute;
+    top: 30px;
+  }
+
+  .uk-form-icon {
+    font-size: 18px;
+    text-align: center;
+    line-height: 54px;
+  }
+
+  .user-message {
+    display: block;
+    width: 100%;
+    color: $offwhite;
+    height: 30px;
+    padding: 10px;
+    line-height: 10px;
+    background-color: $yellow;
+    box-sizing: border-box;
+    visibility: hidden;
+
+    i {
+      width: 15px;
+      position: relative;
+      color: $offwhite;
+      float: right;
+      font-size: 12px;
+    }
+  }
+}
