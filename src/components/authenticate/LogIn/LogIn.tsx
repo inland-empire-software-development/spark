@@ -1,5 +1,5 @@
 import fetch from 'isomorphic-unfetch';
-import {FormEvent} from 'react';
+import React, {FormEvent} from 'react';
 import notify from '../../utility/Notify';
 import {Message} from '../../../../index';
 
@@ -58,14 +58,14 @@ function LogIn(): JSX.Element {
       <form onSubmit={(event: any) => handleLogin(event)}>
         <div className="uk-margin">
           <div className="uk-inline uk-width-1-1">
-            <i className="uk-form-icon fa fa-user" />
+            <i className="uk-form-icon fal fa-user" />
             <input className="uk-input uk-form-large" name="login-username" type="text" autoComplete="username"
               placeholder="username" required />
           </div>
         </div>
         <div className="uk-margin">
           <div className="uk-inline uk-width-1-1">
-            <i className="uk-form-icon fa fa-lock" />
+            <i className="uk-form-icon fal fa-lock" />
             <input className="uk-input uk-form-large" name="login-password" type="password"
               autoComplete="current-password" placeholder="password" required />
           </div>

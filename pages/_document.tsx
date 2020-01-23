@@ -15,7 +15,7 @@ class Doc extends Document {
           <Main />
           <NextScript />
 
-          <script src="https://kit.fontawesome.com/9f719db205.js" crossOrigin="anonymous"></script>
+          <script src="https://kit.fontawesome.com/dc56bd4901.js" crossOrigin="anonymous"></script>
           <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.2.0/js/uikit.min.js"></script>
           <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.2.0/js/uikit-icons.min.js"></script>
         </body>

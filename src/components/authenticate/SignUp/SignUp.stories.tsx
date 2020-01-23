@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {withA11y} from '@storybook/addon-a11y';
 
-import '../../../style/components/_auth.scss';
+import './../../../style/pages/_authenticate.scss';
 import SignUp from './SignUp';
 
 export default {

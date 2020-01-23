@@ -1,4 +1,5 @@
 import React, {useState, FormEvent} from 'react';
+import './SignUp.scss';
 import Message from '../../global/Message/Message';
 import Password from '../Password/Password';
 
@@ -175,32 +176,42 @@ function SignUp(): JSX.Element {
       <form onSubmit={(e) => handleSignUp(e)}>
         <div className="uk-margin uk-margin-remove-bottom">
           <div className="uk-inline uk-width-1-1">
-            <i className="uk-form-icon fa fa-user"/>
-            <input className="uk-input uk-form-large" type="text" autoComplete="user" placeholder="username" name="signup-username"
+            <i className="uk-form-icon fal fa-user"/>
+            <input
+              className="uk-input uk-form-large"
+              type="text"
+              autoComplete="user"
+              placeholder="username"
+              name="signup-username"
               required={true}
               onBlur={(e) => handleUserCheck(e)}
             />
             <div className="input-spinner uk-hidden" uk-spinner="true"/>
-            <i className="fa fa-check uk-hidden"/>
+            <i className="fal fa-check uk-hidden"/>
           </div>
           <small className="user-message" data-message="username">
-            <i className="uk-form-icon fa fa-exclamation-triangle"/>
+            <i className="uk-form-icon fal fa-exclamation-triangle"/>
               Name already in use, try another.
           </small>
         </div>
         <div className="uk-margin uk-margin-remove-bottom uk-margin-remove-top">
           <div className="uk-inline uk-width-1-1">
-            <i className="uk-form-icon fa fa-envelope"/>
-            <input className="uk-input uk-form-large" type="email" autoComplete="email" placeholder="email" name="signup-email"
+            <i className="uk-form-icon fal fa-envelope"/>
+            <input
+              className="uk-input uk-form-large"
+              type="email"
+              autoComplete="email"
+              placeholder="email"
+              name="signup-email"
               required={true}
               onBlur={(e) => handleEmailCheck(e)}
             />
             <div className="input-spinner uk-hidden" uk-spinner="true"/>
-            <i className="fa fa-check uk-hidden"/>
+            <i className="fal fa-check uk-hidden"/>
 
           </div>
           <small className="user-message" data-message="email">
-            <i className="uk-form-icon fa fa-exclamation-triangle"/>
+            <i className="uk-form-icon fal fa-exclamation-triangle"/>
               Email already in use, try another.
           </small>
         </div>

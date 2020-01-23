@@ -1,5 +1,7 @@
-// UIKit
-@import '../style/_variables';
+// Variables
+@import '_variables';
+
+// Vendors
 @import
   '../../node_modules/uikit/src/scss/variables-theme',
   '../../node_modules/uikit/src/scss/mixins-theme',
@@ -7,7 +9,13 @@
 
 // Base
 @import
-  '../style/base/_colors',
-  '../style/base/_animation',
-  '../style/base/_global',
-  '../style/base/_typography';
+  './base/_colors',
+  './base/_animation',
+  './base/_global',
+  './base/_typography';
+
+// Pages
+@import
+  'pages/_authenticate',
+  'pages/_index',
+  'pages/_welcome';

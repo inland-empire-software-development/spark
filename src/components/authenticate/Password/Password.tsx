@@ -81,7 +81,7 @@ function Password(): JSX.Element {
       <a href="#" className="show-password uk-align-right" onClick={(event) => showPassword(event)}>show password</a>
 
       <div className="uk-inline uk-width-1-1">
-        <i className="uk-form-icon fa fa-lock"/>
+        <i className="uk-form-icon fal fa-lock-alt"/>
         <input className="uk-input uk-form-large" onChange={(event) => handlePassword(event)}
           type="password" placeholder="password" name="password-component" autoComplete="current-password" required={true} minLength={10}/>
       </div>

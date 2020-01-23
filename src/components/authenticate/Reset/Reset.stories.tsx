@@ -13,11 +13,6 @@ export const ResetForm = () => {
     <section>
       <div id="login-container" className="uk-section uk-flex uk-flex-middle uk-animation-fade">
         <div className="uk-margin uk-width-large uk-margin-auto uk-card uk-card-default uk-card-body">
-          <ul className="uk-tab uk-flex-center" >
-            <li><a>Log In</a></li>
-            <li><a>Sign Up</a></li>
-            <li className="uk-hidden">Forgot Password?</li>
-          </ul>
           <ul className="uk-list uk-margin">
             <li>
               <Reset/>

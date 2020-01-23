@@ -1,4 +1,5 @@
 import fetch from 'isomorphic-unfetch';
+import React from "react";
 
 export default function LogOut() {
   const handleLogout = (e: any) => {
@@ -23,9 +24,7 @@ export default function LogOut() {
   };
 
   return (
-    <button className="uk-button black" onClick={(event) =>
-      handleLogout(event)
-    }>
+    <button className="uk-button black" onClick={(event) => handleLogout(event) }>
         logout
     </button>
   );
