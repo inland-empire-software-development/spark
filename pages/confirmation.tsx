@@ -11,7 +11,7 @@ import Redirect from "../src/components/animation/Redirect";
 function Confirmation(props: any) {
   const {query} = props;
   const {user, token} = query;
-  const url = '/api/validate/confirm';
+  const url = 'api/validate/confirm';
 
   const [confirmation, setConfirmation] = useState(undefined);
 
