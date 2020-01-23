@@ -5,8 +5,8 @@ import marked from 'marked';
 import "./Authorized.scss";
 import Authorized from '../Authorized/Authorized';
 
-const intro = require("./_intro.md");
-const design = require('./_design.md');
+const intro = require("./_note_intro.md");
+const design = require('./_note_design.md');
 
 export default {
   title: 'Authorized',
