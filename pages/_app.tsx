@@ -1,29 +1,31 @@
-import '../sass/main.scss';
+import '../src/style/index.scss';
 import App from 'next/app';
 import Context from '../src/context';
 import {redirects, unprotected} from '../src/pages';
 import fetch from "isomorphic-unfetch";
 import {DefaultSeo} from 'next-seo';
 import SEO from '../next-seo.config';
-import Unauthorized from "../src/components/global/Unauthorized";
+import Unauthorized from "../src/components/global/Unauthorized/Unauthorized";
 import Redirect from "../src/components/animation/Redirect";
 import Loader from "../src/components/animation/Loader";
+import {MyAppContext} from "../";
 
-interface UserState {
-  [property: string]: any;
+interface MyAppState extends MyAppContext {
+  isAccessFetched: boolean;
 }
 
-export default class MyApp extends App {
-  state: UserState = {
-    user: null,
-    access: null,
-    redirect: null,
-    isPublic: null,
+export default class MyApp extends App<{}, {}, MyAppState> {
+  state: MyAppState = {
+    user: undefined,
+    access: false,
+    redirect: undefined,
+    isPublic: false,
+    isAccessFetched: false,
   };
 
   componentDidMount(): void {
     const {pathname} = this.props.router;
-    const redirect = redirects[pathname] ? redirects[pathname].redirect : false;
+    const redirect = redirects[pathname] ? redirects[pathname].redirect : undefined;
     const isPublic = unprotected.includes(pathname);
 
     fetch(`${process.env.HOST}api/authenticate/auth`, {
@@ -31,7 +33,7 @@ export default class MyApp extends App {
     })
         .then((res) => res.json())
         .then((data) => {
-          this.setState({...data, redirect, isPublic});
+          this.setState({...data, redirect, isPublic, isAccessFetched: true});
         });
   };
 
@@ -46,15 +48,12 @@ export default class MyApp extends App {
 
   render() {
     const {Component, pageProps} = this.props;
-    const {access, redirect, isPublic} = this.state;
+    const {access, redirect, isPublic, isAccessFetched} = this.state;
 
-    // if access and user values have a value now
-    if (access !== null && redirect !== null) {
-      // if user has access to page but there is a redirect
+    if (isAccessFetched) {
       if (access && redirect) {
         // send user to proper page if they're logged in
         this.redirect(redirect);
-
         return <Redirect />;
       } else if (access || isPublic) {
         return (
@@ -67,11 +66,10 @@ export default class MyApp extends App {
         return <Unauthorized/>;
       } else {
         this.redirect("/authenticate");
-
         return <Redirect/>;
       }
     } else {
-      return <Loader/>;
+      return <Loader />;
     }
   }
 }
