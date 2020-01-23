@@ -1,1 +1,0 @@
-import "../src/style/base/_colors.scss";
