@@ -16,7 +16,7 @@ function LogIn(): JSX.Element {
     if (spinner) spinner.classList.remove('uk-hidden');
 
     // API route that will handle signing in
-    const url = '/api/authenticate/login';
+    const url = 'api/authenticate/login';
     const data = {
       username: username ? username.value : null,
       password: password ? password.value : null,

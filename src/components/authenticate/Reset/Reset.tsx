@@ -6,7 +6,7 @@ function Reset(): JSX.Element {
     e.preventDefault();
 
     // API route that will handle initiating password reset process.
-    const url = '/api/authenticate/reset';
+    const url = 'api/authenticate/reset';
     const email = document.getElementById('email') as HTMLInputElement;
     const spinner: HTMLElement | null = document.getElementById('spinner');
 

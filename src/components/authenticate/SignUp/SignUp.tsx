@@ -32,8 +32,8 @@ function SignUp(): JSX.Element {
   };
 
   // Handles the sign up process
-  const handleSignUp = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  const handleSignUp = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
 
     if ((process as any).browser && document) {
       const spinner: HTMLElement | null = document.getElementById('spinner');
@@ -46,7 +46,7 @@ function SignUp(): JSX.Element {
       const password: HTMLInputElement | null = document.querySelector('[name="password-component"]');
 
       // API route that will handle signing in
-      const url = '/api/authenticate/signup';
+      const url = 'api/authenticate/signup';
 
       if (username && email && password) {
         const data: object = {
