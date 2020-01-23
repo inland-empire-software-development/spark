@@ -18,20 +18,29 @@ module.exports = ({ config }) => {
 })
 
   config.module.rules.push({
-    test: /\.scss$/,
+    test: /\.s?css$/,
     use: [
+        'style-loader', 
+        'css-loader', 
         {
-            loader: 'style-loader'
+            loader: 'sass-loader',
+            options: {
+              // Prefer `dart-sass`
+              implementation: require('sass'),
+            },
         },
         {
-            loader: 'css-loader', 
-        },
-        {loader:"sass-loader"}
-    ],
-    include: path.resolve(__dirname, "../"),
+            loader: 'sass-resources-loader',
+            options: {
+                resources: "src/style/_variables.scss", 
+            }
+        }
+      ],
+    include: [
+        path.resolve(__dirname, "../"),
+    ]
 });
 
   config.resolve.extensions.push('.ts', '.tsx');
   return config;
 };
- 

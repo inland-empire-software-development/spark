@@ -1,8 +1,6 @@
 import * as React from 'react';
-
-import "./Button.scss";
-
 import {withA11y} from '@storybook/addon-a11y';
+import "./Button.scss";
 import Button from '../Button/Button';
 
 export default {

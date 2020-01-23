@@ -12,6 +12,7 @@ module.exports = withImages(withCSS(withSASS({
       fix: true,
     }));
 
+
     return config;
   },
 })));

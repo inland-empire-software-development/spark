@@ -4,7 +4,7 @@ import {useState, useEffect, FormEvent} from "react";
 import notify from "../src/components/utility/Notify";
 import Password from "../src/components/authenticate/Password";
 import Link from "next/link";
-import Spinner from "../src/components/global/Spinner";
+import Spinner from "../src/components/global/Spinner/Spinner";
 
 /**
  * Check provided input - reset account password if valid.

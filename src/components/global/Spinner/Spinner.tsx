@@ -1,3 +1,6 @@
+import React from 'react';
+import './Spinner.scss';
+
 function Spinner(props: any): JSX.Element {
   const {classes, ratio = 4} = props;
   return (

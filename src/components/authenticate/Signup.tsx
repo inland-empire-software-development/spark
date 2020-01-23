@@ -1,5 +1,5 @@
 import React, {useState, FormEvent} from 'react';
-import Message from '../global/Message';
+import Message from '../global/Message/Message';
 import Password from './Password';
 
 /**
@@ -170,7 +170,7 @@ function Signup(): JSX.Element {
 
   return (
     <section className="auth-signup">
-      <Message message={message.message} hidden={message.status}/>
+      <Message message={message.message} hidden={message.status} priority={0}/>
       <p className="uk-text-center">Sign up today. It&apos;s free!</p>
       <form onSubmit={(e) => handleSignUp(e)}>
         <div className="uk-margin uk-margin-remove-bottom">
