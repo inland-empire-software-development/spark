@@ -23,7 +23,7 @@ function LogIn(): JSX.Element {
     };
 
 
-    fetch(url, {
+    fetch(process.env.HOST + url, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

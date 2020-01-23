@@ -54,7 +54,7 @@ function SignUp(): JSX.Element {
           email: email.value,
         };
 
-        fetch(url, headers(Object.assign(data, {
+        fetch(process.env.HOST + url, headers(Object.assign(data, {
           password: password.value,
           role: "subscriber",
         })))
@@ -110,9 +110,9 @@ function SignUp(): JSX.Element {
     handleToggle(check, 'uk-hidden', 'add');
 
     // API route that will handle signing in
-    const url = `/api/validate/user`;
+    const url = `api/validate/user`;
 
-    fetch(url, headers({username}))
+    fetch(process.env.HOST + url, headers({username}))
         .then((response) => response.json())
         .then((response) => {
           handleToggle(spinner, 'uk-hidden', 'add');
@@ -146,9 +146,9 @@ function SignUp(): JSX.Element {
     handleToggle(check, 'uk-hidden', 'add');
 
     // API route that will handle signing in
-    const url = `/api/validate/email`;
+    const url = `api/validate/email`;
 
-    fetch(url, headers({email}))
+    fetch(process.env.HOST + url, headers({email}))
         .then((response) => response.json())
         .then((response) => {
           handleToggle(spinner, 'uk-hidden', 'add');
@@ -170,7 +170,7 @@ function SignUp(): JSX.Element {
 
   return (
     <section className="auth-signup">
-      <Message message={message.message} hidden={message.status} priority={0}/>
+      <Message message={message.message} hidden={!message.status} priority={0}/>
       <p className="uk-text-center">Sign up today. It&apos;s free!</p>
       <form onSubmit={(e) => handleSignUp(e)}>
         <div className="uk-margin uk-margin-remove-bottom">

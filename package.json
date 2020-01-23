@@ -16,7 +16,7 @@
     "test": "jest || true",
     "jest": "jest --watchAll",
     "reset": "rm -rf src/ sass/ pages/ node_modules/ yarn.lock models/ lib/ email/ && git reset --hard && yarn install",
-    "storybook": "start-storybook -s ./public -p 6006 -c .storybook"
+    "storybook": "start-storybook -s ./public HOST=http://localhost:3000/ -p 6006 -c .storybook"
   },
   "dependencies": {
     "@zeit/next-css": "^1.0.1",

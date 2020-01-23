@@ -17,7 +17,7 @@ function Confirmation(props: any) {
 
   useEffect(() => {
     if (user && token) {
-      fetch(url, {
+      fetch(process.env.HOST + url, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

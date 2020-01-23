@@ -2,7 +2,7 @@ import Redirect from "../src/components/animation/Redirect";
 // import {NextSeo} from "next-seo";
 import {useState, useEffect, FormEvent} from "react";
 import notify from "../src/components/utility/Notify";
-import Password from "../src/components/authenticate/Password";
+import Password from "../src/components/authenticate/Password/Password";
 import Link from "next/link";
 import Spinner from "../src/components/global/Spinner/Spinner";
 
@@ -22,7 +22,7 @@ function ResetPassword(props: any) {
 
   useEffect(() => {
     if (user && token && email && action && confirmation.status === undefined) {
-      fetch(url, {
+      fetch(process.env.HOST + url, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -75,7 +75,7 @@ function ResetPassword(props: any) {
     const password = document.querySelector('[name="password-component"]') as HTMLInputElement;
 
     if (user && token && email && action && confirmation.status && password.value !== undefined) {
-      fetch(url, {
+      fetch(process.env.HOST + url, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

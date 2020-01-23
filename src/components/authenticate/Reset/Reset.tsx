@@ -1,4 +1,5 @@
-import notify from '../utility/Notify';
+import React from 'react';
+import notify from '../../utility/Notify';
 
 function Reset(): JSX.Element {
   const handleReset = (e: any) => {
@@ -17,7 +18,7 @@ function Reset(): JSX.Element {
       action: "initiate",
     };
 
-    fetch(url, {
+    fetch(process.env.HOST + url, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

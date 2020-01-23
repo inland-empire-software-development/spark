@@ -7,7 +7,7 @@ export default function LogOut() {
     // API route that will handle signing out
     const url = '/api/authenticate/logout';
 
-    fetch(url, {
+    fetch(process.env.HOST + url, {
       method: 'POST',
     }).then((response) => response.json()).then((response) => {
       const {status} = response;
