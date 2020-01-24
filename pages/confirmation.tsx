@@ -1,7 +1,7 @@
 import {NextSeo} from "next-seo";
 import {useEffect, useState} from 'react';
 import notify from "../src/components/utility/Notify";
-import Redirect from "../src/components/animation/Redirect";
+import Redirect from "../src/components/animation/Redirect/Redirect";
 
 /**
  * Check provided input - activate account if valid.

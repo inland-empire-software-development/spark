@@ -1,6 +1,6 @@
 // Animated loader when redirecting a user to another page.
 import {DefaultSeo} from "next-seo";
-import SEO from "../../../next-seo.config";
+import SEO from "../../../../next-seo.config";
 
 export default function Redirect(): JSX.Element {
   return (

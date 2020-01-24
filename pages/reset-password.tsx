@@ -1,4 +1,4 @@
-import Redirect from "../src/components/animation/Redirect";
+import Redirect from "../src/components/animation/Redirect/Redirect";
 // import {NextSeo} from "next-seo";
 import {useState, useEffect, FormEvent} from "react";
 import notify from "../src/components/utility/Notify";
@@ -118,7 +118,7 @@ function ResetPassword(props: any) {
       <div className="uk-container uk-margin-large-top">
         {confirmation.status &&
           (
-            <div id="login-container" className="uk-section uk-flex uk-flex-middle uk-animation-fade">
+            <div className="content-container uk-section uk-flex uk-flex-middle uk-animation-fade">
               <Spinner ratio={3} classes="uk-hidden"/>
               <form onSubmit={(event) => handlePasswordReset(event)}>
                 <div className="uk-margin uk-width-large uk-margin-auto uk-card uk-card-default uk-card-body">

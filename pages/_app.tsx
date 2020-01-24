@@ -6,8 +6,8 @@ import fetch from "isomorphic-unfetch";
 import {DefaultSeo} from 'next-seo';
 import SEO from '../next-seo.config';
 import Unauthorized from "../src/components/global/Unauthorized/Unauthorized";
-import Redirect from "../src/components/animation/Redirect";
-import Loader from "../src/components/animation/Loader";
+import Redirect from "../src/components/animation/Redirect/Redirect";
+import Loader from "../src/components/animation/Loader/Loader";
 import {MyAppContext} from "../";
 
 interface MyAppState extends MyAppContext {

@@ -3,6 +3,8 @@ import React, {FormEvent} from 'react';
 import notify from '../../utility/Notify';
 import {Message} from '../../../../index';
 
+import './Login.scss';
+
 function LogIn(): JSX.Element {
   const handleLogin = (event: FormEvent) => {
     event.preventDefault();
@@ -65,7 +67,7 @@ function LogIn(): JSX.Element {
         </div>
         <div className="uk-margin">
           <div className="uk-inline uk-width-1-1">
-            <i className="uk-form-icon fal fa-lock" />
+            <i className="uk-form-icon fal fa-lock-alt" />
             <input className="uk-input uk-form-large" name="login-password" type="password"
               autoComplete="current-password" placeholder="password" required />
           </div>

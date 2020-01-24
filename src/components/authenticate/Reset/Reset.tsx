@@ -1,5 +1,6 @@
 import React from 'react';
 import notify from '../../utility/Notify';
+import './Reset.scss';
 
 function Reset(): JSX.Element {
   const handleReset = (e: any) => {
@@ -48,7 +49,7 @@ function Reset(): JSX.Element {
       <form onSubmit={(event) => handleReset(event)}>
         <div className="uk-margin">
           <div className="uk-inline uk-width-1-1">
-            <i className="uk-form-icon fa fa-envelope"/>
+            <i className="uk-form-icon fal fa-envelope"/>
             <input id="email" className="uk-input uk-form-large" type="email" placeholder="Email address" required/>
           </div>
         </div>
