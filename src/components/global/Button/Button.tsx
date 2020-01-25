@@ -2,7 +2,7 @@ import React from 'react';
 import './Button.scss';
 
 interface Button {
-    link?: string | undefined;
+    href?: string | undefined;
     label: string;
     target?: string | boolean | undefined;
     classes?: string | undefined;
@@ -21,7 +21,7 @@ export interface Options {
 
 function Button(props: Button) {
   const {
-    link = "#",
+    href = false,
     label,
     target = "_self",
     classes = "",
@@ -36,22 +36,24 @@ function Button(props: Button) {
 
   const opts: Options = {target};
 
-
   if (toggle) {
     opts["uk-toggle"] = toggle;
   }
 
-  const widths = ["small", "third", "half", "full"];
+  if (href) {
+    opts["href"] = href;
+  }
 
+  const widths = ["small", "third", "half", "full"];
 
   // TODO: make this component read cleaner - create function to genereate className
   return (
     // TODO: make it so internal links use Link component
-    <a className={`${type} ${color} ${text} button-${widths[Number(width)]}
+    <a
+      className={`${type} ${color} ${text} button-${widths[Number(width)]}
       ${border} border-size-${borderSize} hvr-ripple-out
       ${classes}`}
-    {...opts}
-    href={link}
+      {...opts}
     >
       {label}
     </a>

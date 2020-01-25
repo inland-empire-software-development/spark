@@ -2,6 +2,7 @@ import SEO from "../next-seo.config";
 import {DefaultSeo} from "next-seo";
 import Link from "next/link";
 import Footer from '../src/components/global/Footer/Footer';
+import Button from "../src/components/global/Button/Button";
 
 // render home page.
 function Home(): JSX.Element {
@@ -15,9 +16,7 @@ function Home(): JSX.Element {
           />
           <section className="uk-padding">
             <p>Home</p>
-            <Link href="/authenticate">
-              <button className="uk-button">Log in</button>
-            </Link>
+            <Button label="Log in" href="/authenticate" />
           </section>
         </div>
       </section>
