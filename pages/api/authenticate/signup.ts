@@ -1,7 +1,8 @@
 import db from '../../../lib/db';
-import {Request, Response, Message} from '../../..';
+import {Message} from '../../..';
+import {NextApiRequest, NextApiResponse} from 'next';
 
-export default async (req: Request, res: Response): Promise<void> => {
+export default async (req: NextApiRequest, res: NextApiResponse): Promise<void> => {
   // Get credentials from JSON body
   const {username, email, password, role} = req.body;
 

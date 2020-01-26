@@ -1,7 +1,8 @@
 import db from '../../../lib/db';
-import {Request, Response, Message} from '../../..';
+import {Message} from '../../..';
+import {NextApiResponse, NextApiRequest} from 'next';
 
-export default async (req: Request, res: Response): Promise<void> => {
+export default async (req: NextApiRequest, res: NextApiResponse): Promise<void> => {
   const {user = false, token = false} = req.body;
 
   if (user && token) {
