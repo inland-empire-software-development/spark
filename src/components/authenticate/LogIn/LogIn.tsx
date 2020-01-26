@@ -1,15 +1,13 @@
 import fetch from 'isomorphic-unfetch';
-import React, {FormEvent} from 'react';
+import React from 'react';
 import notify from '../../utility/Notify';
 import {Message} from '../../../../index';
 
 import './Login.scss';
+import Button from '../../global/Button/Button';
 
 function LogIn(): JSX.Element {
-  const handleLogin = (event: FormEvent) => {
-    event.preventDefault();
-    event.stopPropagation();
-
+  const handleLogin = () => {
     const username: HTMLSelectElement | null = document.querySelector('[name="login-username"]');
     const password: HTMLSelectElement | null = document.querySelector('[name="login-password"]');
     const spinner: HTMLElement | null = document.getElementById('spinner');
@@ -48,7 +46,7 @@ function LogIn(): JSX.Element {
               message,
               status: 'danger',
               pos: 'top-left',
-              timeout: 5000,
+              timeout: 1500,
             });
           }
         });
@@ -57,7 +55,7 @@ function LogIn(): JSX.Element {
   return (
     <section className="auth-login">
       <p className="uk-text-center">Sign in to your account</p>
-      <form onSubmit={(event: any) => handleLogin(event)}>
+      <form id="login-form" onSubmit={(e) => e.preventDefault()}>
         <div className="uk-margin">
           <div className="uk-inline uk-width-1-1">
             <i className="uk-form-icon fal fa-user" />
@@ -75,9 +73,14 @@ function LogIn(): JSX.Element {
         <div className="uk-margin uk-text-right@s uk-text-center uk-text-small">
           <a href="#" uk-switcher-item="2">Forgot Password?</a>
         </div>
-        <div className="uk-margin">
-          <button type="submit" className="uk-button bg-primary black uk-button-large uk-width-1-1">Login</button>
-        </div>
+
+        <Button
+          label="login"
+          callback={handleLogin}
+          form="login-form"
+          width="3"
+        />
+
         <div className="uk-text-small uk-text-center">
           Not registered? <a href="#" uk-switcher-item="1">Create an account</a>
         </div>

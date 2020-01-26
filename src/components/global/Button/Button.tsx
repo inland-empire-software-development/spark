@@ -5,30 +5,43 @@ interface Button {
     href?: string | undefined;
     label: string;
     target?: string | boolean | undefined;
+    callback?: Function;
+    form?: string | undefined;
     classes?: string | undefined;
     toggle?: boolean | undefined;
     border?: string | undefined;
     borderSize?: number | undefined;
-    type?: string | undefined;
+    type?: "button" | "submit" | "reset" | undefined;
     color?: string | undefined;
     text?: string | undefined;
     width?: string | undefined;
 }
 
 export interface Options {
-    [option: string]: string | boolean | undefined;
+    [option: string]: any;
+}
+
+function getClass(options: Options) {
+  const widths = ["small", "third", "half", "full"];
+  const {color, text, width, border, borderSize, classes} = options;
+
+  return `button ${color} ${text} button-${widths[Number(width)]}
+  ${border} border-size-${borderSize} hvr-ripple-out
+  ${classes}`;
 }
 
 function Button(props: Button) {
   const {
     href = false,
+    type = "submit",
+    form = undefined,
+    callback = undefined,
     label,
     target = "_self",
     classes = "",
     toggle = "false",
     border = "border-red",
     borderSize = "1",
-    type = "button",
     color = "bg-red",
     text = "white",
     width = 0,
@@ -44,19 +57,23 @@ function Button(props: Button) {
     opts["href"] = href;
   }
 
-  const widths = ["small", "third", "half", "full"];
+  const handleClick = () => {
+    if (form) {
+      const getForm = document.querySelector(`form#${form}`) as HTMLFormElement;
 
-  // TODO: make this component read cleaner - create function to genereate className
+      if (getForm) {
+        getForm.addEventListener('submit', (event) => {
+          event.preventDefault();
+          if (getForm.checkValidity() && callback) callback();
+        });
+      }
+    }
+  };
+
   return (
-    // TODO: make it so internal links use Link component
-    <a
-      className={`${type} ${color} ${text} button-${widths[Number(width)]}
-      ${border} border-size-${borderSize} hvr-ripple-out
-      ${classes}`}
-      {...opts}
-    >
+    <button type={type} className={getClass({color, text, width, border, borderSize, classes})} {...opts} onClick={handleClick} >
       {label}
-    </a>
+    </button>
   );
 }
 
