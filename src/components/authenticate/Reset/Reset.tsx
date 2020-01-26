@@ -1,11 +1,10 @@
 import React from 'react';
 import notify from '../../utility/Notify';
+import Button from '../../global/Button/Button';
 import './Reset.scss';
 
 function Reset(): JSX.Element {
-  const handleReset = (e: any) => {
-    e.preventDefault();
-
+  const handleReset = () => {
     // API route that will handle initiating password reset process.
     const url = 'api/authenticate/reset';
     const email = document.getElementById('email') as HTMLInputElement;
@@ -46,7 +45,7 @@ function Reset(): JSX.Element {
     <section className="auth-recovery">
       <h3 className="uk-text-center">Forgot your password?</h3>
       <p className="uk-text-center uk-width-medium@s uk-margin-auto">Enter account email address and we will send you an email to reset your password.</p>
-      <form onSubmit={(event) => handleReset(event)}>
+      <form id="reset-form" onSubmit={(event) => event.preventDefault()}>
         <div className="uk-margin">
           <div className="uk-inline uk-width-1-1">
             <i className="uk-form-icon fal fa-envelope"/>
@@ -54,7 +53,12 @@ function Reset(): JSX.Element {
           </div>
         </div>
         <div className="uk-margin">
-          <button type="submit" className="uk-button bg-primary black uk-button-large uk-width-1-1">Send Email</button>
+          <Button
+            label="Send Email"
+            callback={handleReset}
+            form="reset-form"
+            width="3"
+          />
         </div>
         <div className="uk-text-small uk-text-center">
           <a href="#" uk-switcher-item="0">Back to login</a>

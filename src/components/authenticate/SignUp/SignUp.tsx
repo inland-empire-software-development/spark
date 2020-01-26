@@ -2,7 +2,7 @@ import React, {useState, FormEvent} from 'react';
 import './SignUp.scss';
 import Message from '../../global/Message/Message';
 import Password from '../Password/Password';
-
+import Button from '../../global/Button/Button';
 /**
  * Renders the SignUp component
  * @constructor
@@ -33,9 +33,7 @@ function SignUp(): JSX.Element {
   };
 
   // Handles the sign up process
-  const handleSignUp = (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-
+  const handleSignUp = () => {
     if ((process as any).browser && document) {
       const spinner: HTMLElement | null = document.getElementById('spinner');
 
@@ -173,7 +171,7 @@ function SignUp(): JSX.Element {
     <section className="auth-signup">
       <Message message={message.message} hidden={!message.status} priority={0}/>
       <p className="uk-text-center">Sign up today. It&apos;s free!</p>
-      <form onSubmit={(e) => handleSignUp(e)}>
+      <form id="signUp-form" onSubmit={(event) => event.preventDefault()}>
         <div className="uk-margin uk-margin-remove-bottom">
           <div className="uk-inline uk-width-1-1">
             <i className="uk-form-icon fal fa-user"/>
@@ -187,7 +185,7 @@ function SignUp(): JSX.Element {
               onBlur={(e) => handleUserCheck(e)}
             />
             <div className="input-spinner uk-hidden" uk-spinner="true"/>
-            <i className="fal fa-check uk-hidden"/>
+            <i className="fal fa-check signup-check uk-hidden"/>
           </div>
           <small className="user-message" data-message="username">
             <i className="uk-form-icon fal fa-exclamation-triangle"/>
@@ -207,7 +205,7 @@ function SignUp(): JSX.Element {
               onBlur={(e) => handleEmailCheck(e)}
             />
             <div className="input-spinner uk-hidden" uk-spinner="true"/>
-            <i className="fal fa-check uk-hidden"/>
+            <i className="fal fa-check signup-check uk-hidden"/>
 
           </div>
           <small className="user-message" data-message="email">
@@ -223,7 +221,12 @@ function SignUp(): JSX.Element {
           </label>
         </div>
         <div className="uk-margin">
-          <button className="uk-button bg-primary black uk-button-large uk-width-1-1">Create Account</button>
+          <Button
+            label="Create Account"
+            callback={handleSignUp}
+            form="signUp-form"
+            width="3"
+          />
         </div>
         <div className="uk-text-small uk-text-center">
             Already have an account? <a href="#" uk-switcher-item="0">Log in</a>

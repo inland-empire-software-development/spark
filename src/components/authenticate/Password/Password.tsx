@@ -71,7 +71,7 @@ const handlePassword = (event: React.ChangeEvent<HTMLInputElement>) => {
 
 function Password(): JSX.Element {
   return (
-    <div className="uk-margin password-requirements uk-margin-remove-top">
+    <div id="password-component" className="uk-margin password-requirements uk-margin-remove-top">
       <p className="uk-margin-remove-bottom"><strong>Password Requirements</strong></p>
       <ul className="uk-margin-remove-bottom">
         <li>At least one numeric character <i className="uk-hidden fal fa-check green" data-check="number"/></li>

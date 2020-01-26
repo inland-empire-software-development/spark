@@ -54,7 +54,9 @@
   }
 
   @media screen and (max-width: 860px) {
-    width: 50% !important;
+    &:not(.button-full) {
+      width: 50% !important;
+    }
   }
 
   @media screen and (max-width: 450px) {

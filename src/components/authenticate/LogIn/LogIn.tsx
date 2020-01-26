@@ -55,7 +55,7 @@ function LogIn(): JSX.Element {
   return (
     <section className="auth-login">
       <p className="uk-text-center">Sign in to your account</p>
-      <form id="login-form" onSubmit={(e) => e.preventDefault()}>
+      <form id="login-form" onSubmit={(event) => event.preventDefault()}>
         <div className="uk-margin">
           <div className="uk-inline uk-width-1-1">
             <i className="uk-form-icon fal fa-user" />

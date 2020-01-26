@@ -20,9 +20,9 @@
 
   .input-spinner,
   .uk-spinner,
-  .fa-check {
-    position: relative;
-    top: -40px;
+  .fa-check.signup-check {
+    position: absolute;
+    top: 45px;
     left: -30px;
     width: 20px;
   }
