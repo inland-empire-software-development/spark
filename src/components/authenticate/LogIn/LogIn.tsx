@@ -75,7 +75,7 @@ function LogIn(): JSX.Element {
         </div>
 
         <Button
-          label="login"
+          label="Login"
           callback={handleLogin}
           form="login-form"
           width="3"

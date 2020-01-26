@@ -40,9 +40,9 @@ function Button(props: Button) {
     target = "_self",
     classes = "",
     toggle = "false",
-    border = "border-red",
+    border = "border-primary",
     borderSize = "1",
-    color = "bg-red",
+    color = "bg-primary",
     text = "white",
     width = 0,
   } = props;
