@@ -1,7 +1,8 @@
 import ReactDOMServer from 'react-dom/server';
 import confirmationEmail from './../../email/templates/main/confirmationEmail';
 import resetPasswordEmail from './../../email/templates/main/resetPasswordEmail';
-import {Request, Response, Message} from '../..';
+import {Message} from '../..';
+import {NextApiRequest, NextApiResponse} from "next";
 
 const nodemailer = require('nodemailer');
 const transporter = nodemailer.createTransport({
@@ -45,7 +46,7 @@ const handleAction = (options: { action: string; username: string; email: string
   }
 };
 
-export default async (req: Request, res: Response): Promise<void> => {
+export default async (req: NextApiRequest, res: NextApiResponse): Promise<void> => {
   // set headers
   res.setHeader("Cache-Control", "no-store, no-cache, must-revalidate, proxy-revalidate");
   res.setHeader("Content-Type", "json/javascript");

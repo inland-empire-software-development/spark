@@ -1,9 +1,10 @@
 import db from '../../../lib/db';
 import auth from '../../../lib/auth';
 import client from '../../../lib/redis';
-import {Response, Request, Message} from '../../..';
+import {Message} from '../../..';
+import {NextApiResponse, NextApiRequest} from 'next';
 
-export default async (req: Request, res: Response) => {
+export default async (req: NextApiRequest, res: NextApiResponse) => {
   // set headers
   res.setHeader("Cache-Control", "no-store, no-cache, must-revalidate, proxy-revalidate");
   res.setHeader("Content-Type", "json/javascript");
@@ -32,6 +33,7 @@ export default async (req: Request, res: Response) => {
     // if user is not found, return early
     if (!user) {
       res.send(invalid);
+      res.end();
       return false;
     }
 
@@ -48,14 +50,17 @@ export default async (req: Request, res: Response) => {
         // set HttpOnly cookie
         res.setHeader('Set-Cookie', [`portal-token=${token}; HttpOnly`, `portal-user=${username}; HttpOnly`]);
         res.send(valid);
+        res.end();
         return true;
       } else {
         res.send(unconfirmed);
+        res.end();
         return false;
       }
     } else {
       // let user know this was an invalid request
       res.send(invalid);
+      res.end();
       return false;
     }
   });

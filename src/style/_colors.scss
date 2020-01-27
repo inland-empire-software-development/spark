@@ -1,0 +1,242 @@
+// TODO: For error messages or message component in general - have to make sure that dark colors have a light text.
+// branding colors
+.bg-yellow {
+  background-color: $yellow;
+}
+
+.bg-red {
+  background-color: $red;
+}
+
+.bg-blue {
+  background-color: $blue;
+}
+
+.bg-green {
+  background-color: $green;
+}
+
+.bg-black {
+  background-color: $black;
+}
+
+.bg-white {
+  background-color: $white;
+}
+
+.bg-dark-gray {
+  background-color: $dark-gray;
+}
+
+.bg-light-gray {
+  background-color: $light-gray;
+}
+
+.bg-primary {
+  background-color: $primary;
+}
+
+.bg-secondary {
+  background-color: $secondary;
+}
+
+.bg-tertiary {
+  background-color: $tertiary;
+}
+
+.bg-snow {
+  background-color: $snow;
+}
+
+.black {
+  color: $black !important;
+}
+
+.white {
+  color: $white !important;
+}
+
+.yellow {
+  color: $yellow;
+}
+
+.red {
+  color: $red;
+}
+
+.blue {
+  color: $blue;
+}
+
+.green {
+  color: $green;
+}
+
+.dark-gray {
+  color: $dark-gray;
+}
+
+.light-gray {
+  color: $light-gray;
+}
+
+.primary {
+  color: $primary;
+}
+
+.secondary {
+  color: $secondary;
+}
+
+.tertiary {
+  color: $tertiary;
+}
+
+.snow {
+  color: $snow;
+}
+
+// selection color
+::selection {
+  background: $primary; /* WebKit/Blink Browsers */
+}
+
+::-moz-selection {
+  background: $primary; /* Gecko Browsers */
+}
+
+// borders
+.card-bar-blue {
+  border-top: 3px solid $blue;
+}
+
+.card-bar-red {
+  border-top: 3px solid $red;
+}
+
+.card-bar-green {
+  border-top: 3px solid $green;
+}
+
+.card-bar-yellow {
+  border-top: 3px solid $yellow;
+}
+
+.border-black,
+.border-white,
+.border-yellow,
+.border-red,
+.border-blue,
+.border-green,
+.border-dark-gray,
+.border-light-gray,
+.border-primary,
+.border-secondary,
+.border-tertiary,
+.border-snow {
+  border-style: solid;
+}
+
+.border-black {
+  border-color: $black !important;
+}
+
+.border-white {
+  border-color: $white !important;
+}
+
+.border-yellow {
+  border-color: $yellow;
+}
+
+.border-red {
+  border-color: $red;
+}
+
+.border-blue {
+  border-color: $blue;
+}
+
+.border-green {
+  border-color: $green;
+}
+
+.border-dark-gray {
+  border-color: #333;
+}
+
+.border-light-gray {
+  border-color: #626262;
+}
+
+.border-primary {
+  border-color: $primary;
+}
+
+.border-secondary {
+  border-color: $secondary;
+}
+
+.border-tertiary {
+  border-color: $tertiary;
+}
+
+.border-snow {
+  border-color: $snow;
+}
+
+.border-size-1 {
+  border-width: 1px;
+}
+
+.border-size-2 {
+  border-width: 2px;
+}
+
+.border-size-3 {
+  border-width: 3px;
+}
+
+.border-size-4 {
+  border-width: 4px;
+}
+
+.border-size-5 {
+  border-width: 5px;
+}
+
+.border-size-6 {
+  border-width: 6px;
+}
+
+.gradient-background {
+  background: rgb(238, 108, 103);
+  background: -moz-linear-gradient(90deg, rgba(238, 108, 103, 1) 0%, rgba(242, 147, 113, 1) 50%, rgba(244, 185, 127, 1) 100%);
+  background: -webkit-linear-gradient(90deg, rgba(238, 108, 103, 1) 0%, rgba(242, 147, 113, 1) 50%, rgba(244, 185, 127, 1) 100%);
+  background: linear-gradient(90deg, rgba(238, 108, 103, 1) 0%, rgba(242, 147, 113, 1) 50%, rgba(244, 185, 127, 1) 100%);
+  filter: progid:dximagetransform.microsoft.gradient(startColorstr="#ee6c67", endColorstr="#f4b97f", GradientType=1);
+}
+
+.gradient-background-alt {
+  background: rgb(238, 108, 103);
+  background: -moz-linear-gradient(270deg, rgba(238, 108, 103, 1) 0%, rgba(242, 147, 113, 1) 50%, rgba(244, 185, 127, 1) 100%);
+  background: -webkit-linear-gradient(270deg, rgba(238, 108, 103, 1) 0%, rgba(242, 147, 113, 1) 50%, rgba(244, 185, 127, 1) 100%);
+  background: linear-gradient(270deg, rgba(238, 108, 103, 1) 0%, rgba(242, 147, 113, 1) 50%, rgba(244, 185, 127, 1) 100%);
+  filter: progid:dximagetransform.microsoft.gradient(startColorstr="#ee6c67", endColorstr="#f4b97f", GradientType=1);
+}
+
+.gradient-background-vertical {
+  background: rgb(238, 108, 103);
+  background: -moz-linear-gradient(0deg, rgba(238, 108, 103, 1) 0%, rgba(242, 147, 113, 1) 50%, rgba(244, 185, 127, 1) 100%);
+  background: -webkit-linear-gradient(0deg, rgba(238, 108, 103, 1) 0%, rgba(242, 147, 113, 1) 50%, rgba(244, 185, 127, 1) 100%);
+  background: linear-gradient(0deg, rgba(238, 108, 103, 1) 0%, rgba(242, 147, 113, 1) 50%, rgba(244, 185, 127, 1) 100%);
+  filter: progid:dximagetransform.microsoft.gradient(startColorstr="#ee6c67", endColorstr="#f4b97f", GradientType=1);
+}
+
+.gradient-background-vertical-alt {
+  background: rgb(238, 108, 103);
+  background: -moz-linear-gradient(180deg, rgba(238, 108, 103, 1) 0%, rgba(242, 147, 113, 1) 50%, rgba(244, 185, 127, 1) 100%);
+  background: -webkit-linear-gradient(180deg, rgba(238, 108, 103, 1) 0%, rgba(242, 147, 113, 1) 50%, rgba(244, 185, 127, 1) 100%);
+  background: linear-gradient(180deg, rgba(238, 108, 103, 1) 0%, rgba(242, 147, 113, 1) 50%, rgba(244, 185, 127, 1) 100%);
+  filter: progid:dximagetransform.microsoft.gradient(startColorstr="#ee6c67", endColorstr="#f4b97f", GradientType=1);
+}
