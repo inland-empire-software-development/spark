@@ -7,7 +7,9 @@
     "types": [
       "node",
       "next",
-      "UIkit"
+      "jest",
+      "UIkit",
+      "marked"
     ],
     "lib": [
       "esnext",
@@ -23,16 +25,20 @@
     "esModuleInterop": true,
     "moduleResolution": "node",
     "resolveJsonModule": true,
-    "isolatedModules": true
+    "isolatedModules": true,
   },
   "typeRoots": [
     "node_modules/@types",
     "@types",
-    "index.d.ts",
+    "index.d.ts"
   ],
   "exclude": [
     "node_modules",
-    "typings"
+    "typings",
+    "**/*.spec.ts",
+    "**/*.spec.tsx",
+    "**/*.test.ts",
+    "**/*.test.tsx"
   ],
   "rules": {
     "@typescript-eslint/member-naming": [
@@ -40,8 +46,8 @@
       {
         "private": "^__",
         "protected": "^_"
-      }
-    ]
+      },
+    ],
   },
   "include": [
     "next-env.d.ts",
