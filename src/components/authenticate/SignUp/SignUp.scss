@@ -1,0 +1,53 @@
+@import '../../../style/_variables.scss';
+
+.auth-signup {
+  .fa-exclamation-triangle {
+    position: relative;
+    top: 0 !important;
+    left: 0 !important;
+    margin-right: 10px;
+    height: 12px;
+    color: white;
+  }
+
+  .fa-user,
+  .fa-envelope {
+    position: relative;
+    top: 40px;
+    left: 15px;
+    font-size: 18px;
+  }
+
+  .input-spinner,
+  .uk-spinner,
+  .fa-check.signup-check {
+    position: absolute;
+    top: 45px;
+    left: -30px;
+    width: 20px;
+  }
+
+  .fa-check {
+    color: $green;
+  }
+}
+
+.user-message {
+  display: block;
+  width: 100%;
+  color: $snow;
+  height: 30px;
+  padding: 10px;
+  line-height: 10px;
+  background-color: $yellow;
+  box-sizing: border-box;
+  visibility: hidden;
+
+  i {
+    width: 15px;
+    position: relative;
+    color: $snow;
+    float: right;
+    font-size: 12px;
+  }
+}
