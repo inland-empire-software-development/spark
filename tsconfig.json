@@ -9,11 +9,11 @@
       "next",
       "jest",
       "UIkit",
-      "marked"
+      "marked",
     ],
     "lib": [
       "esnext",
-      "dom"
+      "dom",
     ],
     "noUnusedLocals": true,
     "noUnusedParameters": true,
@@ -25,7 +25,7 @@
     "esModuleInterop": true,
     "moduleResolution": "node",
     "resolveJsonModule": true,
-    "isolatedModules": true
+    "isolatedModules": true,
   },
   "typeRoots": [
     "node_modules/@types",
@@ -38,21 +38,21 @@
     "**/*.spec.ts",
     "**/*.spec.tsx",
     "**/*.test.ts",
-    "**/*.test.tsx"
+    "**/*.test.tsx",
   ],
   "rules": {
     "@typescript-eslint/member-naming": [
       "error",
       {
         "private": "^__",
-        "protected": "^_"
-      }
-    ]
+        "protected": "^_",
+      },
+    ],
   },
   "include": [
     "next-env.d.ts",
     "index.d.ts",
     "**/*.ts",
-    "**/*.tsx"
-  ]
-}
+    "**/*.tsx",
+  ],
+};
