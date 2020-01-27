@@ -1,7 +1,8 @@
 import db from '../../../lib/db';
-import {Request, Response, Message} from '../../..';
+import {Message} from '../../..';
+import {NextApiRequest, NextApiResponse} from "next";
 
-export default async (req: Request, res: Response) => {
+export default async (req: NextApiRequest, res: NextApiResponse) => {
   // Get credentials from JSON body
   const {username} = req.body;
 
@@ -10,6 +11,7 @@ export default async (req: Request, res: Response) => {
         .then((result: any) => {
           res.send(JSON.stringify(result));
         }).catch((error: any) => {
+          res.status(500);
           res.send(JSON.stringify(error));
         });
   } else {

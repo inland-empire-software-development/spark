@@ -1,0 +1,11 @@
+@import '../../../style/_variables.scss';
+
+.auth-login {
+  .fa-user,
+  .fa-lock-alt {
+    position: relative;
+    top: 40px;
+    font-size: 18px;
+    left: 15px;
+  }
+}

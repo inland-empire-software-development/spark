@@ -1,7 +1,8 @@
 import db from '../../../lib/db';
-import {Response, Request, Message} from '../../..';
+import {Message} from '../../..';
+import {NextApiRequest, NextApiResponse} from 'next';
 
-export default (req: Request, res: Response): void => {
+export default (req: NextApiRequest, res: NextApiResponse): void => {
   // set headers
   res.setHeader("Cache-Control", "no-store, no-cache, must-revalidate, proxy-revalidate");
   res.setHeader("Content-Type", "json/javascript");

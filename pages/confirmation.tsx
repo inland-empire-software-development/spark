@@ -1,7 +1,7 @@
 import {NextSeo} from "next-seo";
 import {useEffect, useState} from 'react';
 import notify from "../src/components/utility/Notify";
-import Redirect from "../src/components/animation/Redirect";
+import Redirect from "../src/components/animation/Redirect/Redirect";
 
 /**
  * Check provided input - activate account if valid.
@@ -11,13 +11,13 @@ import Redirect from "../src/components/animation/Redirect";
 function Confirmation(props: any) {
   const {query} = props;
   const {user, token} = query;
-  const url = '/api/validate/confirm';
+  const url = 'api/validate/confirm';
 
   const [confirmation, setConfirmation] = useState(undefined);
 
   useEffect(() => {
     if (user && token) {
-      fetch(url, {
+      fetch(process.env.HOST + url, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

@@ -1,7 +1,8 @@
 import db from '../../../lib/db';
-import {Response, Request, Message} from '../../../index';
+import {Message} from '../../../index';
+import {NextApiRequest, NextApiResponse} from "next";
 
-export default async (req: Request, res: Response) => {
+export default async (req: NextApiRequest, res: NextApiResponse) => {
   // Get credentials from JSON body
   const {email} = req.body;
 

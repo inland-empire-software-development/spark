@@ -1,10 +1,10 @@
-import Redirect from "../src/components/animation/Redirect";
+import Redirect from "../src/components/animation/Redirect/Redirect";
 // import {NextSeo} from "next-seo";
 import {useState, useEffect, FormEvent} from "react";
 import notify from "../src/components/utility/Notify";
-import Password from "../src/components/authenticate/Password";
+import Password from "../src/components/authenticate/Password/Password";
 import Link from "next/link";
-import Spinner from "../src/components/global/Spinner";
+import Spinner from "../src/components/global/Spinner/Spinner";
 
 /**
  * Check provided input - reset account password if valid.
@@ -22,7 +22,7 @@ function ResetPassword(props: any) {
 
   useEffect(() => {
     if (user && token && email && action && confirmation.status === undefined) {
-      fetch(url, {
+      fetch(process.env.HOST + url, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -75,7 +75,7 @@ function ResetPassword(props: any) {
     const password = document.querySelector('[name="password-component"]') as HTMLInputElement;
 
     if (user && token && email && action && confirmation.status && password.value !== undefined) {
-      fetch(url, {
+      fetch(process.env.HOST + url, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -118,7 +118,7 @@ function ResetPassword(props: any) {
       <div className="uk-container uk-margin-large-top">
         {confirmation.status &&
           (
-            <div id="login-container" className="uk-section uk-flex uk-flex-middle uk-animation-fade">
+            <div className="content-container uk-section uk-flex uk-flex-middle uk-animation-fade">
               <Spinner ratio={3} classes="uk-hidden"/>
               <form onSubmit={(event) => handlePasswordReset(event)}>
                 <div className="uk-margin uk-width-large uk-margin-auto uk-card uk-card-default uk-card-body">

@@ -1,0 +1,20 @@
+// Variables
+@import '_variables';
+
+// Vendors
+@import
+  '../../node_modules/uikit/src/scss/variables-theme',
+  '../../node_modules/uikit/src/scss/mixins-theme',
+  '../../node_modules/uikit/src/scss/uikit-theme';
+
+// Base
+@import
+  './_colors',
+  './_animation',
+  './_global',
+  './_typography';
+
+// Pages
+@import
+  'pages/_index',
+  'pages/_welcome';

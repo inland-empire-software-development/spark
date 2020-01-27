@@ -1,6 +1,8 @@
 import db from "../../lib/db";
-import {Response, Request, Message} from "../../index";
+import {Message} from "../../index";
 import {error} from "next/dist/build/output/log";
+import {NextApiRequest, NextApiResponse} from "next";
+
 const root = require("app-root-path");
 const fs = require("fs");
 
@@ -11,7 +13,7 @@ interface StoreModel {
 type Messages = StoreModel;
 
 // Setup database tables if they don't exist.
-export default (req: Request, res: Response) => {
+export default (req: NextApiRequest, res: NextApiResponse) => {
   const {secret} = req.query; // secret key from user requesting setup
 
   // check if secret given matches one in this environment
