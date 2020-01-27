@@ -9,7 +9,9 @@
   "scripts": {
     "dev": "next dev",
     "setup": "node setup.js",
-    "development": "next start -p 5201",
+    "development": "next start -p 6001",
+    "staging": "next start -p 6002",
+    "production": "next start -p 6003",
     "build": "next build",
     "start": "next start",
     "lint": "./node_modules/.bin/eslint ./**/*.{js,ts,tsx} --quiet --fix || true",
