@@ -1,6 +1,6 @@
 import {useContext} from 'react';
 import Context from '../src/context';
-import Logout from '../src/components/authenticate/Logout/LogOut';
+import Logout from '../src/components/authenticate/LogOut/LogOut';
 import {DefaultSeo} from "next-seo";
 import SEO from "../next-seo.config";
 
