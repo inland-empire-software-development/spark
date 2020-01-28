@@ -1,7 +1,17 @@
 @import '../../../style/_variables.scss';
 
 #global-nav {
-  a {
-    color: $snow;
+  li {
+      padding: 0 10px;
+
+    a {
+        font-family: medium;
+        font-size: 16px;
+        color: $snow;
+
+        &:hover {
+          text-decoration-line: underline;
+        }
+      }
   }
 }

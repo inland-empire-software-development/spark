@@ -7,11 +7,18 @@ function Navigation(): JSX.Element {
       <div className="uk-navbar-left">
 
         <ul className="uk-navbar-nav">
-          <li className="uk-active"><a href="#">Active</a></li>
-          <li>
-            <a href="#">Parent</a>
+          <li className="uk-active">
+            <a href="#">Home</a>
           </li>
-          <li><a href="#">Item</a></li>
+          <li>
+            <a href="#">Cohorts</a>
+          </li>
+          <li>
+            <a href="#">Blog</a>
+          </li>
+          <li>
+            <a href="#">Contact</a>
+          </li>
         </ul>
 
       </div>
