@@ -5,10 +5,10 @@
     "jsx": "preserve",
     "allowSyntheticDefaultImports": true,
     "types": [
+      "uikit",
       "node",
       "next",
-      "jest",
-      "UIkit",
+      "jest",      
       "marked"
     ],
     "lib": [
