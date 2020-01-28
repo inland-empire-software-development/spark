@@ -12,7 +12,9 @@ $selectedLinkBackground: #f8f9fb;
   ul {
     font-family: "Light";
     font-size: 20px;
-
+    color: $light-gray;
+    list-style: none;
+    
     li {
       margin-top: 12px;
       margin-bottom: 12px;
@@ -21,5 +23,12 @@ $selectedLinkBackground: #f8f9fb;
 
   .icon {
     margin-right: 0.5em;
+  }
+
+  .section-title {
+    font-family: "Medium";
+    font-size: 24px;
+    color: $dark-gray;
+    margin: 24px 0 24px 0;
   }
 }
