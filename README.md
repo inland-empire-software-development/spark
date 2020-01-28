@@ -4,10 +4,15 @@
     src="https://raw.githubusercontent.com/inland-empire-software-development/spark/00031-readme-update/public/images/logo/spark-360x360.png"
     width="100px" >
 </p>
-<h1 align="center">
+<p align="center">
   <strong>Spark</strong><br>
   Learning Management System
-</h1> 
+</p> 
+<br>
+<p>
+Spark is an open source learning management system, designed and built for Spark, a digital skills initiative led by a southern California nonprofit, Inland Empire Software Development, Inc. We promote free and open source software. 
+</p>
+<br>
 
 ## 👨‍💻 **Getting Started**
 
@@ -92,7 +97,7 @@ For development:
 * Jest
 
 ## 🤝 **Contributing**
-Spark is an open source learning management system, designed and built for Spark, a digital skills initiative led by a southern California nonprofit, Inland Empire Software Development, Inc. We promote free and open source software. All contributions are welcome and we invite everyone to open issues for suggestions and/or bugs.
+All contributions are welcome and we invite everyone to open issues for suggestions and/or bugs.
 
 - If you want to contribute, please open up an issue.
 - If you start working on a feature, branch off of the `master` branch as it should be the most up-to-date.
