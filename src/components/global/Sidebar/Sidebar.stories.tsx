@@ -1,0 +1,28 @@
+import * as React from "react";
+import {withA11y} from "@storybook/addon-a11y";
+import "../../../style/index.scss";
+import Sidebar from "./Sidebar";
+
+export default {
+  title: 'Sidebar',
+  decorators: [withA11y],
+  excludeStories: /.*Data$/,
+};
+
+export const mainItemsData = [
+  {icon: "far fa-tachometer-alt-fastest", label: "Dashboard", path: ""},
+  {icon: "far fa-users-class", label: "Courses", path: ""},
+  {icon: "far fa-comment-alt-edit", label: "Lessons", path: ""},
+  {icon: "far fa-comments-alt", label: "Messages", path: ""},
+  {icon: "far fa-bookmark", label: "Bookmarks", path: ""},
+  {icon: "far fa-heart", label: "Resources", path: ""},
+  {icon: "far fa-users", label: "Community", path: ""},
+];
+
+export const accountItemsData = [
+  {icon: "far fa-cog", label: "Settings", path: ""},
+  {icon: "far fa-sign-out", label: "Logout", path: ""},
+];
+
+export const DefaultSidebar = () =>
+  <Sidebar navLinks={mainItemsData} accountNavLinks={accountItemsData} isOpen></Sidebar>;
