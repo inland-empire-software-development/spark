@@ -10,26 +10,26 @@ export default {
 };
 
 export const mainItemsData = [
-  {icon: "far fa-tachometer-alt-fastest", label: "Dashboard", subItems: [
+  {icon: "far fa-tachometer-alt-fastest", label: "Dashboard", path: "", subItems: [
     {label: "Overview", path: "/dashboard"},
     {label: "Updates", path: "/dashboard/updates"},
   ]},
-  {icon: "far fa-users-class", label: "Courses"},
-  {icon: "far fa-comment-alt-edit", label: "Lessons"},
-  {icon: "far fa-comments-alt", label: "Messages"},
-  {icon: "far fa-bookmark", label: "Bookmarks"},
-  {icon: "far fa-heart", label: "Resources"},
-  {icon: "far fa-users", label: "Community"},
+  {icon: "far fa-users-class", label: "Courses", path: ""},
+  {icon: "far fa-comment-alt-edit", label: "Lessons", path: ""},
+  {icon: "far fa-comments-alt", label: "Messages", path: ""},
+  {icon: "far fa-bookmark", label: "Bookmarks", path: ""},
+  {icon: "far fa-heart", label: "Resources", path: ""},
+  {icon: "far fa-users", label: "Community", path: ""},
 ];
 
 export const accountItemsData = [
-  {icon: "far fa-cog", label: "Settings"},
-  {icon: "far fa-sign-out", label: "Logout"},
+  {icon: "far fa-cog", label: "Settings", path: ""},
+  {icon: "far fa-sign-out", label: "Logout", path: ""},
 ];
 
 const missingIconData = [...mainItemsData];
 missingIconData.push(
-    {icon: "", label: "Nothing"},
+    {icon: "", label: "Nothing", path: ""},
 );
 
 

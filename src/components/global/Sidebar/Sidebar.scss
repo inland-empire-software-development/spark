@@ -18,6 +18,7 @@ $selectedLinkBackground: #f8f9fb;
     li {
       cursor: pointer;
       padding: 12px 36px 12px 24px ;
+      transition: 0.5s;
 
       &:hover {
         color: $selectedLinkColor;
@@ -46,5 +47,14 @@ $selectedLinkBackground: #f8f9fb;
     color: $selectedLinkColor;
     background-color: $selectedLinkBackground;
     border-right: 2px solid $selectedLinkColor;
+  }
+
+  .sub-menu {
+    position: relative;
+    left: 220px;
+  }
+
+  .hidden {
+    display: none;
   }
 }
