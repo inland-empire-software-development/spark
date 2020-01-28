@@ -18,6 +18,11 @@ $selectedLinkBackground: #f8f9fb;
     li {
       cursor: pointer;
       padding: 12px 36px 12px 24px ;
+
+      &:hover {
+        color: $selectedLinkColor;
+        background-color: $selectedLinkBackground;
+      }
     }
   }
 
