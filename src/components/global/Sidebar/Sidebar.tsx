@@ -4,7 +4,13 @@ import "./Sidebar.scss";
 interface SidebarItem {
   icon: string;
   label: string;
+  subItems?: SubItem[];
 }
+
+interface SubItem {
+  label: string;
+  path: string;
+};
 
 interface SidebarProps {
   navLinks: SidebarItem[];
@@ -18,7 +24,7 @@ const Sidebar: React.FC<SidebarProps> = (props) => {
   // createNavItems is a helper to avoid repetition
   const createNavItems = (navLinks: SidebarItem[]): JSX.Element[] => {
     return navLinks.map((item) => {
-      // build out the style
+      // handle missingg icon
       let iconStyle = `${item.icon} fa-fw icon`;
       if (!item.icon || item.icon.length === 0) {
         iconStyle = "fa fa-fw icon icon-hidden";

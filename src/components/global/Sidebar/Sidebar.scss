@@ -2,23 +2,22 @@ $selectedLinkColor: #f07f6b; // color in style guidelines is different from prim
 $selectedLinkBackground: #f8f9fb;
 
 .sidebar-panel {
-  padding: 24px 60px 24px 36px;
-
-  .selected-item {
-    color: $selectedLinkColor;
-    background-color: $selectedLinkBackground;
-  }
+  padding-top: 24px;
+  border-right: 1px solid #e8e8e8;
+  height: 100vh;
+  // width: max-content;
 
   ul {
     font-family: "Light";
     font-size: 20px;
     color: $light-gray;
     list-style: none;
+    width: max-content;
+    
     
     li {
       cursor: pointer;
-      margin-top: 12px;
-      margin-bottom: 12px;
+      padding: 12px 36px 12px 24px ;
     }
   }
 
@@ -35,11 +34,12 @@ $selectedLinkBackground: #f8f9fb;
     font-family: "Medium";
     font-size: 24px;
     color: $dark-gray;
-    margin: 24px 0 24px 0;
+    margin: 24px 0 24px 24px;
   }
 
   .active {
     color: $selectedLinkColor;
     background-color: $selectedLinkBackground;
+    border-right: 2px solid $selectedLinkColor;
   }
 }
