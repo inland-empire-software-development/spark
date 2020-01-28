@@ -10,7 +10,10 @@ export default {
 };
 
 export const mainItemsData = [
-  {icon: "far fa-tachometer-alt-fastest", label: "Dashboard"},
+  {icon: "far fa-tachometer-alt-fastest", label: "Dashboard", subItems: [
+    {label: "Overview", path: "/dashboard"},
+    {label: "Updates", path: "/dashboard/updates"},
+  ]},
   {icon: "far fa-users-class", label: "Courses"},
   {icon: "far fa-comment-alt-edit", label: "Lessons"},
   {icon: "far fa-comments-alt", label: "Messages"},
@@ -31,10 +34,10 @@ missingIconData.push(
 
 
 export const DefaultSidebar = () =>
-  <Sidebar navLinks={mainItemsData} accountNavLinks={accountItemsData} isOpen></Sidebar>;
+  <Sidebar menuItems={mainItemsData} accountMenuItems={accountItemsData} isOpen></Sidebar>;
 
 export const MissingIcon = () =>
-  <Sidebar navLinks={missingIconData} accountNavLinks={accountItemsData} isOpen></Sidebar>;
+  <Sidebar menuItems={missingIconData} accountMenuItems={accountItemsData} isOpen></Sidebar>;
 
 export const OffCanvas = () =>
-  <Sidebar navLinks={mainItemsData} accountNavLinks={accountItemsData} isOpen={false}></Sidebar>;
+  <Sidebar menuItems={mainItemsData} accountMenuItems={accountItemsData} isOpen={false}></Sidebar>;

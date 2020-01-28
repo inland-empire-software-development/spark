@@ -2,12 +2,12 @@ $selectedLinkColor: #f07f6b; // color in style guidelines is different from prim
 $selectedLinkBackground: #f8f9fb;
 
 .sidebar-panel {
-  padding-top: 24px;
   border-right: 1px solid #e8e8e8;
   height: 100vh;
-  // width: max-content;
+  width: max-content;
 
   ul {
+    padding-top: 24px;
     font-family: "Light";
     font-size: 20px;
     color: $light-gray;
