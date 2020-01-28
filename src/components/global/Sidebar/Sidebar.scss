@@ -16,6 +16,7 @@ $selectedLinkBackground: #f8f9fb;
     list-style: none;
     
     li {
+      cursor: pointer;
       margin-top: 12px;
       margin-bottom: 12px;
     }
@@ -35,5 +36,10 @@ $selectedLinkBackground: #f8f9fb;
     font-size: 24px;
     color: $dark-gray;
     margin: 24px 0 24px 0;
+  }
+
+  .active {
+    color: $selectedLinkColor;
+    background-color: $selectedLinkBackground;
   }
 }

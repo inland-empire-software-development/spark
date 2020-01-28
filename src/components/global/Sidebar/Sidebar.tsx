@@ -12,29 +12,30 @@ interface SidebarProps {
   isOpen: boolean;
 }
 
-// createNavItems is a helper to avoid repetition
-const createNavItems = (navLinks: SidebarItem[]): JSX.Element[] => {
-  return navLinks.map((item) => {
-    if (!item.icon || item.icon.length === 0) {
+const Sidebar: React.FC<SidebarProps> = (props) => {
+  const [activeItemLabel, setActiveItemLabel] = React.useState<string>("");
+
+  // createNavItems is a helper to avoid repetition
+  const createNavItems = (navLinks: SidebarItem[]): JSX.Element[] => {
+    return navLinks.map((item) => {
+      // build out the style
+      let iconStyle = `${item.icon} fa-fw icon`;
+      if (!item.icon || item.icon.length === 0) {
+        iconStyle = "fa fa-fw icon icon-hidden";
+      }
       return (
-        <li key={item.label}>
-          <i className={`fa fa-fw icon icon-hidden`}></i>
+        <li
+          key={item.label}
+          className={activeItemLabel === item.label ? "active": ""}
+          onClick={() => setActiveItemLabel(item.label)}>
+          <i className={iconStyle}></i>
           {item.label}
         </li>
       );
-    }
-    return (
-      <li key={item.label}>
-        <i className={`${item.icon} fa-fw icon`}></i>
-        {item.label}
-      </li>
-    );
-  });
-};
+    });
+  };
 
-const Sidebar: React.FC<SidebarProps> = (props) => {
   const navLinks = createNavItems(props.navLinks);
-
   const accountLinks = createNavItems(props.accountNavLinks);
 
   return (
