@@ -1,5 +1,6 @@
 $selectedLinkColor: #f07f6b; // color in style guidelines is different from primary, secondary, and tertiary
 $selectedLinkBackground: #f8f9fb;
+$hoverTransitionTime: 0.5s;
 
 .sidebar-panel {
   border-right: 1px solid #e8e8e8;
@@ -18,7 +19,7 @@ $selectedLinkBackground: #f8f9fb;
     li {
       cursor: pointer;
       padding: 12px 36px 12px 24px ;
-      transition: 0.5s;
+      transition: $hoverTransitionTime;
 
       &:hover {
         color: $selectedLinkColor;
@@ -48,13 +49,9 @@ $selectedLinkBackground: #f8f9fb;
     background-color: $selectedLinkBackground;
     border-right: 2px solid $selectedLinkColor;
   }
+}
 
-  .sub-menu {
-    position: relative;
-    left: 220px;
-  }
-
-  .hidden {
-    display: none;
-  }
+.sidebar-sub-menu {
+  border-right: 1px solid #e8e8e8;
+  transition: opacity $hoverTransitionTime linear;
 }

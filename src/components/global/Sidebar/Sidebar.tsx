@@ -34,8 +34,6 @@ const Sidebar: React.FC<SidebarProps> = (props) => {
   };
 
   const handleMouseEnterItem = (event: React.MouseEvent<HTMLLIElement, MouseEvent>, itemLabel: string) => {
-    // console.log(event.currentTarget);
-    // console.log(event.currentTarget.offsetTop, event.currentTarget.offsetLeft);
     setHoveredItemLabel(itemLabel);
     setSubMenuCoordinates([event.currentTarget.offsetTop, event.currentTarget.offsetLeft + event.currentTarget.offsetWidth]);
   };
@@ -70,11 +68,18 @@ const Sidebar: React.FC<SidebarProps> = (props) => {
   const createSubMenu = (menuItems: SidebarItem[]): JSX.Element => {
     // choose hovered on item
     const selected = menuItems.find((item) => item.label === hoveredItemLabel);
+    let subMenuHidden = true;
+    if (selected && selected.subItems && selected.subItems.length > 0) {
+      subMenuHidden = false;
+    }
+
     return (
-      <div className="sub-menu" style={{
+      <div className="sidebar-sub-menu" style={{
         position: "absolute",
         top: subMenuCoordinates[0],
         left: subMenuCoordinates[1],
+        opacity: subMenuHidden ? 0 : 1,
+        visibility: subMenuHidden ? "hidden" : "visible",
       }}>
         <h1>{selected && selected.label}</h1>
       </div>
