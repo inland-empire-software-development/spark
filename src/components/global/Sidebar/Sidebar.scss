@@ -22,7 +22,12 @@ $selectedLinkBackground: #f8f9fb;
   }
 
   .icon {
+    min-width: 36px;
     margin-right: 0.5em;
+  }
+
+  .icon-hidden {
+    opacity: 0;
   }
 
   .section-title {

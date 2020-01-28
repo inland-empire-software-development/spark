@@ -26,7 +26,7 @@ export const accountItemsData = [
 
 const missingIconData = [...mainItemsData];
 missingIconData.push(
-    {icon: "", label: "Nowhere"},
+    {icon: "", label: "Nothing"},
 );
 
 
