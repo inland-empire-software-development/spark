@@ -210,11 +210,11 @@
 }
 
 .gradient-background {
-  background: rgb(238, 108, 103) !important;
-  background: -moz-linear-gradient(90deg, rgba(238, 108, 103, 1) 0%, rgba(242, 147, 113, 1) 50%, rgba(244, 185, 127, 1) 100%) !important;
-  background: -webkit-linear-gradient(90deg, rgba(238, 108, 103, 1) 0%, rgba(242, 147, 113, 1) 50%, rgba(244, 185, 127, 1) 100%) !important;
-  background: linear-gradient(90deg, rgba(238, 108, 103, 1) 0%, rgba(242, 147, 113, 1) 50%, rgba(244, 185, 127, 1) 100%) !important;
-  filter: progid:dximagetransform.microsoft.gradient(startColorstr="#ee6c67", endColorstr="#f4b97f", GradientType=1) !important;
+  background: rgb(238, 108, 103);
+  background: -moz-linear-gradient(90deg, rgba(238, 108, 103, 1) 0%, rgba(242, 147, 113, 1) 50%, rgba(244, 185, 127, 1) 100%);
+  background: -webkit-linear-gradient(90deg, rgba(238, 108, 103, 1) 0%, rgba(242, 147, 113, 1) 50%, rgba(244, 185, 127, 1) 100%);
+  background: linear-gradient(90deg, rgba(238, 108, 103, 1) 0%, rgba(242, 147, 113, 1) 50%, rgba(244, 185, 127, 1) 100%);
+  filter: progid:dximagetransform.microsoft.gradient(startColorstr="#ee6c67", endColorstr="#f4b97f", GradientType=1);
 }
 
 .gradient-background-alt {
