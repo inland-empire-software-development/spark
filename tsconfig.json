@@ -5,10 +5,10 @@
     "jsx": "preserve",
     "allowSyntheticDefaultImports": true,
     "types": [
+      "uikit",
       "node",
       "next",
-      "jest",
-      "UIkit",
+      "jest",      
       "marked"
     ],
     "lib": [
@@ -24,13 +24,13 @@
     "noEmit": true,
     "esModuleInterop": true,
     "moduleResolution": "node",
-    "resolveJsonModule": true,
-    "isolatedModules": true
+    "resolveJsonModule": true, 
+    "isolatedModules": true,
   },
   "typeRoots": [
     "node_modules/@types",
     "@types",
-    "index.d.ts",
+    "index.d.ts"
   ],
   "exclude": [
     "node_modules",
@@ -46,8 +46,8 @@
       {
         "private": "^__",
         "protected": "^_"
-      }
-    ]
+      },
+    ],
   },
   "include": [
     "next-env.d.ts",
