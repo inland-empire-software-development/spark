@@ -21,16 +21,20 @@ export const mainItemsData = [
     {label: "Tags", path: "/courses/tags"},
     {label: "Manage", path: "/courses/manage"},
   ]},
-  {icon: "far fa-comment-alt-edit", label: "Lessons", path: ""},
-  {icon: "far fa-comments-alt", label: "Messages", path: ""},
-  {icon: "far fa-bookmark", label: "Bookmarks", path: ""},
-  {icon: "far fa-heart", label: "Resources", path: ""},
-  {icon: "far fa-users", label: "Community", path: ""},
+  {icon: "far fa-comment-alt-edit", label: "Lessons", path: "/lessons"},
+  {icon: "far fa-comments-alt", label: "Messages", path: "/messages"},
+  {icon: "far fa-bookmark", label: "Bookmarks", path: "/bookmarks"},
+  {icon: "far fa-heart", label: "Resources", path: "/resources"},
+  {icon: "far fa-users", label: "Community", path: "/community"},
 ];
 
 export const accountItemsData = [
-  {icon: "far fa-cog", label: "Settings", path: ""},
-  {icon: "far fa-sign-out", label: "Logout", path: ""},
+  {icon: "far fa-cog", label: "Settings", path: "/settings", subItems: [
+    {label: "Profile", path: "user/profile"},
+    {label: "Preferences", path: "user/preferences"},
+    {label: "Account", path: "user/account"},
+  ]},
+  {icon: "far fa-sign-out", label: "Logout", path: "/logout"},
 ];
 
 const missingIconData = [...mainItemsData];
