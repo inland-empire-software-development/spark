@@ -69,19 +69,29 @@ const Sidebar: React.FC<SidebarProps> = (props) => {
     // choose hovered on item
     const selected = menuItems.find((item) => item.label === hoveredItemLabel);
     let subMenuHidden = true;
+    let subMenuItems: JSX.Element[] = [];
+    let label = "";
     if (selected && selected.subItems && selected.subItems.length > 0) {
       subMenuHidden = false;
+      subMenuItems = selected.subItems.map((item) => (
+        <li key={item.label}>{item.label}</li>
+      ));
+      label = selected.label;
     }
 
     return (
       <div className="sidebar-sub-menu" style={{
         position: "absolute",
-        top: subMenuCoordinates[0],
+        top: subMenuCoordinates[0]-12,
         left: subMenuCoordinates[1],
         opacity: subMenuHidden ? 0 : 1,
         visibility: subMenuHidden ? "hidden" : "visible",
-      }}>
-        <h1>{selected && selected.label}</h1>
+      }}
+      onMouseEnter={() => setHoveredItemLabel(label)}
+      onMouseLeave={() => handleMouseLeaveItem()}>
+        <ul>
+          {subMenuItems}
+        </ul>
       </div>
     );
   };

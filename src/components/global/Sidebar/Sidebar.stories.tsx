@@ -10,11 +10,17 @@ export default {
 };
 
 export const mainItemsData = [
-  {icon: "far fa-tachometer-alt-fastest", label: "Dashboard", path: "", subItems: [
+  {icon: "far fa-tachometer-alt-fastest", label: "Dashboard", path: "/dashboard", subItems: [
     {label: "Overview", path: "/dashboard"},
     {label: "Updates", path: "/dashboard/updates"},
   ]},
-  {icon: "far fa-users-class", label: "Courses", path: ""},
+  {icon: "far fa-users-class", label: "Courses", path: "/courses", subItems: [
+    {label: "All Courses", path: "/courses"},
+    {label: "Add Course", path: "/courses/add"},
+    {label: "Category", path: "/courses/categories"},
+    {label: "Tags", path: "/courses/tags"},
+    {label: "Manage", path: "/courses/manage"},
+  ]},
   {icon: "far fa-comment-alt-edit", label: "Lessons", path: ""},
   {icon: "far fa-comments-alt", label: "Messages", path: ""},
   {icon: "far fa-bookmark", label: "Bookmarks", path: ""},
