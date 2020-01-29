@@ -17,6 +17,7 @@ interface SidebarProps {
   menuItems: SidebarItem[];
   accountMenuItems: SidebarItem[];
   isOpen: boolean;
+  onNavigate: (path: string) => void;
 }
 
 const Sidebar: React.FC<SidebarProps> = (props) => {
@@ -28,10 +29,18 @@ const Sidebar: React.FC<SidebarProps> = (props) => {
   // the following state is used to tracking the absolute position of the submenu
   const [subMenuCoordinates, setSubMenuCoordinates] = React.useState<[number, number]>([0, 0]);
 
-  const handleItemClicked = (itemLabel: string) => {
-    // also router push
-    setActiveItemLabel(itemLabel);
+  const handleItemClicked = (item: SidebarItem) => {
+    // call props onNavigate function with route path
+    props.onNavigate(item.path);
+    // set main item active styles
+    setActiveItemLabel(item.label);
   };
+
+  const handleSubItemClicked = (path: string) => {
+    // call props onNavigate function with route path
+    props.onNavigate(path);
+  };
+
 
   const handleMouseEnterItem = (event: React.MouseEvent<HTMLLIElement, MouseEvent>, itemLabel: string) => {
     setHoveredItemLabel(itemLabel);
@@ -54,7 +63,7 @@ const Sidebar: React.FC<SidebarProps> = (props) => {
         <li
           key={item.label}
           className={activeItemLabel === item.label ? "active": ""}
-          onClick={() => handleItemClicked(item.label)}
+          onClick={() => handleItemClicked(item)}
           onMouseEnter={(event) => handleMouseEnterItem(event, item.label)}
           onMouseLeave={() => handleMouseLeaveItem()}>
           <i className={iconStyle}></i>
@@ -73,8 +82,8 @@ const Sidebar: React.FC<SidebarProps> = (props) => {
     let label = "";
     if (selected && selected.subItems && selected.subItems.length > 0) {
       subMenuHidden = false;
-      subMenuItems = selected.subItems.map((item) => (
-        <li key={item.label}>{item.label}</li>
+      subMenuItems = selected.subItems.map((subItem) => (
+        <li key={subItem.label} onClick={() => handleSubItemClicked(subItem.path)}>{subItem.label}</li>
       ));
       label = selected.label;
     }

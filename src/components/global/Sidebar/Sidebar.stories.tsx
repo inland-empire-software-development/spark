@@ -1,5 +1,6 @@
 import * as React from "react";
 import {withA11y} from "@storybook/addon-a11y";
+import {action} from "@storybook/addon-actions";
 import "../../../style/index.scss";
 import Sidebar from "./Sidebar";
 
@@ -42,12 +43,16 @@ missingIconData.push(
     {icon: "", label: "Nothing", path: ""},
 );
 
+const actionsData = {
+  onNavigate: action("onNavigate"),
+};
+
 
 export const DefaultSidebar = () =>
-  <Sidebar menuItems={mainItemsData} accountMenuItems={accountItemsData} isOpen></Sidebar>;
+  <Sidebar menuItems={mainItemsData} accountMenuItems={accountItemsData} isOpen {...actionsData}></Sidebar>;
 
 export const MissingIcon = () =>
-  <Sidebar menuItems={missingIconData} accountMenuItems={accountItemsData} isOpen></Sidebar>;
+  <Sidebar menuItems={missingIconData} accountMenuItems={accountItemsData} isOpen {...actionsData}></Sidebar>;
 
 export const OffCanvas = () =>
-  <Sidebar menuItems={mainItemsData} accountMenuItems={accountItemsData} isOpen={false}></Sidebar>;
+  <Sidebar menuItems={mainItemsData} accountMenuItems={accountItemsData} isOpen={false} {...actionsData}></Sidebar>;
