@@ -82,7 +82,7 @@ const Sidebar: React.FC<SidebarProps> = (props) => {
     return (
       <div className="sidebar-sub-menu" style={{
         position: "absolute",
-        top: subMenuCoordinates[0]-12,
+        top: subMenuCoordinates[0],
         left: subMenuCoordinates[1],
         opacity: subMenuHidden ? 0 : 1,
         visibility: subMenuHidden ? "hidden" : "visible",
