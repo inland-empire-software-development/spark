@@ -7,9 +7,3 @@ export default {
 };
 
 export const AllTheCourses = () => <AllCourses />;
-
-// AllCourses.story = {
-//   parameters: {
-//     notes: 'This component is used whenever a user has been access granted to something globally.',
-//   },
-// };
