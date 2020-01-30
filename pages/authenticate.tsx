@@ -9,7 +9,7 @@ import {DefaultSeo} from "next-seo";
 function Authenticate() {
   return (
     <main className="uk-container">
-      <Spinner ratio={3} classes="uk-hidden"/>
+      <Spinner ratio={5} classes="uk-hidden"/>
       <DefaultSeo {...Object.assign(SEO, {
         title: `Authenticate`,
       })}
