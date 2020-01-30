@@ -1,7 +1,5 @@
-// Variables
-@import '_variables';
-
-// Vendors
+// UIKit
+@import '../style/_variables';
 @import
   '../../node_modules/uikit/src/scss/variables-theme',
   '../../node_modules/uikit/src/scss/mixins-theme',
@@ -9,12 +7,7 @@
 
 // Base
 @import
-  './_colors',
-  './_animation',
-  './_global',
-  './_typography';
-
-// Pages
-@import
-  'pages/_index',
-  'pages/_welcome';
+  '../style/base/_colors',
+  '../style/base/_animation',
+  '../style/base/_global',
+  '../style/base/_typography';

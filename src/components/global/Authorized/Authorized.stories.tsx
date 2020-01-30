@@ -17,8 +17,6 @@ export const AccessGranted = () => <Authorized/>;
 
 AccessGranted.story = {
   parameters: {
-    notes: {
-      "Introduction": marked(intro.default),
-      'Design Notes': marked(design.default)},
+    notes: {"Introduction": marked(intro.default), 'Design Notes': marked(design.default)},
   },
 };

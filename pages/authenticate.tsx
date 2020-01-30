@@ -1,8 +1,7 @@
-import LogIn from '../src/components/authenticate/LogIn/LogIn';
-import SignUp from '../src/components/authenticate/SignUp/SignUp';
-import Reset from '../src/components/authenticate/Reset/Reset';
+import Login from '../src/components/authenticate/Login';
+import Signup from '../src/components/authenticate/Signup';
+import Recovery from '../src/components/authenticate/Reset';
 import Spinner from '../src/components/global/Spinner/Spinner';
-import ContentContainer from '../src/components/global/ContentContainer/ContentContainer';
 import SEO from "../next-seo.config";
 import {DefaultSeo} from "next-seo";
 

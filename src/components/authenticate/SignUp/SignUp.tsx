@@ -1,8 +1,7 @@
 import React, {useState, FormEvent} from 'react';
-import './SignUp.scss';
-import Message from '../../global/Message/Message';
-import Password from '../Password/Password';
-import Button from '../../global/Button/Button';
+import Message from '../global/Message/Message';
+import Password from './Password';
+
 /**
  * Renders the SignUp component
  * @constructor
@@ -169,7 +168,7 @@ function SignUp(): JSX.Element {
 
   return (
     <section className="auth-signup">
-      <Message message={message.message} hidden={!message.status} priority={0}/>
+      <Message message={message.message} hidden={message.status} priority={0}/>
       <p className="uk-text-center">Sign up today. It&apos;s free!</p>
       <form id="signUp-form" onSubmit={(event) => event.preventDefault()}>
         <div className="uk-margin uk-margin-remove-bottom">

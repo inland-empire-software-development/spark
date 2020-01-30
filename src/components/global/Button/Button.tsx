@@ -70,6 +70,8 @@ function Button(props: Button) {
     }
   };
 
+
+  // TODO: make this component read cleaner - create function to genereate className
   return (
     <button type={type} className={getClass({color, text, width, border, borderSize, classes})} {...opts} onClick={handleClick} >
       {label}

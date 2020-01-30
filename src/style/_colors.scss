@@ -1,3 +1,23 @@
+// neutral colors
+$black: #000;
+$dark-gray: #222;
+$light-gray: #595959;
+$white: #fff;
+
+// branding colors
+$dark-gray: #444;
+$light-gray: #626262;
+$primary: #dedede;
+$secondary: #222;
+$tertiary: #333;
+$offwhite: #f3efee;
+
+// action colors
+$yellow: #f1af21;
+$red: #ec2242;
+$blue: #3fb3e1;
+$green: #02ae72;
+
 // TODO: For error messages or message component in general - have to make sure that dark colors have a light text.
 // branding colors
 .bg-yellow {
@@ -44,8 +64,8 @@
   background-color: $tertiary;
 }
 
-.bg-snow {
-  background-color: $snow;
+.bg-offwhite {
+  background-color: $offwhite;
 }
 
 .black {
@@ -92,8 +112,8 @@
   color: $tertiary;
 }
 
-.snow {
-  color: $snow;
+.offwhite {
+  color: $offwhite;
 }
 
 // selection color
@@ -133,7 +153,7 @@
 .border-primary,
 .border-secondary,
 .border-tertiary,
-.border-snow {
+.border-offwhite {
   border-style: solid;
 }
 
@@ -170,19 +190,19 @@
 }
 
 .border-primary {
-  border-color: $primary;
+  border-color: #ef806c;
 }
 
 .border-secondary {
-  border-color: $secondary;
+  border-color: #f4a77c;
 }
 
 .border-tertiary {
-  border-color: $tertiary;
+  border-color: #eb8a50;
 }
 
-.border-snow {
-  border-color: $snow;
+.border-offwhite {
+  border-color: #f3efee;
 }
 
 .border-size-1 {
@@ -207,36 +227,4 @@
 
 .border-size-6 {
   border-width: 6px;
-}
-
-.gradient-background {
-  background: rgb(238, 108, 103) !important;
-  background: -moz-linear-gradient(90deg, rgba(238, 108, 103, 1) 0%, rgba(242, 147, 113, 1) 50%, rgba(244, 185, 127, 1) 100%) !important;
-  background: -webkit-linear-gradient(90deg, rgba(238, 108, 103, 1) 0%, rgba(242, 147, 113, 1) 50%, rgba(244, 185, 127, 1) 100%) !important;
-  background: linear-gradient(90deg, rgba(238, 108, 103, 1) 0%, rgba(242, 147, 113, 1) 50%, rgba(244, 185, 127, 1) 100%) !important;
-  filter: progid:dximagetransform.microsoft.gradient(startColorstr="#ee6c67", endColorstr="#f4b97f", GradientType=1) !important;
-}
-
-.gradient-background-alt {
-  background: rgb(238, 108, 103);
-  background: -moz-linear-gradient(270deg, rgba(238, 108, 103, 1) 0%, rgba(242, 147, 113, 1) 50%, rgba(244, 185, 127, 1) 100%);
-  background: -webkit-linear-gradient(270deg, rgba(238, 108, 103, 1) 0%, rgba(242, 147, 113, 1) 50%, rgba(244, 185, 127, 1) 100%);
-  background: linear-gradient(270deg, rgba(238, 108, 103, 1) 0%, rgba(242, 147, 113, 1) 50%, rgba(244, 185, 127, 1) 100%);
-  filter: progid:dximagetransform.microsoft.gradient(startColorstr="#ee6c67", endColorstr="#f4b97f", GradientType=1);
-}
-
-.gradient-background-vertical {
-  background: rgb(238, 108, 103);
-  background: -moz-linear-gradient(0deg, rgba(238, 108, 103, 1) 0%, rgba(242, 147, 113, 1) 50%, rgba(244, 185, 127, 1) 100%);
-  background: -webkit-linear-gradient(0deg, rgba(238, 108, 103, 1) 0%, rgba(242, 147, 113, 1) 50%, rgba(244, 185, 127, 1) 100%);
-  background: linear-gradient(0deg, rgba(238, 108, 103, 1) 0%, rgba(242, 147, 113, 1) 50%, rgba(244, 185, 127, 1) 100%);
-  filter: progid:dximagetransform.microsoft.gradient(startColorstr="#ee6c67", endColorstr="#f4b97f", GradientType=1);
-}
-
-.gradient-background-vertical-alt {
-  background: rgb(238, 108, 103);
-  background: -moz-linear-gradient(180deg, rgba(238, 108, 103, 1) 0%, rgba(242, 147, 113, 1) 50%, rgba(244, 185, 127, 1) 100%);
-  background: -webkit-linear-gradient(180deg, rgba(238, 108, 103, 1) 0%, rgba(242, 147, 113, 1) 50%, rgba(244, 185, 127, 1) 100%);
-  background: linear-gradient(180deg, rgba(238, 108, 103, 1) 0%, rgba(242, 147, 113, 1) 50%, rgba(244, 185, 127, 1) 100%);
-  filter: progid:dximagetransform.microsoft.gradient(startColorstr="#ee6c67", endColorstr="#f4b97f", GradientType=1);
 }

@@ -18,10 +18,7 @@
     "test": "jest || true",
     "jest": "jest --watchAll",
     "reset": "rm -rf src/ sass/ pages/ node_modules/ yarn.lock models/ lib/ email/ && git reset --hard && yarn install",
-    "storybook": "start-storybook -s ./public HOST=http://localhost:3000/ -p 6006 -c .storybook",
-    "sbdev": "start-storybook -s ./public HOST=http://localhost:6001/ -p 7001 -c .storybook",
-    "sbstg": "start-storybook -s ./public HOST=http://localhost:6002/ -p 7002 -c .storybook",
-    "sbprod": "start-storybook -s ./public HOST=http://localhost:6003/ -p 7003 -c .storybook"
+    "storybook": "start-storybook -s ./public -p 6006 -c .storybook"
   },
   "dependencies": {
     "@zeit/next-css": "^1.0.1",
