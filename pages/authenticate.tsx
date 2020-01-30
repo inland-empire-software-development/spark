@@ -18,7 +18,7 @@ function Authenticate() {
         <ContentContainer content={
           <div>
 
-            <div className="uk-margin uk-width-large uk-margin-auto uk-card uk-card-default uk-card-body">
+            <div className="uk-margin uk-margin-auto uk-card uk-card-default uk-card-body">
               <ul className="uk-tab uk-flex-center" uk-switcher="animation: uk-animation-fade">
                 <li><a href="#">Log In</a></li>
                 <li><a href="#">Sign Up</a></li>
