@@ -1,25 +1,27 @@
 @import './Course-navbar.scss';
 @import './Individual-course.scss';
 
-.container-for-the-whole-courses-section{
+.container-for-the-whole-courses-section {
   width: 80%;
   height: 70px;
-  float:right;
+  float: right;
   margin: 12% 3% 0% 0%;
 }
+
 ul {
   display: flex;
   list-style-type: none;
   font-size: 20px;
   justify-content: flex-end;
-  margin: 0px;
+  margin: 0;
 }
 
 li {
   margin: 20px;
   font-family: Arial;
 }
+
 li a {
- color: black;
- text-decoration: none;
+  color: black;
+  text-decoration: none;
 }

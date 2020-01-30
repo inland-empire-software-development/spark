@@ -1,6 +1,6 @@
 import React, {useState, FormEvent} from 'react';
-import Message from '../global/Message/Message';
-import Password from './Password';
+import Message from '../../global/Message/Message';
+import Password from '../Password/Password';
 
 /**
  * Renders the SignUp component

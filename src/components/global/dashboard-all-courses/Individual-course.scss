@@ -1,36 +1,42 @@
-.individual-course{
+.individual-course {
   border: 1px solid rgb(238, 241, 245);
   height: 30vh;
 }
-.all-courses-container{
+
+.all-courses-container {
   height: 100vh;
 }
+
 .individual-course img {
   height: 100%;
   padding: 2%;
   border-radius: 27px;
 }
-.information-on-individual-course-container{
-  display:flex;
+
+.information-on-individual-course-container {
+  display: flex;
 }
-.course-instructor-name{
-    color: black;
-    font-size: 1em;
-    margin: 1% 0% 1% 23%;
-    position: absolute;
-    font-weight: 100;
+
+.course-instructor-name {
+  color: black;
+  font-size: 1em;
+  margin: 1% 0% 1% 23%;
+  position: absolute;
+  font-weight: 100;
 }
-.image-edit-buttons-container:hover{
+
+.image-edit-buttons-container:hover {
   opacity: 2;
 }
 
-.image-edit-buttons-container{
+.image-edit-buttons-container {
   opacity: 0;
   margin: 11% 0% 0% 2.6%;
   position: absolute;
   width: 20%;
 }
-.image-edit-buttons-container button{
+
+.image-edit-buttons-container button {
   cursor: pointer;
   border-radius: 20px;
   width: 40%;
@@ -40,34 +46,37 @@
   margin: 1%;
   padding: 2%;
 }
-.course-title-and-status-container{
+
+.course-title-and-status-container {
   position: absolute;
   margin: 1% 1% 1% 19.5%;
 }
 
-.enrolled{
-  background-color:lightgreen;
+.enrolled {
+  background-color: lightgreen;
   border-radius: 4px;
   color: white;
 }
 
-.course-description{
+.course-description {
   color: black;
   position: absolute;
   width: 57%;
   height: 20%;
   margin: 6% 1% 1% 23%;
 }
-.users-comments-rating{
+
+.users-comments-rating {
   position: absolute;
   margin: 11% 1% 1% 19.5%;
   font-size: 0.9rem;
 }
 
-.stars i{
+.stars i {
   color: yellow;
 }
-.stars span{
+
+.stars span {
   color: black;
   font-weight: 100;
 }
