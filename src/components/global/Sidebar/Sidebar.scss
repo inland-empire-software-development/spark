@@ -9,12 +9,11 @@ $hoverTransitionTime: 0.5s;
 
   ul {
     padding-top: 24px;
-    font-family: "Light";
+    font-family: "Light", sans-serif;
     font-size: 20px;
     color: $light-gray;
     list-style: none;
     width: max-content;
-
 
     li {
       cursor: pointer;
@@ -38,7 +37,7 @@ $hoverTransitionTime: 0.5s;
   }
 
   .section-title {
-    font-family: "Medium";
+    font-family: "Medium", sans-serif;
     font-size: 24px;
     color: $dark-gray;
     margin: 24px 0 24px 24px;
@@ -55,15 +54,13 @@ $hoverTransitionTime: 0.5s;
   border-right: 1px solid #e8e8e8;
   transition: opacity $hoverTransitionTime linear;
 
-
-  ul {   
-    margin-bottom: 0; 
-    font-family: "Light";
+  ul {
+    margin-bottom: 0;
+    font-family: "Light", sans-serif;
     font-size: 20px;
     color: $light-gray;
     list-style: none;
     width: max-content;
-
 
     li {
       cursor: pointer;
