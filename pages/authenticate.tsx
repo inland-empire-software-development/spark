@@ -9,6 +9,7 @@ import {DefaultSeo} from "next-seo";
 function Authenticate() {
   return (
     <main className="uk-container">
+      <Spinner ratio={5} classes="uk-hidden"/>
       <DefaultSeo {...Object.assign(SEO, {
         title: `Authenticate`,
       })}
@@ -16,8 +17,8 @@ function Authenticate() {
       <section className="uk-position-center">
         <ContentContainer content={
           <div>
-            <Spinner ratio={3} classes="uk-hidden"/>
-            <div className="uk-margin uk-width-large uk-margin-auto uk-card uk-card-default uk-card-body">
+
+            <div className="uk-margin uk-margin-auto uk-card uk-card-default uk-card-body">
               <ul className="uk-tab uk-flex-center" uk-switcher="animation: uk-animation-fade">
                 <li><a href="#">Log In</a></li>
                 <li><a href="#">Sign Up</a></li>
