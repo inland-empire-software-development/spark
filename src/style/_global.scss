@@ -60,3 +60,51 @@ p {
 .uk-card-default {
   box-shadow: none;
 }
+
+.uk-column-1-7 {
+  column-count: 7
+}
+
+.uk-column-1-8 {
+  column-count: 8
+}
+
+.uk-column-1-9 {
+  column-count: 9
+}
+
+.uk-column-1-10 {
+  column-count: 10
+}
+
+.uk-column-1-11 {
+  column-count: 11
+}
+
+.uk-column-1-12 {
+  column-count: 12
+}
+
+.uk-width-1-7 {
+  width: calc(100% * 1 / 7);
+}
+
+.uk-width-1-8 {
+  width: calc(100% * 1 / 8);
+}
+
+.uk-width-1-9 {
+  width: calc(100% * 1 / 9);
+}
+
+.uk-width-1-10 {
+  width: calc(100% * 1 / 10);
+}
+
+.uk-width-1-11 {
+  width: calc(100% * 1 / 11);
+}
+
+.uk-width-1-12 {
+  width: calc(100% * 1 / 12);
+}

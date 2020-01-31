@@ -6,7 +6,9 @@ function addCourse(): JSX.Element {
     <div className='uk-grid'>
 
       <div className= 'uk-width-6@s uk-first-column'>
-        <h1>Add Course</h1>
+        <div className='dashTitle'>
+          <h1>Add Course</h1>
+        </div>
         <h2>Basic info</h2>
         <form className='uk-form-horizontal'>
           <div className="uk-margin uk-grid">
@@ -53,7 +55,7 @@ function addCourse(): JSX.Element {
               <label className='uk-form-label' htmlFor="Category">Category</label>
               <select className="uk-select">
                 <option>Programming Web Beginner</option>
-                <option>Lloan's buddie</option>
+                <option>Lloan buddie</option>
               </select>
             </div>
           </div>
@@ -68,54 +70,33 @@ function addCourse(): JSX.Element {
         <h2>Video</h2>
         <form className='uk-form-horizontal'>
           <div className="uk-margin uk-grid">
-            <div className="uk-width-1-4">
-              <label className='uk-form-label' htmlFor="Video Name">Video Name </label>
-              <input type="text" className="uk-input" name="firstName" />
-            </div>
-            <div className="uk-width-1-4">
-              <label className='uk-form-label' htmlFor="Video Category">Video Category </label>
-              <input type="text" className="uk-input" name="firstName" />
-            </div>
-            <div className="uk-width-1-4">
-              <label className='uk-form-label' htmlFor="Video URL">Video URL </label>
-              <input type="text" className="uk-input" name="firstName" />
-            </div>
-            <div className="uk-width-1-6">
-              <button className="uk-button uk-button-default uk-button-small" type='button'> Small button</button>
+            <div className='uk-column-1-3'>
+              <div className="uk-width-1-1">
+                <label className='uk-form-label' htmlFor="Video Name">Video Name </label>
+                <input type="text" className="uk-input" name="firstName" />
+              </div>
+              <div className="uk-width-1-1">
+                <label className='uk-form-label' htmlFor="Video Category">Video URL </label>
+                <input type="text" className="uk-input" name="firstName" />
+              </div>
+              <div className="uk-width-1-1">
+                <div className="uk-width-1-3">
+                  <label className='uk-form-label' htmlFor="Video URL">Video Category </label>
+                  <input type="text" className="uk-input" name="firstName" />
+                </div>
+                <div className="uk-width-1-6">
+                  <button className="uk-button uk-button-default uk-button-small" type='button'> F</button>
+                </div>
+              </div>
+
             </div>
           </div>
-          <div className='uk-margin uk-grid'>\
+          {/* <div className='uk-margin uk-grid'>\
             <div className='uk-width-1'>
-              <button className="uk-button uk-button-default" type="button">Select</button>
+              <button className="uk-button uk-button-default" type="button">Add Item</button>
             </div>
-          </div>
+          </div> */}
         </form>
-
-
-        {/* <form>
-          <h2>Videos</h2>
-          <div className='uk-form-stacked'>
-            <div className='uk-margin'>
-              <label className='uk-form-label' htmlFor="Category"> Category </label>
-              <div className='uk-form-controls'>
-                <input className='uk-input uk-form-width-large' type="text" placeholder='Programming, Web, Beginner' />
-              </div>
-            </div>
-            <div className='uk-margin'>
-              <label className='uk-form-label' htmlFor="Category"> Category </label>
-              <div className='uk-form-controls'>
-                <input className='uk-input uk-form-width-large' type="text" placeholder='Programming, Web, Beginner' />
-              </div>
-            </div>
-            <div className='uk-margin'>
-              <label className='uk-form-label' htmlFor="Category"> Category </label>
-              <div className='uk-form-controls'>
-                <input className='uk-input uk-form-width-large' type="text" placeholder='Programming, Web, Beginner' />
-              </div>
-            </div>
-
-          </div>
-        </form> */}
       </div>
 
     </div>
