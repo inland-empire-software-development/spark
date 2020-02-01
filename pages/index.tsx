@@ -1,7 +1,6 @@
 import SEO from "../next-seo.config";
 import {DefaultSeo} from "next-seo";
 import Footer from '../src/components/global/Footer/Footer';
-import Button from "../src/components/global/Button/Button";
 
 // render home page.
 function Home(): JSX.Element {
@@ -15,7 +14,6 @@ function Home(): JSX.Element {
           />
           <section className="uk-padding">
             <p>Home</p>
-            <Button label="Log in" href="/authenticate" />
           </section>
         </div>
       </section>
