@@ -4,7 +4,6 @@ import notify from '../../utility/Notify';
 import {Message} from '../../../../index';
 
 import './Login.scss';
-import Button from '../../global/Button/Button';
 
 function LogIn(): JSX.Element {
   const handleLogin = () => {
@@ -34,14 +33,14 @@ function LogIn(): JSX.Element {
         .then((response: Message) => {
           const {status, message} = response;
 
-          // hide spinner as work is essentially done
-          if (spinner) spinner.classList.add('uk-hidden');
-
           if (status) {
             if ((process as any).browser && document && UIkit) {
               document.location.href = "/dashboard";
             }
           } else {
+            // hide spinner as work is essentially done
+            if (spinner) spinner.classList.add('uk-hidden');
+
             notify({
               message,
               status: 'danger',
@@ -55,7 +54,10 @@ function LogIn(): JSX.Element {
   return (
     <section className="auth-login">
       <p className="uk-text-center">Sign in to your account</p>
-      <form id="login-form" onSubmit={(event) => event.preventDefault()}>
+      <form id="login-form" onSubmit={(event) => {
+        event.preventDefault();
+        handleLogin();
+      }}>
         <div className="uk-margin">
           <div className="uk-inline uk-width-1-1">
             <i className="uk-form-icon fal fa-user" />
@@ -73,14 +75,7 @@ function LogIn(): JSX.Element {
         <div className="uk-margin uk-text-right@s uk-text-center uk-text-small">
           <a href="#" uk-switcher-item="2">Forgot Password?</a>
         </div>
-
-        <Button
-          label="Login"
-          callback={handleLogin}
-          form="login-form"
-          width="3"
-        />
-
+        <button className="uk-button w-100" type="submit">Login</button>
         <div className="uk-text-small uk-text-center">
           Not registered? <a href="#" uk-switcher-item="1">Create an account</a>
         </div>
