@@ -6,8 +6,10 @@ $hoverTransitionTime: 0.5s;
 
 .sidebar-panel {
   border-right: 1px solid #e8e8e8;
+  background-color: $white;
   height: 100vh;
-  width: max-content;
+  width: 210px;
+  float: left;
 
   ul {
     padding-top: 24px;

@@ -115,7 +115,7 @@ const Sidebar: React.FC<SidebarProps> = (props) => {
 
   return (
     <>
-      <div className={"sidebar-panel uk-offcanvas-bar" + (props.isOpen ? "uk-offcanvas-bar-show": "")}>
+      <div id="sidebar" className={"sidebar-panel uk-offcanvas-bar" + (props.isOpen ? "uk-offcanvas-bar-show": "")}>
         <ul className="uk-nav uk-nav-side uk-nav-offcanvas">
           {navLinks}
 

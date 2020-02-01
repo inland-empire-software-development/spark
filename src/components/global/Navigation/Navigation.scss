@@ -1,11 +1,13 @@
 nav.uk-navbar-container {
   &.uk-navbar {
     font-size: 16px;
-  }
 
-  &.uk-navbar-nav > li > a {
-    padding: 0 30px;
-    font-family: 'Medium', sans-serif;
+    .uk-navbar-left {
+      li > a {
+        padding: 0 30px;
+        font-family: 'Medium', sans-serif;
+      }
+    }
   }
 
   .home {
