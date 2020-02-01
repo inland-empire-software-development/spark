@@ -17,7 +17,7 @@ interface SidebarProps {
   menuItems: SidebarItem[];
   accountMenuItems: SidebarItem[];
   isOpen: boolean;
-  onNavigate: (path: string) => void;
+  onNavigate?: (path: string) => void;
 }
 
 const Sidebar: React.FC<SidebarProps> = (props) => {
@@ -31,14 +31,18 @@ const Sidebar: React.FC<SidebarProps> = (props) => {
 
   const handleItemClicked = (item: SidebarItem) => {
     // call props onNavigate function with route path
-    props.onNavigate(item.path);
+    if (props.onNavigate) {
+      props.onNavigate(item.path);
+    }
     // set main item active styles
     setActiveItemLabel(item.label);
   };
 
   const handleSubItemClicked = (path: string) => {
     // call props onNavigate function with route path
-    props.onNavigate(path);
+    if (props.onNavigate) {
+      props.onNavigate(path);
+    }
   };
 
 

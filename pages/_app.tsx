@@ -21,9 +21,10 @@ export default class MyApp extends App<{}, {}, MyAppState> {
     redirect: undefined,
     isPublic: false,
     isAccessFetched: false,
-  };
+  }
 
   componentDidMount(): void {
+    console.log(this.state);
     const {pathname} = this.props.router;
     const redirect = redirects[pathname] ? redirects[pathname].redirect : undefined;
     const isPublic = unprotected.includes(pathname);
