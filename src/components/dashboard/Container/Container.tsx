@@ -1,10 +1,11 @@
 import React from 'react';
 import './Container.scss';
 
-function Container(): JSX.Element {
+function Container(props: { content: JSX.Element }): JSX.Element {
+  const {content} = props;
   return (
     <div id="container">
-     test
+      {content}
     </div>
   );
 }

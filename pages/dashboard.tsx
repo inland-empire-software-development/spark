@@ -6,6 +6,7 @@ import Sidebar from '../src/components/global/Sidebar/Sidebar';
 import Navigation from '../src/components/global/Navigation/Navigation';
 import Container from '../src/components/dashboard/Container/Container';
 import Page from '../src/components/dashboard/Page/Page';
+import Breadcrumb from '../src/components/dashboard/Breadcrumb/Breadcrumb';
 
 function Dashboard() {
   const {user} = useContext(Context);
@@ -21,7 +22,11 @@ function Dashboard() {
       <Page content={
         (<div className="w-100">
           <Sidebar accountMenuItems={account} menuItems={main} isOpen={open} />
-          <Container/>
+          <Container content={
+            <div className="w-100">
+              <Breadcrumb />
+            </div>
+          }/>
         </div>) as JSX.Element
       } />
 
