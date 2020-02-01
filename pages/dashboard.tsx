@@ -3,7 +3,7 @@ import Context from '../src/context';
 // import Logout from '../src/components/authenticate/LogOut/LogOut';
 import {DefaultSeo} from "next-seo";
 import SEO from "../next-seo.config";
-import AddCourse from '../src/components/dashboard/panels/addCourse/AddCourse';
+import AddCourse from '../src/components/dashboard/panels/AddCourse/AddCourse';
 
 function Dashboard() {
   const {user} = useContext(Context);

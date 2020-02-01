@@ -1,3 +1,12 @@
-@import '../../../../style/colors';
+@import '../../../../style/variables.scss';
+@import '../../../../style/colors.scss';
 
-// .a
+#remove-video {
+  height: $form-elements-height;
+
+  button {
+    height: $form-elements-height;
+    padding: 0;
+    font-size: 14px;
+  }
+}

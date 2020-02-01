@@ -1,5 +1,5 @@
 import React from 'react';
-
+import './AddCourse';
 
 function addCourse(): JSX.Element {
   return (
@@ -69,33 +69,30 @@ function addCourse(): JSX.Element {
 
         <h2>Video</h2>
         <form className='uk-form-horizontal'>
-          <div className="uk-margin uk-grid">
-            <div className='uk-column-1-3'>
-              <div className="uk-width-1-1">
-                <label className='uk-form-label' htmlFor="Video Name">Video Name </label>
-                <input type="text" className="uk-input" name="firstName" />
-              </div>
-              <div className="uk-width-1-1">
-                <label className='uk-form-label' htmlFor="Video Category">Video URL </label>
-                <input type="text" className="uk-input" name="firstName" />
-              </div>
-              <div className="uk-width-1-1">
-                <div className="uk-width-1-3">
-                  <label className='uk-form-label' htmlFor="Video URL">Video Category </label>
-                  <input type="text" className="uk-input" name="firstName" />
-                </div>
-                <div className="uk-width-1-6">
-                  <button className="uk-button uk-button-default uk-button-small" type='button'> F</button>
-                </div>
-              </div>
-
+          <div className="grid uk-flex-bottom">
+            <div className="w-20">
+              <label className='uk-form-label' htmlFor="Video Name">Video Name </label>
+              <input type="text" className="uk-input" name="firstName" />
+            </div>
+            <div className="w-30">
+              <label className='uk-form-label' htmlFor="Video Category">Video Category </label>
+              <input type="text" className="uk-input" name="firstName" />
+            </div>
+            <div className="w-40">
+              <label className='uk-form-label' htmlFor="Video URL">Video URL </label>
+              <input type="text" className="uk-input" name="firstName" />
+            </div>
+            <div id="remove-video" className="w-5 ">
+              <button className="w-100 uk-button bg-red white" type='button'>
+                <i className="fal fa-trash"/>
+              </button>
             </div>
           </div>
-          {/* <div className='uk-margin uk-grid'>\
-            <div className='uk-width-1'>
-              <button className="uk-button uk-button-default" type="button">Add Item</button>
+          <div className='uk-margin grid'>
+            <div className='w-20'>
+              <button className="w-100 uk-button uk-button-default" type="button">Add Item</button>
             </div>
-          </div> */}
+          </div>
         </form>
       </div>
 

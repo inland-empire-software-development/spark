@@ -3,6 +3,7 @@
   "rules": {
     "max-line-length": null,
     "no-descending-specificity": null,
-    "declaration-block-trailing-semicolon": null
+    "declaration-block-trailing-semicolon": null,
+    "at-rule-no-unknown": null
   }
 }
