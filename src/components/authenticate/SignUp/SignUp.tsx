@@ -2,7 +2,6 @@ import React, {useState, FormEvent} from 'react';
 import './SignUp.scss';
 import Message from '../../global/Message/Message';
 import Password from '../Password/Password';
-import Button from '../../global/Button/Button';
 /**
  * Renders the SignUp component
  * @constructor
@@ -68,8 +67,6 @@ function SignUp(): JSX.Element {
                 })))
                     .then((response) => response.json())
                     .then((response) => {
-                      if (spinner) spinner.classList.add('uk-hidden');
-
                       if (response && response.status) {
                         document.location.href = `/welcome?user=${username.value}`;
                         setMessage({
@@ -77,6 +74,7 @@ function SignUp(): JSX.Element {
                           message: '',
                         });
                       } else {
+                        if (spinner) spinner.classList.add('uk-hidden');
                         setMessage({
                           status: true,
                           message: 'Error sending confirmation email, please contact an admin.',
@@ -84,6 +82,7 @@ function SignUp(): JSX.Element {
                       }
                     });
               } else {
+                if (spinner) spinner.classList.add('uk-hidden');
                 setMessage({
                   status: true,
                   message: 'Error creating user, please contact an admin if it happens again.',
@@ -171,7 +170,10 @@ function SignUp(): JSX.Element {
     <section className="auth-signup">
       <Message message={message.message} hidden={!message.status} priority={0}/>
       <p className="uk-text-center">Sign up today. It&apos;s free!</p>
-      <form id="signUp-form" onSubmit={(event) => event.preventDefault()}>
+      <form id="signUp-form" onSubmit={(event) => {
+        event.preventDefault();
+        handleSignUp();
+      }}>
         <div className="uk-margin uk-margin-remove-bottom">
           <div className="uk-inline uk-width-1-1">
             <i className="uk-form-icon fal fa-user"/>
@@ -221,12 +223,7 @@ function SignUp(): JSX.Element {
           </label>
         </div>
         <div className="uk-margin">
-          <Button
-            label="Create Account"
-            callback={handleSignUp}
-            form="signUp-form"
-            width="3"
-          />
+          <button className="uk-button w-100" type="submit">Create Account</button>
         </div>
         <div className="uk-text-small uk-text-center">
             Already have an account? <a href="#" uk-switcher-item="0">Log in</a>
