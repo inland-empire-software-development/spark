@@ -1,11 +1,13 @@
 import SEO from "../next-seo.config";
-import {DefaultSeo} from "next-seo";
+import { DefaultSeo } from "next-seo";
 import Footer from '../src/components/global/Footer/Footer';
+import Navigation from "../src/components/global/Navigation/Navigation";
 
 // render home page.
 function Home(): JSX.Element {
   return (
     <main>
+      <Navigation />
       <section>
         <div className="uk-container" >
           <DefaultSeo {...Object.assign(SEO, {
@@ -17,7 +19,7 @@ function Home(): JSX.Element {
           </section>
         </div>
       </section>
-      <Footer/>
+      <Footer />
     </main>
 
   );

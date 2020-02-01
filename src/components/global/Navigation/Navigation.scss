@@ -1,0 +1,46 @@
+nav.uk-navbar-container {
+  &.uk-navbar {
+    font-size: 16px;
+  }
+
+  &.uk-navbar-nav > li > a {
+    padding: 0 30px;
+    font-family: 'Medium', sans-serif;
+  }
+
+  .home {
+    margin-left: 70px;
+  }
+
+  .fa-envelope,
+  .fa-bell,
+  .fa-user {
+    font-size: 22px;
+  }
+
+  .bg-snow {
+    padding: 0;
+    min-width: 40px;
+    min-height: 40px;
+    background: rgba(255, 255, 255, 0.3);
+    margin: 5px 25px 5px 5px;
+    border-radius: 50%;
+  }
+
+  .profile {
+    margin-right: 50px;
+    min-width: 43px;
+    min-height: 43px;
+    background: lightgray;
+    border-style: solid;
+    border-color: rgba(239, 128, 108, 1);
+    border-width: 4px;
+  }
+
+  img {
+    margin-left: 10px;
+    position: relative;
+    top: -2px;
+    width: 120px;
+  }
+}
