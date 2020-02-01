@@ -1,6 +1,5 @@
 import {useContext} from 'react';
 import Context from '../src/context';
-import Logout from '../src/components/authenticate/LogOut/LogOut';
 import {DefaultSeo} from "next-seo";
 import SEO from "../next-seo.config";
 
@@ -14,7 +13,6 @@ function Dashboard() {
       })}
       />
       <h1>Hello {user}!</h1>
-      <Logout/>
     </div>
   );
 }
