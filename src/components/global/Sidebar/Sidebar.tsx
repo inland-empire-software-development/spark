@@ -109,10 +109,11 @@ const Sidebar: React.FC<SidebarProps> = (props) => {
   const navLinks = createMenuItems(props.menuItems);
   const accountLinks = createMenuItems(props.accountMenuItems);
   const subMenu = createSubMenu([...props.menuItems, ...props.accountMenuItems]);
-  const openClassName = props.isOpen ? "uk-open" : "";
 
   return (
-    <div className={`uk-offcanvas ${openClassName}`} style={{display: "block"}}>
+    <div
+      className={`uk-offcanvas ${props.isOpen ? "uk-open" : ""}`}
+      style={{display: "block"}}>
       <div className="uk-offcanvas-bar uk-offcanvas-bar-animation uk-offcanvas-slide sidebar-panel">
         <ul className="uk-nav">
           {navLinks}
