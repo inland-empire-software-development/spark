@@ -24,6 +24,7 @@
     "sbprod": "start-storybook -s ./public HOST=http://localhost:6003/ -p 7003 -c .storybook"
   },
   "dependencies": {
+    "@types/uikit": "^2.27.7",
     "@zeit/next-css": "^1.0.1",
     "@zeit/next-sass": "^1.0.1",
     "app-root-path": "^3.0.0",
