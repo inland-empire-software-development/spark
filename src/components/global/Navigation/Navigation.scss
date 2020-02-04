@@ -42,10 +42,7 @@ nav.uk-navbar-container {
     position: relative;
     top: -2px;
     width: 120px;
-
-    // @media screen and (min-width: 768px) {
-    //   background-image: url(/public/images/logo/spark-360x360.png);
-    // }
+    min-width: 120px;
   }
 
   .uk-navbar-toggle {

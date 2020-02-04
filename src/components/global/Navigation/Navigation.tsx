@@ -149,7 +149,6 @@ function Navigation(): JSX.Element {
                     <ul className="uk-nav uk-nav-default">
                         <li className="uk-active">
                             <a href="#" >
-                                {/* Change size */}
                                 <img src="/images/logo/spark-text-carbon.svg" alt="spark-snow-logo" className="offcanvas-logo" />
                             </a>
                         </li>
