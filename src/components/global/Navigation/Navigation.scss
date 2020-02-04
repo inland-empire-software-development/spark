@@ -1,9 +1,16 @@
 nav.uk-navbar-container {
+  &.uk-navbar-dropdown {
+    padding: 25px;
+    background: rgba(255, 255, 255, 0.8);
+    color: #666;
+    border-right: 1px solid #dedede;
+  }
+
   &.uk-navbar {
     font-size: 16px;
   }
 
-  &.uk-navbar-nav > li > a {
+  .uk-navbar-nav li a {
     padding: 0 30px;
     font-family: 'Medium', sans-serif;
   }
@@ -13,18 +20,31 @@ nav.uk-navbar-container {
   }
 
   .fa-envelope,
-  .fa-bell,
+  .fa-bell {
+    font-size: 18px;
+  }
+
   .fa-user {
     font-size: 22px;
   }
 
-  .bg-snow {
-    padding: 0;
-    min-width: 40px;
-    min-height: 40px;
-    background: rgba(255, 255, 255, 0.3);
-    margin: 5px 25px 5px 5px;
-    border-radius: 50%;
+  .uk-navbar-right {
+    a.bg-snow {
+      padding: 0 !important;
+      min-width: 40px;
+      min-height: 40px;
+      background: rgba(255, 255, 255, 0.3);
+      margin: 15px 20px 5px 5px;
+      border-radius: 50%;
+    }
+
+    a:not(:last-child) {
+      position: relative;
+      min-width: 50px;
+      min-height: 50px;
+      margin-right: 30px;
+      top: -5px;
+    }
   }
 
   .profile {
@@ -41,8 +61,8 @@ nav.uk-navbar-container {
     margin-left: 10px;
     position: relative;
     top: -2px;
-    width: 120px;
-    min-width: 120px;
+    width: 100%;
+    max-width: 90px;
   }
 
   .uk-navbar-toggle {
