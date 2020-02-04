@@ -29,6 +29,8 @@ const Sidebar: React.FC<SidebarProps> = (props) => {
   // the following state is used to tracking the absolute position of the submenu
   const [subMenuCoordinates, setSubMenuCoordinates] = React.useState<[number, number]>([0, 0]);
 
+  // useEffect for handling navigation toggle
+
   const handleItemClicked = (item: SidebarItem) => {
     // call props onNavigate function with route path
     props.onNavigate(item.path);
@@ -40,7 +42,6 @@ const Sidebar: React.FC<SidebarProps> = (props) => {
     // call props onNavigate function with route path
     props.onNavigate(path);
   };
-
 
   const handleMouseEnterItem = (event: React.MouseEvent<HTMLLIElement, MouseEvent>, itemLabel: string) => {
     setHoveredItemLabel(itemLabel);
@@ -108,11 +109,12 @@ const Sidebar: React.FC<SidebarProps> = (props) => {
   const navLinks = createMenuItems(props.menuItems);
   const accountLinks = createMenuItems(props.accountMenuItems);
   const subMenu = createSubMenu([...props.menuItems, ...props.accountMenuItems]);
+  const openClassName = props.isOpen ? "uk-open" : "";
 
   return (
-    <>
-      <div className={"sidebar-panel uk-offcanvas-bar" + (props.isOpen ? "uk-offcanvas-bar-show": "")}>
-        <ul className="uk-nav uk-nav-side uk-nav-offcanvas">
+    <div className={`uk-offcanvas ${openClassName}`} style={{display: "block"}}>
+      <div className="uk-offcanvas-bar uk-offcanvas-bar-animation uk-offcanvas-slide sidebar-panel">
+        <ul className="uk-nav">
           {navLinks}
 
           <div className="section-title">Account</div>
@@ -120,7 +122,7 @@ const Sidebar: React.FC<SidebarProps> = (props) => {
         </ul>
       </div>
       {subMenu}
-    </>
+    </div>
   );
 };
 

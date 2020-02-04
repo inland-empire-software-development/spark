@@ -65,7 +65,7 @@ export const DefaultSidebar = () => (
   <Sidebar
     menuItems={mainItemsData}
     accountMenuItems={accountItemsData}
-    isOpen
+    isOpen={boolean("Visible?", true, "Toggles")}
     {...actionsData}
   ></Sidebar>
 );
@@ -74,16 +74,7 @@ export const MissingIcon = () => (
   <Sidebar
     menuItems={missingIconData}
     accountMenuItems={accountItemsData}
-    isOpen
-    {...actionsData}
-  ></Sidebar>
-);
-
-export const OffCanvas = () => (
-  <Sidebar
-    menuItems={mainItemsData}
-    accountMenuItems={accountItemsData}
-    isOpen={boolean("Visible?", false, "Toggles")}
+    isOpen={boolean("Visible?", true, "Toggles")}
     {...actionsData}
   ></Sidebar>
 );
