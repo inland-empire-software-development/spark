@@ -42,5 +42,30 @@ nav.uk-navbar-container {
     position: relative;
     top: -2px;
     width: 120px;
+
+    // @media screen and (min-width: 768px) {
+    //   background-image: url(/public/images/logo/spark-360x360.png);
+    // }
+  }
+
+  .uk-navbar-toggle {
+    min-height: 50px;
+  }
+
+  .profile-mobile {
+    min-height: 20px;
+  }
+}
+
+.uk-offcanvas-bar {
+  .offcanvas-logo {
+    width: 100px;
+    margin-bottom: 30px;
+  }
+}
+
+.uk-nav-sub {
+  li > a {
+    color: darkgray !important;
   }
 }
