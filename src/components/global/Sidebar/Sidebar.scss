@@ -4,21 +4,22 @@ $hoverTransitionTime: 0.5s;
 
 .sidebar-panel {
   border-right: 1px solid #e8e8e8;
-  height: 100vh;
-  // width: max-content;
+  overflow-x: hidden;
+  width: max-content;
   background-color: white;
+  padding: 0; // override uikit
 
-  ul {
+  .menu-primary {
     padding-top: 24px;
     font-family: "Light", sans-serif;
     font-size: 20px;
     color: $light-gray;
     list-style: none;
     width: max-content;
+    min-width: 250px;
 
     li {
       cursor: pointer;
-      padding: 12px 36px 12px 24px;
       transition: $hoverTransitionTime;
 
       &:hover {
@@ -26,9 +27,20 @@ $hoverTransitionTime: 0.5s;
         background-color: $selectedLinkBackground;
       }
 
-      a {
-        color: $light-gray;
+      .primary-item-label {
+        padding: 12px 36px 12px 24px;
       }
+    }
+  }
+
+  .menu-secondary {
+    padding-left: 48px;
+    padding-bottom: 16px;
+    color: $light-gray;
+
+    li {
+      padding-top: 8px;
+      padding-bottom: 8px;
     }
   }
 

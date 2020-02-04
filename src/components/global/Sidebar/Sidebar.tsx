@@ -46,8 +46,9 @@ const Sidebar: React.FC<SidebarProps> = (props) => {
         iconStyle = "fa fa-fw icon icon-hidden";
       }
 
+      // add click listener
       const subItems: JSX.Element | undefined = item.subItems && item.subItems.length > 0 ? (
-        <ul className="uk-nav-sub">
+        <ul className="uk-nav-sub menu-secondary">
           {item.subItems.map((subItem) => (
             <li key={subItem.label}>{subItem.label}</li>
           ))}
@@ -55,14 +56,15 @@ const Sidebar: React.FC<SidebarProps> = (props) => {
       ): undefined;
 
       // create return main item with dropdown for subitems
+      // only add click listeners on sub items if they exist
       return (
         <li
           key={item.label}
-          className={`uk-parent ${activeItemLabel === item.label ? "active": ""}`}
+          className={`uk-parent ${activeItemLabel === item.label ? "active": ""} menu-item-primary`}
           onClick={() => handleItemClicked(item)}>
-          <span>
+          <div className="primary-item-label">
             <i className={iconStyle}></i> {item.label}
-          </span>
+          </div>
           {subItems}
         </li>
       );
@@ -77,7 +79,7 @@ const Sidebar: React.FC<SidebarProps> = (props) => {
       className={`uk-offcanvas ${props.isOpen ? "uk-open" : ""}`}
       style={{display: "block"}}>
       <div className="uk-offcanvas-bar uk-offcanvas-bar-animation uk-offcanvas-slide sidebar-panel">
-        <ul className="uk-nav uk-nav-parent-icon" data-uk-nav="multiple:true;toggle:>span">
+        <ul className="uk-nav uk-nav-parent-icon menu-primary" data-uk-nav="multiple:true;toggle:>div">
           {navLinks}
 
           <div className="section-title">Account</div>
