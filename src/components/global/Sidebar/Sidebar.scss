@@ -5,7 +5,7 @@ $hoverTransitionTime: 0.5s;
 .sidebar-panel {
   border-right: 1px solid #e8e8e8;
   height: 100vh;
-  width: max-content;
+  // width: max-content;
   background-color: white;
 
   ul {
@@ -24,6 +24,10 @@ $hoverTransitionTime: 0.5s;
       &:hover {
         color: $selectedLinkColor;
         background-color: $selectedLinkBackground;
+      }
+
+      a {
+        color: $light-gray;
       }
     }
   }
@@ -48,29 +52,5 @@ $hoverTransitionTime: 0.5s;
     color: $selectedLinkColor;
     background-color: $selectedLinkBackground;
     border-right: 2px solid $selectedLinkColor;
-  }
-}
-
-.sidebar-sub-menu {
-  border-right: 1px solid #e8e8e8;
-  transition: opacity $hoverTransitionTime linear;
-
-  ul {
-    margin-bottom: 0;
-    font-family: "Light", sans-serif;
-    font-size: 20px;
-    color: $light-gray;
-    list-style: none;
-    width: max-content;
-
-    li {
-      cursor: pointer;
-      padding: 12px 36px 12px 24px;
-      transition: $hoverTransitionTime;
-
-      &:hover {
-        color: $selectedLinkColor;
-      }
-    }
   }
 }
