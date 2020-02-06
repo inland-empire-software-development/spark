@@ -20,28 +20,34 @@ interface SidebarProps {
   onNavigate: (path: string) => void;
 }
 
+// ActiveSubMenus holds a Map of primary menu items with expanded submenu heights as values
+type ActiveSubMenus = Map<string, number>;
+
 const Sidebar: React.FC<SidebarProps> = (props) => {
   // state for clicked (active) and hovered (mouse hover to show submenu)
   // dashboard links
   const [activeItemLabel, setActiveItemLabel] = React.useState<string>("");
-  const [activeItemHeight, setActiveItemHeight] = React.useState<number>(0);
+  const [activeSubMenus, setActiveSubMenus] = React.useState<ActiveSubMenus>(new Map());
 
   const handleItemClicked = (e: React.MouseEvent<HTMLDivElement, MouseEvent>, item: SidebarItem) => {
-    // set height of subNav items
+    // check for sibling element (submenu)
     if (e.currentTarget.nextElementSibling?.firstElementChild) {
       const subMenuEl = e.currentTarget.nextElementSibling.firstElementChild;
-      setActiveItemHeight(subMenuEl.clientHeight);
+      // open or close the primary item's submenu
+      if (activeSubMenus.has(item.label)) {
+        activeSubMenus.delete(item.label);
+        setActiveSubMenus(new Map(activeSubMenus));
+      } else {
+        activeSubMenus.set(item.label, subMenuEl.clientHeight);
+        setActiveSubMenus(new Map(activeSubMenus));
+      }
     }
+
     // call props onNavigate function with route path
     props.onNavigate(item.path);
     // set main item active styles
     setActiveItemLabel(item.label);
   };
-
-  // const handleSubItemClicked = (path: string) => {
-  //   // call props onNavigate function with route path
-  //   props.onNavigate(path);
-  // };
 
   // createMenuItems is a helper to avoid repetition
   const createMenuItems = (menuItems: SidebarItem[]): JSX.Element[] => {
@@ -52,13 +58,14 @@ const Sidebar: React.FC<SidebarProps> = (props) => {
         iconStyle = "fa fa-fw icon icon-hidden";
       }
 
+      // for primary menu (top level items)
       const isActiveItem = activeItemLabel === item.label;
+      const subMenuHeight = activeSubMenus.get(item.label);
 
-      // add click listener
       const subItems: JSX.Element | undefined = item.subItems && item.subItems.length > 0 ? (
         <div
           className="menu-secondary"
-          style={{height: isActiveItem ? activeItemHeight:0}}
+          style={{height: subMenuHeight ? subMenuHeight : 0}}
         >
           <ul className="uk-nav-sub">
             {item.subItems.map((subItem) => (
@@ -68,8 +75,9 @@ const Sidebar: React.FC<SidebarProps> = (props) => {
         </div>
       ): undefined;
 
+
       // create return main item with dropdown for subitems
-      // only add click listeners on sub items if they exist
+      // ${subItems ? "uk-parent":""}
       return (
         <li
           key={item.label}
@@ -96,7 +104,6 @@ const Sidebar: React.FC<SidebarProps> = (props) => {
       <div className="uk-offcanvas-bar uk-offcanvas-bar-animation uk-offcanvas-slide sidebar-panel">
         <ul
           className="uk-nav menu-primary">
-          {/* data-uk-nav="multiple:true;toggle:>.primary-item-label"> */}
           {navLinks}
 
           <div className="section-title">Account</div>
