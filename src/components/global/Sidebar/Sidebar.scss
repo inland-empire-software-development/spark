@@ -34,13 +34,17 @@ $hoverTransitionTime: 0.5s;
   }
 
   .menu-secondary {
-    padding-left: 48px;
-    padding-bottom: 16px;
-    color: $light-gray;
+    transition: height 0.2s ease;
+    overflow-y: hidden;
 
-    li {
-      padding-top: 8px;
-      padding-bottom: 8px;
+    ul {
+      padding-left: 48px;
+      color: $light-gray;
+
+      li {
+        padding-top: 8px;
+        padding-bottom: 8px;
+      }
     }
   }
 
