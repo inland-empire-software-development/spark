@@ -19,7 +19,7 @@ interface SidebarProps {
   isOpen: boolean;
   closeButtonScreenSize: "s" | "m" | "l" | "xl"; // choose UIKit screen size for close button in sidebar
   onNavigate: (path: string) => void;
-  onMenuClosed: () => void;
+  onMenuClose: () => void;
 }
 
 // ActiveSubMenus holds a Map of primary menu items with expanded submenu heights as values
@@ -51,8 +51,8 @@ const Sidebar: React.FC<SidebarProps> = (props) => {
     setActiveItemLabel(item.label);
   };
 
-  const handleMenuClosed = () => {
-    props.onMenuClosed();
+  const handleMenuClose = () => {
+    props.onMenuClose();
   };
 
   // createMenuItems is a helper to avoid repetition
@@ -121,7 +121,7 @@ const Sidebar: React.FC<SidebarProps> = (props) => {
         <div className={`mobile-close uk-hidden@${props.closeButtonScreenSize}`}>
           <span
             uk-icon="icon: close"
-            onClick={() => handleMenuClosed()}
+            onClick={() => handleMenuClose()}
           ></span>
         </div>
         <div className={`spacer uk-visible@${props.closeButtonScreenSize}`}>

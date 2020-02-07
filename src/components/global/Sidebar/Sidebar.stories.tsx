@@ -59,7 +59,7 @@ missingIconData.push({icon: "", label: "Nothing", path: ""});
 
 const actionsData = {
   onNavigate: action("onNavigate"),
-  onMenuClosed: action("onMenuClosed"),
+  onMenuClose: action("onMenuClose"),
 };
 
 export const DefaultSidebar = () => (
