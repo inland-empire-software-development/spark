@@ -20,7 +20,6 @@ $transitionTime: 0.2s;
 
   .menu-primary {
     visibility: visible;
-    padding-top: 24px;
     font-family: "Light", sans-serif;
     font-size: 20px;
     color: $light-gray;
@@ -88,10 +87,26 @@ $transitionTime: 0.2s;
     opacity: 0;
   }
 
+  .mobile-close {
+    color: $light-gray;
+    display: flex;
+    justify-content: flex-end;
+
+    span {
+      cursor: pointer;
+      padding: 12px; // make larger touch area for clicking close button (helps on mobile)
+      overflow: overlay;
+    }
+  }
+
   .section-title {
     font-family: "Medium", sans-serif;
     font-size: 24px;
     color: $dark-gray;
     margin: 24px 0 24px 24px;
+  }
+
+  .spacer {
+    height: 24px;
   }
 }

@@ -18,6 +18,7 @@ interface SidebarProps {
   accountMenuItems: SidebarItem[];
   isOpen: boolean;
   onNavigate: (path: string) => void;
+  onMenuClosed: () => void;
 }
 
 // ActiveSubMenus holds a Map of primary menu items with expanded submenu heights as values
@@ -47,6 +48,10 @@ const Sidebar: React.FC<SidebarProps> = (props) => {
     props.onNavigate(item.path);
     // set main item active styles
     setActiveItemLabel(item.label);
+  };
+
+  const handleMenuClosed = () => {
+    props.onMenuClosed();
   };
 
   // createMenuItems is a helper to avoid repetition
@@ -112,6 +117,14 @@ const Sidebar: React.FC<SidebarProps> = (props) => {
       className={`uk-offcanvas ${props.isOpen ? "uk-open" : ""}`}
       style={{display: "block"}}>
       <div className="uk-offcanvas-bar uk-offcanvas-bar-animation uk-offcanvas-slide sidebar-panel">
+        <div className="mobile-close uk-hidden@m">
+          <span
+            uk-icon="icon: close"
+            onClick={() => handleMenuClosed()}
+          ></span>
+        </div>
+        <div className="spacer uk-visible@m">
+        </div>
         <ul
           className="uk-nav menu-primary">
           {navLinks}
