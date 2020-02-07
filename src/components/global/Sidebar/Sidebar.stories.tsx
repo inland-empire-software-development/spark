@@ -82,6 +82,16 @@ export const MissingIcon = () => (
   ></Sidebar>
 );
 
+export const CloseButtonOnSmallScreen = () => (
+  <Sidebar
+    menuItems={missingIconData}
+    accountMenuItems={accountItemsData}
+    isOpen={boolean("Visible?", true, "Toggles")}
+    closeButtonScreenSize="s"
+    {...actionsData}
+  ></Sidebar>
+);
+
 export const CloseButtonOnXLScreen = () => (
   <Sidebar
     menuItems={missingIconData}
