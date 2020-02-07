@@ -67,6 +67,7 @@ export const DefaultSidebar = () => (
     menuItems={mainItemsData}
     accountMenuItems={accountItemsData}
     isOpen={boolean("Visible?", true, "Toggles")}
+    closeButtonScreenSize="m"
     {...actionsData}
   ></Sidebar>
 );
@@ -76,6 +77,17 @@ export const MissingIcon = () => (
     menuItems={missingIconData}
     accountMenuItems={accountItemsData}
     isOpen={boolean("Visible?", true, "Toggles")}
+    closeButtonScreenSize="m"
+    {...actionsData}
+  ></Sidebar>
+);
+
+export const CloseButtonOnXLScreen = () => (
+  <Sidebar
+    menuItems={missingIconData}
+    accountMenuItems={accountItemsData}
+    isOpen={boolean("Visible?", true, "Toggles")}
+    closeButtonScreenSize="xl"
     {...actionsData}
   ></Sidebar>
 );

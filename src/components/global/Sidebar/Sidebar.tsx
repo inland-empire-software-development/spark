@@ -17,6 +17,7 @@ interface SidebarProps {
   menuItems: SidebarItem[];
   accountMenuItems: SidebarItem[];
   isOpen: boolean;
+  closeButtonScreenSize: "s" | "m" | "l" | "xl"; // choose UIKit screen size for close button in sidebar
   onNavigate: (path: string) => void;
   onMenuClosed: () => void;
 }
@@ -117,13 +118,13 @@ const Sidebar: React.FC<SidebarProps> = (props) => {
       className={`uk-offcanvas ${props.isOpen ? "uk-open" : ""}`}
       style={{display: "block"}}>
       <div className="uk-offcanvas-bar uk-offcanvas-bar-animation uk-offcanvas-slide sidebar-panel">
-        <div className="mobile-close uk-hidden@m">
+        <div className={`mobile-close uk-hidden@${props.closeButtonScreenSize}`}>
           <span
             uk-icon="icon: close"
             onClick={() => handleMenuClosed()}
           ></span>
         </div>
-        <div className="spacer uk-visible@m">
+        <div className={`spacer uk-visible@${props.closeButtonScreenSize}`}>
         </div>
         <ul
           className="uk-nav menu-primary">
