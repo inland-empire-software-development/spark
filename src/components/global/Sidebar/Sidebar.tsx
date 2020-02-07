@@ -62,6 +62,7 @@ const Sidebar: React.FC<SidebarProps> = (props) => {
       const isActiveItem = activeItemLabel === item.label;
       const subMenuHeight = activeSubMenus.get(item.label);
 
+      // create subitem JSX if subItems exist
       const subItems: JSX.Element | undefined = item.subItems && item.subItems.length > 0 ? (
         <div
           className="menu-secondary"
@@ -76,8 +77,7 @@ const Sidebar: React.FC<SidebarProps> = (props) => {
       ): undefined;
 
 
-      // create return main item with dropdown for subitems
-      // ${subItems ? "uk-parent":""}
+      // return main items with dropdown for subitems
       return (
         <li
           key={item.label}
@@ -106,6 +106,7 @@ const Sidebar: React.FC<SidebarProps> = (props) => {
   const navLinks = createMenuItems(props.menuItems);
   const accountLinks = createMenuItems(props.accountMenuItems);
 
+  // return whole sidebar with offcanvas capability for toggling on/off screen
   return (
     <div
       className={`uk-offcanvas ${props.isOpen ? "uk-open" : ""}`}

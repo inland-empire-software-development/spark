@@ -3,13 +3,23 @@ $selectedLinkBackground: #f8f9fb;
 $transitionTime: 0.2s;
 
 .sidebar-panel {
-  border-right: 1px solid #e8e8e8;
+  padding: 0; // override uikit
   overflow-x: hidden;
+  overflow-y: hidden;
   width: max-content;
   background-color: white;
-  padding: 0; // override uikit
+  border-right: 1px solid #e8e8e8;
+
+  &:hover {
+    overflow-y: auto;
+  }
+
+  &:focus {
+    overflow-y: auto;
+  }
 
   .menu-primary {
+    visibility: visible;
     padding-top: 24px;
     font-family: "Light", sans-serif;
     font-size: 20px;
