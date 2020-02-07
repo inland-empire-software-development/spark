@@ -31,7 +31,7 @@ const Sidebar: React.FC<SidebarProps> = (props) => {
   const [activeItemLabel, setActiveItemLabel] = React.useState<string>("");
   const [activeSubMenus, setActiveSubMenus] = React.useState<ActiveSubMenus>(new Map());
 
-  const handleItemClicked = (e: React.MouseEvent<HTMLDivElement, MouseEvent>, item: SidebarItem) => {
+  const handleMenuItemClicked = (e: React.MouseEvent<HTMLDivElement, MouseEvent>, item: SidebarItem) => {
     // check for sibling element (submenu)
     if (e.currentTarget.nextElementSibling?.firstElementChild) {
       const subMenuEl = e.currentTarget.nextElementSibling.firstElementChild;
@@ -46,9 +46,16 @@ const Sidebar: React.FC<SidebarProps> = (props) => {
     }
 
     // call props onNavigate function with route path
-    props.onNavigate(item.path);
+    // only call if there is no submenu
+    if (!item.subItems) {
+      props.onNavigate(item.path);
+    }
     // set main item active styles
     setActiveItemLabel(item.label);
+  };
+
+  const handleSubMenuItemClicked = (path: string) => {
+    props.onNavigate(path);
   };
 
   const handleMenuClose = () => {
@@ -67,6 +74,7 @@ const Sidebar: React.FC<SidebarProps> = (props) => {
       // for primary menu (top level items)
       const isActiveItem = activeItemLabel === item.label;
       const subMenuHeight = activeSubMenus.get(item.label);
+      const hasSubMenu = subMenuHeight ? true : false;
 
       // create subitem JSX if subItems exist
       const subItems: JSX.Element | undefined = item.subItems && item.subItems.length > 0 ? (
@@ -76,7 +84,10 @@ const Sidebar: React.FC<SidebarProps> = (props) => {
         >
           <ul className="uk-nav-sub">
             {item.subItems.map((subItem) => (
-              <li key={subItem.label}>{subItem.label}</li>
+              <li
+                key={subItem.label}
+                onClick={() => handleSubMenuItemClicked(subItem.path)}
+              >{subItem.label}</li>
             ))}
           </ul>
         </div>
@@ -91,7 +102,7 @@ const Sidebar: React.FC<SidebarProps> = (props) => {
         >
           <div
             className={`primary-item-label ${isActiveItem ? "active": ""}`}
-            onClick={(e) => handleItemClicked(e, item)}>
+            onClick={(e) => handleMenuItemClicked(e, item)}>
             <i className={iconStyle}></i>
             <span>
               {item.label}
@@ -99,7 +110,7 @@ const Sidebar: React.FC<SidebarProps> = (props) => {
             {item.subItems && item.subItems.length > 0 && (
               <span
                 className="sub-angle-down"
-                style={{transform: subMenuHeight ? "rotate(180deg)": ""}}
+                style={{transform: hasSubMenu ? "rotate(180deg)": ""}}
                 uk-icon="icon: chevron-down"></span>
             )}
           </div>
