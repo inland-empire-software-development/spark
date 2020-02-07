@@ -81,12 +81,21 @@ const Sidebar: React.FC<SidebarProps> = (props) => {
       return (
         <li
           key={item.label}
-          className={`${subItems ? "uk-parent":""} ${isActiveItem ? "active": ""} menu-item-primary`}
+          className={`${subItems ? "uk-parent":""} menu-item-primary`}
         >
           <div
-            className="primary-item-label"
+            className={`primary-item-label ${isActiveItem ? "active": ""}`}
             onClick={(e) => handleItemClicked(e, item)}>
-            <i className={iconStyle}></i> {item.label}
+            <i className={iconStyle}></i>
+            <span>
+              {item.label}
+            </span>
+            {item.subItems && item.subItems.length > 0 && (
+              <span
+                className="sub-angle-down"
+                style={{transform: subMenuHeight ? "rotate(180deg)": ""}}
+                uk-icon="icon: chevron-down"></span>
+            )}
           </div>
           {subItems}
         </li>
