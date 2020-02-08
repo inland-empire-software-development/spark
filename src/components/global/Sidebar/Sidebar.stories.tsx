@@ -4,11 +4,20 @@ import {action} from "@storybook/addon-actions";
 import {withKnobs, boolean} from "@storybook/addon-knobs";
 import "../../../style/index.scss";
 import Sidebar from "./Sidebar";
+import marked from "marked";
+
+const usage = require('./usage.md');
+
 
 export default {
   title: "Sidebar",
   decorators: [withA11y, withKnobs],
   excludeStories: /.*Data$/,
+  parameters: {
+    notes: {
+      "Usage": marked(usage.default),
+    },
+  },
 };
 
 export const mainItemsData = [
@@ -101,3 +110,4 @@ export const CloseButtonOnXLScreen = () => (
     {...actionsData}
   ></Sidebar>
 );
+
