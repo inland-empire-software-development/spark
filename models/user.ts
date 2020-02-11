@@ -1,5 +1,9 @@
 import {CreateTable} from "..";
 
+/**
+ * Creates the user database. Only one row per user.
+ * @param {db} db
+ */
 const user = async (db: CreateTable) => {
   const query = `
     CREATE TABLE ${process.env.DBNAME}.user (
