@@ -16,7 +16,7 @@ const db = mysql.createConnection({
 // User methods
 db.getUser = function(user: string): object | boolean {
   return new Promise((resolve, reject) => {
-    db.query(`SELECT last_login, confirmation, password FROM ${process.env.DBNAME}.user WHERE username = ${escape(user)}`,
+    db.query(`SELECT id, last_login, confirmation, password FROM ${process.env.DBNAME}.user WHERE username = ${escape(user)}`,
         function(error: { sqlMessage: any }, results: string | any[]) {
           if (error) reject(error.sqlMessage ? error.sqlMessage : error);
 
@@ -28,7 +28,7 @@ db.getUser = function(user: string): object | boolean {
 
 db.getUserByEmail = function(email: string): object | boolean {
   return new Promise((resolve, reject) => {
-    db.query(`SELECT username, password_reset FROM ${process.env.DBNAME}.user WHERE email = ${escape(email)}`,
+    db.query(`SELECT id, username, password_reset FROM ${process.env.DBNAME}.user WHERE email = ${escape(email)}`,
         function(error: { sqlMessage: any }, results: string | any[]) {
           if (error) reject(error.sqlMessage ? error.sqlMessage : error);
           const status = results.length !== 0;
@@ -64,7 +64,7 @@ db.createUser = function(user: string, pass: string, email: string, role: string
   return new Promise((resolve, reject) => {
     const hash: string = db.createPassword(pass);
     const token: string = bcrypt.genSaltSync(16); // will be used to confirm email - set to false after confirmation
-    db.query(`INSERT INTO iesd_portal.user (username, password, email, role, confirmation) VALUES ('${user}', '${hash}', '${email}', '${role}', '${token}')`,
+    db.query(`INSERT INTO ${process.env.DBNAME}.user (username, password, email, role, confirmation) VALUES ('${user}', '${hash}', '${email}', '${role}', '${token}')`,
         function(error: { sqlMessage: any }, results: object) {
           if (error) reject(error.sqlMessage ? error.sqlMessage : error);
 

@@ -1,6 +1,23 @@
 @import '../../../style/_variables.scss';
 
 nav.uk-navbar-container {
+  a {
+    font-family: 'Light', sans-serif;
+    text-transform: uppercase;
+  }
+
+  .uk-navbar-left {
+    li {
+      a {
+        color: $white;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+
   .uk-navbar-dropdown {
     padding: 25px;
     background: rgba(255, 255, 255, 0.8);
@@ -30,7 +47,6 @@ nav.uk-navbar-container {
 
   .uk-navbar-nav li a {
     padding: 0 30px;
-    font-family: 'Medium', sans-serif;
   }
 
   .home {
@@ -124,5 +140,17 @@ nav.uk-navbar-container {
 .uk-nav-sub {
   li > a {
     color: darkgray !important;
+  }
+}
+
+#offcanvas-nav {
+  .uk-offcanvas-bar {
+    li {
+      display: block !important;
+
+      a {
+        color: $dark-gray;
+      }
+    }
   }
 }

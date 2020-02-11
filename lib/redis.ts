@@ -6,6 +6,7 @@ bluebird.promisifyAll(redis.Multi.prototype);
 
 const client = redis.createClient(process.env.REDISPORT, process.env.REDISIP);
 client.auth(process.env.REDISPASS);
+client.select(process.env.REDISDB);
 
 client.setToken = (username: string, token: string) => {
   return client.setAsync(String(token), username);
