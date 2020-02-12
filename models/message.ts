@@ -20,7 +20,6 @@ const message = async (db: CreateTable) => {
         reminder_frequency_id INT NULL COMMENT 'This column signifies the frequency of the reminder. Should it be on daily basis or weekly basis?',
         ephemeral TINYINT NULL DEFAULT 0 COMMENT 'If set to true, we will delete this message on specific date.',
         removal_date DATETIME NULL COMMENT 'Date for ephemeral message to be removed.',
-        type TINYINT NOT NULL DEFAULT 0 COMMENT 'Zero means this is a normal message, One means this is a system message.',
         PRIMARY KEY (id),
         UNIQUE INDEX id_UNIQUE (id ASC)
     )`;

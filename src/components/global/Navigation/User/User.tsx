@@ -86,10 +86,17 @@ function User(): JSX.Element {
             {/* user profile */}
             <Link href="/user-profile">
               <a className="white">
-                <img src={userDetails ? userDetails?.avatar_url : ""}/>
+                <img src={userDetails ? userDetails?.avatar_url : ""}
+                  alt="user profile image"
+                  title={userDetails ? userDetails?.first_name + " " + userDetails?.last_name : "user profile image"}
+                />
               </a>
             </Link>
             <div className="uk-navbar-dropdown">
+              <div>
+                <p>Hello {userDetails ? userDetails?.first_name : "pal"}!</p>
+                <hr/>
+              </div>
               <ul className="uk-nav uk-navbar-dropdown-nav">
                 <li>
                   <Link href='/user/user-profile/dashboard'>
