@@ -22,24 +22,28 @@ function User(): JSX.Element {
   };
 
   const [userDetails, setUserDetails]= useState({
-    "avatar_url": "",
-    "first_name": "",
-    "last_name": "",
-    "status": "",
+    "avatar_url": undefined,
+    "first_name": undefined,
+    "last_name": undefined,
+    "status": undefined,
   });
 
   useEffect(() => {
-    fetch(process.env.HOST + "api/meta", {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(data),
-    })
-        .then((response) => response.json())
-        .then((response) => {
-          setUserDetails(response);
-        });
+    console.log("Checking for user ID");
+    if (userID !== undefined) {
+      console.log("User ID found");
+      fetch(process.env.HOST + "api/meta", {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      })
+          .then((response) => response.json())
+          .then((response) => {
+            setUserDetails(response);
+          });
+    }
   }, []);
 
 
@@ -86,8 +90,9 @@ function User(): JSX.Element {
             {/* user profile */}
             <Link href="/user-profile">
               <a className="white">
-                <img src={userDetails ? userDetails?.avatar_url : ""}
+                <img src={userDetails && userDetails.avatar_url ? userDetails.avatar_url : process.env.HOST + "images/logo/spark-360x360.png"}
                   alt="user profile image"
+                  className="bg-white"
                   title={userDetails ? userDetails?.first_name + " " + userDetails?.last_name : "user profile image"}
                 />
               </a>
