@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import Link from 'next/link';
 import Context from '../../../../context';
 
@@ -14,9 +14,6 @@ function getMobileToggle() {
 
 function User(): JSX.Element {
   const {user, userID} = useContext(Context);
-
-  console.log(useContext(Context));
-
   const data = {
     key: ["avatar_url", "first_name", "last_name", "status"],
     table: "user_meta",
@@ -24,17 +21,27 @@ function User(): JSX.Element {
     value: userID,
   };
 
-  fetch(process.env.HOST + "api/meta", {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(data),
-  })
-      .then((response) => response.json())
-      .then((response) => {
-        console.log(response);
-      });
+  const [userDetails, setUserDetails]= useState({
+    "avatar_url": "",
+    "first_name": "",
+    "last_name": "",
+    "status": "",
+  });
+
+  useEffect(() => {
+    fetch(process.env.HOST + "api/meta", {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    })
+        .then((response) => response.json())
+        .then((response) => {
+          setUserDetails(response);
+        });
+  }, []);
+
 
   return (
     <div id="navigation-user-component" className="uk-navbar-right">
@@ -51,6 +58,7 @@ function User(): JSX.Element {
           {getMobileToggle()}
         </ul>
       )}
+
       {/* if user is logged in */}
       {user && (
         <ul className="uk-navbar-nav ">
@@ -78,7 +86,7 @@ function User(): JSX.Element {
             {/* user profile */}
             <Link href="/user-profile">
               <a className="white bg-snow profile">
-                <i className="fa fa-user"></i>
+                <img src={userDetails ? userDetails?.avatar_url : ""}/>
               </a>
             </Link>
             <div className="uk-navbar-dropdown">

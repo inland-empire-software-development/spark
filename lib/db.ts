@@ -1,4 +1,6 @@
-import {Message} from "..";
+/* eslint-disable camelcase */
+/* eslint-disable @typescript-eslint/camelcase */
+import {Message, ArrayIndexedWithStrings} from "..";
 import fetch from "isomorphic-unfetch";
 
 const escape = require('sql-string-escape');
@@ -53,8 +55,13 @@ db.getKeys = function(opts: {key?: Array<string>; table: string; identifier?: st
           if (error) reject(error.sqlMessage ? error.sqlMessage : error);
 
           if (results.length !== 0 && key && key.length !== 0) {
-            // eslint-disable-next-line camelcase
-            resolve(results.filter((metadata: {meta_key: string}) => key.includes(metadata.meta_key)));
+            const keys: ArrayIndexedWithStrings = {};
+
+            results
+                .filter((metadata: {meta_key: string; meta_value: string}) => key.includes(metadata.meta_key))
+                .map((metadata: {meta_key: string; meta_value: string}) => keys[metadata.meta_key] = metadata.meta_value);
+
+            resolve(keys);
           }
         });
   });
