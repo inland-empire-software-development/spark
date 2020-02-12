@@ -12,13 +12,12 @@ const lessonMeta = async (db: CreateTable) => {
   (
     lesson_meta_id bigint(20) unsigned NOT NULL AUTO_INCREMENT,
     lesson_id bigint(20) unsigned NOT NULL DEFAULT '0',
-    lesson_key varchar(255) COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
-    lesson_value longtext COLLATE utf8mb4_unicode_520_ci,
+    meta_key varchar(255) COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
+    meta_value longtext COLLATE utf8mb4_unicode_520_ci,
     PRIMARY KEY (lesson_meta_id),
     KEY lesson_id (lesson_id),
-    KEY meta_key (lesson_key),
-    UNIQUE INDEX lesson_meta_id_UNIQUE (lesson_meta_id),
-    UNIQUE INDEX lesson_id_UNIQUE (lesson_id)
+    KEY meta_key (meta_key),
+    UNIQUE INDEX lesson_meta_id_UNIQUE (lesson_meta_id)
   ) `;
 
   return await db.createTable("lesson_meta", query);

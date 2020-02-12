@@ -13,6 +13,59 @@ const db = mysql.createConnection({
   pool: {min: 0, max: 7},
 });
 
+/**
+ * Allows us to pull meta_keys from the database.
+ * @param {object} opts - takes in the key, table, identifier and value to find match in dateebases
+ * @return {Promise}
+ */
+db.getKey = function(opts: {key: string; table: string; identifier?: string; value?: string}) {
+  const {key, table, identifier, value} = opts;
+  let query = `SELECT meta_value FROM ${process.env.DBNAME}.${table} WHERE meta_key = ${escape(key)}`;
+
+  if (identifier && value) {
+    query += ` AND ${identifier} = ${value}`;
+  }
+
+  return new Promise((resolve, reject) => {
+    db.query(query,
+        function(error: { sqlMessage: any }, results: string | any[]) {
+          if (error) reject(error.sqlMessage ? error.sqlMessage : error);
+
+          resolve(results.length !== 0 ? results[0] : false);
+        });
+  });
+};
+
+
+/**
+ * Allows us to pull meta_keys from the database.
+ * @param {object} opts - takes in the key [], table, identifier and value to find matches in dateebases
+ * @return {Promise}
+ */
+db.getKeys = function(opts: {key?: Array<string>; table: string; identifier?: string; value?: string}) {
+  const {key, table, identifier, value} = opts;
+  const query = `SELECT meta_key, meta_value FROM ${process.env.DBNAME}.${table} WHERE ${identifier} = ${escape(value)}`;
+
+
+  return new Promise((resolve, reject) => {
+    db.query(query,
+        function(error: { sqlMessage: any }, results: any) {
+          if (error) reject(error.sqlMessage ? error.sqlMessage : error);
+
+          if (results.length !== 0 && key && key.length !== 0) {
+            // eslint-disable-next-line camelcase
+            resolve(results.filter((metadata: {meta_key: string}) => key.includes(metadata.meta_key)));
+          }
+        });
+  });
+};
+
+// Password
+db.createPassword = function(pass: string): string {
+  const salt: string = bcrypt.genSaltSync(10);
+  return bcrypt.hashSync(pass, salt);
+};
+
 // User methods
 db.getUser = function(user: string): object | boolean {
   return new Promise((resolve, reject) => {
@@ -53,11 +106,6 @@ db.userExists = function(user: string): Promise<object> {
           resolve(results.length !== 0 ? results[0] : false);
         });
   });
-};
-
-db.createPassword = function(pass: string): string {
-  const salt: string = bcrypt.genSaltSync(10);
-  return bcrypt.hashSync(pass, salt);
 };
 
 db.createUser = function(user: string, pass: string, email: string, role: string): Promise<object> {
@@ -170,6 +218,7 @@ db.confirmEmail = function(user: string, token: string): Promise<boolean> {
   });
 };
 
+// Password methods
 db.initiatePasswordReset = function(user: string, email: string): Promise<Message> {
   const token: string = bcrypt.genSaltSync(16); // generates a token for password_token column.
 

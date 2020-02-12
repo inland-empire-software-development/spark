@@ -13,9 +13,29 @@ function getMobileToggle() {
 }
 
 function User(): JSX.Element {
-  const {user} = useContext(Context);
+  const {user, userID} = useContext(Context);
 
-  console.log(user);
+  console.log(useContext(Context));
+
+  const data = {
+    key: ["avatar_url", "first_name", "last_name", "status"],
+    table: "user_meta",
+    identifier: "user_ID",
+    value: userID,
+  };
+
+  fetch(process.env.HOST + "api/meta", {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(data),
+  })
+      .then((response) => response.json())
+      .then((response) => {
+        console.log(response);
+      });
+
   return (
     <div id="navigation-user-component" className="uk-navbar-right">
 

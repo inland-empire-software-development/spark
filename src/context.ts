@@ -37,6 +37,7 @@ const defaultContext = {
   access: false,
   redirect: undefined,
   isPublic: false,
+  userID: undefined,
 };
 
 const Context = createContext<MyAppContext>(defaultContext);

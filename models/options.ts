@@ -11,13 +11,13 @@ const profile = async (db: CreateTable) => {
   const query = `CREATE TABLE ${process.env.DBNAME}.options
   (
     option_id bigint(20) unsigned NOT NULL AUTO_INCREMENT,
-    option_key varchar(255) COLLATE utf8mb4_unicode_520_ci NOT NULL,
-    option_value longtext COLLATE utf8mb4_unicode_520_ci NOT NULL,
+    meta_key varchar(255) COLLATE utf8mb4_unicode_520_ci NOT NULL,
+    meta_value longtext COLLATE utf8mb4_unicode_520_ci NOT NULL,
     autoload tinyint NOT NULL DEFAULT 0,
     PRIMARY KEY (option_id),
-    KEY meta_key (option_key),
+    KEY key (meta_key),
     UNIQUE INDEX option_id_UNIQUE (option_id),
-    UNIQUE INDEX option_key_UNIQUE (option_key),
+    UNIQUE INDEX meta_key_UNIQUE (meta_key),
   ) `;
 
   return await db.createTable("user_meta", query);

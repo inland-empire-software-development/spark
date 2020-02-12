@@ -4,10 +4,12 @@ import {NextApiResponse, NextApiRequest} from 'next';
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   const token = req.cookies['portal-token'];
   const user = req.cookies['portal-user'];
+  const userID = req.cookies['portal-user-id'];
   const access = await client.checkToken(user, token);
 
   const data = {
     user, // user that will be rendered on the front-end
+    userID,
     access, // is user authenticated / valid?
   };
 

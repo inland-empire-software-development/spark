@@ -39,5 +39,6 @@ export interface MyAppContext {
     user: string | undefined;
     access: boolean;
     redirect: string | undefined;
+    userID: string | undefined;
     isPublic: boolean;
 }

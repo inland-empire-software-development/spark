@@ -17,8 +17,7 @@ const userMeta = async (db: CreateTable) => {
     PRIMARY KEY (user_meta_id),
     KEY user_id (user_id),
     KEY meta_key (meta_key),
-    UNIQUE INDEX user_meta_id_UNIQUE (user_meta_id),
-    UNIQUE INDEX user_id_UNIQUE (user_id)
+    UNIQUE INDEX user_meta_id_UNIQUE (user_meta_id)
   ) `;
 
   return await db.createTable("user_meta", query);

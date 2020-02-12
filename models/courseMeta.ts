@@ -12,13 +12,12 @@ const courseMeta = async (db: CreateTable) => {
   (
     course_meta_id bigint(20) unsigned NOT NULL AUTO_INCREMENT,
     course_id bigint(20) unsigned NOT NULL DEFAULT '0',
-    course_key varchar(255) COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
-    course_value longtext COLLATE utf8mb4_unicode_520_ci,
+    meta_key varchar(255) COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
+    meta_value longtext COLLATE utf8mb4_unicode_520_ci,
     PRIMARY KEY (course_meta_id),
     KEY course_id (course_id),
-    KEY meta_key (course_key),
-    UNIQUE INDEX course_meta_id_UNIQUE (course_meta_id),
-    UNIQUE INDEX course_id_UNIQUE (course_id)
+    KEY meta_key (meta_key),
+    UNIQUE INDEX course_meta_id_UNIQUE (course_meta_id)
   ) `;
 
   return await db.createTable("course_meta", query);
