@@ -1,7 +1,7 @@
 import {CreateTable} from "..";
 
 /**
- * Creates the course database. Only one row per user.
+ * Creates the course database table. Only one row per course.
  * @param {db} db
  */
 const course = async (db: CreateTable) => {

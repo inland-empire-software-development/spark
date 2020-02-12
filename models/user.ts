@@ -1,7 +1,7 @@
 import {CreateTable} from "..";
 
 /**
- * Creates the user database. Only one row per user.
+ * Creates the user database table. Only one row per user.
  * @param {db} db
  */
 const user = async (db: CreateTable) => {
