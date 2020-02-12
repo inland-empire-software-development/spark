@@ -85,7 +85,7 @@ function User(): JSX.Element {
           <li className="uk-visible@m">
             {/* user profile */}
             <Link href="/user-profile">
-              <a className="white bg-snow profile">
+              <a className="white">
                 <img src={userDetails ? userDetails?.avatar_url : ""}/>
               </a>
             </Link>

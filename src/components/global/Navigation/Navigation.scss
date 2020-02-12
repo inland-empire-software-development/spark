@@ -45,10 +45,6 @@ nav.uk-navbar-container {
     font-size: 16px;
   }
 
-  .uk-navbar-nav li a {
-    padding: 0 30px;
-  }
-
   .home {
     margin-left: 70px;
   }
@@ -67,17 +63,23 @@ nav.uk-navbar-container {
       padding: 0 !important;
       min-width: 40px;
       min-height: 40px;
-      background: rgba(255, 255, 255, 0.3);
+      background-color: rgba(255, 255, 255, 0.3);
       margin: 15px 20px 5px 5px;
       border-radius: 50%;
     }
 
     a:not(:last-child) {
       position: relative;
-      min-width: 50px;
-      min-height: 50px;
-      margin-right: 30px;
-      top: -5px;
+      background-color: transparent;
+      margin-right: 0;
+
+      img {
+        border-radius: 50%;
+        border-style: solid;
+        border-color: #ef806c;
+        border-width: 4px;
+        margin: 0 auto;
+      }
     }
 
     .notification-bubble {
@@ -103,22 +105,12 @@ nav.uk-navbar-container {
     }
   }
 
-  .profile {
-    margin-right: 50px;
-    min-width: 43px;
-    min-height: 43px;
-    background: lightgray;
-    border-style: solid;
-    border-color: rgba(239, 128, 108, 1);
-    border-width: 4px;
-  }
-
   img {
     margin-left: 10px;
     position: relative;
-    top: -2px;
+    top: -5px;
     width: 100%;
-    max-width: 90px;
+    max-width: 50px;
   }
 
   .uk-navbar-toggle {
