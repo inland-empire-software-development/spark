@@ -67,6 +67,60 @@ db.getKeys = function(opts: {key?: Array<string>; table: string; identifier?: st
   });
 };
 
+/**
+ * Gets the current count of unread messages.
+ * @param {object} opts
+ * @return {number}
+ */
+db.getMessageCount = function(opts: { user: string; userID: string }) {
+  const {user, userID} = opts;
+  const query = `
+  SELECT COUNT(*) 
+  FROM ${process.env.DBNAME}.message 
+  WHERE recipient_id = ${escape(userID)} 
+  AND is_read = 0;`;
+
+  return new Promise((resolve, reject) => {
+    db.query(query,
+        function(error: { sqlMessage: any }, results: any) {
+          if (error) reject(error.sqlMessage ? error.sqlMessage : error);
+
+          if (results.length !== 0 && user) {
+            const count = results[0]['COUNT(*)'];
+            count > 0 ? resolve(count) : reject(error);
+          }
+        },
+    );
+  });
+};
+
+/**
+ * Gets the current count of unread notifications.
+ * @param {object} opts
+ * @return {number}
+ */
+db.getNotificationCount = function(opts: { user: string; userID: string }) {
+  const {user, userID} = opts;
+  const query = `
+  SELECT COUNT(*) 
+  FROM ${process.env.DBNAME}.notification 
+  WHERE user_id = ${escape(userID)} 
+  AND is_read = 0;`;
+
+  return new Promise((resolve, reject) => {
+    db.query(query,
+        function(error: { sqlMessage: any }, results: any) {
+          if (error) reject(error.sqlMessage ? error.sqlMessage : error);
+
+          if (results.length !== 0 && user) {
+            const count = results[0]['COUNT(*)'];
+            count > 0 ? resolve(count) : reject(error);
+          }
+        },
+    );
+  });
+};
+
 // Password
 db.createPassword = function(pass: string): string {
   const salt: string = bcrypt.genSaltSync(10);

@@ -11,7 +11,7 @@ const notification = async (db: CreateTable) => {
         user_id INT NOT NULL,
         title VARCHAR(150) NOT NULL,
         message VARCHAR(200) NOT NULL,
-        trigger_id VARCHAR(100) NOT NULL,
+        is_read TINYINT NULL DEFAULT 0,
         type_id INT NOT NULL DEFAULT 0,
         PRIMARY KEY (id),
         UNIQUE INDEX id_UNIQUE (id ASC))
