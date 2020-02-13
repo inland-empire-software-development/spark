@@ -34,6 +34,7 @@ export default class MyApp extends App<{}, {}, MyAppState> {
     })
         .then((res) => res.json())
         .then((data) => {
+          console.log(data);
           this.setState({...data, redirect, isPublic, isAccessFetched: true});
         });
   };

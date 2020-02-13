@@ -1,6 +1,9 @@
 import React, {useContext, useEffect, useState} from 'react';
 import Link from 'next/link';
 import Context from '../../../../context';
+import Messages from './Messages/Messages';
+import Notifications from './Notifications/Notifications';
+import LogOut from '../../../authenticate/LogOut/LogOut';
 
 function getMobileToggle() {
   return (
@@ -67,24 +70,12 @@ function User(): JSX.Element {
       {user && (
         <ul className="uk-navbar-nav ">
           <li className="uk-visible@m">
-            {/* user mail */}
-            <Link href="/user-mail">
-              <a className="white bg-snow">
-                <span className="notification-bubble">110</span>
-                <i className="fal fa-envelope"></i>
-                <span className="notification-status"/>
-              </a>
-            </Link>
+            {/* user messages */}
+            <Messages />
           </li>
           <li className="uk-visible@m">
             {/* user notification */}
-            <Link href="/user-notification">
-              <a className="white bg-snow">
-                <span className="notification-bubble">110</span>
-                <i className="fal fa-bell"></i>
-                <span className="notification-status"/>
-              </a>
-            </Link>
+            <Notifications />
           </li>
           <li className="uk-visible@m">
             {/* user profile */}
@@ -104,24 +95,22 @@ function User(): JSX.Element {
               </div>
               <ul className="uk-nav uk-navbar-dropdown-nav">
                 <li>
-                  <Link href='/user/user-profile/dashboard'>
+                  <Link href='/dashboard'>
                     <a>Dashboard</a>
                   </Link>
                 </li>
                 <li>
-                  <Link href='/user/user-profile/profile'>
+                  <Link href='/profile'>
                     <a>Profile</a>
                   </Link>
                 </li>
                 <li>
-                  <Link href='/user/user-profile/setting'>
-                    <a>Setting</a>
+                  <Link href='/settings'>
+                    <a>Settings</a>
                   </Link>
                 </li>
                 <li>
-                  <Link href='/user/user-profile/log-out'>
-                    <a>Log out</a>
-                  </Link>
+                  <LogOut />
                 </li>
               </ul>
             </div>

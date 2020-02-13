@@ -1,12 +1,16 @@
 import fetch from 'isomorphic-unfetch';
 import React from "react";
+import Link from 'next/link';
+import './LogOut.scss';
 
 export default function LogOut() {
-  const handleLogout = (e: any) => {
-    e.preventDefault();
+  const handleLogout = (event: any) => {
+    event.preventDefault();
 
     // API route that will handle signing out
     const url = 'api/authenticate/logout';
+    const spinner = document.getElementById('spinner');
+    spinner?.classList.remove('uk-hidden');
 
     fetch(process.env.HOST + url, {
       method: 'POST',
@@ -24,8 +28,8 @@ export default function LogOut() {
   };
 
   return (
-    <button className="uk-button black" onClick={(event) => handleLogout(event) }>
-        logout
-    </button>
+    <Link href="#">
+      <a className="logout-link" onClick={(event) => handleLogout(event)}>Log out <i className="fal fa-sign-out"/></a>
+    </Link>
   );
 }
