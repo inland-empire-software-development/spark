@@ -40,14 +40,13 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     // if user found, verify password matches
     if (auth.verifyPassword(password, user.password)) {
       if (user.confirmation === "active") {
-        // password matched
-      // create new token
-        const token = auth.tokenize(username);
+        // password matched - create new token
+        const token = auth.tokenize(password);
 
         // set token in redis
-        client.setToken(username, token);
+        client.setToken(token, {user: username, userID: user.id});
 
-        // set HttpOnly cookie
+        // set HttpOnly cookies
         res.setHeader('Set-Cookie', [`portal-token=${token}; HttpOnly`, `portal-user=${username}; HttpOnly`, `portal-user-id=${user.id}; HttpOnly`]);
         res.send(valid);
         res.end();

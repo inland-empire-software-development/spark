@@ -16,7 +16,7 @@ function getMobileToggle() {
 }
 
 function User(): JSX.Element {
-  const {user, userID} = useContext(Context);
+  const {user, userID, access} = useContext(Context);
   const data = {
     key: ["avatar_url", "first_name", "last_name", "status"],
     table: "user_meta",
@@ -32,9 +32,7 @@ function User(): JSX.Element {
   });
 
   useEffect(() => {
-    console.log("Checking for user ID");
     if (userID !== undefined) {
-      console.log("User ID found");
       fetch(process.env.HOST + "api/meta", {
         method: 'POST',
         headers: {
@@ -67,7 +65,7 @@ function User(): JSX.Element {
       )}
 
       {/* if user is logged in */}
-      {user && (
+      {user && access && (
         <ul className="uk-navbar-nav ">
           <li className="uk-visible@m">
             {/* user messages */}
