@@ -67,11 +67,11 @@ function User(): JSX.Element {
       {/* if user is logged in */}
       {user && access && (
         <ul className="uk-navbar-nav ">
-          <li className="uk-visible@m">
+          <li className="uk-visible@m" title="Your messages.">
             {/* user messages */}
             <Messages />
           </li>
-          <li className="uk-visible@m">
+          <li className="uk-visible@m" title="Your notifications.">
             {/* user notification */}
             <Notifications />
           </li>

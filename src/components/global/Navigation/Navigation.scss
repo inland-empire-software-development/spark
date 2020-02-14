@@ -126,13 +126,6 @@ nav.uk-navbar-container {
   }
 }
 
-.uk-offcanvas-bar {
-  .offcanvas-logo {
-    width: 100px;
-    margin-bottom: 30px;
-  }
-}
-
 .uk-nav-sub {
   li > a {
     color: darkgray !important;
@@ -141,8 +134,25 @@ nav.uk-navbar-container {
 
 #offcanvas-nav {
   .uk-offcanvas-bar {
+    #mobile-logo {
+      margin: 0 0 5px 0;
+
+      img {
+        width: 100px;
+      }
+
+      hr {
+        border-top: 1px solid #e5e5e5;
+        margin-top: 30px;
+      }
+    }
+
     li {
       display: block !important;
+      margin-bottom: 15px;
+      font-weight: 100;
+      font-size: 18px;
+      padding: 5px 0;
 
       a {
         color: $dark-gray;

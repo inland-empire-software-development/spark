@@ -117,10 +117,11 @@ function Navigation(): JSX.Element {
       <div id="offcanvas-nav" className="uk-offcanvas" uk-offcanvas="mode: push; flip: true">
         <div className="uk-offcanvas-bar bg-white">
           <ul className="uk-nav uk-nav-default">
-            <li className="uk-active">
+            <li id="mobile-logo" className="uk-active">
               <a href="#" >
                 <img src="/images/logo/spark-text-carbon.svg" alt="spark-snow-logo" className="offcanvas-logo" />
               </a>
+              <hr/>
             </li>
             {
               navigation.map((link) =>
