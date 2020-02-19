@@ -27,9 +27,9 @@ function Notifications(): JSX.Element {
   });
 
   useEffect(() => {
-    console.log("Checking for user ID");
+    const abortController = new AbortController();
+
     if (userID !== undefined && user !== undefined) {
-      console.log("User ID && name found");
       fetch(process.env.HOST + "api/notifications", {
         method: 'POST',
         headers: {
@@ -44,6 +44,10 @@ function Notifications(): JSX.Element {
             });
           });
     }
+
+    return () => {
+      abortController.abort();
+    };
   }, []);
 
   return (

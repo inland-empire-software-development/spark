@@ -95,10 +95,9 @@ function Navigation(): JSX.Element {
           <ul className="uk-navbar-nav ">
             <li className="uk-active ">
               <a href="#" >
-                <img src="/images/logo/spark-text-snow.svg" alt="spark-snow-logo" />
+                <img src="/images/logo/spark-text-white.svg" alt="spark-snow-logo" />
               </a>
             </li>
-            {/* Left-Middle Section for category links */}
             {
               navigation.map((link) =>
                 createListItem(link),

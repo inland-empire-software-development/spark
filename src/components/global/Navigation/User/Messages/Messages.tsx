@@ -27,9 +27,9 @@ function Messages(): JSX.Element {
   });
 
   useEffect(() => {
-    console.log("Checking for user ID");
+    const abortController = new AbortController();
+
     if (userID !== undefined && user !== undefined) {
-      console.log("User ID && name found");
       fetch(process.env.HOST + "api/messages", {
         method: 'POST',
         headers: {
@@ -44,6 +44,10 @@ function Messages(): JSX.Element {
             });
           });
     }
+
+    return () => {
+      abortController.abort();
+    };
   }, []);
 
   return (

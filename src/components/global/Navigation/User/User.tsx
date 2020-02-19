@@ -37,6 +37,13 @@ function getUserLastName(userDetails: { avatar_url?: undefined; first_name: any;
   return userDetails ? userDetails?.last_name : "";
 }
 
+function getLoginLink(): JSX.Element {
+  return (
+    <Link href='/authenticate'>
+      <a className="white">Login</a>
+    </Link>
+  );
+}
 function User(props: { isMobile?: boolean }): JSX.Element {
   const {isMobile = false} = props;
   const {user, userID, access} = useContext(Context);
@@ -55,6 +62,8 @@ function User(props: { isMobile?: boolean }): JSX.Element {
   });
 
   useEffect(() => {
+    const abortController = new AbortController();
+
     if (userID !== undefined) {
       fetch(process.env.HOST + "api/meta", {
         method: 'POST',
@@ -68,6 +77,10 @@ function User(props: { isMobile?: boolean }): JSX.Element {
             setUserDetails(response);
           });
     }
+
+    return () => {
+      abortController.abort();
+    };
   }, []);
 
 
@@ -79,9 +92,7 @@ function User(props: { isMobile?: boolean }): JSX.Element {
       {!user && !isMobile && (
         <ul className="uk-navbar-nav ">
           <li className="uk-visible@m">
-            <Link href='/authenticate'>
-              <a className="white">Login</a>
-            </Link>
+            {getLoginLink()}
           </li>
           {getMobileToggle()}
         </ul>
@@ -136,35 +147,33 @@ function User(props: { isMobile?: boolean }): JSX.Element {
 
       {!user && isMobile && !access && (
         <a href="#">
-          <img
-            src="/images/logo/spark-text-carbon.svg"
-            alt="spark-snow-logo"
-            className="offcanvas-logo"
-            title="Spark mobile menu"
-          />
+          {getLoginLink()}
         </a>
       )}
 
-      {user && isMobile && access && (
+      {userDetails.first_name !== undefined && isMobile && access && (
         <>
-          <div id="user-mobile-nav-details" className="w-100">
-            <div className="grid w-100">
-              <div className="w-25 user-mobile-image">
+          <span id="mobile-user-nav-toggle">
+            <i className="fas fa-caret-right primary" uk-toggle="target: .toggle-user-nav-mobile; animation: uk-animation-slide-right"/>
+          </span>
+
+
+          <div id="user-mobile-nav-details" className="w-100 uk-text-center">
+            <div className="grid w-100 toggle-user-nav-mobile">
+              <div className="w-100 user-mobile-image">
                 {getUserImage(userDetails)}
               </div>
-              <div className="w-70">
-                <div className="w-100">
-                  <Link href="/profile">
-                    <a className="uk-text-capitalize">
-                      {getUserFirstName(userDetails) + " " + getUserLastName(userDetails)}
-                    </a>
-                  </Link>
-                </div>
+              <div className="w-100  uk-margin-small-top">
+                <Link href="/profile">
+                  <a className="uk-text-capitalize">
+                    {getUserFirstName(userDetails) + " " + getUserLastName(userDetails)}
+                  </a>
+                </Link>
                 <div id="user-details-mobile" className="w-100 grid">
-                  <div className="w-25 user-details-notifications-mobile">
+                  <div className="w-15 user-details-notifications-mobile">
                     <Notifications/>
                   </div>
-                  <div className="w-25 user-details-messages-mobile">
+                  <div className="w-15 user-details-messages-mobile">
                     <Messages />
                   </div>
                 </div>
@@ -172,8 +181,8 @@ function User(props: { isMobile?: boolean }): JSX.Element {
             </div>
           </div>
 
-          <div id="user-mobile-nav-settings uk-margin-small-top" className="w-100">
-            <ul className="w-100 grid user-settings-mobile">
+          <div id="user-mobile-nav-settings" className="w-100 toggle-user-nav-mobile" hidden>
+            <ul className="w-90 grid user-settings-mobile">
               <li className="w-50 uk-text-center dark-gray" title="Your user dashboard">
                 <Link href="/dashboard">
                   <a>
@@ -206,8 +215,9 @@ function User(props: { isMobile?: boolean }): JSX.Element {
                   </a>
                 </Link>
               </li>
-            </ul></div>
-
+            </ul>
+          </div>
+          <hr/>
         </>
       )}
 
