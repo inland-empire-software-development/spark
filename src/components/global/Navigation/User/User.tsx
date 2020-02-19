@@ -15,7 +15,30 @@ function getMobileToggle() {
   );
 }
 
-function User(): JSX.Element {
+function getUserImage(userDetails: { avatar_url: any; first_name: any; last_name: any; status?: undefined }) {
+  return (
+    <Link href="/user-profile">
+      <a className="white">
+        <img src={userDetails && userDetails.avatar_url ? userDetails.avatar_url : process.env.HOST + "images/logo/spark-360x360.png"}
+          alt="user profile image"
+          className="bg-white"
+          title={userDetails ? userDetails?.first_name + " " + userDetails?.last_name : "user profile image"}
+        />
+      </a>
+    </Link>
+  );
+}
+
+function getUserFirstName(userDetails: { avatar_url?: undefined; first_name: any; last_name?: undefined; status?: undefined }) {
+  return userDetails ? userDetails?.first_name : "pal";
+}
+
+function getUserLastName(userDetails: { avatar_url?: undefined; first_name: any; last_name?: undefined; status?: undefined }) {
+  return userDetails ? userDetails?.last_name : "";
+}
+
+function User(props: { isMobile?: boolean }): JSX.Element {
+  const {isMobile = false} = props;
   const {user, userID, access} = useContext(Context);
   const data = {
     key: ["avatar_url", "first_name", "last_name", "status"],
@@ -53,7 +76,7 @@ function User(): JSX.Element {
 
 
       {/* if user is not logged in */}
-      {!user && (
+      {!user && !isMobile && (
         <ul className="uk-navbar-nav ">
           <li className="uk-visible@m">
             <Link href='/authenticate'>
@@ -64,8 +87,8 @@ function User(): JSX.Element {
         </ul>
       )}
 
-      {/* if user is logged in */}
-      {user && access && (
+      {/* if user is logged in and not mobile version*/}
+      {user && access && !isMobile && (
         <ul className="uk-navbar-nav ">
           <li className="uk-visible@m" title="Your messages.">
             {/* user messages */}
@@ -77,18 +100,12 @@ function User(): JSX.Element {
           </li>
           <li className="uk-visible@m">
             {/* user profile */}
-            <Link href="/user-profile">
-              <a className="white">
-                <img src={userDetails && userDetails.avatar_url ? userDetails.avatar_url : process.env.HOST + "images/logo/spark-360x360.png"}
-                  alt="user profile image"
-                  className="bg-white"
-                  title={userDetails ? userDetails?.first_name + " " + userDetails?.last_name : "user profile image"}
-                />
-              </a>
-            </Link>
+
+            {getUserImage(userDetails)}
+
             <div className="uk-navbar-dropdown">
               <div>
-                <p>Hello {userDetails ? userDetails?.first_name : "pal"}!</p>
+                <p className="uk-text-capitalize">Hello {getUserFirstName(userDetails)}!</p>
                 <hr/>
               </div>
               <ul className="uk-nav uk-navbar-dropdown-nav">
@@ -115,6 +132,83 @@ function User(): JSX.Element {
           </li>
           {getMobileToggle()}
         </ul>
+      )}
+
+      {!user && isMobile && !access && (
+        <a href="#">
+          <img
+            src="/images/logo/spark-text-carbon.svg"
+            alt="spark-snow-logo"
+            className="offcanvas-logo"
+            title="Spark mobile menu"
+          />
+        </a>
+      )}
+
+      {user && isMobile && access && (
+        <>
+          <div id="user-mobile-nav-details" className="w-100">
+            <div className="grid w-100">
+              <div className="w-25 user-mobile-image">
+                {getUserImage(userDetails)}
+              </div>
+              <div className="w-70">
+                <div className="w-100">
+                  <Link href="/profile">
+                    <a className="uk-text-capitalize">
+                      {getUserFirstName(userDetails) + " " + getUserLastName(userDetails)}
+                    </a>
+                  </Link>
+                </div>
+                <div id="user-details-mobile" className="w-100 grid">
+                  <div className="w-25 user-details-notifications-mobile">
+                    <Notifications/>
+                  </div>
+                  <div className="w-25 user-details-messages-mobile">
+                    <Messages />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div id="user-mobile-nav-settings uk-margin-small-top" className="w-100">
+            <ul className="w-100 grid user-settings-mobile">
+              <li className="w-50 uk-text-center dark-gray" title="Your user dashboard">
+                <Link href="/dashboard">
+                  <a>
+                    <i className="fal fa-tachometer-alt-fast"/>
+                    <span className="uk-display-block">Dashboard</span>
+                  </a>
+                </Link>
+              </li>
+              <li className="w-50 uk-text-center dark-gray" title="Your account settings">
+                <Link href="/settings">
+                  <a>
+                    <i className="fal fa-cog"/>
+                    <span className="uk-display-block">Settings</span>
+                  </a>
+                </Link>
+              </li>
+              <li className="w-50 uk-text-center dark-gray" title="Your profile">
+                <Link href="/profile">
+                  <a>
+                    <i className="fal fa-user-circle"/>
+                    <span className="uk-display-block">Profile</span>
+                  </a>
+                </Link>
+              </li>
+              <li className="w-50 uk-text-center dark-gray" title="Logout">
+                <Link href="/logout">
+                  <a>
+                    <i className="fal fa-sign-out"/>
+                    <span className="uk-display-block">Sign Out</span>
+                  </a>
+                </Link>
+              </li>
+            </ul></div>
+
+        </>
       )}
 
     </div>

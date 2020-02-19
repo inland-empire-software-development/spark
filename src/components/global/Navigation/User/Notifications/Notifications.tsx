@@ -48,7 +48,7 @@ function Notifications(): JSX.Element {
 
   return (
     <Link href="/profile">
-      <a className="white bg-snow">
+      <a className="white bg-snow isMobile">
         {getNotifications(notificationCount.count)}
       </a>
     </Link>

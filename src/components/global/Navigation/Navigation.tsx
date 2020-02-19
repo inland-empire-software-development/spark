@@ -3,12 +3,9 @@ import React from 'react';
 import Link from 'next/link';
 import './Navigation.scss';
 import User from './User/User';
-// import '../../../../public/images/logo'
-
 export interface Options {
   [option: string]: any;
 }
-
 export interface ListObject {
   icon?: string | boolean;
   children?: Array<object> | boolean;
@@ -118,10 +115,7 @@ function Navigation(): JSX.Element {
         <div className="uk-offcanvas-bar bg-white">
           <ul className="uk-nav uk-nav-default">
             <li id="mobile-logo" className="uk-active">
-              <a href="#" >
-                <img src="/images/logo/spark-text-carbon.svg" alt="spark-snow-logo" className="offcanvas-logo" />
-              </a>
-              <hr/>
+              <User isMobile={true}/>
             </li>
             {
               navigation.map((link) =>

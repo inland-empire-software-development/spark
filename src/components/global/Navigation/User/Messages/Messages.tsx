@@ -48,7 +48,7 @@ function Messages(): JSX.Element {
 
   return (
     <Link href="/profile">
-      <a className="white bg-snow">
+      <a className="white bg-snow isMobile">
         {getMessageNotifications(messageCount.count)}
       </a>
     </Link>

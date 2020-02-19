@@ -87,7 +87,7 @@ db.getMessageCount = function(opts: { user: string; userID: string }) {
 
           if (results.length !== 0 && user) {
             const count = results[0]['COUNT(*)'];
-            count > 0 ? resolve(count) : reject(error);
+            resolve(count);
           }
         },
     );
@@ -111,10 +111,9 @@ db.getNotificationCount = function(opts: { user: string; userID: string }) {
     db.query(query,
         function(error: { sqlMessage: any }, results: any) {
           if (error) reject(error.sqlMessage ? error.sqlMessage : error);
-
           if (results.length !== 0 && user) {
             const count = results[0]['COUNT(*)'];
-            count > 0 ? resolve(count) : reject(error);
+            resolve(count);
           }
         },
     );
