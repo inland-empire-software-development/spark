@@ -37,10 +37,10 @@ function getUserLastName(userDetails: { avatar_url?: undefined; first_name: any;
   return userDetails ? userDetails?.last_name : "";
 }
 
-function getLoginLink(): JSX.Element {
+function getLoginLink(color: string): JSX.Element {
   return (
     <Link href='/authenticate'>
-      <a className="white">Login</a>
+      <a className={`${color}`}>Login</a>
     </Link>
   );
 }
@@ -85,14 +85,14 @@ function User(props: { isMobile?: boolean }): JSX.Element {
 
 
   return (
-    <div id="navigation-user-component" className="uk-navbar-right">
+    <div id="navigation-user-component" className={`uk-navbar-right ${!user ? "isGuest" : ""}`}>
 
 
-      {/* if user is not logged in */}
+      {/* if user is not logged in and not mobile*/}
       {!user && !isMobile && (
         <ul className="uk-navbar-nav ">
           <li className="uk-visible@m">
-            {getLoginLink()}
+            {getLoginLink("white")}
           </li>
           {getMobileToggle()}
         </ul>
@@ -145,12 +145,20 @@ function User(props: { isMobile?: boolean }): JSX.Element {
         </ul>
       )}
 
-      {!user && isMobile && !access && (
-        <a href="#">
-          {getLoginLink()}
-        </a>
+      {userDetails.first_name == undefined && isMobile && !access && (
+        <>
+          <img
+            src="/images/logo/spark-text-carbon.svg"
+            alt="spark-snow-logo"
+            className="offcanvas-logo"
+            title="Spark mobile menu"
+          />
+          <hr/>
+          {getLoginLink("black")}
+        </>
       )}
 
+      {console.log(userDetails.first_name, userDetails.first_name == undefined, isMobile, !access)}
       {userDetails.first_name !== undefined && isMobile && access && (
         <>
           <span id="mobile-user-nav-toggle">
@@ -209,10 +217,12 @@ function User(props: { isMobile?: boolean }): JSX.Element {
               </li>
               <li className="w-50 uk-text-center dark-gray" title="Logout">
                 <Link href="/logout">
-                  <a>
-                    <i className="fal fa-sign-out"/>
-                    <span className="uk-display-block">Sign Out</span>
-                  </a>
+                  <LogOut content={
+                    <>
+                      <i className="fal fa-sign-out"/>
+                      <span className="uk-display-block">Sign Out</span>
+                    </>
+                  } />
                 </Link>
               </li>
             </ul>

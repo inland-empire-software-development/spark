@@ -148,7 +148,28 @@ nav.uk-navbar-container {
   .uk-offcanvas-bar {
     overflow-x: hidden !important;
 
-    #navigation-user-component {
+    #navigation-user-component.isGuest {
+      margin-top: 5px;
+
+      a {
+        &:hover {
+          text-decoration: none;
+        }
+      }
+
+      .offcanvas-logo {
+        max-width: 100px;
+        display: block;
+        margin: 0 100% 5px 0;
+      }
+
+      hr {
+        border-top: 1px solid $snow;
+        width: 100%;
+      }
+    }
+
+    #navigation-user-component:not(.isGuest) {
       min-height: 155px;
 
       .grid {

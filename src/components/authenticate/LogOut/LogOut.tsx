@@ -3,7 +3,8 @@ import React from "react";
 import Link from 'next/link';
 import './LogOut.scss';
 
-export default function LogOut() {
+export default function LogOut(props: any) {
+  const {content = false} = props;
   const handleLogout = (event: any) => {
     event.preventDefault();
 
@@ -27,9 +28,15 @@ export default function LogOut() {
     });
   };
 
-  return (
-    <Link href="#">
-      <a className="logout-link" onClick={(event) => handleLogout(event)}>Log out <i className="fal fa-sign-out"/></a>
-    </Link>
-  );
+  if (!content) {
+    return (
+      <Link href="#">
+        <a className="logout-link" onClick={(event) => handleLogout(event)}>Log out <i className="fal fa-sign-out"/></a>
+      </Link>
+    );
+  } else {
+    return (
+      <a className="logout-link" onClick={(event) => handleLogout(event)}>{content}</a>
+    );
+  }
 }

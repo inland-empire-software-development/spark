@@ -113,7 +113,7 @@ function Navigation(): JSX.Element {
       <div id="offcanvas-nav" className="uk-offcanvas" uk-offcanvas="mode: push; flip: true">
         <div className="uk-offcanvas-bar bg-white">
           <ul className="uk-nav uk-nav-default">
-            <li id="mobile-logo" className="uk-active">
+            <li className="uk-active">
               <User isMobile={true}/>
             </li>
             {
