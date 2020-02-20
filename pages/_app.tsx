@@ -1,6 +1,6 @@
 import '../src/style/index.scss';
 import App from 'next/app';
-import Context from '../src/context';
+import {Context, defaultContext} from '../src/context';
 import {redirects, unprotected} from '../src/pages';
 import fetch from "isomorphic-unfetch";
 import {DefaultSeo} from 'next-seo';
@@ -10,19 +10,9 @@ import Redirect from "../src/components/animation/Redirect/Redirect";
 import Loader from "../src/components/animation/Loader/Loader";
 import {MyAppContext} from "../";
 import Spinner from '../src/components/global/Spinner/Spinner';
-
-interface MyAppState extends MyAppContext {
-  isAccessFetched: boolean;
-}
-
-export default class MyApp extends App<{}, {}, MyAppState> {
-  state: MyAppState = {
-    user: undefined,
-    access: false,
-    redirect: undefined,
-    isPublic: false,
-    isAccessFetched: false,
-    userID: undefined,
+export default class MyApp extends App<{}, {}, MyAppContext> {
+  state: React.ComponentState = {
+    ...defaultContext,
   }
 
   componentDidMount(): void {
@@ -35,8 +25,11 @@ export default class MyApp extends App<{}, {}, MyAppState> {
     })
         .then((res) => res.json())
         .then((data) => {
-          console.log(data);
-          this.setState({...data, redirect, isPublic, isAccessFetched: true});
+          // Allows us to set new values for context that is shared throughout the application
+          const setContextProperty = (value: any) => {
+            this.setState(value);
+          };
+          this.setState({...data, setContextProperty, redirect, isPublic, isAccessFetched: true});
         });
   };
 

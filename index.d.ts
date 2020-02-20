@@ -26,7 +26,10 @@ export interface Notification extends UIkit.Notify {
 export default class NextAuthenticate extends Component<NextAuthenticateProps> { }
 
 export interface MyAppContext {
+    setContextProperty: function | undefined;
     user: string | undefined;
+    sidebarIsOpen: boolean;
+    notifications: boolean;
     access: boolean;
     redirect: string | undefined;
     userID: string | undefined;

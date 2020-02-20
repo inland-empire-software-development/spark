@@ -1,11 +1,12 @@
 @import '../../../style/variables.scss';
 
 $selectedLinkColor: #f07f6b; // color in style guidelines is different from primary, secondary, and tertiary
-$selectedLinkBackground: #f8f9fb;
+$selectedLinkBackground: rgba(0, 0, 0, 0.01);
 $transitionTime: 0.2s;
 
 .sidebar-panel {
-  padding: 0; // override uikit
+  top: 80px;
+  padding: 15px 0 0 0; // override uikit
   overflow-x: hidden;
   overflow-y: hidden;
   width: max-content;
@@ -23,11 +24,11 @@ $transitionTime: 0.2s;
   .menu-primary {
     visibility: visible;
     font-family: "Light", sans-serif;
-    font-size: 20px;
+    font-size: 16px;
     color: $light-gray;
     list-style: none;
     width: max-content;
-    min-width: 250px;
+    min-width: 225px;
 
     li {
       cursor: pointer;

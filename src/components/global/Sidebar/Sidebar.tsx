@@ -1,4 +1,6 @@
-import React from "react";
+import React, {useContext} from "react";
+import {Context} from '../../../context';
+
 import "./Sidebar.scss";
 
 interface SidebarItem {
@@ -19,13 +21,14 @@ interface SidebarProps {
   isOpen: boolean;
   closeButtonScreenSize: "s" | "m" | "l" | "xl"; // choose UIKit screen size for close button in sidebar
   onNavigate: (path: string) => void;
-  onMenuClose: () => void;
 }
 
 // ActiveSubMenus holds a Map of primary menu items with expanded submenu heights as values
 type ActiveSubMenus = Map<string, number>;
 
 const Sidebar: React.FC<SidebarProps> = (props) => {
+  const context = useContext(Context);
+
   // state for clicked (active) and hovered (mouse hover to show submenu)
   // dashboard links
   const [activeItemLabel, setActiveItemLabel] = React.useState<string>("");
@@ -59,7 +62,9 @@ const Sidebar: React.FC<SidebarProps> = (props) => {
   };
 
   const handleMenuClose = () => {
-    props.onMenuClose();
+    context.setContextProperty({
+      sidebarIsOpen: !context.sidebarIsOpen,
+    });
   };
 
   // createMenuItems is a helper to avoid repetition

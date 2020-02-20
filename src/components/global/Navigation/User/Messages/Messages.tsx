@@ -1,6 +1,6 @@
 import React, {useContext, useState, useEffect} from 'react';
 import Link from "next/link";
-import Context from '../../../../../context';
+import {Context} from '../../../../../context';
 
 function getMessageNotifications(props: {count: number | undefined; mobile: boolean}): JSX.Element {
   const {count, mobile} = props;

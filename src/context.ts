@@ -32,14 +32,17 @@ export const SidebarOptions = {
   active: "/dashboard",
 };
 
-const defaultContext = {
+export const defaultContext = {
+  setContextProperty: undefined,
   user: undefined,
+  sidebarIsOpen: true,
+  notifications: true,
+  isAccessFetched: false,
   access: false,
   redirect: undefined,
   isPublic: false,
   userID: undefined,
 };
 
-const Context = createContext<MyAppContext>(defaultContext);
+export const Context = createContext<MyAppContext>(defaultContext);
 
-export default Context;

@@ -1,6 +1,6 @@
 import React, {useContext, useEffect, useState} from 'react';
 import Link from 'next/link';
-import Context from '../../../../context';
+import {Context} from '../../../../context';
 import Messages from './Messages/Messages';
 import Notifications from './Notifications/Notifications';
 import LogOut from '../../../authenticate/LogOut/LogOut';
