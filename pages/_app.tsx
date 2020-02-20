@@ -21,7 +21,8 @@ export default class MyApp extends App<{}, {}, MyAppState> {
     redirect: undefined,
     isPublic: false,
     isAccessFetched: false,
-  };
+    userID: undefined,
+  }
 
   componentDidMount(): void {
     const {pathname} = this.props.router;
@@ -33,6 +34,7 @@ export default class MyApp extends App<{}, {}, MyAppState> {
     })
         .then((res) => res.json())
         .then((data) => {
+          console.log(data);
           this.setState({...data, redirect, isPublic, isAccessFetched: true});
         });
   };
