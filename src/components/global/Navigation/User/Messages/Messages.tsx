@@ -2,20 +2,23 @@ import React, {useContext, useState, useEffect} from 'react';
 import Link from "next/link";
 import Context from '../../../../../context';
 
-function getMessageNotifications(count: number | undefined): JSX.Element {
-  const notifications = count && count > 0;
+function getMessageNotifications(props: {count: number | undefined; mobile: boolean}): JSX.Element {
+  const {count, mobile} = props;
+  const notifications = (count !== undefined && count > 0 && !mobile) || (mobile && count !== undefined && count >= 0);
+
   return (
     <>
-      <span className={`notification-bubble ${!notifications ? "uk-hidden" : ""}`}>
+      <span className={`notification-bubble ${!Boolean(notifications) ? "uk-hidden" : ""}`}>
         {count}
       </span>
-      <i className="fal fa-envelope"></i>
-      <span className={`notification-status ${!notifications ? "uk-hidden" : ""}`}/>
+      <i className="fal fa-envelope"/>
+      <span className={`notification-status ${!Boolean(notifications) ? "uk-hidden" : ""}`}/>
     </>
   );
 }
 
-function Messages(): JSX.Element {
+function Messages(props: {mobile: boolean}): JSX.Element {
+  const {mobile = false} = props;
   const {user, userID} = useContext(Context);
   const data = {
     user,
@@ -53,7 +56,7 @@ function Messages(): JSX.Element {
   return (
     <Link href="/profile">
       <a className="white bg-snow isMobile">
-        {getMessageNotifications(messageCount.count)}
+        {getMessageNotifications({count: messageCount.count, mobile})}
       </a>
     </Link>
   );

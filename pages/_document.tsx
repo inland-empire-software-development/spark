@@ -13,7 +13,7 @@ class Doc extends Document {
         <Head/>
 
         <body className="portal">
-          <Spinner classes="uk-hidden"/>
+          <Spinner ratio={5} classes="uk-hidden"/>
           <Main />
           <NextScript />
 

@@ -107,7 +107,7 @@ function Navigation(): JSX.Element {
         </div>
 
         {/* Right portion for user  */}
-        <User/>
+        <User isMobile={false}/>
       </nav>
 
       <div id="offcanvas-nav" className="uk-offcanvas" uk-offcanvas="mode: push; flip: true">

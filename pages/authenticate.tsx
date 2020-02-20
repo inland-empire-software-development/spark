@@ -1,7 +1,6 @@
 import LogIn from '../src/components/authenticate/LogIn/LogIn';
 import SignUp from '../src/components/authenticate/SignUp/SignUp';
 import Reset from '../src/components/authenticate/Reset/Reset';
-import Spinner from '../src/components/global/Spinner/Spinner';
 import ContentContainer from '../src/components/global/ContentContainer/ContentContainer';
 import SEO from "../next-seo.config";
 import {DefaultSeo} from "next-seo";
@@ -9,7 +8,6 @@ import {DefaultSeo} from "next-seo";
 function Authenticate() {
   return (
     <main className="uk-container">
-      <Spinner ratio={5} classes="uk-hidden"/>
       <DefaultSeo {...Object.assign(SEO, {
         title: `Authenticate`,
       })}

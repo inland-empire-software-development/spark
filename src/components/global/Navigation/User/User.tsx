@@ -44,6 +44,7 @@ function getLoginLink(color: string): JSX.Element {
     </Link>
   );
 }
+
 function User(props: { isMobile?: boolean }): JSX.Element {
   const {isMobile = false} = props;
   const {user, userID, access} = useContext(Context);
@@ -103,11 +104,11 @@ function User(props: { isMobile?: boolean }): JSX.Element {
         <ul className="uk-navbar-nav ">
           <li className="uk-visible@m" title="Your messages.">
             {/* user messages */}
-            <Messages />
+            <Messages mobile={false} />
           </li>
           <li className="uk-visible@m" title="Your notifications.">
             {/* user notification */}
-            <Notifications />
+            <Notifications mobile={false} />
           </li>
           <li className="uk-visible@m">
             {/* user profile */}
@@ -158,7 +159,6 @@ function User(props: { isMobile?: boolean }): JSX.Element {
         </>
       )}
 
-      {console.log(userDetails.first_name, userDetails.first_name == undefined, isMobile, !access)}
       {userDetails.first_name !== undefined && isMobile && access && (
         <>
           <span id="mobile-user-nav-toggle">
@@ -179,10 +179,10 @@ function User(props: { isMobile?: boolean }): JSX.Element {
                 </Link>
                 <div id="user-details-mobile" className="w-100 grid">
                   <div className="w-15 user-details-notifications-mobile">
-                    <Notifications/>
+                    <Notifications mobile={true}/>
                   </div>
                   <div className="w-15 user-details-messages-mobile">
-                    <Messages />
+                    <Messages mobile={true}/>
                   </div>
                 </div>
               </div>
@@ -216,14 +216,12 @@ function User(props: { isMobile?: boolean }): JSX.Element {
                 </Link>
               </li>
               <li className="w-50 uk-text-center dark-gray" title="Logout">
-                <Link href="/logout">
-                  <LogOut content={
-                    <>
-                      <i className="fal fa-sign-out"/>
-                      <span className="uk-display-block">Sign Out</span>
-                    </>
-                  } />
-                </Link>
+                <LogOut content={
+                  <>
+                    <i className="fal fa-sign-out"/>
+                    <span className="uk-display-block">Sign Out</span>
+                  </>
+                } />
               </li>
             </ul>
           </div>

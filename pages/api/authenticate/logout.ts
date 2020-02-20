@@ -4,7 +4,7 @@ import {NextApiRequest, NextApiResponse} from 'next';
 export default async (_req: NextApiRequest, res: NextApiResponse) => {
   // set headers
   res.setHeader("Cache-Control", "no-store, no-cache, must-revalidate, proxy-revalidate");
-  res.setHeader('Set-Cookie', [`portal-token=null; HttpOnly`, `portal-user=null; HttpOnly`, `portal-user-id=null; HttpOnly`]);
+  res.setHeader('Set-Cookie', [`portal-token=; Path='/'; HttpOnly`, `portal-user=; Path='/'; HttpOnly`, `portal-user-id=; Path='/';HttpOnly`]);
   res.status(200);
 
   res.send({

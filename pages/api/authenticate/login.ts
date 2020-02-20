@@ -47,7 +47,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         client.setToken(token, {user: username, userID: user.id});
 
         // set HttpOnly cookies
-        res.setHeader('Set-Cookie', [`portal-token=${token}; HttpOnly`, `portal-user=${username}; HttpOnly`, `portal-user-id=${user.id}; HttpOnly`]);
+        res.setHeader('Set-Cookie', [`portal-token=${token}; path='/'; HttpOnly`, `portal-user=${username}; path='/'; HttpOnly`, `portal-user-id=${user.id}; path='/'; HttpOnly`]);
         res.send(valid);
         res.end();
         return true;

@@ -4,7 +4,6 @@ import {useState, useEffect, FormEvent} from "react";
 import notify from "../src/components/utility/Notify";
 import Password from "../src/components/authenticate/Password/Password";
 import Link from "next/link";
-import Spinner from "../src/components/global/Spinner/Spinner";
 
 /**
  * Check provided input - reset account password if valid.
@@ -119,7 +118,6 @@ function ResetPassword(props: any) {
         {confirmation.status &&
           (
             <div className="content-container uk-section uk-flex uk-flex-middle uk-animation-fade">
-              <Spinner ratio={3} classes="uk-hidden"/>
               <form onSubmit={(event) => handlePasswordReset(event)}>
                 <div className="uk-margin uk-width-large uk-margin-auto uk-card uk-card-default uk-card-body">
                   <p>Please provide us with your new password. Your new password must meet minimum requirements.</p>
