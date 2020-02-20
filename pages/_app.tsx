@@ -9,6 +9,7 @@ import Unauthorized from "../src/components/global/Unauthorized/Unauthorized";
 import Redirect from "../src/components/animation/Redirect/Redirect";
 import Loader from "../src/components/animation/Loader/Loader";
 import {MyAppContext} from "../";
+import Spinner from '../src/components/global/Spinner/Spinner';
 
 interface MyAppState extends MyAppContext {
   isAccessFetched: boolean;
@@ -61,6 +62,7 @@ export default class MyApp extends App<{}, {}, MyAppState> {
         return (
           <Context.Provider value={{...this.state}}>
             <DefaultSeo {...SEO} />
+            <Spinner ratio={5} classes="uk-hidden"/>
             <Component {...pageProps} />
           </Context.Provider>
         );

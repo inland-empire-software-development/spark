@@ -1,5 +1,4 @@
 import Document, {Html, Head, Main, NextScript} from 'next/document';
-import Spinner from '../src/components/global/Spinner/Spinner';
 /**
  * Shared components amongst all pages - resources needed placed here.
  */
@@ -13,7 +12,6 @@ class Doc extends Document {
         <Head/>
 
         <body className="portal">
-          <Spinner ratio={5} classes="uk-hidden"/>
           <Main />
           <NextScript />
 
