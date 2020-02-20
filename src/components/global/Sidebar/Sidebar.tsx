@@ -17,42 +17,49 @@ interface SidebarProps {
   menuItems: SidebarItem[];
   accountMenuItems: SidebarItem[];
   isOpen: boolean;
-  onNavigate?: (path: string) => void;
+  closeButtonScreenSize: "s" | "m" | "l" | "xl"; // choose UIKit screen size for close button in sidebar
+  onNavigate: (path: string) => void;
+  onMenuClose: () => void;
 }
+
+// ActiveSubMenus holds a Map of primary menu items with expanded submenu heights as values
+type ActiveSubMenus = Map<string, number>;
 
 const Sidebar: React.FC<SidebarProps> = (props) => {
   // state for clicked (active) and hovered (mouse hover to show submenu)
   // dashboard links
   const [activeItemLabel, setActiveItemLabel] = React.useState<string>("");
-  const [hoveredItemLabel, setHoveredItemLabel] = React.useState<string>("");
+  const [activeSubMenus, setActiveSubMenus] = React.useState<ActiveSubMenus>(new Map());
 
-  // the following state is used to tracking the absolute position of the submenu
-  const [subMenuCoordinates, setSubMenuCoordinates] = React.useState<[number, number]>([0, 0]);
+  const handleMenuItemClicked = (e: React.MouseEvent<HTMLDivElement, MouseEvent>, item: SidebarItem) => {
+    // check for sibling element (submenu)
+    if (e.currentTarget.nextElementSibling?.firstElementChild) {
+      const subMenuEl = e.currentTarget.nextElementSibling.firstElementChild;
+      // open or close the primary item's submenu
+      if (activeSubMenus.has(item.label)) {
+        activeSubMenus.delete(item.label);
+        setActiveSubMenus(new Map(activeSubMenus));
+      } else {
+        activeSubMenus.set(item.label, subMenuEl.clientHeight);
+        setActiveSubMenus(new Map(activeSubMenus));
+      }
+    }
 
-  const handleItemClicked = (item: SidebarItem) => {
     // call props onNavigate function with route path
-    if (props.onNavigate) {
+    // only call if there is no submenu
+    if (!item.subItems) {
       props.onNavigate(item.path);
     }
     // set main item active styles
     setActiveItemLabel(item.label);
   };
 
-  const handleSubItemClicked = (path: string) => {
-    // call props onNavigate function with route path
-    if (props.onNavigate) {
-      props.onNavigate(path);
-    }
+  const handleSubMenuItemClicked = (path: string) => {
+    props.onNavigate(path);
   };
 
-
-  const handleMouseEnterItem = (event: React.MouseEvent<HTMLLIElement, MouseEvent>, itemLabel: string) => {
-    setHoveredItemLabel(itemLabel);
-    setSubMenuCoordinates([event.currentTarget.offsetTop, event.currentTarget.offsetLeft + event.currentTarget.offsetWidth]);
-  };
-
-  const handleMouseLeaveItem = () => {
-    setHoveredItemLabel("");
+  const handleMenuClose = () => {
+    props.onMenuClose();
   };
 
   // createMenuItems is a helper to avoid repetition
@@ -63,68 +70,82 @@ const Sidebar: React.FC<SidebarProps> = (props) => {
       if (!item.icon || item.icon.length === 0) {
         iconStyle = "fa fa-fw icon icon-hidden";
       }
+
+      // for primary menu (top level items)
+      const isActiveItem = activeItemLabel === item.label;
+      const subMenuHeight = activeSubMenus.get(item.label);
+      const hasSubMenu = subMenuHeight ? true : false;
+
+      // create subitem JSX if subItems exist
+      const subItems: JSX.Element | undefined = item.subItems && item.subItems.length > 0 ? (
+        <div
+          className="menu-secondary"
+          style={{height: subMenuHeight ? subMenuHeight : 0}}
+        >
+          <ul className="uk-nav-sub">
+            {item.subItems.map((subItem) => (
+              <li
+                key={subItem.label}
+                onClick={() => handleSubMenuItemClicked(subItem.path)}
+              >{subItem.label}</li>
+            ))}
+          </ul>
+        </div>
+      ): undefined;
+
+
+      // return main items with dropdown for subitems
       return (
         <li
           key={item.label}
-          className={activeItemLabel === item.label ? "active": ""}
-          onClick={() => handleItemClicked(item)}
-          onMouseEnter={(event) => handleMouseEnterItem(event, item.label)}
-          onMouseLeave={() => handleMouseLeaveItem()}>
-          <i className={iconStyle}></i>
-          {item.label}
+          className={`${subItems ? "uk-parent":""} menu-item-primary`}
+        >
+          <div
+            className={`primary-item-label ${isActiveItem ? "active": ""}`}
+            onClick={(e) => handleMenuItemClicked(e, item)}>
+            <i className={iconStyle}></i>
+            <span>
+              {item.label}
+            </span>
+            {item.subItems && item.subItems.length > 0 && (
+              <span
+                className="sub-angle-down"
+                style={{transform: hasSubMenu ? "rotate(180deg)": ""}}
+                uk-icon="icon: chevron-down"></span>
+            )}
+          </div>
+          {subItems}
         </li>
       );
     });
   };
 
-  // position submenu based on coordinates of currently hovered on menuItem
-  const createSubMenu = (menuItems: SidebarItem[]): JSX.Element => {
-    // choose hovered on item
-    const selected = menuItems.find((item) => item.label === hoveredItemLabel);
-    let subMenuHidden = true;
-    let subMenuItems: JSX.Element[] = [];
-    let label = "";
-    if (selected && selected.subItems && selected.subItems.length > 0) {
-      subMenuHidden = false;
-      subMenuItems = selected.subItems.map((subItem) => (
-        <li key={subItem.label} onClick={() => handleSubItemClicked(subItem.path)}>{subItem.label}</li>
-      ));
-      label = selected.label;
-    }
-
-    return (
-      <div className="sidebar-sub-menu" style={{
-        position: "absolute",
-        top: subMenuCoordinates[0],
-        left: subMenuCoordinates[1],
-        opacity: subMenuHidden ? 0 : 1,
-        visibility: subMenuHidden ? "hidden" : "visible",
-      }}
-      onMouseEnter={() => setHoveredItemLabel(label)}
-      onMouseLeave={() => handleMouseLeaveItem()}>
-        <ul>
-          {subMenuItems}
-        </ul>
-      </div>
-    );
-  };
-
   const navLinks = createMenuItems(props.menuItems);
   const accountLinks = createMenuItems(props.accountMenuItems);
-  const subMenu = createSubMenu([...props.menuItems, ...props.accountMenuItems]);
 
+  // return whole sidebar with offcanvas capability for toggling on/off screen
   return (
-    <>
-      <div className={"sidebar-panel uk-offcanvas-bar" + (props.isOpen ? "uk-offcanvas-bar-show": "")}>
-        <ul className="uk-nav uk-nav-side uk-nav-offcanvas">
+    <div
+      className={`uk-offcanvas ${props.isOpen ? "uk-open" : ""}`}
+      style={{display: "block"}}>
+      <div className="uk-offcanvas-bar uk-offcanvas-bar-animation uk-offcanvas-slide sidebar-panel">
+        <div className={`mobile-close uk-hidden@${props.closeButtonScreenSize}`}>
+          <span
+            uk-icon="icon: close"
+            onClick={() => handleMenuClose()}
+          ></span>
+        </div>
+        <div className={`spacer uk-visible@${props.closeButtonScreenSize}`}>
+        </div>
+        <ul
+          className="uk-nav menu-primary">
           {navLinks}
 
           <div className="section-title">Account</div>
           {accountLinks}
         </ul>
       </div>
-      {subMenu}
-    </>
+    </div>
   );
 };
 
