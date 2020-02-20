@@ -37,12 +37,12 @@
         "max-len": "off",
         "no-mixed-spaces-and-tabs": 2,
         "quotes": 0,
-        "require-jsdoc": 0,
+        "require-jsdoc": 0, 
         "one-var": 0,
         "react/prop-types": 0,
         "react/react-in-jsx-scope": 0,
         "strict": 2,
-        "camelcase": 2,
+        "camelcase": 0,
         "linebreak-style": 0
     },
     "overrides": []
