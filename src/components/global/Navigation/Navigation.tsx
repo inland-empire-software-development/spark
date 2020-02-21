@@ -88,7 +88,7 @@ function Navigation(): JSX.Element {
   ].map((item) => createListObject(item));
 
   return (
-    <div className="gradient-background">
+    <div id="navigation" className="gradient-background">
       <nav className="uk-navbar-container uk-navbar-transparent " uk-navbar="true">
         {/* Left portion for the logo */}
         <div className="uk-navbar-left">

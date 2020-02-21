@@ -19,7 +19,6 @@ interface SidebarProps {
   menuItems: SidebarItem[];
   accountMenuItems: SidebarItem[];
   isOpen: boolean;
-  closeButtonScreenSize: "s" | "m" | "l" | "xl"; // choose UIKit screen size for close button in sidebar
   onNavigate: (path: string) => void;
 }
 
@@ -71,7 +70,7 @@ const Sidebar: React.FC<SidebarProps> = (props) => {
     if (document) {
       const toggle = document.getElementById("sidebar-toggle");
       if (toggle) {
-        toggle.innerHTML = String(getMenuToggle());
+        toggle.innerHTML = getMenuToggle();
       }
     }
 
@@ -79,7 +78,6 @@ const Sidebar: React.FC<SidebarProps> = (props) => {
       sidebarIsOpen: !context.sidebarIsOpen,
     });
   };
-
 
   // createMenuItems is a helper to avoid repetition
   const createMenuItems = (menuItems: SidebarItem[]): JSX.Element[] => {

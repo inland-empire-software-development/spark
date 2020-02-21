@@ -38,6 +38,7 @@ export const defaultContext = {
   sidebarIsOpen: true,
   notifications: true,
   isAccessFetched: false,
+  activeDashboardPath: "dasboard",
   access: false,
   redirect: undefined,
   isPublic: false,

@@ -30,6 +30,7 @@ export interface MyAppContext {
     user: string | undefined;
     sidebarIsOpen: boolean;
     notifications: boolean;
+    activeDashboardPath: string | undefined;
     access: boolean;
     redirect: string | undefined;
     userID: string | undefined;

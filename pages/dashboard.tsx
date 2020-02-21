@@ -11,29 +11,26 @@ function Dashboard() {
   const {account, main} = SidebarOptions; // TODO: add ability to save data into DB and retrieve for menu generaetion
 
   const onNavigate = (path: string) => {
-    // can pass the router here
-    console.log(`Navigating to ${path}`);
+    context.setContextProperty({
+      activeDashboardPath: path,
+    });
   };
 
   return (
     <main>
-      {console.log(context.sidebarIsOpen)}
       <Navigation/>
-      <section>
-        {/* // TODO: Need to make it so we just need to call <Sidebar> - low priority. */}
-        <Sidebar
-          accountMenuItems={account}
-          menuItems={main}
-          isOpen={sidebarIsOpen}
-          closeButtonScreenSize={"l"}
-          onNavigate={(path) => onNavigate(path)}
-        />
-        <div className="uk-container" >
-          <section className="uk-padding">
-            <h1>Hello {user}!</h1>
-          </section>
-        </div>
-      </section>
+      {/* // TODO: Need to make it so we just need to call <Sidebar> - low priority. */}
+      <Sidebar
+        accountMenuItems={account}
+        menuItems={main}
+        isOpen={sidebarIsOpen}
+        onNavigate={(path) => onNavigate(path)}
+      />
+      <div className="uk-container" >
+        <section className="uk-padding">
+          <h1>Hello {user}!</h1>
+        </section>
+      </div>
       <DefaultSeo {...Object.assign(SEO, {
         title: `${user} - dashboard`,
       })}
