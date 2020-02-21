@@ -61,11 +61,25 @@ const Sidebar: React.FC<SidebarProps> = (props) => {
     props.onNavigate(path);
   };
 
-  const handleMenuClose = () => {
+  const getMenuToggle = (): string => {
+    return (
+      `<i class="far fa-toggle-${!context.sidebarIsOpen ? 'on' : 'off'}"/>`
+    );
+  };
+
+  const handleMenuToggle = () => {
+    if (document) {
+      const toggle = document.getElementById("sidebar-toggle");
+      if (toggle) {
+        toggle.innerHTML = String(getMenuToggle());
+      }
+    }
+
     context.setContextProperty({
       sidebarIsOpen: !context.sidebarIsOpen,
     });
   };
+
 
   // createMenuItems is a helper to avoid repetition
   const createMenuItems = (menuItems: SidebarItem[]): JSX.Element[] => {
@@ -130,27 +144,27 @@ const Sidebar: React.FC<SidebarProps> = (props) => {
 
   // return whole sidebar with offcanvas capability for toggling on/off screen
   return (
-    <div
-      className={`uk-offcanvas ${props.isOpen ? "uk-open" : ""}`}
-      style={{display: "block"}}>
-      <div className="uk-offcanvas-bar uk-offcanvas-bar-animation uk-offcanvas-slide sidebar-panel">
-        <div className={`mobile-close uk-hidden@${props.closeButtonScreenSize}`}>
-          <span
-            uk-icon="icon: close"
-            onClick={() => handleMenuClose()}
-          ></span>
-        </div>
-        <div className={`spacer uk-visible@${props.closeButtonScreenSize}`}>
-        </div>
-        <ul
-          className="uk-nav menu-primary">
-          {navLinks}
+    <>
+      <a
+        id="sidebar-toggle"
+        onClick={() => handleMenuToggle()}>
+        <i className="far fa-toggle-on"/>
+      </a>
+      <div
+        id="dashboard-sidebar"
+        className={`uk-offcanvas ${context.sidebarIsOpen ? "uk-open" : ""}`}
+        style={{display: "block"}}>
+        <div className="uk-offcanvas-bar uk-offcanvas-bar-animation uk-offcanvas-slide sidebar-panel">
+          <ul
+            className="uk-nav menu-primary">
+            {navLinks}
 
-          <div className="section-title">Account</div>
-          {accountLinks}
-        </ul>
+            <div className="section-title">Account</div>
+            {accountLinks}
+          </ul>
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

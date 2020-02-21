@@ -4,9 +4,31 @@ $selectedLinkColor: #f07f6b; // color in style guidelines is different from prim
 $selectedLinkBackground: rgba(0, 0, 0, 0.01);
 $transitionTime: 0.2s;
 
+#dashboard-sidebar {
+  z-index: 9;
+  right: unset;
+}
+
+#sidebar-toggle {
+  z-index: 10;
+  position: relative;
+  color: #ef906c;
+  font-size: 18px;
+  left: 30px;
+  top: 10px;
+
+  &::after {
+    content: " toggle sidebar";
+    padding-left: 15px;
+    font-size: 12px;
+    position: relative;
+    top: -3px;
+  }
+}
+
 .sidebar-panel {
   top: 80px;
-  padding: 15px 0 0 0; // override uikit
+  padding: 50px 0 0 0;
   overflow-x: hidden;
   overflow-y: hidden;
   width: max-content;
