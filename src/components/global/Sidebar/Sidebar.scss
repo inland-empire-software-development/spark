@@ -4,6 +4,10 @@ $selectedLinkColor: #f07f6b; // color in style guidelines is different from prim
 $selectedLinkBackground: rgba(0, 0, 0, 0.01);
 $transitionTime: 0.2s;
 
+#sidebar-container {
+  width: 225px;
+}
+
 #dashboard-sidebar {
   width: 225px;
   z-index: 9;
@@ -12,11 +16,12 @@ $transitionTime: 0.2s;
 
 #sidebar-toggle {
   z-index: 10;
-  position: relative;
+  position: absolute;
   color: #ef906c;
   font-size: 18px;
+  width: 125px;
   left: 30px;
-  top: 10px;
+  top: 90px;
 
   &::after {
     content: " toggle sidebar";

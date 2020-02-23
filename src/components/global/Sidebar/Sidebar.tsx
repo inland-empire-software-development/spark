@@ -66,17 +66,24 @@ const Sidebar: React.FC<SidebarProps> = (props) => {
     );
   };
 
-  const handleMenuToggle = () => {
+  const handleIconToggle = () => {
     if (document) {
       const toggle = document.getElementById("sidebar-toggle");
       if (toggle) {
         toggle.innerHTML = getMenuToggle();
       }
     }
+  };
 
+  const handleContextUpdate = () => {
     context.setContextProperty({
       sidebarIsOpen: !context.sidebarIsOpen,
     });
+  };
+
+  const handleMenuToggle = () => {
+    handleIconToggle();
+    handleContextUpdate();
   };
 
   // createMenuItems is a helper to avoid repetition
@@ -142,7 +149,7 @@ const Sidebar: React.FC<SidebarProps> = (props) => {
 
   // return whole sidebar with offcanvas capability for toggling on/off screen
   return (
-    <>
+    <aside id="sidebar-container" className={`${context.sidebarIsOpen ? "open" : ""}`}>
       <a
         id="sidebar-toggle"
         onClick={() => handleMenuToggle()}>
@@ -162,7 +169,7 @@ const Sidebar: React.FC<SidebarProps> = (props) => {
           </ul>
         </div>
       </div>
-    </>
+    </aside>
   );
 };
 

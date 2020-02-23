@@ -1,0 +1,19 @@
+/**
+ * Dashboard page style page
+ */
+
+#dashboard-container {
+  background-color: violet;
+}
+
+#sidebar-container {
+  transition: width 0.2s ease-in-out;
+}
+
+#sidebar-container:has(.open) {
+  width: 225px;
+}
+
+#sidebar-container:not(.open) {
+  width: 0;
+}
