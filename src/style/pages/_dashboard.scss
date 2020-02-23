@@ -1,17 +1,18 @@
 /**
  * Dashboard page style page
  */
+@import '../_variables.scss';
 
 #dashboard-container {
-  background-color: violet;
+  background-color: $white;
 }
 
 #sidebar-container {
-  transition: width 0.2s ease-in-out;
+  transition: width 150ms ease-in-out;
 }
 
 #sidebar-container:has(.open) {
-  width: 225px;
+  width: 248px;
 }
 
 #sidebar-container:not(.open) {

@@ -1,13 +1,12 @@
-import React, {useContext} from "react";
-import {Context} from '../../context';
+import React from "react";
 import "./Panel.scss";
 
-function Panel(): JSX.Element {
-  const {user} = useContext(Context);
+function Panel(props: { content: JSX.Element }): JSX.Element {
+  const {content} = props;
   return (
     <div id="panel-container" >
-      <div id="panel-content" style={{background: "red"}}>
-        Sample content - {user}
+      <div id="panel-content">
+        {content}
       </div>
     </div>
   );
