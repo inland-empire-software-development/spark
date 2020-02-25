@@ -14,30 +14,12 @@ $transitionTime: 0.2s;
   right: unset;
 }
 
-#sidebar-toggle {
-  z-index: 10;
-  position: absolute;
-  color: #ef906c;
-  font-size: 18px;
-  width: 125px;
-  left: 30px;
-  top: 90px;
-
-  &::after {
-    content: " toggle sidebar";
-    padding-left: 15px;
-    font-size: 12px;
-    position: relative;
-    top: -3px;
-  }
-}
-
 .sidebar-panel {
-  top: 80px;
-  padding: 50px 0 0 0;
+  position: fixed;
+  padding: 25px 0 0 0;
+  height: 100%;
   overflow-x: hidden;
   overflow-y: hidden;
-  width: max-content;
   background-color: white;
   border-right: 1px solid #e8e8e8;
 

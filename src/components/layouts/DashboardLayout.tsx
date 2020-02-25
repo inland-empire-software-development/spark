@@ -33,9 +33,7 @@ const Dashboard: React.FC = function(props) {
         <Sidebar accountMenuItems={account} menuItems={main} isOpen={sidebarIsOpen} onNavigate={(path) => onNavigate(path)} />
 
         <Panel>
-          {children ?
-            children :
-            (<h1>The Main Dashboard</h1>)}
+          {children}
         </Panel>
 
 

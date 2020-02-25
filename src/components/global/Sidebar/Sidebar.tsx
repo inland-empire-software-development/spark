@@ -32,6 +32,25 @@ const Sidebar: React.FC<SidebarProps> = (props) => {
   // dashboard links
   const [activeItemLabel, setActiveItemLabel] = React.useState<string>("");
   const [activeSubMenus, setActiveSubMenus] = React.useState<ActiveSubMenus>(new Map());
+  const [scrollTop, setScrollTop] = React.useState<number>(80);
+
+  const handleScroll = () => {
+    if (window.scrollY < 80) {
+      setScrollTop(80-window.scrollY);
+    } else {
+      setScrollTop(0);
+    }
+  };
+
+  // For sticky sidebar that works with 80 px navbar
+  // TODO - allow for different navbar heights by adding a prop
+  React.useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    handleScroll(); // for initial load
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   const handleMenuItemClicked = (e: React.MouseEvent<HTMLDivElement, MouseEvent>, item: SidebarItem) => {
     // check for sibling element (submenu)
@@ -58,32 +77,6 @@ const Sidebar: React.FC<SidebarProps> = (props) => {
 
   const handleSubMenuItemClicked = (path: string) => {
     props.onNavigate(path);
-  };
-
-  const getMenuToggle = (): string => {
-    return (
-      `<i class="far fa-toggle-${!context.sidebarIsOpen ? 'on' : 'off'}"/>`
-    );
-  };
-
-  const handleIconToggle = () => {
-    if (document) {
-      const toggle = document.getElementById("sidebar-toggle");
-      if (toggle) {
-        toggle.innerHTML = getMenuToggle();
-      }
-    }
-  };
-
-  const handleContextUpdate = () => {
-    context.setContextProperty({
-      sidebarIsOpen: !context.sidebarIsOpen,
-    });
-  };
-
-  const handleMenuToggle = () => {
-    handleIconToggle();
-    handleContextUpdate();
   };
 
   // createMenuItems is a helper to avoid repetition
@@ -150,25 +143,16 @@ const Sidebar: React.FC<SidebarProps> = (props) => {
   // return whole sidebar with offcanvas capability for toggling on/off screen
   return (
     <aside id="sidebar-container" className={`${context.sidebarIsOpen ? "open" : ""}`}>
-      <a
-        id="sidebar-toggle"
-        onClick={() => handleMenuToggle()}>
-        <i className="far fa-toggle-on"/>
-      </a>
-      <div
-        id="dashboard-sidebar"
-        className={`uk-offcanvas ${context.sidebarIsOpen ? "uk-open" : ""}`}
-        style={{display: "block"}}>
-        <div className="uk-offcanvas-bar uk-offcanvas-bar-animation uk-offcanvas-slide sidebar-panel">
-          <ul
-            className="uk-nav menu-primary">
-            {navLinks}
+      <div className="sidebar-panel" style={{top: scrollTop}}>
+        <ul
+          className="uk-nav menu-primary">
+          {navLinks}
 
-            <div className="section-title">Account</div>
-            {accountLinks}
-          </ul>
-        </div>
+          <div className="section-title">Account</div>
+          {accountLinks}
+        </ul>
       </div>
+
     </aside>
   );
 };
