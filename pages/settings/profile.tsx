@@ -1,11 +1,10 @@
 import React from "react";
 import DashboardLayout from "../../src/components/layouts/DashboardLayout";
 
-const AddCourse: React.FC = () => (
+const Profile: React.FC = () => (
   <DashboardLayout>
-    <h1>Add a course</h1>
+    <h1>Your Profile</h1>
   </DashboardLayout>
 );
 
-export default AddCourse;
-
+export default Profile;

@@ -1,10 +1,10 @@
 import React from "react";
-import Dashboard from "../dashboard";
+import DashboardLayout from "../../src/components/layouts/DashboardLayout";
 
 const CourseCategories: React.FC = () => (
-  <Dashboard>
+  <DashboardLayout>
     <h1>Course Categories</h1>
-  </Dashboard>
+  </DashboardLayout>
 );
 
 export default CourseCategories;

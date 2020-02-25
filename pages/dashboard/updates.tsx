@@ -1,10 +1,10 @@
 import React from "react";
-import Dashboard from "../dashboard";
+import DashboardLayout from "../../src/components/layouts/DashboardLayout";
 
 const Updates: React.FC = () => (
-  <Dashboard>
+  <DashboardLayout>
     <h1>Updates</h1>
-  </Dashboard>
+  </DashboardLayout>
 );
 
 export default Updates;

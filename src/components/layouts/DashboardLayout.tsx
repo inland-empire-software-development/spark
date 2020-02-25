@@ -1,12 +1,12 @@
 import {useContext} from 'react';
 import {useRouter} from 'next/router';
-import {Context, SidebarOptions} from '../src/context';
+import {Context, SidebarOptions} from '../../context';
 import {DefaultSeo} from "next-seo";
-import SEO from "../next-seo.config";
-import Sidebar from '../src/components/global/Sidebar/Sidebar';
-import Navigation from '../src/components/global/Navigation/Navigation';
-import "../src/style/pages/_dashboard.scss";
-import Panel from '../src/components/panel/Panel';
+import SEO from "../../../next-seo.config";
+import Sidebar from '../../components/global/Sidebar/Sidebar';
+import Navigation from '../../components/global/Navigation/Navigation';
+import "../../style/pages/_dashboard.scss";
+import Panel from '../../components/panel/Panel';
 
 const Dashboard: React.FC = function(props) {
   const context = useContext(Context);
