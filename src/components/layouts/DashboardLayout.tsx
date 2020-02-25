@@ -5,8 +5,7 @@ import {DefaultSeo} from "next-seo";
 import SEO from "../../../next-seo.config";
 import Sidebar from '../../components/global/Sidebar/Sidebar';
 import Navigation from '../../components/global/Navigation/Navigation';
-import "../../style/pages/_dashboard.scss";
-import Panel from '../../components/panel/Panel';
+import "./DashboardLayout.scss";
 
 const Dashboard: React.FC = function(props) {
   const context = useContext(Context);
@@ -32,9 +31,11 @@ const Dashboard: React.FC = function(props) {
       <div id="dashboard-container" className="uk-flex">
         <Sidebar accountMenuItems={account} menuItems={main} isOpen={sidebarIsOpen} onNavigate={(path) => onNavigate(path)} />
 
-        <Panel>
-          {children}
-        </Panel>
+        <div id="panel-container" >
+          <div id="panel-content">
+            {children}
+          </div>
+        </div>
 
 
       </div>

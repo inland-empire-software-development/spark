@@ -1,0 +1,28 @@
+/**
+ * Dashboard page style page
+ */
+@import '../../style/variables';
+
+#dashboard-container {
+  background-color: $white;
+}
+
+#sidebar-container {
+  transition: width 150ms ease-in-out;
+}
+
+#sidebar-container:has(.open) {
+  width: 248px;
+}
+
+#sidebar-container:not(.open) {
+  width: 0;
+}
+
+#panel-container {
+  width: 100%;
+
+  #panel-content {
+    padding: 60px 25px 50px 30px;
+  }
+}
