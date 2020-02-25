@@ -1,4 +1,5 @@
 import {useContext} from 'react';
+import {useRouter} from 'next/router';
 import {Context, SidebarOptions} from '../src/context';
 import {DefaultSeo} from "next-seo";
 import SEO from "../next-seo.config";
@@ -7,15 +8,18 @@ import Navigation from '../src/components/global/Navigation/Navigation';
 import "../src/style/pages/_dashboard.scss";
 import Panel from '../src/components/panel/Panel';
 
-function Dashboard() {
+const Dashboard: React.FC = function(props) {
   const context = useContext(Context);
+  const router = useRouter();
   const {user, sidebarIsOpen} = context;
+  const {children} = props;
   const {account, main} = SidebarOptions; // TODO: add ability to save data into DB and retrieve for menu generaetion
 
   const onNavigate = (path: string) => {
     context.setContextProperty({
       activeDashboardPath: path,
     });
+    router.push(path);
   };
 
   // TODO: Create system to pull contents of correct panel based on context.
@@ -29,7 +33,7 @@ function Dashboard() {
         <Sidebar accountMenuItems={account} menuItems={main} isOpen={sidebarIsOpen} onNavigate={(path) => onNavigate(path)} />
 
         <Panel>
-          <h1>A page!</h1>
+          {children ? children : (<h1>Content for /dashboard</h1>)}
         </Panel>
 
 
@@ -40,6 +44,6 @@ function Dashboard() {
       />
     </main>
   );
-}
+};
 
 export default Dashboard;
