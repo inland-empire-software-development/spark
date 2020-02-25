@@ -31,16 +31,9 @@ This accepts the same properties as menu items. However, the these items will be
 
 A boolean value used to toggle the [Off-canvas](https://getuikit.com/docs/offcanvas) visibility. This allows the menu visibility to be controlled (for example on mobile)
 
-#### closeButtonScreenSize
-
-Accepts one of four string values: "s" | "m" | "l" | "xl". This setting selects the minimum screen size for displaying a close button at the top right of the Sidebar which will emit onMenuClose (see below) when clicked. The sizes correspond to UIkit breakpoints.
 
 #### onNavigate
 
 A function that will receive the navigation path of an item clicked. It an item contains subItems, clicking it will toggle subItems instead of calling onNavigate. Clicking the subItems will call onNavigate.
-
-#### onMenuClosed
-
-Called when the menu close button is clicked (see cloceButtonScreenSize)
 
 
