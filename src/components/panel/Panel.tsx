@@ -1,13 +1,13 @@
 import React from "react";
 import "./Panel.scss";
-import AllCourses from "../global/dashboard-all-courses/AllCourses";
+import Courses from "../courses/Courses";
 
 function Panel(props: { content: JSX.Element }): JSX.Element {
   const {content} = props;
   return (
     <div id="panel-container" >
       <div id="panel-content">
-        <AllCourses/>
+        <Courses />
         {content}
       </div>
     </div>

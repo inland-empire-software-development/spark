@@ -5,11 +5,11 @@ $selectedLinkBackground: rgba(0, 0, 0, 0.01);
 $transitionTime: 0.2s;
 
 #sidebar-container {
-  width: 248px;
+  min-width: 235px;
 }
 
 #dashboard-sidebar {
-  width: 225px;
+  width: 235px;
   z-index: 9;
   right: unset;
 }
