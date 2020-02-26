@@ -6,9 +6,9 @@ $transitionTime: 0.2s;
 
 .sidebar-panel {
   position: fixed;
-  width: $sidebar-width;
+  width: 0;
   transition: width 150ms ease-in-out;
-  padding: 25px 0 0 0;
+  padding: 0 0 0 0;
   height: 100%;
   overflow-x: hidden;
   overflow-y: hidden;
@@ -21,6 +21,20 @@ $transitionTime: 0.2s;
 
   &:focus {
     overflow-y: auto;
+  }
+
+  &.open {
+    width: $sidebar-width;
+  }
+
+  .close-button {
+    display: flex;
+    justify-content: flex-end;
+
+    span {
+      cursor: pointer;
+      padding: 16px 10px 10px 10px;
+    }
   }
 
   .menu-primary {

@@ -79,6 +79,10 @@ const Sidebar: React.FC<SidebarProps> = (props) => {
     props.onNavigate(path);
   };
 
+  const handleCloseSidebar = () => {
+    context.setContextProperty({sidebarIsOpen: false});
+  };
+
   // createMenuItems is a helper to avoid repetition
   const createMenuItems = (menuItems: SidebarItem[]): JSX.Element[] => {
     return menuItems.map((item) => {
@@ -143,7 +147,15 @@ const Sidebar: React.FC<SidebarProps> = (props) => {
   // return whole sidebar with offcanvas capability for toggling on/off screen
   return (
     <aside id="sidebar-container" className={`${context.sidebarIsOpen ? "open" : ""}`}>
-      <div className="sidebar-panel" style={{top: scrollTop}}>
+      <div
+        className={`sidebar-panel ${context.sidebarIsOpen ? "open" : ""}`}
+        style={{top: scrollTop}}>
+        <div className="close-button">
+          <span
+            uk-icon="icon: close; ratio: 1.2"
+            onClick={() => handleCloseSidebar()}
+          ></span>
+        </div>
         <ul
           className="uk-nav menu-primary">
           {navLinks}

@@ -21,7 +21,21 @@ const Dashboard: React.FC = function(props) {
     router.push(path);
   };
 
+  const handleOpenSidebar = () => {
+    context.setContextProperty({
+      sidebarIsOpen: true,
+    });
+  };
   // TODO: Create system to pull contents of correct panel based on context.
+
+  const menuToggleIcon = sidebarIsOpen ?
+    null: (
+      <div id="uk-icon-button-container">
+        <span
+          className="uk-icon-button" uk-icon="icon: more-vertical"
+          onClick={() => handleOpenSidebar()}></span>
+      </div>
+    );
 
   return (
     <main>
@@ -32,6 +46,7 @@ const Dashboard: React.FC = function(props) {
         <Sidebar accountMenuItems={account} menuItems={main} isOpen={sidebarIsOpen} onNavigate={(path) => onNavigate(path)} />
 
         <div id="panel-container" >
+          {menuToggleIcon}
           <div id="panel-content">
             {children}
           </div>
