@@ -17,6 +17,16 @@
   }
 }
 
+@media (max-width: $sidebar-overlay-width) {
+  #sidebar-container {
+    // has(.open) wasn't working for some reason
+    &.open {
+      min-width: 0;
+      width: 0;
+    }
+  }
+}
+
 #panel-container {
   width: 100%;
 
