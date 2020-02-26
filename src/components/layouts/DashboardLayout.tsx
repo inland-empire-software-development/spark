@@ -30,10 +30,15 @@ const Dashboard: React.FC = function(props) {
 
   const menuToggleIcon = sidebarIsOpen ?
     null: (
-      <div id="uk-icon-button-container">
+      <div
+        className="icon-button-container"
+        onClick={() => handleOpenSidebar()}
+      >
+        <span className="icon-button-label">Menu</span>
         <span
-          className="uk-icon-button" uk-icon="icon: more-vertical"
-          onClick={() => handleOpenSidebar()}></span>
+          className="icon-button"
+          uk-icon="icon: chevron-double-right;"
+        ></span>
       </div>
     );
 

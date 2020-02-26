@@ -8,7 +8,7 @@
 }
 
 #sidebar-container {
-  transition: width 150ms ease-in-out;
+  transition: width $sidebar-transition-time ease-in-out;
   width: 0;
   // has(.open) wasn't working for some reason
   &.open {
@@ -27,14 +27,23 @@
   }
 }
 
-#uk-icon-button-container {
-  margin-top: 16px;
-  margin-left: 30px;
+.icon-button-container {
+  display: flex;
+  padding: 16px 0 16px 30px;
+  width: max-content;
+  cursor: pointer;
+  align-items: center;
+  font-family: "Medium", sans-serif;
+  transition: color 0.2s ease-in;
 
-  .uk-icon-button {
-    cursor: pointer;
-    width: 48px;
-    height: 48px;
+  .icon-button {
+    svg {
+      width: 24px;
+    }
+  }
+
+  &:hover {
+    color: #f07f6b;
   }
 }
 
