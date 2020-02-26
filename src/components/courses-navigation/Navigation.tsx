@@ -20,7 +20,7 @@ function Navigation(): JSX.Element {
         <div className="w-20">
           <form className="uk-search uk-search-default w-100">
             <a href="" className="uk-search-icon-flip" uk-search-icon="true"></a>
-            <input className="uk-search-input" type="search" placeholder="Search..." />
+            <input className="uk-search-input" type="search" placeholder="Search courses..." />
           </form>
         </div>
 
