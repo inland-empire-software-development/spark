@@ -11,10 +11,6 @@ function Courses(): JSX.Element {
       <Course />
       <Course />
       <Course />
-      <Course />
-      <Course />
-      <Course />
-      <Course />
     </>
 
   );
