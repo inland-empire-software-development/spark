@@ -9,14 +9,12 @@
 
 #sidebar-container {
   transition: width 150ms ease-in-out;
-}
-
-#sidebar-container:has(.open) {
-  width: 248px;
-}
-
-#sidebar-container:not(.open) {
   width: 0;
+  // has(.open) wasn't working for some reason
+  &.open {
+    min-width: $sidebar-width;
+    width: $sidebar-width;
+  }
 }
 
 #panel-container {

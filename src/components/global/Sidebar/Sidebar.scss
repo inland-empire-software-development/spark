@@ -4,18 +4,10 @@ $selectedLinkColor: #f07f6b; // color in style guidelines is different from prim
 $selectedLinkBackground: rgba(0, 0, 0, 0.01);
 $transitionTime: 0.2s;
 
-#sidebar-container {
-  width: 248px;
-}
-
-#dashboard-sidebar {
-  width: 225px;
-  z-index: 9;
-  right: unset;
-}
-
 .sidebar-panel {
   position: fixed;
+  width: $sidebar-width;
+  transition: width 150ms ease-in-out;
   padding: 25px 0 0 0;
   height: 100%;
   overflow-x: hidden;
@@ -37,8 +29,7 @@ $transitionTime: 0.2s;
     font-size: 16px;
     color: $light-gray;
     list-style: none;
-    width: max-content;
-    min-width: 225px;
+    width: inherit;
 
     li {
       cursor: pointer;
