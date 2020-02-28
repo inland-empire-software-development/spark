@@ -1,15 +1,15 @@
 import React from "react";
 import "./Panel.scss";
 
-function Panel(props: { content: JSX.Element }): JSX.Element {
-  const {content} = props;
+const Panel: React.FC = function(props): JSX.Element {
+  const {children} = props;
   return (
     <div id="panel-container" >
       <div id="panel-content">
-        {content}
+        {children}
       </div>
     </div>
   );
-}
+};
 
 export default Panel;
