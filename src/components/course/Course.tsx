@@ -6,10 +6,14 @@ function Course(): JSX.Element {
     <div className="grid w-100 uk-margin-large-bottom">
       <div className="w-20">
         <img className="uk-responsive-width" src="https://images.pexels.com/photos/714698/pexels-photo-714698.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500" alt=""/>
+        <figcaption className="uk-overlay-panel uk-flex uk-flex-center uk-flex-middle uk-text-center">
+          <button className="uk-width-1-3 uk-border-pill uk-button uk-button-secondary uk-margin-small-right">Edit</button>
+          <button className="uk-width-1-3 uk-border-pill uk-button uk-button-secondary">View</button>
+        </figcaption>
       </div>
 
       <div className="w-75">
-        <p className="course-author uk-margin-remove ">Armand Villanueva</p>
+        <p className="course-author uk-text-bold uk-margin-small-bottom">Armand Villanueva</p>
         <div className="uk-flex uk-margin-small-bottom'">
           <h3 className="uk-margin-remove course-title">Introduction to Web Development</h3>
           <div>
