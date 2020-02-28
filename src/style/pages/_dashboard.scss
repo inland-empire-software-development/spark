@@ -8,13 +8,13 @@
 }
 
 #sidebar-container {
-  transition: width 150ms ease-in-out;
+  transition: min-width 300ms ease-in-out;
 }
 
 #sidebar-container:has(.open) {
-  width: 248px;
+  min-width: 238px;
 }
 
 #sidebar-container:not(.open) {
-  width: 0;
+  min-width: 0;
 }
