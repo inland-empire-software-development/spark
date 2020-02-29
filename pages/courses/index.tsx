@@ -1,9 +1,10 @@
 import React from "react";
 import DashboardLayout from "../../src/components/layouts/DashboardLayout";
+import Courses from "../../src/components/courses/Courses";
 
 const AllCourses: React.FC = () => (
   <DashboardLayout>
-    <h1>All courses</h1>
+    <Courses/>
   </DashboardLayout>
 );
 
