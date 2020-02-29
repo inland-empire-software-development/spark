@@ -4,6 +4,7 @@ import {DefaultSeo} from "next-seo";
 import SEO from "../next-seo.config";
 import Sidebar from '../src/components/global/Sidebar/Sidebar';
 import Navigation from '../src/components/global/Navigation/Navigation';
+import AddCourse from '../src/components/dashboard/panels/addCourse/AddCourse';
 
 function Dashboard() {
   const context = useContext(Context);
@@ -31,6 +32,7 @@ function Dashboard() {
         <div className="uk-container" >
           <section className="uk-padding">
             <h1>Hello {user}!</h1>
+            <AddCourse />
           </section>
         </div>
       </section>

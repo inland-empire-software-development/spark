@@ -1,11 +1,11 @@
 import React from 'react';
 import './AddCourse.scss';
 
-function addCourse(): JSX.Element {
+function AddCourse(): JSX.Element {
   return (
     <div className='uk-grid'>
 
-      <div className= 'uk-width-6@s uk-first-column'>
+      <div className='uk-width-6@s uk-first-column'>
         <div className='dashTitle'>
           <h1>Add Course</h1>
         </div>
@@ -84,13 +84,20 @@ function addCourse(): JSX.Element {
             </div>
             <div id="remove-video" className="w-5 ">
               <button className="w-100 uk-button bg-red white" type='button'>
-                <i className="fal fa-trash"/>
+                <i className="fal fa-trash" />
               </button>
             </div>
           </div>
           <div className='uk-margin grid'>
             <div className='w-20'>
               <button className="w-100 uk-button uk-button-default" type="button">Add Item</button>
+            </div>
+          </div>
+          <div className='uk-margin grid'>
+            <div className='w-20'>
+              <button className="w-100 uk-button uk-button-default" type="button">Save
+                <i className="fas fa-long-arrow-alt-right"></i>
+              </button>
             </div>
           </div>
         </form>
@@ -100,4 +107,4 @@ function addCourse(): JSX.Element {
   );
 }
 
-export default addCourse;
+export default AddCourse;
