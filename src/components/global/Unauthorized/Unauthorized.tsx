@@ -1,6 +1,7 @@
 import React from 'react';
 import SEO from "../../../../next-seo.config";
 import {DefaultSeo} from "next-seo";
+import "./Unauthorized.scss";
 
 function Unauthorized(): JSX.Element {
   return (

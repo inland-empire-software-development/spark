@@ -24,6 +24,7 @@
     "sbprod": "start-storybook -s ./public HOST=http://localhost:6003/ -p 7003 -c .storybook"
   },
   "dependencies": {
+    "@types/uikit": "^2.27.7",
     "@zeit/next-css": "^1.0.1",
     "@zeit/next-sass": "^1.0.1",
     "app-root-path": "^3.0.0",
@@ -69,7 +70,6 @@
     "@types/node": "^12.12.17",
     "@types/react": "^16.9.16",
     "@types/react-dom": "^16.9.4",
-    "@types/uikit": "^2.27.7",
     "@typescript-eslint/eslint-plugin": "^2.11.0",
     "@typescript-eslint/parser": "^2.11.0",
     "babel-eslint": "^10.0.3",

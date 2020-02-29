@@ -8,19 +8,9 @@ export interface Message {
     message: string;
 }
 
-export interface Request {
-    body: {
-        [property: string]: string;
-      };
-    query: any; // TODO: find a better type.
-    cookies: any; // TODO: find a better
-}
-
-export interface Response {
-    writeHead(statusCode: number, headers: { [properties: string]: string });
-    send: (result: any | { message: string }) => void;
-    status: (status: number) => void;
-    setHeader: (header: string, value: string | Array) => void;
+// Allow arrays to be indexed with strings
+export interface ArrayIndexedWithStrings {
+    [key: string]: any;
 }
 
 export interface Redirects {
@@ -36,8 +26,13 @@ export interface Notification extends UIkit.Notify {
 export default class NextAuthenticate extends Component<NextAuthenticateProps> { }
 
 export interface MyAppContext {
+    setContextProperty: function | undefined;
     user: string | undefined;
+    sidebarIsOpen: boolean;
+    notifications: boolean;
+    activeDashboardPath: string | undefined;
     access: boolean;
     redirect: string | undefined;
+    userID: string | undefined;
     isPublic: boolean;
 }

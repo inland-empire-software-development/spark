@@ -1,0 +1,56 @@
+/**
+ * Dashboard page style page
+ */
+@import '../../style/variables';
+
+#dashboard-container {
+  background-color: $white;
+}
+
+#sidebar-container {
+  transition: width $sidebar-transition-time ease-in-out;
+  width: 0;
+  // has(.open) wasn't working for some reason
+  &.open {
+    min-width: $sidebar-width;
+    width: $sidebar-width;
+  }
+}
+
+@media (max-width: $sidebar-overlay-width) {
+  #sidebar-container {
+    // has(.open) wasn't working for some reason
+    &.open {
+      min-width: 0;
+      width: 0;
+    }
+  }
+}
+
+.icon-button-container {
+  display: flex;
+  padding: 16px 0 16px 30px;
+  width: max-content;
+  cursor: pointer;
+  align-items: center;
+  font-family: "Medium", sans-serif;
+  transition: color 0.2s ease-in;
+
+  .icon-button {
+    svg {
+      width: 24px;
+    }
+  }
+
+  &:hover {
+    color: #f07f6b;
+  }
+}
+
+#panel-container {
+  width: 100%;
+
+  #panel-content {
+    padding: 60px 25px 50px 30px;
+  }
+}

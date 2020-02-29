@@ -1,0 +1,20 @@
+/**
+ * Dashboard page style page
+ */
+@import '../_variables.scss';
+
+#dashboard-container {
+  background-color: $white;
+}
+
+#sidebar-container {
+  transition: width 150ms ease-in-out;
+}
+
+#sidebar-container:has(.open) {
+  width: 248px;
+}
+
+#sidebar-container:not(.open) {
+  width: 0;
+}
