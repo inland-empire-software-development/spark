@@ -42,7 +42,7 @@ function AddCourse(): JSX.Element {
               <label className='uk-form-label' htmlFor="Course Picture">Course picture</label>
               <div className="js-upload uk-placeholder uk-text-center">
                 <span uk-icon="icon: cloud-upload"></span>
-                <span className="uk-text-middle">Drop files here to upload</span>
+                <span className="uk-text-middle"> Drop files here to upload</span>
               </div>
             </div>
           </div>
@@ -95,8 +95,8 @@ function AddCourse(): JSX.Element {
           </div>
           <div className='uk-margin grid'>
             <div className='w-20'>
-              <button className="w-100 uk-button uk-button-default" type="button">Save
-                <i className="fas fa-long-arrow-alt-right"></i>
+              <button className="w-100 uk-button uk-button-default saveButton" type="button"> Save
+                <i className="fas fa-long-arrow-alt-right arrowIcon"></i>
               </button>
             </div>
           </div>

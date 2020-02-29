@@ -1,1 +1,10 @@
-@import '../../../../style/colors'
+@import '../../../../style/variables';
+
+.saveButton {
+  background-color: $tertiary;
+  color: $white;
+}
+
+.arrowIcon {
+  margin-left: 10px;
+}

@@ -6,7 +6,8 @@ import Sidebar from '../src/components/global/Sidebar/Sidebar';
 import Navigation from '../src/components/global/Navigation/Navigation';
 import "../src/style/pages/_dashboard.scss";
 import Panel from '../src/components/panel/Panel';
-import Courses from '../src/components/courses/Courses';
+// import Courses from '../src/components/courses/Courses';
+import AddCourse from '../src/components/dashboard/panels/addCourse/AddCourse';
 
 function Dashboard() {
   const context = useContext(Context);
@@ -31,7 +32,8 @@ function Dashboard() {
 
         <Panel>
           <>
-            <Courses/>
+            <AddCourse />
+            {/* <Courses/> */}
           </>
         </Panel>
 
