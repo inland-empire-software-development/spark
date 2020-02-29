@@ -19,6 +19,7 @@ interface SidebarProps {
   menuItems: SidebarItem[];
   accountMenuItems: SidebarItem[];
   isOpen: boolean;
+  activePath: string | undefined;
   onNavigate: (path: string) => void;
 }
 
@@ -27,10 +28,8 @@ type ActiveSubMenus = Map<string, number>;
 
 const Sidebar: React.FC<SidebarProps> = (props) => {
   const context = useContext(Context);
-
   // state for clicked (active) and hovered (mouse hover to show submenu)
   // dashboard links
-  const [activeItemLabel, setActiveItemLabel] = React.useState<string>("");
   const [activeSubMenus, setActiveSubMenus] = React.useState<ActiveSubMenus>(new Map());
   const [scrollTop, setScrollTop] = React.useState<number>(80);
 
@@ -71,8 +70,6 @@ const Sidebar: React.FC<SidebarProps> = (props) => {
     if (!item.subItems) {
       props.onNavigate(item.path);
     }
-    // set main item active styles
-    setActiveItemLabel(item.label);
   };
 
   const handleSubMenuItemClicked = (path: string) => {
@@ -93,7 +90,7 @@ const Sidebar: React.FC<SidebarProps> = (props) => {
       }
 
       // for primary menu (top level items)
-      const isActiveItem = activeItemLabel === item.label;
+      const isActiveItem = props.activePath?.split("/")[1] === item.path.split("/")[1];
       const subMenuHeight = activeSubMenus.get(item.label);
       const hasSubMenu = subMenuHeight ? true : false;
 
