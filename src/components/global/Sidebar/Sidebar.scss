@@ -4,12 +4,42 @@ $selectedLinkColor: #f07f6b; // color in style guidelines is different from prim
 $selectedLinkBackground: rgba(0, 0, 0, 0.01);
 $transitionTime: 0.2s;
 
+#sidebar-container {
+  min-width: 235px;
+}
+
+#dashboard-sidebar {
+  width: 235px;
+  z-index: 9;
+  right: unset;
+}
+
+#sidebar-toggle {
+  z-index: 10;
+  position: absolute;
+  color: #ef906c;
+  font-size: 18px;
+  width: 125px;
+  left: 30px;
+  top: 90px;
+
+  &::after {
+    content: " toggle sidebar";
+    padding-left: 15px;
+    font-size: 12px;
+    position: relative;
+    top: -3px;
+  }
+}
+
 .sidebar-panel {
-  top: 80px;
-  padding: 15px 0 0 0; // override uikit
+  position: fixed;
+  width: 0;
+  transition: width $transitionTime ease-in-out;
+  padding: 0 0 0 0;
+  height: 100%;
   overflow-x: hidden;
   overflow-y: hidden;
-  width: max-content;
   background-color: white;
   border-right: 1px solid #e8e8e8;
 
@@ -21,18 +51,31 @@ $transitionTime: 0.2s;
     overflow-y: auto;
   }
 
+  &.open {
+    width: $sidebar-width;
+  }
+
+  .close-button {
+    display: flex;
+    justify-content: flex-end;
+
+    span {
+      cursor: pointer;
+      padding: 16px 10px 10px 10px;
+    }
+  }
+
   .menu-primary {
     visibility: visible;
     font-family: "Light", sans-serif;
     font-size: 16px;
     color: $light-gray;
     list-style: none;
-    width: max-content;
-    min-width: 225px;
+    width: inherit;
 
     li {
       cursor: pointer;
-      transition: $transitionTime;
+      transition: $transitionTime ease-in-out;
 
       &:hover {
         color: $selectedLinkColor;
@@ -46,7 +89,7 @@ $transitionTime: 0.2s;
         border-right: 2px solid transparent; // so chevron angle doesn't move for active item
 
         .sub-angle-down {
-          transition: transform $transitionTime ease;
+          transition: transform $transitionTime ease-in-out;
           margin-left: auto;
         }
 
@@ -64,7 +107,7 @@ $transitionTime: 0.2s;
   }
 
   .menu-secondary {
-    transition: height 0.2s ease;
+    transition: height 0.2s ease-in-out;
     overflow-y: hidden;
     background-color: white;
 

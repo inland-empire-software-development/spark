@@ -68,7 +68,6 @@ missingIconData.push({icon: "", label: "Nothing", path: ""});
 
 const actionsData = {
   onNavigate: action("onNavigate"),
-  onMenuClose: action("onMenuClose"),
 };
 
 export const DefaultSidebar = () => (
@@ -76,7 +75,6 @@ export const DefaultSidebar = () => (
     menuItems={mainItemsData}
     accountMenuItems={accountItemsData}
     isOpen={boolean("Visible?", true, "Toggles")}
-    closeButtonScreenSize="m"
     {...actionsData}
   ></Sidebar>
 );
@@ -86,7 +84,6 @@ export const MissingIcon = () => (
     menuItems={missingIconData}
     accountMenuItems={accountItemsData}
     isOpen={boolean("Visible?", true, "Toggles")}
-    closeButtonScreenSize="m"
     {...actionsData}
   ></Sidebar>
 );
@@ -96,17 +93,6 @@ export const CloseButtonOnSmallScreen = () => (
     menuItems={missingIconData}
     accountMenuItems={accountItemsData}
     isOpen={boolean("Visible?", true, "Toggles")}
-    closeButtonScreenSize="s"
-    {...actionsData}
-  ></Sidebar>
-);
-
-export const CloseButtonOnXLScreen = () => (
-  <Sidebar
-    menuItems={missingIconData}
-    accountMenuItems={accountItemsData}
-    isOpen={boolean("Visible?", true, "Toggles")}
-    closeButtonScreenSize="xl"
     {...actionsData}
   ></Sidebar>
 );

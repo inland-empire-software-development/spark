@@ -19,7 +19,6 @@ interface SidebarProps {
   menuItems: SidebarItem[];
   accountMenuItems: SidebarItem[];
   isOpen: boolean;
-  closeButtonScreenSize: "s" | "m" | "l" | "xl"; // choose UIKit screen size for close button in sidebar
   onNavigate: (path: string) => void;
 }
 
@@ -33,6 +32,25 @@ const Sidebar: React.FC<SidebarProps> = (props) => {
   // dashboard links
   const [activeItemLabel, setActiveItemLabel] = React.useState<string>("");
   const [activeSubMenus, setActiveSubMenus] = React.useState<ActiveSubMenus>(new Map());
+  const [scrollTop, setScrollTop] = React.useState<number>(80);
+
+  const handleScroll = () => {
+    if (window.scrollY < 80) {
+      setScrollTop(80-window.scrollY);
+    } else {
+      setScrollTop(0);
+    }
+  };
+
+  // For sticky sidebar that works with 80 px navbar
+  // TODO - allow for different navbar heights by adding a prop
+  React.useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    handleScroll(); // for initial load
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   const handleMenuItemClicked = (e: React.MouseEvent<HTMLDivElement, MouseEvent>, item: SidebarItem) => {
     // check for sibling element (submenu)
@@ -61,10 +79,8 @@ const Sidebar: React.FC<SidebarProps> = (props) => {
     props.onNavigate(path);
   };
 
-  const handleMenuClose = () => {
-    context.setContextProperty({
-      sidebarIsOpen: !context.sidebarIsOpen,
-    });
+  const handleCloseSidebar = () => {
+    context.setContextProperty({sidebarIsOpen: false});
   };
 
   // createMenuItems is a helper to avoid repetition
@@ -130,17 +146,15 @@ const Sidebar: React.FC<SidebarProps> = (props) => {
 
   // return whole sidebar with offcanvas capability for toggling on/off screen
   return (
-    <div
-      className={`uk-offcanvas ${props.isOpen ? "uk-open" : ""}`}
-      style={{display: "block"}}>
-      <div className="uk-offcanvas-bar uk-offcanvas-bar-animation uk-offcanvas-slide sidebar-panel">
-        <div className={`mobile-close uk-hidden@${props.closeButtonScreenSize}`}>
+    <aside id="sidebar-container" className={`${context.sidebarIsOpen ? "open" : ""}`}>
+      <div
+        className={`sidebar-panel ${context.sidebarIsOpen ? "open" : ""}`}
+        style={{top: scrollTop}}>
+        <div className="close-button">
           <span
-            uk-icon="icon: close"
-            onClick={() => handleMenuClose()}
+            uk-icon="icon: close; ratio: 1.2"
+            onClick={() => handleCloseSidebar()}
           ></span>
-        </div>
-        <div className={`spacer uk-visible@${props.closeButtonScreenSize}`}>
         </div>
         <ul
           className="uk-nav menu-primary">
@@ -150,7 +164,8 @@ const Sidebar: React.FC<SidebarProps> = (props) => {
           {accountLinks}
         </ul>
       </div>
-    </div>
+
+    </aside>
   );
 };
 

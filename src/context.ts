@@ -22,9 +22,9 @@ export const SidebarOptions = {
   ],
   account: [
     {icon: "far fa-cog", label: "Settings", path: "/settings", subItems: [
-      {label: "Profile", path: "user/profile"},
-      {label: "Preferences", path: "user/preferences"},
-      {label: "Account", path: "user/account"},
+      {label: "Profile", path: "/settings/profile"},
+      {label: "Preferences", path: "/settings/preferences"},
+      {label: "Account", path: "/settings/account"},
     ]},
     {icon: "far fa-sign-out", label: "Logout", path: "/logout"},
   ],
@@ -38,6 +38,7 @@ export const defaultContext = {
   sidebarIsOpen: true,
   notifications: true,
   isAccessFetched: false,
+  activeDashboardPath: "dasboard",
   access: false,
   redirect: undefined,
   isPublic: false,

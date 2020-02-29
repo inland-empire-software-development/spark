@@ -2,6 +2,7 @@
 
 nav.uk-navbar-container {
   padding: 0 20px;
+  z-index: 999999;
 
   a {
     font-family: 'Light', sans-serif;
@@ -145,6 +146,8 @@ nav.uk-navbar-container {
 }
 
 #offcanvas-nav {
+  z-index: 10;
+
   .uk-offcanvas-bar {
     overflow-x: hidden !important;
 
