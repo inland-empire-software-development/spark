@@ -43,19 +43,11 @@ $transitionTime: 0.2s;
   width: 0;
   transition: width $transitionTime ease-in-out;
   padding: 0 0 0 0;
-  height: 100%;
+  bottom: 0;
   overflow-x: hidden;
-  overflow-y: hidden;
+  overflow-y: auto;
   background-color: white;
   border-right: 1px solid #e8e8e8;
-
-  &:hover {
-    overflow-y: auto;
-  }
-
-  &:focus {
-    overflow-y: auto;
-  }
 
   &.open {
     width: $sidebar-width;
