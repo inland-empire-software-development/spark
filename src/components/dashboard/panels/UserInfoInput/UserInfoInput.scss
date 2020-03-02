@@ -8,12 +8,15 @@
   &.uk-placeholder {
     padding: 0;
   }
+
+  .uk-form-custom {
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+  }
 }
 
 .uiif-button {
   background-color: $tertiary;
   color: $snow;
-  position: absolute;
-  bottom: 0px;
-  left: 0px;
 }

@@ -9,17 +9,17 @@ function UserInfoInput(): JSX.Element {
         <hr />
         <div className='uk-grid'>
           <div className='uk-width-1-5'>
-            <div className='js-upload uk-placeholder uk-form-custom img-upload-container'>
+            <div className='js-upload uk-placeholder img-upload-container'>
               <img
                 data-src='https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png'
                 src='https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png'
                 alt='Placeholder Image'
                 uk-img=''
               />
-              <input type='file' />
-              <button className='uk-button uk-width-1-1 uiif-button'>
-                Browse
-              </button>
+              <div className='uk-form-custom uk-width-1-1 uk-child-width-1-1'>
+                <input type='file' />
+                <button className='uk-button uiif-button'>Browse</button>
+              </div>
             </div>
           </div>
 
@@ -186,8 +186,15 @@ function UserInfoInput(): JSX.Element {
           </div>
         </div>
       </fieldset>
+
+      <div className='uk-margin'>
+        <button className='uk-button uiif-button'>
+          <span>Save    </span>
+          <i className='fas fa-long-arrow-alt-right'></i>
+        </button>
+      </div>
     </form>
   )
 }
 
-export default UserInfoInput
+export default UserInfoInput;
