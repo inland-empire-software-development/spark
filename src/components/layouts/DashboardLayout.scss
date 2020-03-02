@@ -29,12 +29,15 @@
 
 .icon-button-container {
   display: flex;
-  padding: 16px 0 16px 30px;
+  top: 30px;
+  left: 30px;
+  height: 0;
   width: max-content;
   cursor: pointer;
   align-items: center;
   font-family: "Medium", sans-serif;
   transition: color 0.2s ease-in;
+  position: relative;
 
   .icon-button {
     svg {
@@ -51,6 +54,6 @@
   width: 100%;
 
   #panel-content {
-    padding: 60px 25px 50px 30px;
+    padding: 55px 25px 50px 30px;
   }
 }

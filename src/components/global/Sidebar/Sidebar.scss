@@ -5,7 +5,13 @@ $selectedLinkBackground: rgba(0, 0, 0, 0.01);
 $transitionTime: 0.2s;
 
 #sidebar-container {
-  min-width: 235px;
+  min-width: 0;
+  left: 0;
+
+  &.open {
+    left: -100%;
+    min-width: 235px;
+  }
 }
 
 #dashboard-sidebar {
