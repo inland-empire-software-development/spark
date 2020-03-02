@@ -7,9 +7,9 @@ function AddCourse(): JSX.Element {
 
       <div className='uk-width-6@s uk-first-column'>
         <div className='dashTitle'>
-          <h1>Add Course</h1>
+          <h1 className='page-title'>Add Course</h1>
         </div>
-        <h2>Basic info</h2>
+        <h3 className='page-title'>Basic info</h3>
         <form className='uk-form-horizontal'>
           <div className="uk-margin uk-grid">
             <div className="uk-width-1-2">
