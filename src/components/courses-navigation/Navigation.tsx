@@ -4,10 +4,8 @@ import './Navigation.scss';
 function Navigation(): JSX.Element {
   return (
     <>
-
-
       <div className="w-100 grid">
-        <span className="courses-title w-55">All Courses</span>
+        <span className="page-title w-55">All Courses</span>
 
         <div className="w-20">
           <select className="uk-select">
