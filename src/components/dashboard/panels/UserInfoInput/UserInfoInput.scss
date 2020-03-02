@@ -1,0 +1,15 @@
+@import '../../../../style/global.scss';
+@import '../../../../style/variables.scss';
+@import '../../../../style/colors.scss';
+
+.img-upload-container {
+  position: relative;
+}
+
+.uiif-button {
+  background-color: $tertiary;
+  color: $snow;
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+}
