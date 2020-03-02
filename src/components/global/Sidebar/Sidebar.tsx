@@ -30,7 +30,11 @@ const Sidebar: React.FC<SidebarProps> = (props) => {
   const context = useContext(Context);
   // state for clicked (active) and hovered (mouse hover to show submenu)
   // dashboard links
-  const [activeSubMenus, setActiveSubMenus] = React.useState<ActiveSubMenus>(new Map());
+
+  // initialize active submenu items from context
+  const [activeSubMenus, setActiveSubMenus] = React.useState<ActiveSubMenus>(context.activeDashboardMenus);
+
+  // TODO - using fixed 80 px navbar. Allow accessing from prop
   const [scrollTop, setScrollTop] = React.useState<number>(80);
 
   const handleScroll = () => {
@@ -73,6 +77,11 @@ const Sidebar: React.FC<SidebarProps> = (props) => {
   };
 
   const handleSubMenuItemClicked = (path: string) => {
+    // store the expanded menus in context
+    context.setContextProperty({
+      activeDashboardMenus: activeSubMenus,
+    });
+    // call function in parent to navigate
     props.onNavigate(path);
   };
 
