@@ -9,13 +9,14 @@ function UserInfoInput(): JSX.Element {
         <hr />
         <div className='uk-grid'>
           <div className='uk-width-1-5'>
-            <div className='js-upload img-upload-container'>
+            <div className='js-upload uk-placeholder uk-form-custom img-upload-container'>
               <img
                 data-src='https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png'
                 src='https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png'
                 alt='Placeholder Image'
                 uk-img=''
               />
+              <input type='file' />
               <button className='uk-button uk-width-1-1 uiif-button'>
                 Browse
               </button>
@@ -94,7 +95,7 @@ function UserInfoInput(): JSX.Element {
 
         <div className='uk-width-1-2 uk-margin-top'>
           <label className='uk-form-label' htmlFor='current password'>
-            Old Password
+            Current Password
           </label>
           <input
             className='uk-input'

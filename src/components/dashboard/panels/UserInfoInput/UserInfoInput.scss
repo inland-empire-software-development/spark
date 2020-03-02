@@ -4,6 +4,10 @@
 
 .img-upload-container {
   position: relative;
+
+  &.uk-placeholder {
+    padding: 0;
+  }
 }
 
 .uiif-button {
