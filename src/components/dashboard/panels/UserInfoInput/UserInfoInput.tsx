@@ -55,7 +55,7 @@ function UserInfoInput(): JSX.Element {
 
               <div className='uk-width-1-2'>
                 <div>
-                  <label className='uk-form-label' htmlFor='first title'>
+                  <label className='uk-form-label' htmlFor='title'>
                     Title
                   </label>
                   <input
@@ -93,7 +93,7 @@ function UserInfoInput(): JSX.Element {
             className='uk-textarea'
             id='form-h-textarea'
             rows={5}
-            placeholder='Some text...'
+            placeholder='Something interesting about you!'
           ></textarea>
         </div>
       </fieldset>
