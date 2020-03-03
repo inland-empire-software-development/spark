@@ -1,7 +1,7 @@
 <p align="center">
   <img
     alt="Spark Logo"
-    src="images/spark.png"
+    src="public/images/spark.png"
     width="100px" >
 </p>
 <p align="center">
