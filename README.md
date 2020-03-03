@@ -1,16 +1,16 @@
 <p align="center">
   <img
     alt="Spark Logo"
-    src="https://raw.githubusercontent.com/inland-empire-software-development/spark/00031-readme-update/public/images/logo/spark-360x360.png"
+    src="images/spark.png"
     width="100px" >
 </p>
 <p align="center">
   <strong>Spark</strong><br>
   Learning Management System
-</p> 
+</p>
 <br>
 <p>
-Spark is an open source learning management system, designed and built for Spark, a digital skills initiative led by a southern California nonprofit, Inland Empire Software Development, Inc. We promote free and open source software. 
+Spark is an open source learning management system, designed and built for Spark, a digital skills initiative led by a southern California nonprofit, Inland Empire Software Development, Inc. We promote free and open source software.
 </p>
 <br>
 
@@ -24,7 +24,7 @@ The application has two parts to it - the application itself and storybook.
 
 ## ⛑ **Getting Help**
 
-Any questions or for support, please open up an issue and label it appropriately `support`. 
+Any questions or for support, please open up an issue and label it appropriately `support`.
 
 If you have any questions, please ask on our [Slack](https://ie-sd.slack.com). We welcome everyone to our Slack, so don't be afraid to join! Have fun coding!
 
@@ -34,7 +34,7 @@ If you have any questions, please ask on our [Slack](https://ie-sd.slack.com). W
 
 The minimum requirements to run this include:
 
-- Redis 
+- Redis
 - MySQL
 - Mail SMTP provider
 - Yarn
@@ -62,7 +62,7 @@ yarn install
 yarn dev
 ```
 
-4. Start storybook instance 
+4. Start storybook instance
 ```
 yarn storybook
 ```
@@ -81,7 +81,7 @@ yarn storybook
 - Storybook integration for self documentation and design system generation.
 
 ## 🔨 **Built With**
-* Next.js 
+* Next.js
 * MySQL
 * Redis
 * Typescript
@@ -104,14 +104,14 @@ All contributions are welcome and we invite everyone to open issues for suggesti
 
 ## 📓 **Development Team**
 
-* **👤 Lloan Alas**  
-* **👤 Jacob Goodwin** 
-* **👤 Tony Nguyen** 
-* **👤 Andy Mendez** 
-* **👤 David Huang** 
-* **👤 Katherine Orho**  
-* **👤 Greg Rojas** 
-* **👤 Raul Jauregui** 
+* **👤 Lloan Alas**
+* **👤 Jacob Goodwin**
+* **👤 Tony Nguyen**
+* **👤 Andy Mendez**
+* **👤 David Huang**
+* **👤 Katherine Orho**
+* **👤 Greg Rojas**
+* **👤 Raul Jauregui**
 
 See also the list of [contributors](https://github.com/lloan/next-authenticate/graphs/contributors) who participated in this project.
 
