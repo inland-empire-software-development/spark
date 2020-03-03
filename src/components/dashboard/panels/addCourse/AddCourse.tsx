@@ -23,12 +23,12 @@ function AddCourse(): JSX.Element {
           </div>
           <div className="uk-margin uk-grid">
             <div className="uk-width-1-2">
-              <label className='uk-form-label' htmlFor="Course start">Course start </label>
-              <input type="text" className="uk-input" name="firstName" />
+              <label className='uk-form-label' htmlFor="Course start">Course Start </label>
+              <input type="date" className="uk-input" data-date-inline-picker="true" name="firstName" />
             </div>
             <div className="uk-width-1-2">
-              <label className='uk-form-label' htmlFor="Course expire">Course expire </label>
-              <input type="text" className="uk-input" name="lastName" />
+              <label className='uk-form-label' htmlFor="Course expire">Course End </label>
+              <input type="date" className="uk-input" data-date-inline-picker="true" name="lastName" />
             </div>
           </div>
           <div className="uk-margin uk-grid">
@@ -37,15 +37,21 @@ function AddCourse(): JSX.Element {
               <input type="text" className="uk-input" name="firstName" />
             </div>
           </div>
-          <div className="uk-margin uk-grid">
-            <div className="uk-width-1">
-              <label className='uk-form-label' htmlFor="Course Picture">Course picture</label>
-              <div className="js-upload uk-placeholder uk-text-center">
-                <span uk-icon="icon: cloud-upload"></span>
-                <span className="uk-text-middle"> Drop files here to upload</span>
+          <form>
+            <div className="uk-margin uk-grid">
+              <div className="uk-width-1">
+                <label className='uk-form-label' htmlFor="Course Picture">Course picture</label>
+                <div className="js-upload uk-placeholder uk-text-center">
+                  {/* <span uk-icon="icon: cloud-upload"></span>
+                  <span className="uk-text-middle"> Drop files here to upload</span> */}
+
+                  <input className="box__file" type="file" name="files[]" id="file" data-multiple-caption="{count} files selected" multiple />
+                  <label htmlFor="file"><strong>Choose a file</strong><span className="box__dragndrop"> or drag it here</span>.</label>
+                  <button className="box__button" type="submit">Upload</button>
+                </div>
               </div>
             </div>
-          </div>
+          </form>
         </form>
 
         <h2>Description</h2>
