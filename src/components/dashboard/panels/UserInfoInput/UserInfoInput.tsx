@@ -8,7 +8,7 @@ function UserInfoInput(): JSX.Element {
         <legend className='uk-legend'>Personal Details</legend>
         <hr />
         <div className='uk-grid'>
-          <div className='uk-width-1-5'>
+          <div className='uk-width-1-5@s'>
             <div className='js-upload uk-placeholder img-upload-container'>
               <img
                 data-src='https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png'
@@ -23,64 +23,54 @@ function UserInfoInput(): JSX.Element {
             </div>
           </div>
 
-          <div className='uk-width-4-5 uk-grid'>
-            <div className='uk-width-1-1 uk-grid'>
-              <div className='uk-width-1-2'>
-                <div>
-                  <label className='uk-form-label' htmlFor='first name'>
-                    First Name
-                  </label>
-                  <input
-                    className='uk-input'
-                    id=''
-                    type='text'
-                    placeholder='Lloan'
-                  ></input>
-                </div>
-              </div>
+          <div className='uk-width-4-5@s uk-grid uk-margin-remove uk-padding-remove uk-child-width-1-2@s'>
+            <div>
+              <label className='uk-form-label' htmlFor='first name'>
+                First Name
+              </label>
+              <input
+                className='uk-input'
+                id=''
+                type='text'
+                placeholder='Lloan'
+              ></input>
+            </div>
 
-              <div className='uk-width-1-2'>
-                <div>
-                  <label className='uk-form-label' htmlFor='last name'>
-                    Last Name
-                  </label>
-                  <input
-                    className='uk-input'
-                    id=''
-                    type='text'
-                    placeholder='Alas'
-                  ></input>
-                </div>
-              </div>
+            <div>
+              <label className='uk-form-label' htmlFor='last name'>
+                Last Name
+              </label>
+              <input
+                className='uk-input'
+                id=''
+                type='text'
+                placeholder='Alas'
+              ></input>
+            </div>
 
-              <div className='uk-width-1-2'>
-                <div>
-                  <label className='uk-form-label' htmlFor='title'>
-                    Title
-                  </label>
-                  <input
-                    className='uk-input'
-                    id=''
-                    type='text'
-                    placeholder='Student'
-                  ></input>
-                </div>
-              </div>
+            <div>
+              <label className='uk-form-label' htmlFor='title'>
+                Title
+              </label>
+              <input
+                className='uk-input'
+                id=''
+                type='text'
+                placeholder='Student'
+              ></input>
+            </div>
 
-              <div className='uk-width-1-2'>
-                <div>
-                  <label className='uk-form-label' htmlFor='phone number'>
-                    Phone No.
-                  </label>
-                  <input
-                    className='uk-input'
-                    id=''
-                    type='tel'
-                    placeholder='xxx-xxx-xxxx'
-                    pattern='[0-9]{3}-[0-9]{3}-[0-9]{4}'
-                  ></input>
-                </div>
-              </div>
+            <div>
+              <label className='uk-form-label' htmlFor='phone number'>
+                Phone No.
+              </label>
+              <input
+                className='uk-input'
+                id=''
+                type='tel'
+                placeholder='xxx-xxx-xxxx'
+                pattern='[0-9]{3}-[0-9]{3}-[0-9]{4}'
+              ></input>
             </div>
           </div>
         </div>
@@ -102,7 +92,7 @@ function UserInfoInput(): JSX.Element {
         <legend className='uk-legend'>Change Password</legend>
         <hr />
 
-        <div className='uk-width-1-2 uk-margin-top'>
+        <div className='uk-width-1-2@s uk-margin-top'>
           <label className='uk-form-label' htmlFor='current password'>
             Current Password
           </label>
@@ -114,7 +104,7 @@ function UserInfoInput(): JSX.Element {
           ></input>
         </div>
 
-        <div className='uk-width-1-2 uk-margin'>
+        <div className='uk-width-1-2@s uk-margin'>
           <label className='uk-form-label' htmlFor='new password'>
             New Password
           </label>
@@ -126,7 +116,7 @@ function UserInfoInput(): JSX.Element {
           ></input>
         </div>
 
-        <div className='uk-width-1-2 uk-margin-bottom'>
+        <div className='uk-width-1-2@s uk-margin-bottom'>
           <label className='uk-form-label' htmlFor='confirm password'>
             Confirm Password
           </label>
@@ -144,14 +134,14 @@ function UserInfoInput(): JSX.Element {
         <hr />
 
         <div className='uk-grid'>
-          <div className='uk-width-1-2'>
+          <div className='uk-width-1-2@s'>
             <label className='uk-form-label' htmlFor='facebook'>
               Facebook
             </label>
             <input className='uk-input' id='' type='url' placeholder=''></input>
           </div>
 
-          <div className='uk-width-1-2'>
+          <div className='uk-width-1-2@s'>
             <label className='uk-form-label' htmlFor='twitter'>
               Twitter
             </label>
@@ -160,14 +150,14 @@ function UserInfoInput(): JSX.Element {
         </div>
 
         <div className='uk-grid'>
-          <div className='uk-width-1-2'>
+          <div className='uk-width-1-2@s'>
             <label className='uk-form-label' htmlFor='linkedin'>
               LinkedIn
             </label>
             <input className='uk-input' id='' type='url' placeholder=''></input>
           </div>
 
-          <div className='uk-width-1-2'>
+          <div className='uk-width-1-2@s'>
             <label className='uk-form-label' htmlFor='Instagram'>
               Instagram
             </label>
