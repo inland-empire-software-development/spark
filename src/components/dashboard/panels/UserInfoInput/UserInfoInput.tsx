@@ -23,55 +23,63 @@ function UserInfoInput(): JSX.Element {
             </div>
           </div>
 
-          <div className='uk-width-2-5 uk-flex uk-flex-column uk-flex-between'>
-            <div>
-              <label className='uk-form-label' htmlFor='first name'>
-                First Name
-              </label>
-              <input
-                className='uk-input'
-                id=''
-                type='text'
-                placeholder='Lloan'
-              ></input>
-            </div>
+          <div className='uk-width-4-5 uk-grid'>
+            <div className='uk-width-1-1 uk-grid'>
+              <div className='uk-width-1-2'>
+                <div>
+                  <label className='uk-form-label' htmlFor='first name'>
+                    First Name
+                  </label>
+                  <input
+                    className='uk-input'
+                    id=''
+                    type='text'
+                    placeholder='Lloan'
+                  ></input>
+                </div>
+              </div>
 
-            <div>
-              <label className='uk-form-label' htmlFor='title'>
-                Title
-              </label>
-              <input
-                className='uk-input'
-                id=''
-                type='text'
-                placeholder='Student'
-              ></input>
-            </div>
-          </div>
+              <div className='uk-width-1-2'>
+                <div>
+                  <label className='uk-form-label' htmlFor='last name'>
+                    Last Name
+                  </label>
+                  <input
+                    className='uk-input'
+                    id=''
+                    type='text'
+                    placeholder='Alas'
+                  ></input>
+                </div>
+              </div>
 
-          <div className='uk-width-2-5 uk-flex uk-flex-column uk-flex-between'>
-            <div>
-              <label className='uk-form-label' htmlFor='last name'>
-                Last Name
-              </label>
-              <input
-                className='uk-input'
-                id=''
-                type='text'
-                placeholder='Alas'
-              ></input>
-            </div>
+              <div className='uk-width-1-2'>
+                <div>
+                  <label className='uk-form-label' htmlFor='first title'>
+                    Title
+                  </label>
+                  <input
+                    className='uk-input'
+                    id=''
+                    type='text'
+                    placeholder='Student'
+                  ></input>
+                </div>
+              </div>
 
-            <div>
-              <label className='uk-form-label' htmlFor='phone number'>
-                Phone Number
-              </label>
-              <input
-                className='uk-input'
-                id=''
-                type='text'
-                placeholder='xxx-xxx-xxxx'
-              ></input>
+              <div className='uk-width-1-2'>
+                <div>
+                  <label className='uk-form-label' htmlFor='phone number'>
+                    Phone No.
+                  </label>
+                  <input
+                    className='uk-input'
+                    id=''
+                    type='tel'
+                    placeholder='(xxx) xxx-xxxx'
+                  ></input>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -139,24 +147,14 @@ function UserInfoInput(): JSX.Element {
             <label className='uk-form-label' htmlFor='facebook'>
               Facebook
             </label>
-            <input
-              className='uk-input'
-              id=''
-              type='text'
-              placeholder=''
-            ></input>
+            <input className='uk-input' id='' type='url' placeholder=''></input>
           </div>
 
           <div className='uk-width-1-2'>
             <label className='uk-form-label' htmlFor='twitter'>
               Twitter
             </label>
-            <input
-              className='uk-input'
-              id=''
-              type='text'
-              placeholder=''
-            ></input>
+            <input className='uk-input' id='' type='url' placeholder=''></input>
           </div>
         </div>
 
@@ -165,36 +163,26 @@ function UserInfoInput(): JSX.Element {
             <label className='uk-form-label' htmlFor='linkedin'>
               LinkedIn
             </label>
-            <input
-              className='uk-input'
-              id=''
-              type='text'
-              placeholder=''
-            ></input>
+            <input className='uk-input' id='' type='url' placeholder=''></input>
           </div>
 
           <div className='uk-width-1-2'>
             <label className='uk-form-label' htmlFor='Instagram'>
               Instagram
             </label>
-            <input
-              className='uk-input'
-              id=''
-              type='text'
-              placeholder=''
-            ></input>
+            <input className='uk-input' id='' type='url' placeholder=''></input>
           </div>
         </div>
       </fieldset>
 
       <div className='uk-margin'>
         <button className='uk-button uiif-button'>
-          <span>Save    </span>
-          <i className='fas fa-long-arrow-alt-right'></i>
+          Save
+          <i className='fas fa-long-arrow-alt-right arrow-icon'></i>
         </button>
       </div>
     </form>
   )
 }
 
-export default UserInfoInput;
+export default UserInfoInput

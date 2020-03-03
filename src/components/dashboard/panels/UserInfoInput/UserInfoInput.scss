@@ -11,12 +11,16 @@
 
   .uk-form-custom {
     position: absolute;
-    bottom: 0px;
-    left: 0px;
+    bottom: 0;
+    left: 0;
   }
 }
 
 .uiif-button {
   background-color: $tertiary;
   color: $snow;
+}
+
+.arrow-icon {
+  margin-left: 10px;
 }
