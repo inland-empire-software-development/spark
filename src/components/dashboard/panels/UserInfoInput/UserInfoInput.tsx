@@ -76,7 +76,8 @@ function UserInfoInput(): JSX.Element {
                     className='uk-input'
                     id=''
                     type='tel'
-                    placeholder='(xxx) xxx-xxxx'
+                    placeholder='xxx-xxx-xxxx'
+                    pattern='[0-9]{3}-[0-9]{3}-[0-9]{4}'
                   ></input>
                 </div>
               </div>
