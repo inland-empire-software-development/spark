@@ -79,7 +79,7 @@ function Password(): JSX.Element {
         <li>At least one uppercase character <i className="uk-hidden fal fa-check green" data-check="upper"/></li>
         <li>At least 10 characters in length <i className="uk-hidden fal fa-check green" data-check="length"/></li>
       </ul>
-      <a href="#" className="show-password uk-align-right" onClick={(event) => showPassword(event)}>show password</a>
+      <a href="#" className="show-password uk-align-right uk-text-right" onClick={(event) => showPassword(event)}>show password</a>
 
       <div className="uk-inline uk-width-1-1">
         <i className="uk-form-icon fal fa-lock-alt"/>
