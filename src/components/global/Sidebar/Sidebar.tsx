@@ -156,19 +156,21 @@ const Sidebar: React.FC<SidebarProps> = (props) => {
       <div
         className={`sidebar-panel ${context.sidebarIsOpen ? "open" : ""}`}
         style={{top: scrollTop}}>
-        <div className="close-button">
-          <span
-            uk-icon="icon: close; ratio: 1.2"
-            onClick={() => handleCloseSidebar()}
-          ></span>
-        </div>
-        <ul
-          className="uk-nav menu-primary">
-          {navLinks}
+        <div className="scroll-content">
+          <div className="close-button">
+            <span
+              uk-icon="icon: close; ratio: 1.2"
+              onClick={() => handleCloseSidebar()}
+            ></span>
+          </div>
+          <ul
+            className="uk-nav menu-primary">
+            {navLinks}
 
-          <div className="section-title">Account</div>
-          {accountLinks}
-        </ul>
+            <div className="section-title">Account</div>
+            {accountLinks}
+          </ul>
+        </div>
       </div>
 
     </aside>
