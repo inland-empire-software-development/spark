@@ -72,6 +72,9 @@ const Sidebar: React.FC<SidebarProps> = (props) => {
     // call props onNavigate function with route path
     // only call if there is no submenu
     if (!item.subItems) {
+      context.setContextProperty({
+        activeDashboardMenus: activeSubMenus,
+      });
       props.onNavigate(item.path);
     }
   };
