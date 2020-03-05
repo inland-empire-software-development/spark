@@ -1,6 +1,6 @@
 import * as React from 'react';
-import "../dashboard-all-courses/Allcourses.scss";
-import AllCourses from '../dashboard-all-courses/AllCourses';
+import "./Courses.scss";
+import AllCourses from './Courses';
 
 export default {
   title: 'AllCourses',
