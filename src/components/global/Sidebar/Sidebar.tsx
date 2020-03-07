@@ -19,6 +19,7 @@ interface SidebarProps {
   menuItems: SidebarItem[];
   accountMenuItems: SidebarItem[];
   isOpen: boolean;
+  activePath: string | undefined;
   onNavigate: (path: string) => void;
 }
 
@@ -27,11 +28,13 @@ type ActiveSubMenus = Map<string, number>;
 
 const Sidebar: React.FC<SidebarProps> = (props) => {
   const context = useContext(Context);
-
   // state for clicked (active) and hovered (mouse hover to show submenu)
   // dashboard links
-  const [activeItemLabel, setActiveItemLabel] = React.useState<string>("");
-  const [activeSubMenus, setActiveSubMenus] = React.useState<ActiveSubMenus>(new Map());
+
+  // initialize active submenu items from context
+  const [activeSubMenus, setActiveSubMenus] = React.useState<ActiveSubMenus>(context.activeDashboardMenus);
+
+  // TODO - using fixed 80 px navbar. Allow accessing from prop
   const [scrollTop, setScrollTop] = React.useState<number>(80);
 
   const handleScroll = () => {
@@ -69,13 +72,19 @@ const Sidebar: React.FC<SidebarProps> = (props) => {
     // call props onNavigate function with route path
     // only call if there is no submenu
     if (!item.subItems) {
+      context.setContextProperty({
+        activeDashboardMenus: activeSubMenus,
+      });
       props.onNavigate(item.path);
     }
-    // set main item active styles
-    setActiveItemLabel(item.label);
   };
 
   const handleSubMenuItemClicked = (path: string) => {
+    // store the expanded menus in context
+    context.setContextProperty({
+      activeDashboardMenus: activeSubMenus,
+    });
+    // call function in parent to navigate
     props.onNavigate(path);
   };
 
@@ -93,7 +102,7 @@ const Sidebar: React.FC<SidebarProps> = (props) => {
       }
 
       // for primary menu (top level items)
-      const isActiveItem = activeItemLabel === item.label;
+      const isActiveItem = props.activePath?.split("/")[1] === item.path.split("/")[1];
       const subMenuHeight = activeSubMenus.get(item.label);
       const hasSubMenu = subMenuHeight ? true : false;
 
@@ -150,19 +159,21 @@ const Sidebar: React.FC<SidebarProps> = (props) => {
       <div
         className={`sidebar-panel ${context.sidebarIsOpen ? "open" : ""}`}
         style={{top: scrollTop}}>
-        <div className="close-button">
-          <span
-            uk-icon="icon: close; ratio: 1.2"
-            onClick={() => handleCloseSidebar()}
-          ></span>
-        </div>
-        <ul
-          className="uk-nav menu-primary">
-          {navLinks}
+        <div className="scroll-content">
+          <div className="close-button">
+            <span
+              uk-icon="icon: close; ratio: 1.2"
+              onClick={() => handleCloseSidebar()}
+            ></span>
+          </div>
+          <ul
+            className="uk-nav menu-primary">
+            {navLinks}
 
-          <div className="section-title">Account</div>
-          {accountLinks}
-        </ul>
+            <div className="section-title">Account</div>
+            {accountLinks}
+          </ul>
+        </div>
       </div>
 
     </aside>

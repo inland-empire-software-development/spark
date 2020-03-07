@@ -48,7 +48,12 @@ const Dashboard: React.FC = function(props) {
       {/* // TODO: Need to make it so we just need to call <Sidebar> - low priority. */}
 
       <div id="dashboard-container" className="uk-flex">
-        <Sidebar accountMenuItems={account} menuItems={main} isOpen={sidebarIsOpen} onNavigate={(path) => onNavigate(path)} />
+        <Sidebar
+          accountMenuItems={account}
+          menuItems={main}
+          isOpen={sidebarIsOpen}
+          activePath={context.activeDashboardPath}
+          onNavigate={(path) => onNavigate(path)} />
 
         <div id="panel-container" >
           {menuToggleIcon}

@@ -31,6 +31,9 @@ This accepts the same properties as menu items. However, the these items will be
 
 A boolean value used to toggle the [Off-canvas](https://getuikit.com/docs/offcanvas) visibility. This allows the menu visibility to be controlled (for example on mobile)
 
+#### activePath
+Will be used to keep the active parent item path highlighted. Submenu items are not highlighted.
+
 
 #### onNavigate
 
