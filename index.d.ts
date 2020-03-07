@@ -31,6 +31,7 @@ export interface MyAppContext {
     sidebarIsOpen: boolean;
     notifications: boolean;
     activeDashboardPath: string | undefined;
+    activeDashboardMenus: Map<string, number>;
     access: boolean;
     redirect: string | undefined;
     userID: string | undefined;

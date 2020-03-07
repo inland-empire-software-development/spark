@@ -43,25 +43,26 @@ $transitionTime: 0.2s;
   width: 0;
   transition: width $transitionTime ease-in-out;
   padding: 0 0 0 0;
-  height: 100%;
+  bottom: 0;
   overflow-x: hidden;
-  overflow-y: hidden;
+  overflow-y: auto;
   background-color: white;
-  border-right: 1px solid #e8e8e8;
-
-  &:hover {
-    overflow-y: auto;
-  }
-
-  &:focus {
-    overflow-y: auto;
-  }
 
   &.open {
     width: $sidebar-width;
   }
 
+  .scroll-content {
+    height: 100%;
+    width: $sidebar-width - 16;
+    overflow: visible;
+    box-sizing: content-box;
+    border-right: 1px solid #e8e8e8;
+  }
+
   .close-button {
+    box-sizing: border-box;
+    width: inherit;
     display: flex;
     justify-content: flex-end;
 
@@ -72,12 +73,14 @@ $transitionTime: 0.2s;
   }
 
   .menu-primary {
+    box-sizing: content-box;
     visibility: visible;
     font-family: "Light", sans-serif;
     font-size: 16px;
     color: $light-gray;
     list-style: none;
     width: inherit;
+    border-right: 1px solid #e8e8e8;
 
     li {
       cursor: pointer;
