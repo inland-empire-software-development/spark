@@ -16,7 +16,7 @@ function UserInfoInput(): JSX.Element {
                 alt='Placeholder Image'
                 uk-img=''
               />
-              <div className='uk-form-custom uk-width-1-1 uk-child-width-1-1'>
+              <div className='uk-width-1-1 uk-child-width-1-1 uk-form-custom'>
                 <input type='file' />
                 <button className='uk-button uiif-button'>Browse</button>
               </div>
@@ -100,7 +100,7 @@ function UserInfoInput(): JSX.Element {
             className='uk-input'
             id=''
             type='password'
-            placeholder='Current Password'
+            placeholder=''
           ></input>
         </div>
 
@@ -112,7 +112,7 @@ function UserInfoInput(): JSX.Element {
             className='uk-input'
             id=''
             type='password'
-            placeholder='New Password'
+            placeholder=''
           ></input>
         </div>
 
@@ -124,7 +124,7 @@ function UserInfoInput(): JSX.Element {
             className='uk-input'
             id=''
             type='password'
-            placeholder='Confirm Password'
+            placeholder=''
           ></input>
         </div>
       </fieldset>
@@ -134,14 +134,14 @@ function UserInfoInput(): JSX.Element {
         <hr />
 
         <div className='uk-grid'>
-          <div className='uk-width-1-2@s'>
+          <div className='uk-width-1-2@s uk-margin-bottom'>
             <label className='uk-form-label' htmlFor='facebook'>
               Facebook
             </label>
             <input className='uk-input' id='' type='url' placeholder=''></input>
           </div>
 
-          <div className='uk-width-1-2@s'>
+          <div className='uk-width-1-2@s uk-margin-bottom'>
             <label className='uk-form-label' htmlFor='twitter'>
               Twitter
             </label>
@@ -149,8 +149,8 @@ function UserInfoInput(): JSX.Element {
           </div>
         </div>
 
-        <div className='uk-grid'>
-          <div className='uk-width-1-2@s'>
+        <div className='uk-grid uk-margin-remove-top'>
+          <div className='uk-width-1-2@s uk-margin-bottom'>
             <label className='uk-form-label' htmlFor='linkedin'>
               LinkedIn
             </label>
