@@ -92,40 +92,38 @@ function UserInfoInput(): JSX.Element {
         <legend className='uk-legend'>Change Password</legend>
         <hr />
 
-        <div className='uk-width-1-2@s uk-margin-top'>
-          <label className='uk-form-label' htmlFor='current password'>
-            Current Password
-          </label>
-          <input
-            className='uk-input'
-            id=''
-            type='password'
-            placeholder=''
-          ></input>
-        </div>
+        <div className='uk-grid uk-child-width-1-2@s'>
+          <div>
+            <label className='uk-form-label' htmlFor='current password'>
+              Current Password
+            </label>
+            <input
+              className='uk-input uk-margin-bottom'
+              id=''
+              type='password'
+              placeholder=''
+            ></input>
 
-        <div className='uk-width-1-2@s uk-margin'>
-          <label className='uk-form-label' htmlFor='new password'>
-            New Password
-          </label>
-          <input
-            className='uk-input'
-            id=''
-            type='password'
-            placeholder=''
-          ></input>
-        </div>
+            <label className='uk-form-label' htmlFor='new password'>
+              New Password
+            </label>
+            <input
+              className='uk-input uk-margin-bottom'
+              id=''
+              type='password'
+              placeholder=''
+            ></input>
 
-        <div className='uk-width-1-2@s uk-margin-bottom'>
-          <label className='uk-form-label' htmlFor='confirm password'>
-            Confirm Password
-          </label>
-          <input
-            className='uk-input'
-            id=''
-            type='password'
-            placeholder=''
-          ></input>
+            <label className='uk-form-label' htmlFor='confirm password'>
+              Confirm Password
+            </label>
+            <input
+              className='uk-input uk-margin-bottom'
+              id=''
+              type='password'
+              placeholder=''
+            ></input>
+          </div>
         </div>
       </fieldset>
 
@@ -133,15 +131,15 @@ function UserInfoInput(): JSX.Element {
         <legend className='uk-legend'>Social Links</legend>
         <hr />
 
-        <div className='uk-grid'>
-          <div className='uk-width-1-2@s uk-margin-bottom'>
+        <div className='uk-grid uk-child-width-1-2@s'>
+          <div className='uk-margin-bottom'>
             <label className='uk-form-label' htmlFor='facebook'>
               Facebook
             </label>
             <input className='uk-input' id='' type='url' placeholder=''></input>
           </div>
 
-          <div className='uk-width-1-2@s uk-margin-bottom'>
+          <div className='uk-margin-bottom'>
             <label className='uk-form-label' htmlFor='twitter'>
               Twitter
             </label>
@@ -149,15 +147,15 @@ function UserInfoInput(): JSX.Element {
           </div>
         </div>
 
-        <div className='uk-grid uk-margin-remove-top'>
-          <div className='uk-width-1-2@s uk-margin-bottom'>
+        <div className='uk-grid uk-child-width-1-2@s uk-margin-remove-top'>
+          <div className='uk-margin-bottom'>
             <label className='uk-form-label' htmlFor='linkedin'>
               LinkedIn
             </label>
             <input className='uk-input' id='' type='url' placeholder=''></input>
           </div>
 
-          <div className='uk-width-1-2@s'>
+          <div className='uk-margin-bottom'>
             <label className='uk-form-label' htmlFor='Instagram'>
               Instagram
             </label>
@@ -166,12 +164,10 @@ function UserInfoInput(): JSX.Element {
         </div>
       </fieldset>
 
-      <div className='uk-margin'>
-        <button className='uk-button uiif-button'>
-          Save
-          <i className='fas fa-long-arrow-alt-right arrow-icon'></i>
-        </button>
-      </div>
+      <button className='uk-button uiif-button'>
+        Save
+        <i className='fas fa-long-arrow-alt-right arrow-icon'></i>
+      </button>
     </form>
   )
 }
