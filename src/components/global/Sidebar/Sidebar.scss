@@ -1,0 +1,167 @@
+@import '../../../style/variables.scss';
+
+$selectedLinkColor: #f07f6b; // color in style guidelines is different from primary, secondary, and tertiary
+$selectedLinkBackground: rgba(0, 0, 0, 0.01);
+$transitionTime: 0.2s;
+
+#sidebar-container {
+  min-width: 0;
+  left: 0;
+
+  &.open {
+    left: -100%;
+    min-width: 235px;
+  }
+}
+
+#dashboard-sidebar {
+  width: 235px;
+  z-index: 9;
+  right: unset;
+}
+
+#sidebar-toggle {
+  z-index: 10;
+  position: absolute;
+  color: #ef906c;
+  font-size: 18px;
+  width: 125px;
+  left: 30px;
+  top: 90px;
+
+  &::after {
+    content: " toggle sidebar";
+    padding-left: 15px;
+    font-size: 12px;
+    position: relative;
+    top: -3px;
+  }
+}
+
+.sidebar-panel {
+  position: fixed;
+  width: 0;
+  transition: width $transitionTime ease-in-out;
+  padding: 0 0 0 0;
+  bottom: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  background-color: white;
+
+  &.open {
+    width: $sidebar-width;
+  }
+
+  .scroll-content {
+    height: 100%;
+    width: $sidebar-width - 16;
+    overflow: visible;
+    box-sizing: content-box;
+    border-right: 1px solid #e8e8e8;
+  }
+
+  .close-button {
+    box-sizing: border-box;
+    width: inherit;
+    display: flex;
+    justify-content: flex-end;
+
+    span {
+      cursor: pointer;
+      padding: 16px 10px 10px 10px;
+    }
+  }
+
+  .menu-primary {
+    box-sizing: content-box;
+    visibility: visible;
+    font-family: "Light", sans-serif;
+    font-size: 16px;
+    color: $light-gray;
+    list-style: none;
+    width: inherit;
+    border-right: 1px solid #e8e8e8;
+
+    li {
+      cursor: pointer;
+      transition: $transitionTime ease-in-out;
+
+      &:hover {
+        color: $selectedLinkColor;
+        background-color: $selectedLinkBackground;
+      }
+
+      .primary-item-label {
+        padding: 12px 18px 12px 24px;
+        display: flex;
+        align-items: center;
+        border-right: 2px solid transparent; // so chevron angle doesn't move for active item
+
+        .sub-angle-down {
+          transition: transform $transitionTime ease-in-out;
+          margin-left: auto;
+        }
+
+        .rotate {
+          transform: rotate(180deg);
+        }
+      }
+
+      .active {
+        color: $selectedLinkColor;
+        background-color: $selectedLinkBackground;
+        border-color: $selectedLinkColor;
+      }
+    }
+  }
+
+  .menu-secondary {
+    transition: height 0.2s ease-in-out;
+    overflow-y: hidden;
+    background-color: white;
+
+    ul {
+      color: $light-gray;
+
+      li {
+        padding: 8px 0 8px 48px;
+
+        &:hover {
+          background-color: white;
+        }
+      }
+    }
+  }
+
+  .icon {
+    min-width: 36px;
+    margin-right: 0.5em;
+  }
+
+  .icon-hidden {
+    opacity: 0;
+  }
+
+  .mobile-close {
+    color: $light-gray;
+    display: flex;
+    justify-content: flex-end;
+
+    span {
+      cursor: pointer;
+      padding: 12px; // make larger touch area for clicking close button (helps on mobile)
+      overflow: overlay;
+    }
+  }
+
+  .section-title {
+    font-family: "Medium", sans-serif;
+    font-size: 24px;
+    color: $dark-gray;
+    margin: 24px 0 24px 24px;
+  }
+
+  .spacer {
+    height: 24px;
+  }
+}

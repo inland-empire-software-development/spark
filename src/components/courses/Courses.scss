@@ -1,0 +1,93 @@
+/**
+ * Styling for all courses page.
+ * Courses.
+ */
+
+#panel-content > div > div.w-20 > figcaption {
+  opacity: 0%;
+  cursor: pointer;
+  margin-top: -25%;
+  margin-bottom: 24%;
+  transition-property: all;
+  transition-duration: 0.3s;
+  transition-timing-function: ease-in;
+  transition-delay: 0.2s;
+}
+
+#panel-content > div > div.w-20:hover > figcaption {
+  opacity: 100%;
+}
+
+@media only screen and (max-width: 1097px) {
+  #panel-content > div > div.w-20 > figcaption {
+    margin-top: -16%;
+    margin-bottom: 12%;
+  }
+
+  #panel-content > div > div.w-20:hover > figcaption {
+    opacity: 100%;
+  }
+
+  #panel-content > div:nth-child(1) {
+    display: block;
+    text-align: center;
+  }
+
+  #panel-content > div:nth-child(1) > div:nth-child(2) {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 1%;
+    width: 30%;
+  }
+
+  #panel-content > div:nth-child(1) > div:nth-child(3) {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 1%;
+    width: 30%;
+  }
+
+  #panel-content > div {
+    display: block;
+  }
+
+  #panel-content > div > div.w-20 {
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  #panel-content > div > div.w-75 {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    width: 52%;
+  }
+}
+
+@media only screen and (max-width: 753px) {
+  #panel-content > div:nth-child(1) > div:nth-child(2) {
+    width: 70%;
+  }
+
+  #panel-content > div:nth-child(1) > div:nth-child(3) {
+    width: 70%;
+  }
+
+  #panel-content > div {
+    display: block;
+  }
+
+  #panel-content > div > div.w-20 {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  #panel-content > div > div.w-75 {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+  }
+}

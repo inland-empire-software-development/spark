@@ -1,4 +1,6 @@
-import {Message} from "..";
+/* eslint-disable camelcase */
+/* eslint-disable @typescript-eslint/camelcase */
+import {Message, ArrayIndexedWithStrings} from "..";
 import fetch from "isomorphic-unfetch";
 
 const escape = require('sql-string-escape');
@@ -13,10 +15,125 @@ const db = mysql.createConnection({
   pool: {min: 0, max: 7},
 });
 
+/**
+ * Allows us to pull meta_keys from the database.
+ * @param {object} opts - takes in the key, table, identifier and value to find match in dateebases
+ * @return {Promise}
+ */
+db.getKey = function(opts: {key: string; table: string; identifier?: string; value?: string}) {
+  const {key, table, identifier, value} = opts;
+  let query = `SELECT meta_value FROM ${process.env.DBNAME}.${table} WHERE meta_key = ${escape(key)}`;
+
+  if (identifier && value) {
+    query += ` AND ${identifier} = ${value}`;
+  }
+
+  return new Promise((resolve, reject) => {
+    db.query(query,
+        function(error: { sqlMessage: any }, results: string | any[]) {
+          if (error) reject(error.sqlMessage ? error.sqlMessage : error);
+
+          resolve(results.length !== 0 ? results[0] : false);
+        });
+  });
+};
+
+
+/**
+ * Allows us to pull meta_keys from the database.
+ * @param {object} opts - takes in the key [], table, identifier and value to find matches in dateebases
+ * @return {Promise}
+ */
+db.getKeys = function(opts: {key?: Array<string>; table: string; identifier?: string; value?: string}) {
+  const {key, table, identifier, value} = opts;
+  const query = `SELECT meta_key, meta_value FROM ${process.env.DBNAME}.${table} WHERE ${identifier} = ${escape(value)}`;
+
+
+  return new Promise((resolve, reject) => {
+    db.query(query,
+        function(error: { sqlMessage: any }, results: any) {
+          if (error) reject(error.sqlMessage ? error.sqlMessage : error);
+
+          if (results.length !== 0 && key && key.length !== 0) {
+            const keys: ArrayIndexedWithStrings = {};
+
+            results
+                .filter((metadata: {meta_key: string; meta_value: string}) => key.includes(metadata.meta_key))
+                .map((metadata: {meta_key: string; meta_value: string}) => keys[metadata.meta_key] = metadata.meta_value);
+
+            resolve(keys);
+          }
+        });
+  });
+};
+
+/**
+ * Gets the current count of unread messages.
+ * @param {object} opts
+ * @return {number}
+ */
+db.getMessageCount = function(opts: { user: string; userID: string }) {
+  const {user, userID} = opts;
+  const query = `
+  SELECT COUNT(*) 
+  FROM ${process.env.DBNAME}.message 
+  WHERE recipient_id = ${escape(userID)} 
+  AND is_read = 0;`;
+
+  return new Promise((resolve, reject) => {
+    db.query(query,
+        function(error: { sqlMessage: any }, results: any) {
+          if (error) reject(error.sqlMessage ? error.sqlMessage : error);
+
+          if (results !== undefined && results.length !== 0 && user) {
+            const count = results[0]['COUNT(*)'];
+            resolve(count);
+          } else {
+            resolve(0);
+          }
+        },
+    );
+  });
+};
+
+/**
+ * Gets the current count of unread notifications.
+ * @param {object} opts
+ * @return {number}
+ */
+db.getNotificationCount = function(opts: { user: string; userID: string }) {
+  const {user, userID} = opts;
+  const query = `
+  SELECT COUNT(*) 
+  FROM ${process.env.DBNAME}.notification 
+  WHERE user_id = ${escape(userID)} 
+  AND is_read = 0;`;
+
+  return new Promise((resolve, reject) => {
+    db.query(query,
+        function(error: { sqlMessage: any }, results: any) {
+          if (error) reject(error.sqlMessage ? error.sqlMessage : error);
+          if (results !== undefined && results.length !== 0 && user) {
+            const count = results[0]['COUNT(*)'];
+            resolve(count);
+          } else {
+            resolve(0);
+          }
+        },
+    );
+  });
+};
+
+// Password
+db.createPassword = function(pass: string): string {
+  const salt: string = bcrypt.genSaltSync(10);
+  return bcrypt.hashSync(pass, salt);
+};
+
 // User methods
 db.getUser = function(user: string): object | boolean {
   return new Promise((resolve, reject) => {
-    db.query(`SELECT last_login, confirmation, password FROM ${process.env.DBNAME}.user WHERE username = ${escape(user)}`,
+    db.query(`SELECT id, last_login, confirmation, password FROM ${process.env.DBNAME}.user WHERE username = ${escape(user)}`,
         function(error: { sqlMessage: any }, results: string | any[]) {
           if (error) reject(error.sqlMessage ? error.sqlMessage : error);
 
@@ -28,7 +145,7 @@ db.getUser = function(user: string): object | boolean {
 
 db.getUserByEmail = function(email: string): object | boolean {
   return new Promise((resolve, reject) => {
-    db.query(`SELECT username, password_reset FROM ${process.env.DBNAME}.user WHERE email = ${escape(email)}`,
+    db.query(`SELECT id, username, password_reset FROM ${process.env.DBNAME}.user WHERE email = ${escape(email)}`,
         function(error: { sqlMessage: any }, results: string | any[]) {
           if (error) reject(error.sqlMessage ? error.sqlMessage : error);
           const status = results.length !== 0;
@@ -55,16 +172,11 @@ db.userExists = function(user: string): Promise<object> {
   });
 };
 
-db.createPassword = function(pass: string): string {
-  const salt: string = bcrypt.genSaltSync(10);
-  return bcrypt.hashSync(pass, salt);
-};
-
 db.createUser = function(user: string, pass: string, email: string, role: string): Promise<object> {
   return new Promise((resolve, reject) => {
     const hash: string = db.createPassword(pass);
     const token: string = bcrypt.genSaltSync(16); // will be used to confirm email - set to false after confirmation
-    db.query(`INSERT INTO iesd_portal.user (username, password, email, role, confirmation) VALUES ('${user}', '${hash}', '${email}', '${role}', '${token}')`,
+    db.query(`INSERT INTO ${process.env.DBNAME}.user (username, password, email, role, confirmation) VALUES ('${user}', '${hash}', '${email}', '${role}', '${token}')`,
         function(error: { sqlMessage: any }, results: object) {
           if (error) reject(error.sqlMessage ? error.sqlMessage : error);
 
@@ -170,6 +282,7 @@ db.confirmEmail = function(user: string, token: string): Promise<boolean> {
   });
 };
 
+// Password methods
 db.initiatePasswordReset = function(user: string, email: string): Promise<Message> {
   const token: string = bcrypt.genSaltSync(16); // generates a token for password_token column.
 

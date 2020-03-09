@@ -4,16 +4,24 @@ const bluebird = require('bluebird');
 bluebird.promisifyAll(redis.RedisClient.prototype);
 bluebird.promisifyAll(redis.Multi.prototype);
 
-const client = redis.createClient(process.env.REDISPORT, process.env.REDISIP);
-client.auth(process.env.REDISPASS);
+const client = redis.createClient({
+  port: process.env.REDISPORT,
+  host: process.env.REDISIP,
+  password: process.env.REDISPASS,
+  db: process.env.REDISDB,
+});
 
-client.setToken = (username: string, token: string) => {
-  return client.setAsync(String(token), username);
+client.setToken = (token: string, identifier: {user: string; userID: string}) => {
+  console.log(JSON.stringify(identifier));
+  return client.setAsync(String(token), JSON.stringify(identifier));
 };
 
-client.checkToken = (username: string, token: string) => {
-  return client.getAsync(String(token)).then(function(user: null) {
-    return user === null ? false : username === user;
+client.checkToken = (token: string, userToCheck: {user: string; userID: string}) => {
+  console.log(token);
+  return client.getAsync(String(token)).then(function(user: null | string) {
+    const data = user !== null ? JSON.parse(user) : null;
+    return data === null ? false :
+     (userToCheck.user === data.user && Number(userToCheck.userID) === Number(data.userID));
   });
 };
 
