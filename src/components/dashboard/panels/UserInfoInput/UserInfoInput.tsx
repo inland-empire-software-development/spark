@@ -172,4 +172,4 @@ function UserInfoInput(): JSX.Element {
   )
 }
 
-export default UserInfoInput
+export default UserInfoInput;
