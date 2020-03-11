@@ -4,7 +4,7 @@ import './UserInfoInput.scss'
 function UserInfoInput(): JSX.Element {
   return (
     <form className='uk-container uk-margin'>
-      <fieldset className='uk-fieldset'>
+      <div className='uk-fieldset'>
         <legend className='uk-legend'>Personal Details</legend>
         <hr />
         <div className='uk-grid'>
@@ -80,13 +80,13 @@ function UserInfoInput(): JSX.Element {
             Personal Info
           </label>
           <textarea
-            className='uk-textarea'
+            className='uk-textarea uiif-textarea-width'
             id='form-h-textarea'
             rows={5}
             placeholder='Something interesting about you!'
           ></textarea>
         </div>
-      </fieldset>
+      </div>
 
       <fieldset className='uk-fieldset'>
         <legend className='uk-legend'>Change Password</legend>
