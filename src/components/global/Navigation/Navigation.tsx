@@ -17,7 +17,7 @@ export interface ListObject {
 const identifyLink = (url: string) => url.indexOf(`${process.env.HOST}`);
 
 const renderLink = (obj: ListObject, opts: object) => {
-  const {url = undefined} = obj;
+  const { url = undefined } = obj;
   return identifyLink(url ? url : '') !== -1 ?
     <Link href={url ? url : ''}>
       <a {...opts}>{obj.label}</a>
@@ -28,8 +28,8 @@ const renderLink = (obj: ListObject, opts: object) => {
 };
 
 const createListItem = (
-    obj: ListObject,
-    mobile = false,
+  obj: ListObject,
+  mobile = false,
 ) => {
   const opts = {} as Options;
 
@@ -46,7 +46,7 @@ const createListItem = (
   }
 
   return (
-    <li key={ obj.label? obj.label.toLowerCase() : "'"}
+    <li key={obj.label ? obj.label.toLowerCase() : "'"}
       className={obj.children && mobile ?
         "uk-parent uk-visible-toggle uk-visible@m" : "uk-visible@m"}>
 
@@ -76,15 +76,15 @@ const createListObject = ({
   icon = false,
   children = false,
   target,
-}: ListObject) => ({label, url, icon, children, target});
+}: ListObject) => ({ label, url, icon, children, target });
 
 
 function Navigation(): JSX.Element {
   const navigation: Array<object> = [
-    {label: "Home", url: "/"},
-    {label: "Cohorts", url: "/cohorts"},
-    {label: "Blog", url: "https://www.iesd.com/#blog", target: "_blank"},
-    {label: "Contact", url: "mailto:community@iesd.com", target: "_blank"},
+    { label: "Home", url: "/" },
+    { label: "Cohorts", url: "/cohorts" },
+    { label: "Blog", url: "https://www.iesd.com/#blog", target: "_blank" },
+    { label: "Contact", url: "mailto:community@iesd.com", target: "_blank" },
   ].map((item) => createListObject(item));
 
   return (
@@ -107,14 +107,14 @@ function Navigation(): JSX.Element {
         </div>
 
         {/* Right portion for user  */}
-        <User isMobile={false}/>
+        <User isMobile={false} />
       </nav>
 
       <div id="offcanvas-nav" className="uk-offcanvas" uk-offcanvas="mode: push; flip: true">
         <div className="uk-offcanvas-bar bg-white">
           <ul className="uk-nav uk-nav-default">
             <li className="uk-active">
-              <User isMobile={true}/>
+              <User isMobile={true} />
             </li>
             {
               navigation.map((link) =>

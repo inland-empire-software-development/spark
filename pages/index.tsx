@@ -1,7 +1,8 @@
 import SEO from "../next-seo.config";
-import {DefaultSeo} from "next-seo";
+import { DefaultSeo } from "next-seo";
 import Footer from '../src/components/global/Footer/Footer';
 import Navigation from "../src/components/global/Navigation/Navigation";
+import Landing from '../src/components/landing/Landing';
 
 // render home page.
 function Home(): JSX.Element {
@@ -15,7 +16,7 @@ function Home(): JSX.Element {
           })}
           />
           <section className="uk-padding">
-            <p>Home</p>
+            <Landing />
           </section>
         </div>
       </section>
