@@ -1,5 +1,5 @@
 import SEO from "../next-seo.config";
-import {DefaultSeo} from "next-seo";
+import { DefaultSeo } from "next-seo";
 import Footer from '../src/components/global/Footer/Footer';
 
 // render home page.
@@ -17,7 +17,7 @@ function Home(): JSX.Element {
           </section>
         </div>
       </section>
-      <Footer/>
+      <Footer />
     </main>
 
   );
