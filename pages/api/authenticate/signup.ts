@@ -8,14 +8,19 @@ export default async (req: NextApiRequest, res: NextApiResponse): Promise<void> 
 
   if (username && email && password) {
     db.createUser(username, password, email, role)
-        .then((result: any) => res.send(JSON.stringify(result)))
+        .then((result: any) => {
+          res.send(JSON.stringify(result));
+          res.end();
+        } )
         .catch((error: Error) => {
           res.send(JSON.stringify(error));
+          res.end();
         });
   } else {
     res.send({
       status: false,
       message: "Error with data provided.",
     } as Message);
+    res.end();
   }
 };

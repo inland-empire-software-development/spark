@@ -68,6 +68,7 @@ function SignUp(): JSX.Element {
                     .then((response) => response.json())
                     .then((response) => {
                       if (response && response.status) {
+                        console.log(response);
                         document.location.href = `/welcome?user=${username.value}`;
                         setMessage({
                           status: false,

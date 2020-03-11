@@ -1,0 +1,36 @@
+/**
+ * Styling for course component.
+ * Individual courses.
+ */
+@import "../../style/variables.scss";
+
+.course-title {
+  font-family: "book", sans-serif;
+  font-size: 18px;
+  color: #333;
+}
+
+.course-author {
+  font-family: "light", sans-serif;
+  font-size: 16px;
+  color: #7e7e7e;
+}
+
+.course-status {
+  font-family: "light", sans-serif;
+  font-size: 14px;
+  background-color: $green;
+  text-transform: capitalize;
+}
+
+.course-description {
+  font-family: "light", sans-serif;
+  font-size: 14px;
+  color: $light-gray;
+}
+
+.course-details {
+  font-size: 14px;
+  font-family: "light", sans-serif;
+  color: #7e7e7e;
+}
