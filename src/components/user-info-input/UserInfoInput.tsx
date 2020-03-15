@@ -1,9 +1,53 @@
-import React from 'react'
-import './UserInfoInput.scss'
+import React, {FormEvent} from 'react';
+import './UserInfoInput.scss';
+import {Message} from '../../..';
+
+const handleUserInformation = (event: FormEvent<HTMLFormElement>) => {
+  event.preventDefault(); // prevents form from reloading page (form submission)
+
+  // example of how to get user input from form.
+  const username: HTMLSelectElement | null = document.querySelector('[name="login-username"]');
+
+  // this gets the global spinner.
+  const spinner: HTMLElement | null = document.getElementById('spinner');
+
+  // show spinner while working
+  if (spinner) spinner.classList.remove('uk-hidden');
+
+  // example API route that will handle signing in
+  // Call api/user/personal
+  const url = 'api/user/personal';
+
+  // all data you want to pass over to API, name it appropriately
+  const data = {
+    username: username ? username.value : null,
+  };
+
+
+  fetch(process.env.HOST + url, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(data),
+  })
+      .then((response: { json: () => any }) => response.json())
+      .then((response: Message) => {
+        const {status, message} = response;
+
+        console.log(status, message); // log to console to see what it prints.
+
+        // if spinner is showing and you're done with saving stuff
+        // now hide the spinner
+        if (spinner) spinner.classList.add('uk-hidden');
+
+        // do whatever else you need to do
+      });
+};
 
 function UserInfoInput(): JSX.Element {
   return (
-    <form className='uk-container uk-margin'>
+    <form onSubmit={(event) => handleUserInformation(event)}>
       <div className='uk-fieldset'>
         <legend className='uk-legend'>Personal Details</legend>
         <hr />
@@ -169,7 +213,7 @@ function UserInfoInput(): JSX.Element {
         <i className='fas fa-long-arrow-alt-right arrow-icon'></i>
       </button>
     </form>
-  )
+  );
 }
 
 export default UserInfoInput;
