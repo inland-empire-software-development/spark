@@ -8,6 +8,17 @@ export interface Message {
     message: string;
 }
 
+export interface DBUpdateUser {
+    [userName?: string]: string;
+    [password?: string]: string;
+    [email?: string]: string;
+    [role?: string]: UserRoles;
+}
+
+export enum UserRoles {
+    subscriber = 'subsciber'
+}
+
 // Allow arrays to be indexed with strings
 export interface ArrayIndexedWithStrings {
     [key: string]: any;
@@ -31,6 +42,7 @@ export interface MyAppContext {
     sidebarIsOpen: boolean;
     notifications: boolean;
     activeDashboardPath: string | undefined;
+    activeDashboardMenus: Map<string, number>;
     access: boolean;
     redirect: string | undefined;
     userID: string | undefined;

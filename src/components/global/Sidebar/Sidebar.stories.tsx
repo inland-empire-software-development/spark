@@ -75,6 +75,7 @@ export const DefaultSidebar = () => (
     menuItems={mainItemsData}
     accountMenuItems={accountItemsData}
     isOpen={boolean("Visible?", true, "Toggles")}
+    activePath={undefined}
     {...actionsData}
   ></Sidebar>
 );
@@ -84,6 +85,7 @@ export const MissingIcon = () => (
     menuItems={missingIconData}
     accountMenuItems={accountItemsData}
     isOpen={boolean("Visible?", true, "Toggles")}
+    activePath={undefined}
     {...actionsData}
   ></Sidebar>
 );
@@ -93,6 +95,7 @@ export const CloseButtonOnSmallScreen = () => (
     menuItems={missingIconData}
     accountMenuItems={accountItemsData}
     isOpen={boolean("Visible?", true, "Toggles")}
+    activePath={undefined}
     {...actionsData}
   ></Sidebar>
 );

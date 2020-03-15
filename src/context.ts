@@ -28,8 +28,6 @@ export const SidebarOptions = {
     ]},
     {icon: "far fa-sign-out", label: "Logout", path: "/logout"},
   ],
-  open: true,
-  active: "/dashboard",
 };
 
 export const defaultContext = {
@@ -39,6 +37,7 @@ export const defaultContext = {
   notifications: true,
   isAccessFetched: false,
   activeDashboardPath: "dasboard",
+  activeDashboardMenus: new Map(),
   access: false,
   redirect: undefined,
   isPublic: false,
