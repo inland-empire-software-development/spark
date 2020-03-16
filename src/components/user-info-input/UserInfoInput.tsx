@@ -1,3 +1,5 @@
+/* eslint-disable indent */
+/* eslint-disable comma-dangle */
 import React, {FormEvent} from 'react';
 import './UserInfoInput.scss';
 import {Message} from '../../..';
@@ -6,7 +8,9 @@ const handleUserInformation = (event: FormEvent<HTMLFormElement>) => {
   event.preventDefault(); // prevents form from reloading page (form submission)
 
   // example of how to get user input from form.
-  const username: HTMLSelectElement | null = document.querySelector('[name="login-username"]');
+  const username: HTMLSelectElement | null = document.querySelector(
+    '[name="login-username"]'
+  );
 
   // this gets the global spinner.
   const spinner: HTMLElement | null = document.getElementById('spinner');
@@ -20,29 +24,28 @@ const handleUserInformation = (event: FormEvent<HTMLFormElement>) => {
 
   // all data you want to pass over to API, name it appropriately
   const data = {
-    username: username ? username.value : null,
+    username: username ? username.value : null
   };
-
 
   fetch(process.env.HOST + url, {
     method: 'POST',
     headers: {
-      'Content-Type': 'application/json',
+      'Content-Type': 'application/json'
     },
-    body: JSON.stringify(data),
+    body: JSON.stringify(data)
   })
-      .then((response: { json: () => any }) => response.json())
-      .then((response: Message) => {
-        const {status, message} = response;
+    .then((response: { json: () => any }) => response.json())
+    .then((response: Message) => {
+      const {status, message} = response;
 
-        console.log(status, message); // log to console to see what it prints.
+      console.log(status, message); // log to console to see what it prints.
 
-        // if spinner is showing and you're done with saving stuff
-        // now hide the spinner
-        if (spinner) spinner.classList.add('uk-hidden');
+      // if spinner is showing and you're done with saving stuff
+      // now hide the spinner
+      if (spinner) spinner.classList.add('uk-hidden');
 
-        // do whatever else you need to do
-      });
+      // do whatever else you need to do
+    });
 };
 
 function UserInfoInput(): JSX.Element {
@@ -52,7 +55,7 @@ function UserInfoInput(): JSX.Element {
         <legend className='uk-legend'>Personal Details</legend>
         <hr />
         <div className='uk-grid'>
-          <div className='uk-width-1-5@m uk-margin-bottom'>
+          <div className='uk-width-1-5@m uk-margin-bottom profile-pic-container'>
             <div className='js-upload uk-placeholder uk-width-medium img-upload-container'>
               <img
                 data-src='https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png'
@@ -67,7 +70,7 @@ function UserInfoInput(): JSX.Element {
             </div>
           </div>
 
-          <div className='uk-width-4-5@m uk-grid uk-margin-remove uk-padding-remove uk-child-width-1-2@s'>
+          <div className='uk-width-expand@m uk-grid uk-margin-remove uk-padding-remove uk-child-width-1-2@s'>
             <div className='uk-margin-bottom'>
               <label className='uk-form-label' htmlFor='first name'>
                 First Name

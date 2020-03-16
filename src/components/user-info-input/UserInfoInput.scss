@@ -1,5 +1,9 @@
 @import '../../style/variables.scss';
 
+.profile-pic-container {
+  min-width: 182px;
+}
+
 .img-upload-container {
   position: relative;
   margin: auto;
