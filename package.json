@@ -17,7 +17,7 @@
     "lint": "./node_modules/.bin/eslint ./**/*.{js,ts,tsx} --quiet --fix || true",
     "test": "jest || true",
     "jest": "jest --watchAll",
-    "reset": "rm -rf src/ sass/ pages/ node_modules/ yarn.lock models/ lib/ email/ && git reset --hard && yarn install",
+    "reset": "rm -rf src/ sass/ pages/ .next/ node_modules/ yarn.lock models/ lib/ email/ && git reset --hard && yarn install",
     "storybook": "start-storybook -s ./public HOST=http://localhost:3000/ -p 6006 -c .storybook",
     "sbdev": "start-storybook -s ./public HOST=http://localhost:6001/ -p 7001 -c .storybook",
     "sbstg": "start-storybook -s ./public HOST=http://localhost:6002/ -p 7002 -c .storybook",
@@ -39,7 +39,7 @@
     "mysql": "^2.17.1",
     "next": "latest",
     "next-images": "^1.2.0",
-    "next-seo": "^3.0.0",
+    "next-seo": "^4.4.0",
     "node-sass": "^4.13.0",
     "nodemailer": "^6.4.1",
     "react": "16.12.0",
@@ -50,7 +50,6 @@
     "uikit": "^3.2.4"
   },
   "devDependencies": {
-    "@babel/core": "^7.8.3",
     "@storybook/addon-a11y": "^5.3.7",
     "@storybook/addon-actions": "^5.3.6",
     "@storybook/addon-backgrounds": "^5.3.7",
