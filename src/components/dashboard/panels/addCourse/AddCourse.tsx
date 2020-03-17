@@ -1,7 +1,67 @@
 import React from 'react';
 import './AddCourse.scss';
 
+
 function AddCourse(): JSX.Element {
+  if (typeof window !== "undefined" && window.hasOwnProperty("UIkit")) {
+    const bar = document.getElementById('js-progressbar') as HTMLProgressElement;
+
+    if (window.UIkit.hasOwnProperty('upload')) {
+      const uikit = window.UIkit; ;
+
+      (uikit as any).upload('.js-upload', {
+        url: '',
+        multiple: true,
+
+        // Following UIkit convention for types
+
+        beforeSend: function(...args: any) {
+          console.log('beforeSend', args);
+        },
+        beforeAll: function(...args: any) {
+          console.log('beforeAll', args);
+        },
+        load: function(...args: any) {
+          console.log('load', args);
+        },
+        error: function(...args: any) {
+          console.log('error', args);
+        },
+        complete: function(...args: any) {
+          console.log('complete', args);
+        },
+        loadStart: function(e: any) {
+          bar.removeAttribute('hidden');
+          bar.max = e.total;
+          bar.value = e.loaded;
+        },
+        progress: function(e: any, ...args: any) {
+          console.log('progress', args);
+
+          bar.max = e.total;
+          bar.value = e.loaded;
+        },
+
+        loadEnd: function(e: any, ...args: any) {
+          console.log('loadEnd', args);
+
+          bar.max = e.total;
+          bar.value = e.loaded;
+        },
+        completeAll: function(...args: any) {
+          console.log('completeAll', args);
+
+          setTimeout(function() {
+            bar.setAttribute('hidden', 'hidden');
+          }, 1000);
+
+          alert('Upload Completed');
+        },
+
+      });
+    }
+  }
+
   return (
     <div className='uk-grid'>
 
@@ -41,14 +101,18 @@ function AddCourse(): JSX.Element {
             <div className="uk-margin uk-grid">
               <div className="uk-width-1">
                 <label className='uk-form-label' htmlFor="Course Picture">Course picture</label>
-                <div className="js-upload uk-placeholder uk-text-center">
-                  {/* <span uk-icon="icon: cloud-upload"></span>
-                  <span className="uk-text-middle"> Drop files here to upload</span> */}
 
-                  <input className="box__file" type="file" name="files[]" id="file" data-multiple-caption="{count} files selected" multiple />
-                  <label htmlFor="file"><strong>Choose a file</strong><span className="box__dragndrop"> or drag it here</span>.</label>
-                  <button className="box__button" type="submit">Upload</button>
+                {/* drop and drag files */}
+                <div className="js-upload uk-placeholder uk-text-center">
+                  <span uk-icon="icon: cloud-upload"></span>
+                  <span className="uk-text-middle">Attach binaries by dropping them here or</span>
+                  <div uk-form-custom>
+                    <input type="file" multiple />
+                    <span className="uk-link">selecting one</span>
+                  </div>
                 </div>
+
+                <progress id="js-progressbar" className="uk-progress" value="0" max="100" hidden></progress>
               </div>
             </div>
           </form>
