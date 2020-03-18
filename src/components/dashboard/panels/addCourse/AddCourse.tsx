@@ -104,7 +104,7 @@ function AddCourse(): JSX.Element {
                 <div className="js-upload uk-placeholder uk-text-center">
                   <span uk-icon="icon: cloud-upload"></span>
                   <span className="uk-text-middle">Attach binaries by dropping them here or</span>
-                  <div uk-form-custom>
+                  <div className='uk-form-custom'>
                     <input type="file" multiple />
                     <span className="uk-link">selecting one</span>
                   </div>
