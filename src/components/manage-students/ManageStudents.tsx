@@ -41,6 +41,26 @@ const ManageStudents: React.FC<ManageStudentsProps> = (props) => {
     );
   });
 
+  const studentRows: JSX.Element[] = activeCourse.students.map((student) => {
+    return (
+      <tr key={student.id}>
+        <td><input className="uk-checkbox" type="checkbox" /></td>
+        <td>
+          <div className="student-photo">
+            <img
+              src={student.imageUri}
+              alt="User Image"
+              data-uk-img/>
+          </div>
+        </td>
+        <td>{student.name}</td>
+        <td>{student.email}</td>
+        <td>{student.status}</td>
+        <td>Manage | View | Delete</td>
+      </tr>
+    );
+  });
+
   return (
     <div className="manage-students">
       <div className="uk-card uk-card-default uk-card-body">
@@ -69,7 +89,8 @@ const ManageStudents: React.FC<ManageStudentsProps> = (props) => {
               </tr>
             </thead>
             <tbody>
-              <tr>
+              {studentRows}
+              {/* <tr>
                 <td><input className="uk-checkbox" type="checkbox" /></td>
                 <td>
                   <div className="student-photo">
@@ -85,24 +106,7 @@ const ManageStudents: React.FC<ManageStudentsProps> = (props) => {
                 <td>email@aol.com</td>
                 <td>Inactive</td>
                 <td>Manage | View | Delete</td>
-              </tr>
-              <tr>
-                <td><input className="uk-checkbox" type="checkbox" /></td>
-                <td>
-                  <div className="student-photo">
-                    <img
-                      src="https://images-na.ssl-images-amazon.com/images/M/MV5BMjA3NjYzMzE1MV5BMl5BanBnXkFtZTgwNTA4NDY4OTE@._V1_UX172_CR0,0,172,256_AL_.jpg"
-                      alt="User Image"
-                      data-uk-img/>
-                  </div>
-                </td>
-                <td>
-                    Ana De Armas
-                </td>
-                <td>why@benaffleck.com</td>
-                <td>Active</td>
-                <td>Manage | View | Delete</td>
-              </tr>
+              </tr> */}
             </tbody>
           </table>
         </div>

@@ -17,7 +17,7 @@
 
     .uk-active {
       a {
-        border-color: $primary;
+        border-color: $tertiary;
         color: $dark-gray;
       }
     }
@@ -25,7 +25,7 @@
 
   .uk-checkbox {
     &:checked {
-      background-color: $primary;
+      background-color: $tertiary;
     }
   }
 
@@ -56,10 +56,14 @@
   }
 
   button {
-    background-color: $primary;
+    background-color: $tertiary;
     color: $white;
-    transition: color linear 0.2s;
-    transition: background-color linear 0.2s;
+    transition: color linear 0.1s;
+    transition: background-color linear 0.1s;
+
+    &:hover {
+      background-color: color.adjust($tertiary, $lightness: -10%);
+    }
 
     &:disabled {
       background-color: white;
