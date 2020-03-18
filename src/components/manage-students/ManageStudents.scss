@@ -1,3 +1,5 @@
+@use 'sass:color';
+
 @import '../../style/variables.scss';
 
 .manage-students {
@@ -50,6 +52,19 @@
       height: 100%;
       object-fit: cover;
       object-position: center;
+    }
+  }
+
+  button {
+    background-color: $primary;
+    color: $white;
+    transition: color linear 0.2s;
+    transition: background-color linear 0.2s;
+
+    &:disabled {
+      background-color: white;
+      color: color.adjust($light-gray, $alpha: -0.7);
+      border: 1px solid color.adjust($light-gray, $alpha: -0.7);
     }
   }
 

@@ -51,7 +51,7 @@ const ManageStudents: React.FC<ManageStudentsProps> = (props) => {
           <li>Students</li>
           <li>Intro to Web Development</li>
         </ul>
-        <button className="uk-button bg-primary white">Delete</button>
+        <button className="uk-button uk-margin-medium" disabled={false}>Delete</button>
 
         {/* TODO - Select Action */}
         <div className="uk-overflow-auto">
