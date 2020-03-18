@@ -8,8 +8,11 @@ const handleUserInformation = (event: FormEvent<HTMLFormElement>) => {
   event.preventDefault(); // prevents form from reloading page (form submission)
 
   // example of how to get user input from form.
-  const username: HTMLSelectElement | null = document.querySelector(
-    '[name="login-username"]'
+  // const username: HTMLSelectElement | null = document.querySelector(
+  //   '[name="login-username"]'
+  // );
+  const firstname: HTMLSelectElement | null = document.querySelector(
+    '[name="input-firstname"]'
   );
 
   // this gets the global spinner.
@@ -24,7 +27,7 @@ const handleUserInformation = (event: FormEvent<HTMLFormElement>) => {
 
   // all data you want to pass over to API, name it appropriately
   const data = {
-    username: username ? username.value : null
+    firstname: firstname ? firstname.value : null
   };
 
   fetch(process.env.HOST + url, {
@@ -80,6 +83,7 @@ function UserInfoInput(): JSX.Element {
                 id=''
                 type='text'
                 placeholder='Lloan'
+                name='input-firstname'
               ></input>
             </div>
 
