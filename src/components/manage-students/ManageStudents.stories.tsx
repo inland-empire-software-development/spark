@@ -7,7 +7,7 @@ export default {
   title: 'ManageStudents',
 };
 
-export const coursesData = [
+const coursesData = [
   {
     id: "1",
     code: "WEB101",

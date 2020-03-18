@@ -27,6 +27,16 @@
     }
   }
 
+  .uk-breadcrumb {
+    font-family: "Book", sans-serif;
+    font-size: 18px;
+
+    :first-child {
+      font-family: "Medium", sans-serif;
+      color: $black;
+    }
+  }
+
   .student-photo {
     width: 64px;
     height: 64px;

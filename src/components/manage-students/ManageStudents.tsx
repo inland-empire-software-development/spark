@@ -46,16 +46,12 @@ const ManageStudents: React.FC<ManageStudentsProps> = (props) => {
       <div className="uk-card uk-card-default uk-card-body">
         <ul className="uk-tab">
           {courseTabs}
-          {/* <li className="uk-active"><a href="#">WEB101</a></li>
-          <li><a href="#">WEB102</a></li>
-          <li><a href="#">CS101</a></li>
-          <li><a href="#">GD101</a></li> */}
         </ul>
         <ul className="uk-breadcrumb">
-          <li><a href="#">Students</a></li>
-          <li><a href="#">Intro to Web Development</a></li>
+          <li>Students</li>
+          <li>Intro to Web Development</li>
         </ul>
-
+        <button className="uk-button bg-primary white">Delete</button>
 
         {/* TODO - Select Action */}
         <div className="uk-overflow-auto">
