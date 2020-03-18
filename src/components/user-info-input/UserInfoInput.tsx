@@ -12,7 +12,16 @@ const handleUserInformation = (event: FormEvent<HTMLFormElement>) => {
   //   '[name="login-username"]'
   // );
   const firstname: HTMLSelectElement | null = document.querySelector(
-    '[name="input-firstname"]'
+    '[name="user-firstname"]'
+  );
+  const lastname: HTMLSelectElement | null = document.querySelector(
+    '[name="user-lastname"]'
+  );
+  const title: HTMLSelectElement | null = document.querySelector(
+    '[name="user-title]'
+  );
+  const phone: HTMLSelectElement | null = document.querySelector(
+    '[name="user-phone"]'
   );
 
   // this gets the global spinner.
@@ -27,7 +36,10 @@ const handleUserInformation = (event: FormEvent<HTMLFormElement>) => {
 
   // all data you want to pass over to API, name it appropriately
   const data = {
-    firstname: firstname ? firstname.value : null
+    firstname: firstname ? firstname.value : null,
+    lastname: lastname ? lastname.value : null,
+    title: title ? title.value : null,
+    phone: phone ? phone.value : null
   };
 
   fetch(process.env.HOST + url, {
@@ -83,7 +95,7 @@ function UserInfoInput(): JSX.Element {
                 id=''
                 type='text'
                 placeholder='Lloan'
-                name='input-firstname'
+                name='user-firstname'
               ></input>
             </div>
 
@@ -96,6 +108,7 @@ function UserInfoInput(): JSX.Element {
                 id=''
                 type='text'
                 placeholder='Alas'
+                name='user-lastname'
               ></input>
             </div>
 
@@ -108,6 +121,7 @@ function UserInfoInput(): JSX.Element {
                 id=''
                 type='text'
                 placeholder='Student'
+                name='user-title'
               ></input>
             </div>
 
@@ -121,6 +135,7 @@ function UserInfoInput(): JSX.Element {
                 type='tel'
                 placeholder='xxx-xxx-xxxx'
                 pattern='[0-9]{3}-[0-9]{3}-[0-9]{4}'
+                name='user-phone'
               ></input>
             </div>
           </div>
@@ -135,6 +150,7 @@ function UserInfoInput(): JSX.Element {
             id='form-h-textarea'
             rows={5}
             placeholder='Something interesting about you!'
+            name='user-about'
           ></textarea>
         </div>
       </div>
