@@ -4,60 +4,65 @@ import './AddCourse.scss';
 
 function AddCourse(): JSX.Element {
   if (typeof window !== "undefined" && window.hasOwnProperty("UIkit")) {
-    const bar = document.getElementById('js-progressbar') as HTMLProgressElement;
+    // const bar = document.getElementById('js-progressbar') as HTMLProgressElement;
 
     if (window.UIkit.hasOwnProperty('upload')) {
       const uikit = window.UIkit; ;
 
-      (uikit as any).upload('.js-upload', {
+      uikit.upload('.js-upload', {
         url: '',
         multiple: true,
-
-        // Following UIkit convention for types
-
-        beforeSend: function(...args: any) {
-          console.log('beforeSend', args);
-        },
-        beforeAll: function(...args: any) {
-          console.log('beforeAll', args);
-        },
-        load: function(...args: any) {
-          console.log('load', args);
-        },
-        error: function(...args: any) {
-          console.log('error', args);
-        },
-        complete: function(...args: any) {
-          console.log('complete', args);
-        },
-        loadStart: function(e: any) {
-          bar.removeAttribute('hidden');
-          bar.max = e.total;
-          bar.value = e.loaded;
-        },
-        progress: function(e: any, ...args: any) {
-          console.log('progress', args);
-
-          bar.max = e.total;
-          bar.value = e.loaded;
-        },
-        loadEnd: function(e: any, ...args: any) {
-          console.log('loadEnd', args);
-
-          bar.max = e.total;
-          bar.value = e.loaded;
-        },
-        completeAll: function(...args: any) {
-          console.log('completeAll', args);
-
-          setTimeout(function() {
-            bar.setAttribute('hidden', 'hidden');
-          }, 1000);
-
-          alert('Upload Completed');
-        },
-
       });
+
+      // (uikit as any).upload('.js-upload', {
+      //   url: '',
+      //   multiple: true,
+
+      //   // Following UIkit convention for types
+
+      //   beforeSend: function(...args: any) {
+      //     console.log('beforeSend', args);
+      //   },
+      //   beforeAll: function(...args: any) {
+      //     console.log('beforeAll', args);
+      //   },
+      //   load: function(...args: any) {
+      //     console.log('load', args);
+      //   },
+      //   error: function(...args: any) {
+      //     console.log('error', args);
+      //   },
+      //   complete: function(...args: any) {
+      //     console.log('complete', args);
+      //   },
+      //   loadStart: function(e: any) {
+      //     bar.removeAttribute('hidden');
+      //     bar.max = e.total;
+      //     bar.value = e.loaded;
+      //   },
+      //   progress: function(e: any, ...args: any) {
+      //     console.log('progress', args);
+
+      //     bar.max = e.total;
+      //     bar.value = e.loaded;
+      //   },
+      //   loadEnd: function(e: any, ...args: any) {
+      //     console.log('loadEnd', args);
+
+      //     bar.max = e.total;
+      //     bar.value = e.loaded;
+      //   },
+      //   completeAll: function(...args: any) {
+      //     console.log('completeAll', args);
+
+      //     setTimeout(function() {
+      //       bar.setAttribute('hidden', 'hidden');
+      //     }, 1000);
+
+      //     alert('Upload Completed');
+      //   },
+
+      // });
     }
   }
 
