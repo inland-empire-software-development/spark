@@ -23,6 +23,9 @@ const handleUserInformation = (event: FormEvent<HTMLFormElement>) => {
   const phone: HTMLSelectElement | null = document.querySelector(
     '[name="user-phone"]'
   );
+  const about: HTMLSelectElement | null = document.querySelector(
+    '[name="user-about"]'
+  );
 
   // this gets the global spinner.
   const spinner: HTMLElement | null = document.getElementById('spinner');
@@ -39,7 +42,8 @@ const handleUserInformation = (event: FormEvent<HTMLFormElement>) => {
     firstname: firstname ? firstname.value : null,
     lastname: lastname ? lastname.value : null,
     title: title ? title.value : null,
-    phone: phone ? phone.value : null
+    phone: phone ? phone.value : null,
+    about: about ? about.value : null
   };
 
   fetch(process.env.HOST + url, {
@@ -53,7 +57,7 @@ const handleUserInformation = (event: FormEvent<HTMLFormElement>) => {
     .then((response: Message) => {
       const {status, message} = response;
 
-      console.log(status, message); // log to console to see what it prints.
+      console.log(status, '\n', message); // log to console to see what it prints.
 
       // if spinner is showing and you're done with saving stuff
       // now hide the spinner

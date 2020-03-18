@@ -7,12 +7,12 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   res.setHeader("Cache-Control", "no-store, no-cache, must-revalidate, proxy-revalidate");
   res.setHeader("Content-Type", "json/javascript");
 
-  const {firstname} = req.body;
+  const {firstname, lastname} = req.body;
 
   // example message - whatever you want to return, use this format.
   const david = {
     status: false,
-    message: "test for david: " + firstname,
+    message: `Name: ${firstname} ${lastname} \n `,
   } as Message;
 
   // showing return example
