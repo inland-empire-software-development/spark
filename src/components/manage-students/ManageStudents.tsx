@@ -1,15 +1,55 @@
 import React from "react";
 import './ManageStudents.scss';
 
-const ManageStudents: React.FC = () => {
+interface ManageStudentsProps {
+  courses: ManageStudentsCourse[];
+  onManageUser: (id: string) => void;
+  onViewUser: (id: string) => void;
+  onDeleteUser: (id: string) => void;
+}
+
+interface ManageStudentsCourse {
+  id: string;
+  code: string;
+  name: string;
+  students: ManageStudentUser [];
+}
+
+interface ManageStudentUser {
+  id: string;
+  imageUri: string;
+  name: string;
+  email: string;
+  status: string;
+}
+
+const ManageStudents: React.FC<ManageStudentsProps> = (props) => {
+  const [activeCourseID, setActiveCourseID] = React.useState<string>(props.courses[0].id);
+
+  const courseTabs: JSX.Element[] = props.courses.map((course) => {
+    const isActiveCourse = course.id === activeCourseID;
+    return (
+      <li
+        key={course.id}
+        className={isActiveCourse ? "uk-active" : ""}
+        onClick={() => {
+          setActiveCourseID(course.id);
+        }}
+      >
+        <a>{course.code}</a>
+      </li>
+    );
+  });
+
   return (
     <div className="manage-students">
       <div className="uk-card uk-card-default uk-card-body">
-        <ul data-uk-tab>
-          <li className="uk-active"><a href="#">WEB101</a></li>
+        <ul className="uk-tab">
+          {courseTabs}
+          {/* <li className="uk-active"><a href="#">WEB101</a></li>
           <li><a href="#">WEB102</a></li>
           <li><a href="#">CS101</a></li>
-          <li><a href="#">GD101</a></li>
+          <li><a href="#">GD101</a></li> */}
         </ul>
         <ul className="uk-breadcrumb">
           <li><a href="#">Students</a></li>
