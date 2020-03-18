@@ -8,6 +8,17 @@ export interface Message {
     message: string;
 }
 
+export interface DBUpdateUser {
+    [userName?: string]: string;
+    [password?: string]: string;
+    [email?: string]: string;
+    [role?: string]: UserRoles;
+}
+
+export enum UserRoles {
+    subscriber = 'subsciber'
+}
+
 // Allow arrays to be indexed with strings
 export interface ArrayIndexedWithStrings {
     [key: string]: any;

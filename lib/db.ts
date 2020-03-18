@@ -1,6 +1,6 @@
 /* eslint-disable camelcase */
 /* eslint-disable @typescript-eslint/camelcase */
-import {Message, ArrayIndexedWithStrings} from "..";
+import {Message, ArrayIndexedWithStrings, DBUpdateUser} from "..";
 import fetch from "isomorphic-unfetch";
 
 const escape = require('sql-string-escape');
@@ -184,6 +184,46 @@ db.createUser = function(user: string, pass: string, email: string, role: string
               resolve(Object.assign(results, {token})) :
               reject(results);
         });
+  });
+};
+
+db.updateUser = function(
+    userID: string,
+    updateLastLogin: boolean,
+    userData: DBUpdateUser,
+): Promise<Message> {
+  // Add defined userData payload properties to updateObject
+  const updateObject: {[key: string]: any} = {};
+
+  for (const key in userData) {
+    if (userData[key] !== undefined) {
+      updateObject[key] = userData[key];
+    }
+  }
+
+  // build query string depending on if updateLogin is used
+  const CURRENT_TIMESTAMP = {toSqlString: function() {
+    return 'CURRENT_TIMESTAMP()';
+  }};
+
+  if (updateLastLogin) {
+    updateObject['last_login'] = CURRENT_TIMESTAMP;
+  }
+
+  const sql =
+    mysql.format(`UPDATE ${process.env.DBNAME}.user SET ? WHERE id = ?`, [updateObject, userID]);
+
+  return new Promise((resolve, reject) => {
+    db.query(sql, function(error: { sqlMessage: any }, results: object) {
+      if (error) reject(error.sqlMessage ? error.sqlMessage : error);
+
+      // check update result?
+
+      resolve({
+        status: true,
+        message: "User updated",
+      });
+    });
   });
 };
 

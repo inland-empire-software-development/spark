@@ -1,0 +1,29 @@
+@import '../../style/variables.scss';
+
+.img-upload-container {
+  position: relative;
+  margin: auto;
+
+  &.uk-placeholder {
+    padding: 0;
+  }
+
+  .uk-form-custom {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+  }
+}
+
+.uiif-textarea-width {
+  min-width: 100%;
+}
+
+.uiif-button {
+  background-color: $tertiary;
+  color: $snow;
+}
+
+.arrow-icon {
+  margin-left: 10px;
+}

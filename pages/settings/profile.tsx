@@ -1,9 +1,10 @@
 import React from "react";
 import DashboardLayout from "../../src/components/layouts/DashboardLayout";
+import UserInfoInput from "../../src/components/user-info-input/UserInfoInput";
 
 const Profile: React.FC = () => (
   <DashboardLayout>
-    <h1>Your Profile</h1>
+    <UserInfoInput />
   </DashboardLayout>
 );
 
