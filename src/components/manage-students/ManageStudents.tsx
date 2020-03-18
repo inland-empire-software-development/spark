@@ -24,16 +24,16 @@ interface ManageStudentUser {
 }
 
 const ManageStudents: React.FC<ManageStudentsProps> = (props) => {
-  const [activeCourseID, setActiveCourseID] = React.useState<string>(props.courses[0].id);
+  const [activeCourse, setActiveCourse] = React.useState<ManageStudentsCourse>(props.courses[0]);
 
   const courseTabs: JSX.Element[] = props.courses.map((course) => {
-    const isActiveCourse = course.id === activeCourseID;
+    const isActiveCourse = course.id === activeCourse.id;
     return (
       <li
         key={course.id}
         className={isActiveCourse ? "uk-active" : ""}
         onClick={() => {
-          setActiveCourseID(course.id);
+          setActiveCourse(course);
         }}
       >
         <a>{course.code}</a>
@@ -49,11 +49,11 @@ const ManageStudents: React.FC<ManageStudentsProps> = (props) => {
         </ul>
         <ul className="uk-breadcrumb">
           <li>Students</li>
-          <li>Intro to Web Development</li>
+          <li>{activeCourse.name}</li>
         </ul>
         <button className="uk-button uk-margin-medium" disabled={false}>Delete</button>
 
-        {/* TODO - Select Action */}
+
         <div className="uk-overflow-auto">
           <table className="uk-table uk-table-divider">
             <thead>
