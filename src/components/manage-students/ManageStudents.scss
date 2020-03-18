@@ -1,0 +1,20 @@
+.manage-students {
+  .uk-card-default {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08)
+  }
+
+  .uk-tab {
+    a {
+      font-family: "Book", sans-serif;
+      font-size: 20px;
+      color: #7f7f7f;
+      border-bottom: 2px solid transparent;
+    }
+
+    .uk-active {
+      a {
+        border-color: #ef7469;
+      }
+    }
+  }
+}

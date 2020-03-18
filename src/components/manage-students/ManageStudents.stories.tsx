@@ -7,5 +7,5 @@ export default {
 };
 
 export const DefaultManageStudents = () => (
-  <ManageStudents></ManageStudents>
+  <ManageStudents />
 );
