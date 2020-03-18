@@ -41,7 +41,6 @@ function AddCourse(): JSX.Element {
           bar.max = e.total;
           bar.value = e.loaded;
         },
-
         loadEnd: function(e: any, ...args: any) {
           console.log('loadEnd', args);
 
@@ -64,7 +63,6 @@ function AddCourse(): JSX.Element {
 
   return (
     <div className='uk-grid'>
-
       <div className='uk-width-6@s uk-first-column'>
         <div className='dashTitle'>
           <h1 className='page-title'>Add Course</h1>
@@ -111,7 +109,6 @@ function AddCourse(): JSX.Element {
                     <span className="uk-link">selecting one</span>
                   </div>
                 </div>
-
                 <progress id="js-progressbar" className="uk-progress" value="0" max="100" hidden></progress>
               </div>
             </div>
