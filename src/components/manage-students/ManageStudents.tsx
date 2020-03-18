@@ -11,8 +11,13 @@ const ManageStudents: React.FC = () => {
           <li><a href="#">CS101</a></li>
           <li><a href="#">GD101</a></li>
         </ul>
-        // TODO - Breadcrumb with course title
-        // TODO - Select Action
+        <ul className="uk-breadcrumb">
+          <li><a href="#">Students</a></li>
+          <li><a href="#">Intro to Web Development</a></li>
+        </ul>
+
+
+        {/* TODO - Select Action */}
         <div className="uk-overflow-auto">
           <table className="uk-table uk-table-divider">
             <thead>
@@ -43,7 +48,7 @@ const ManageStudents: React.FC = () => {
                 </td>
                 <td>email@aol.com</td>
                 <td>Inactive</td>
-                <td>Manage|View|Delete</td>
+                <td>Manage | View | Delete</td>
               </tr>
               <tr>
                 <td><input className="uk-checkbox" type="checkbox" /></td>
@@ -60,7 +65,7 @@ const ManageStudents: React.FC = () => {
                 </td>
                 <td>why@benaffleck.com</td>
                 <td>Active</td>
-                <td>Manage|View|Delete</td>
+                <td>Manage | View | Delete</td>
               </tr>
             </tbody>
           </table>
