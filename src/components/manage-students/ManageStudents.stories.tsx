@@ -89,9 +89,9 @@ const coursesData = [
 
 
 const actionsData = {
-  onManageUser: (id: string) => action(`onManageUser(id: ${id})`),
-  onViewUser: (id: string) => action(`onViewUser(id: ${id})`),
-  onDeleteUser: (id: string) => action(`onDeleteUser(id: ${id})`),
+  onManageUser: action('onManageUser'),
+  onViewUser: action('onViewUser'),
+  onDeleteUsers: action('onDeleteUsers'),
 };
 
 export const DefaultManageStudents = () => (

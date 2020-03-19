@@ -5,7 +5,7 @@ interface ManageStudentsProps {
   courses: ManageStudentsCourse[];
   onManageUser: (id: string) => void;
   onViewUser: (id: string) => void;
-  onDeleteUser: (id: string) => void;
+  onDeleteUsers: (ids: string[]) => void;
 }
 
 interface ManageStudentsCourse {
@@ -100,7 +100,13 @@ const ManageStudents: React.FC<ManageStudentsProps> = (props) => {
         <td>{student.name}</td>
         <td>{student.email}</td>
         <td>{student.status}</td>
-        <td>Manage | View | Delete</td>
+        <td>
+          <a onClick={() => props.onManageUser(student.id)}>Manage</a>
+          {` | `}
+          <a onClick={() => props.onViewUser(student.id)}>View</a>
+          {` | `}
+          <a onClick={() => props.onDeleteUsers([student.id])}>Delete</a>
+        </td>
       </tr>
     );
   });
@@ -117,6 +123,7 @@ const ManageStudents: React.FC<ManageStudentsProps> = (props) => {
         </ul>
         <button
           className="uk-button uk-margin-medium"
+          onClick={() => props.onDeleteUsers(Array.from(selectedStudents.values()))}
           disabled={selectedStudents.size === 0}
         >
           Delete
