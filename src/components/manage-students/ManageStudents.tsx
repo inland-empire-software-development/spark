@@ -115,7 +115,12 @@ const ManageStudents: React.FC<ManageStudentsProps> = (props) => {
           <li>Students</li>
           <li>{activeCourse.name}</li>
         </ul>
-        <button className="uk-button uk-margin-medium" disabled={false}>Delete</button>
+        <button
+          className="uk-button uk-margin-medium"
+          disabled={selectedStudents.size === 0}
+        >
+          Delete
+        </button>
 
 
         <div className="uk-overflow-auto">
