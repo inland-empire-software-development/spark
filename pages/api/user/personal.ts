@@ -1,18 +1,36 @@
+/* eslint-disable indent */
+/* eslint-disable comma-dangle */
 import db from '../../../lib/db';
 import {Message} from '../../..';
 import {NextApiResponse, NextApiRequest} from 'next';
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   // set headers
-  res.setHeader("Cache-Control", "no-store, no-cache, must-revalidate, proxy-revalidate");
-  res.setHeader("Content-Type", "json/javascript");
+  res.setHeader(
+    'Cache-Control',
+    'no-store, no-cache, must-revalidate, proxy-revalidate'
+  );
+  res.setHeader('Content-Type', 'json/javascript');
 
-  const {firstname, lastname} = req.body;
+  const {
+    firstname,
+    lastname,
+    title,
+    phone,
+    about,
+    oldpassword,
+    password,
+    checkpass,
+    facebook,
+    twitter,
+    linkedin,
+    instagram
+  } = req.body;
 
   // example message - whatever you want to return, use this format.
   const david = {
     status: false,
-    message: `Name: ${firstname} ${lastname} \n `,
+    message: `Name: ${firstname} ${lastname} \nTitle: ${title} \nPhone: ${phone} \nAbout: ${about} \nOldPassword: ${oldpassword} \nPassword: ${password} \nCheckpass: ${checkpass} \nfacebook: ${facebook} \nTwitter: ${twitter} \nLinkedIn: ${linkedin} \nInstagram: ${instagram}`
   } as Message;
 
   // showing return example
@@ -28,17 +46,16 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   // escape any data you are sending to the db object or storing in the database.
   // make sure you are validating on the frontend and sanitizing on the backend.
   if (test) {
-    db.getUser(escape(username))
-        .then((user: any) => {
-        // once the db function has returned successfully, handle the next steps
-          res.status(200); // we set the return status to 200.
+    db.getUser(escape(username)).then((user: any) => {
+      // once the db function has returned successfully, handle the next steps
+      res.status(200); // we set the return status to 200.
 
-          // example of checking and returning early (only if you need to)
-          if (!user) {
-            res.send(invalid);
-            res.end();
-            return false;
-          }
-        });
+      // example of checking and returning early (only if you need to)
+      if (!user) {
+        res.send(invalid);
+        res.end();
+        return false;
+      }
+    });
   }
 };

@@ -7,10 +7,7 @@ import {Message} from '../../..';
 const handleUserInformation = (event: FormEvent<HTMLFormElement>) => {
   event.preventDefault(); // prevents form from reloading page (form submission)
 
-  // example of how to get user input from form.
-  // const username: HTMLSelectElement | null = document.querySelector(
-  //   '[name="login-username"]'
-  // );
+  // getting user input from form.
   const firstname: HTMLSelectElement | null = document.querySelector(
     '[name="user-firstname"]'
   );
@@ -18,7 +15,7 @@ const handleUserInformation = (event: FormEvent<HTMLFormElement>) => {
     '[name="user-lastname"]'
   );
   const title: HTMLSelectElement | null = document.querySelector(
-    '[name="user-title]'
+    '[name="user-title"]'
   );
   const phone: HTMLSelectElement | null = document.querySelector(
     '[name="user-phone"]'
@@ -34,6 +31,18 @@ const handleUserInformation = (event: FormEvent<HTMLFormElement>) => {
   );
   const checkpass: HTMLInputElement | null = document.querySelector(
     '[name="user-checkpass"]'
+  );
+  const facebook: HTMLInputElement | null = document.querySelector(
+    '[name="user-fb"]'
+  );
+  const twitter: HTMLInputElement | null = document.querySelector(
+    '[name="user-twitter"]'
+  );
+  const linkedin: HTMLInputElement | null = document.querySelector(
+    '[name="user-linkedin"]'
+  );
+  const instagram: HTMLInputElement | null = document.querySelector(
+    '[name="user-instagram"]'
   );
 
   // this gets the global spinner.
@@ -56,6 +65,10 @@ const handleUserInformation = (event: FormEvent<HTMLFormElement>) => {
     oldpassword: oldpassword ? oldpassword.value : null,
     password: password ? password.value : null,
     checkpass: checkpass ? checkpass.value : null,
+    facebook: facebook ? facebook.value : null,
+    twitter: twitter ? twitter.value : null,
+    linkedin: linkedin ? linkedin.value : null,
+    instagram: instagram ? instagram.value : null
   };
 
   fetch(process.env.HOST + url, {
@@ -81,7 +94,7 @@ const handleUserInformation = (event: FormEvent<HTMLFormElement>) => {
 
 function UserInfoInput(): JSX.Element {
   return (
-    <form onSubmit={(event) => handleUserInformation(event)}>
+    <form id='user-profile' autoComplete='off' onSubmit={(event) => handleUserInformation(event)}>
       <div className='uk-fieldset'>
         <legend className='uk-legend'>Personal Details</legend>
         <hr />
@@ -140,14 +153,14 @@ function UserInfoInput(): JSX.Element {
 
             <div className='uk-margin-bottom'>
               <label className='uk-form-label' htmlFor='phone number'>
-                Phone No.
+                Phone #
               </label>
               <input
                 className='uk-input'
                 type='tel'
                 placeholder='xxx-xxx-xxxx'
-                pattern='[0-9]{3}-[0-9]{3}-[0-9]{4}'
                 name='user-phone'
+                autoComplete='off'
               ></input>
             </div>
           </div>
@@ -179,6 +192,8 @@ function UserInfoInput(): JSX.Element {
               className='uk-input uk-margin-bottom'
               type='password'
               placeholder=''
+              autoComplete='none'
+              name='user-oldpassword'
             ></input>
 
             <label className='uk-form-label' htmlFor='new password'>
@@ -188,6 +203,8 @@ function UserInfoInput(): JSX.Element {
               className='uk-input uk-margin-bottom'
               type='password'
               placeholder=''
+              autoComplete='new-password'
+              name='user-password'
             ></input>
 
             <label className='uk-form-label' htmlFor='confirm password'>
@@ -197,6 +214,8 @@ function UserInfoInput(): JSX.Element {
               className='uk-input uk-margin-bottom'
               type='password'
               placeholder=''
+              autoComplete='new-password'
+              name='user-checkpass'
             ></input>
           </div>
         </div>
@@ -211,14 +230,14 @@ function UserInfoInput(): JSX.Element {
             <label className='uk-form-label' htmlFor='facebook'>
               Facebook
             </label>
-            <input className='uk-input' type='url' placeholder=''></input>
+            <input className='uk-input' type='url' placeholder='' name='user-fb'></input>
           </div>
 
           <div className='uk-margin-bottom'>
             <label className='uk-form-label' htmlFor='twitter'>
               Twitter
             </label>
-            <input className='uk-input' type='url' placeholder=''></input>
+            <input className='uk-input' type='url' placeholder='' name='user-twitter'></input>
           </div>
         </div>
 
@@ -227,19 +246,19 @@ function UserInfoInput(): JSX.Element {
             <label className='uk-form-label' htmlFor='linkedin'>
               LinkedIn
             </label>
-            <input className='uk-input' type='url' placeholder=''></input>
+            <input className='uk-input' type='url' placeholder='' name='user-linkedin'></input>
           </div>
 
           <div className='uk-margin-bottom'>
-            <label className='uk-form-label' htmlFor='Instagram'>
+            <label className='uk-form-label' htmlFor='instagram'>
               Instagram
             </label>
-            <input className='uk-input' type='url' placeholder=''></input>
+            <input className='uk-input' type='url' placeholder='' name='user-instagram'></input>
           </div>
         </div>
       </fieldset>
 
-      <button className='uk-button uiif-button'>
+      <button type='submit' form='user-profile' className='uk-button uiif-button'>
         Save
         <i className='fas fa-long-arrow-alt-right arrow-icon'></i>
       </button>
