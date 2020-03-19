@@ -26,6 +26,15 @@ const handleUserInformation = (event: FormEvent<HTMLFormElement>) => {
   const about: HTMLSelectElement | null = document.querySelector(
     '[name="user-about"]'
   );
+  const oldpassword: HTMLInputElement | null = document.querySelector(
+    '[name="user-oldpassword"]'
+  );
+  const password: HTMLInputElement | null = document.querySelector(
+    '[name="user-password"]'
+  );
+  const checkpass: HTMLInputElement | null = document.querySelector(
+    '[name="user-checkpass"]'
+  );
 
   // this gets the global spinner.
   const spinner: HTMLElement | null = document.getElementById('spinner');
@@ -43,7 +52,10 @@ const handleUserInformation = (event: FormEvent<HTMLFormElement>) => {
     lastname: lastname ? lastname.value : null,
     title: title ? title.value : null,
     phone: phone ? phone.value : null,
-    about: about ? about.value : null
+    about: about ? about.value : null,
+    oldpassword: oldpassword ? oldpassword.value : null,
+    password: password ? password.value : null,
+    checkpass: checkpass ? checkpass.value : null,
   };
 
   fetch(process.env.HOST + url, {
@@ -96,7 +108,6 @@ function UserInfoInput(): JSX.Element {
               </label>
               <input
                 className='uk-input'
-                id=''
                 type='text'
                 placeholder='Lloan'
                 name='user-firstname'
@@ -109,7 +120,6 @@ function UserInfoInput(): JSX.Element {
               </label>
               <input
                 className='uk-input'
-                id=''
                 type='text'
                 placeholder='Alas'
                 name='user-lastname'
@@ -122,7 +132,6 @@ function UserInfoInput(): JSX.Element {
               </label>
               <input
                 className='uk-input'
-                id=''
                 type='text'
                 placeholder='Student'
                 name='user-title'
@@ -135,7 +144,6 @@ function UserInfoInput(): JSX.Element {
               </label>
               <input
                 className='uk-input'
-                id=''
                 type='tel'
                 placeholder='xxx-xxx-xxxx'
                 pattern='[0-9]{3}-[0-9]{3}-[0-9]{4}'
@@ -151,7 +159,6 @@ function UserInfoInput(): JSX.Element {
           </label>
           <textarea
             className='uk-textarea uiif-textarea-width'
-            id='form-h-textarea'
             rows={5}
             placeholder='Something interesting about you!'
             name='user-about'
@@ -170,7 +177,6 @@ function UserInfoInput(): JSX.Element {
             </label>
             <input
               className='uk-input uk-margin-bottom'
-              id=''
               type='password'
               placeholder=''
             ></input>
@@ -180,7 +186,6 @@ function UserInfoInput(): JSX.Element {
             </label>
             <input
               className='uk-input uk-margin-bottom'
-              id=''
               type='password'
               placeholder=''
             ></input>
@@ -190,7 +195,6 @@ function UserInfoInput(): JSX.Element {
             </label>
             <input
               className='uk-input uk-margin-bottom'
-              id=''
               type='password'
               placeholder=''
             ></input>
@@ -207,14 +211,14 @@ function UserInfoInput(): JSX.Element {
             <label className='uk-form-label' htmlFor='facebook'>
               Facebook
             </label>
-            <input className='uk-input' id='' type='url' placeholder=''></input>
+            <input className='uk-input' type='url' placeholder=''></input>
           </div>
 
           <div className='uk-margin-bottom'>
             <label className='uk-form-label' htmlFor='twitter'>
               Twitter
             </label>
-            <input className='uk-input' id='' type='url' placeholder=''></input>
+            <input className='uk-input' type='url' placeholder=''></input>
           </div>
         </div>
 
@@ -223,14 +227,14 @@ function UserInfoInput(): JSX.Element {
             <label className='uk-form-label' htmlFor='linkedin'>
               LinkedIn
             </label>
-            <input className='uk-input' id='' type='url' placeholder=''></input>
+            <input className='uk-input' type='url' placeholder=''></input>
           </div>
 
           <div className='uk-margin-bottom'>
             <label className='uk-form-label' htmlFor='Instagram'>
               Instagram
             </label>
-            <input className='uk-input' id='' type='url' placeholder=''></input>
+            <input className='uk-input' type='url' placeholder=''></input>
           </div>
         </div>
       </fieldset>
