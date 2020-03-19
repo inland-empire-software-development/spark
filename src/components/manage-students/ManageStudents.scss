@@ -27,6 +27,10 @@
     &:checked {
       background-color: $tertiary;
     }
+
+    &:indeterminate {
+      background-color: $tertiary;
+    }
   }
 
   .uk-breadcrumb {

@@ -12,7 +12,7 @@ interface ManageStudentsCourse {
   id: string;
   code: string;
   name: string;
-  students: ManageStudentUser [];
+  students: ManageStudentUser[];
 }
 
 interface ManageStudentUser {
@@ -23,8 +23,45 @@ interface ManageStudentUser {
   status: string;
 }
 
+
 const ManageStudents: React.FC<ManageStudentsProps> = (props) => {
   const [activeCourse, setActiveCourse] = React.useState<ManageStudentsCourse>(props.courses[0]);
+  const [selectedStudents, setSelectedStudents] = React.useState<Set<string>>(new Set());
+
+
+  // setting toggle all checkbox to indeterminate if at least one row item is selected
+  React.useEffect(() => {
+    const checkbox = document.querySelector("#selectAllCheckbox") as HTMLInputElement;
+    if (selectedStudents.size > 0) {
+      checkbox.indeterminate = true;
+    } else {
+      checkbox.indeterminate = false;
+    }
+  }, [selectedStudents]);
+
+  const toggleAllSelected = () => {
+    if (selectedStudents.size > 0) {
+      selectedStudents.clear();
+      setSelectedStudents(new Set(selectedStudents));
+    } else {
+      // populate selectedStudents Set with all students
+      activeCourse.students.forEach((student) => {
+        selectedStudents.add(student.id);
+      });
+
+      setSelectedStudents(new Set(selectedStudents));
+    }
+  };
+
+  const toggleCurrentSelected = (studentId: string) => {
+    if (selectedStudents.has(studentId)) {
+      selectedStudents.delete(studentId);
+      setSelectedStudents(new Set(selectedStudents));
+    } else {
+      selectedStudents.add(studentId);
+      setSelectedStudents(new Set(selectedStudents));
+    }
+  };
 
   const courseTabs: JSX.Element[] = props.courses.map((course) => {
     const isActiveCourse = course.id === activeCourse.id;
@@ -44,7 +81,14 @@ const ManageStudents: React.FC<ManageStudentsProps> = (props) => {
   const studentRows: JSX.Element[] = activeCourse.students.map((student) => {
     return (
       <tr key={student.id}>
-        <td><input className="uk-checkbox" type="checkbox" /></td>
+        <td>
+          <input
+            className="uk-checkbox"
+            type="checkbox"
+            checked={selectedStudents.has(student.id)}
+            onChange={() => toggleCurrentSelected(student.id)}
+          />
+        </td>
         <td>
           <div className="student-photo">
             <img
@@ -79,7 +123,13 @@ const ManageStudents: React.FC<ManageStudentsProps> = (props) => {
             <thead>
               <tr>
                 <th className="uk-table-shrink">
-                  <input className="uk-checkbox" type="checkbox" />
+                  <input
+                    id="selectAllCheckbox"
+                    className="uk-checkbox"
+                    type="checkbox"
+                    checked={selectedStudents.size === activeCourse.students.length}
+                    onChange={() => toggleAllSelected()}
+                  />
                 </th>
                 <th className="uk-table-shrink">IMAGE</th>
                 <th className="uk-table-expand">NAME</th>
@@ -90,23 +140,6 @@ const ManageStudents: React.FC<ManageStudentsProps> = (props) => {
             </thead>
             <tbody>
               {studentRows}
-              {/* <tr>
-                <td><input className="uk-checkbox" type="checkbox" /></td>
-                <td>
-                  <div className="student-photo">
-                    <img
-                      src="https://images.unsplash.com/photo-1493666438817-866a91353ca9?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max&s=b616b2c5b373a80ffc9636ba24f7a4a9"
-                      alt="User Image"
-                      data-uk-img/>
-                  </div>
-                </td>
-                <td>
-                    Karen Johnson
-                </td>
-                <td>email@aol.com</td>
-                <td>Inactive</td>
-                <td>Manage | View | Delete</td>
-              </tr> */}
             </tbody>
           </table>
         </div>
