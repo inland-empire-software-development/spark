@@ -65,13 +65,23 @@ const coursesData = [
     id: "1",
     code: "WEB101",
     name: "Intro to Web Developmment",
-    students: studentData.slice(0, 4),
+    students: [
+      {...studentData[0]},
+      {...studentData[1]},
+      {...studentData[2]},
+      {...studentData[3]},
+    ],
   },
   {
     id: "2",
     code: "WEB102",
     name: "Intermediate Web Developmment",
-    students: studentData.slice(2, 5),
+    students: [
+      {...studentData[3]},
+      {...studentData[4]},
+      {...studentData[5]},
+      {...studentData[6]},
+    ],
   },
   {
     id: "3",
@@ -83,7 +93,10 @@ const coursesData = [
     id: "4",
     code: "GD101",
     name: "Graphic Design Fundamentals",
-    students: [studentData[5], studentData[0]],
+    students: [
+      {...studentData[5]},
+      {...studentData[0]},
+    ],
   },
 ];
 
