@@ -20,7 +20,6 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     about,
     oldpassword,
     password,
-    checkpass,
     facebook,
     twitter,
     linkedin,
@@ -30,11 +29,12 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   // example message - whatever you want to return, use this format.
   const david = {
     status: false,
-    message: `Name: ${firstname} ${lastname} \nTitle: ${title} \nPhone: ${phone} \nAbout: ${about} \nOldPassword: ${oldpassword} \nPassword: ${password} \nCheckpass: ${checkpass} \nfacebook: ${facebook} \nTwitter: ${twitter} \nLinkedIn: ${linkedin} \nInstagram: ${instagram}`
+    message: `\nName: ${firstname} ${lastname} \nTitle: ${title} \nPhone: ${phone} \nAbout: ${about} \nOldPassword: ${oldpassword} \nPassword: ${password} \nfacebook: ${facebook} \nTwitter: ${twitter} \nLinkedIn: ${linkedin} \nInstagram: ${instagram}\n`
   } as Message;
 
   // showing return example
   res.send(david);
+
 
   // Get profile fields from JSON body
   // check form to see how you're passing them back.

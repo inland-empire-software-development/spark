@@ -3,34 +3,35 @@
 import React, {FormEvent} from 'react';
 import './UserInfoInput.scss';
 import {Message} from '../../..';
+import Password from '../authenticate/Password/Password';
+// import {serialize} from 'v8';
 
 const handleUserInformation = (event: FormEvent<HTMLFormElement>) => {
   event.preventDefault(); // prevents form from reloading page (form submission)
 
+  // const formData = serialize
+
   // getting user input from form.
-  const firstname: HTMLSelectElement | null = document.querySelector(
+  const firstname: HTMLInputElement | null = document.querySelector(
     '[name="user-firstname"]'
   );
-  const lastname: HTMLSelectElement | null = document.querySelector(
+  const lastname: HTMLInputElement | null = document.querySelector(
     '[name="user-lastname"]'
   );
-  const title: HTMLSelectElement | null = document.querySelector(
+  const title: HTMLInputElement | null = document.querySelector(
     '[name="user-title"]'
   );
-  const phone: HTMLSelectElement | null = document.querySelector(
+  const phone: HTMLInputElement | null = document.querySelector(
     '[name="user-phone"]'
   );
-  const about: HTMLSelectElement | null = document.querySelector(
+  const about: HTMLInputElement | null = document.querySelector(
     '[name="user-about"]'
   );
   const oldpassword: HTMLInputElement | null = document.querySelector(
     '[name="user-oldpassword"]'
   );
   const password: HTMLInputElement | null = document.querySelector(
-    '[name="user-password"]'
-  );
-  const checkpass: HTMLInputElement | null = document.querySelector(
-    '[name="user-checkpass"]'
+    '[name="password-component"]'
   );
   const facebook: HTMLInputElement | null = document.querySelector(
     '[name="user-fb"]'
@@ -64,7 +65,6 @@ const handleUserInformation = (event: FormEvent<HTMLFormElement>) => {
     about: about ? about.value : null,
     oldpassword: oldpassword ? oldpassword.value : null,
     password: password ? password.value : null,
-    checkpass: checkpass ? checkpass.value : null,
     facebook: facebook ? facebook.value : null,
     twitter: twitter ? twitter.value : null,
     linkedin: linkedin ? linkedin.value : null,
@@ -179,7 +179,7 @@ function UserInfoInput(): JSX.Element {
         </div>
       </div>
 
-      <fieldset className='uk-fieldset'>
+      <fieldset id='password-componenet' className='uk-fieldset'>
         <legend className='uk-legend'>Change Password</legend>
         <hr />
 
@@ -189,14 +189,16 @@ function UserInfoInput(): JSX.Element {
               Current Password
             </label>
             <input
-              className='uk-input uk-margin-bottom'
+              className='uk-input uk-form-large uk-margin-bottom'
               type='password'
               placeholder=''
               autoComplete='none'
               name='user-oldpassword'
             ></input>
 
-            <label className='uk-form-label' htmlFor='new password'>
+            <Password />
+
+            {/* <label className='uk-form-label' htmlFor='new password'>
               New Password
             </label>
             <input
@@ -205,9 +207,9 @@ function UserInfoInput(): JSX.Element {
               placeholder=''
               autoComplete='new-password'
               name='user-password'
-            ></input>
+            ></input> */}
 
-            <label className='uk-form-label' htmlFor='confirm password'>
+            {/* <label className='uk-form-label' htmlFor='confirm password'>
               Confirm Password
             </label>
             <input
@@ -216,12 +218,12 @@ function UserInfoInput(): JSX.Element {
               placeholder=''
               autoComplete='new-password'
               name='user-checkpass'
-            ></input>
+            ></input> */}
           </div>
         </div>
       </fieldset>
 
-      <fieldset className='uk-fieldset'>
+      <fieldset className='uk-fieldset uk-margin-top'>
         <legend className='uk-legend'>Social Links</legend>
         <hr />
 
