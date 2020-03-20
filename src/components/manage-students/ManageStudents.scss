@@ -22,6 +22,8 @@
   }
 
   .uk-checkbox {
+    transition: none;
+
     &:checked {
       background-color: $tertiary;
     }
