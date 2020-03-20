@@ -5,7 +5,7 @@ interface ManageStudentsProps {
   courses: ManageStudentsCourse[];
   onManageUser: (id: string) => void;
   onViewUser: (id: string) => void;
-  onDeleteUsers: (ids: string[]) => void;
+  onDeleteUsers: (courseStudents: DeleteCourseUser) => void;
 }
 
 interface ManageStudentsCourse {
@@ -21,6 +21,11 @@ interface ManageStudentUser {
   name: string;
   email: string;
   status: string;
+}
+
+interface DeleteCourseUser {
+  courseID: string;
+  userIDs: string[];
 }
 
 type CourseSelectedStudents = Map<string, Set<string>>;
@@ -113,7 +118,10 @@ const ManageStudents: React.FC<ManageStudentsProps> = (props) => {
           {` | `}
           <a onClick={() => props.onViewUser(student.id)}>View</a>
           {` | `}
-          <a onClick={() => props.onDeleteUsers([student.id])}>Delete</a>
+          <a
+            onClick={() =>
+              props.onDeleteUsers({courseID: activeCourse.id, userIDs: [student.id]})}
+          >Delete</a>
         </td>
       </tr>
     );
@@ -131,7 +139,8 @@ const ManageStudents: React.FC<ManageStudentsProps> = (props) => {
         </ul>
         <button
           className="uk-button uk-margin-medium"
-          onClick={() => props.onDeleteUsers(Array.from(selectedStudents.values()))}
+          onClick={() =>
+            props.onDeleteUsers({courseID: activeCourse.id, userIDs: Array.from(selectedStudents.values())})}
           disabled={selectedStudents.size === 0}
         >
           Delete
