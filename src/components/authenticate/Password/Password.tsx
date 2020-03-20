@@ -69,7 +69,7 @@ const handlePassword = (event: React.ChangeEvent<HTMLInputElement>) => {
   }
 };
 
-function Password(props?: string): JSX.Element {
+function Password(props?: any): JSX.Element {
   return (
     <div id="password-component" className="uk-margin password-requirements uk-margin-remove-top">
       <p className="uk-margin-remove-bottom"><strong>Password Requirements</strong></p>
