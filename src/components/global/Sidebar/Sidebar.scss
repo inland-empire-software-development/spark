@@ -47,6 +47,7 @@ $transitionTime: 0.2s;
   overflow-x: hidden;
   overflow-y: auto;
   background-color: white;
+  z-index: 10;
 
   &.open {
     width: $sidebar-width;

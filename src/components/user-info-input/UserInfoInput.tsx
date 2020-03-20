@@ -4,12 +4,9 @@ import React, {FormEvent} from 'react';
 import './UserInfoInput.scss';
 import {Message} from '../../..';
 import Password from '../authenticate/Password/Password';
-// import {serialize} from 'v8';
 
 const handleUserInformation = (event: FormEvent<HTMLFormElement>) => {
   event.preventDefault(); // prevents form from reloading page (form submission)
-
-  // const formData = serialize
 
   // getting user input from form.
   const firstname: HTMLInputElement | null = document.querySelector(
@@ -192,7 +189,7 @@ function UserInfoInput(): JSX.Element {
               className='uk-input uk-form-large uk-margin-bottom'
               type='password'
               placeholder=''
-              autoComplete='none'
+              autoComplete='new-password'
               name='user-oldpassword'
             ></input>
 
