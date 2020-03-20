@@ -193,7 +193,9 @@ function UserInfoInput(): JSX.Element {
               name='user-oldpassword'
             ></input>
 
-            <Password />
+            <label className='uk-form-label' htmlFor='new password'>
+              <Password />
+            </label>
 
             {/* <label className='uk-form-label' htmlFor='new password'>
               New Password
