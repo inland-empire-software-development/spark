@@ -23,11 +23,15 @@ interface ManageStudentUser {
   status: string;
 }
 
+type CourseSelectedStudents = Map<string, Set<string>>;
 
 const ManageStudents: React.FC<ManageStudentsProps> = (props) => {
   const [activeCourse, setActiveCourse] = React.useState<ManageStudentsCourse>(props.courses[0]);
-  const [selectedStudents, setSelectedStudents] = React.useState<Set<string>>(new Set());
+  const [courseSelectedStudents, setCourseSelectedStudents] =
+    React.useState<CourseSelectedStudents>(new Map());
 
+  // selected student for active course
+  const selectedStudents = courseSelectedStudents.get(activeCourse.id) ?? new Set();
 
   // setting toggle all checkbox to indeterminate if at least one row item is selected
   React.useEffect(() => {
@@ -42,24 +46,28 @@ const ManageStudents: React.FC<ManageStudentsProps> = (props) => {
   const toggleAllSelected = () => {
     if (selectedStudents.size > 0) {
       selectedStudents.clear();
-      setSelectedStudents(new Set(selectedStudents));
+      courseSelectedStudents.set(activeCourse.id, new Set(selectedStudents));
+      setCourseSelectedStudents(new Map(courseSelectedStudents));
     } else {
       // populate selectedStudents Set with all students
       activeCourse.students.forEach((student) => {
         selectedStudents.add(student.id);
       });
 
-      setSelectedStudents(new Set(selectedStudents));
+      courseSelectedStudents.set(activeCourse.id, new Set(selectedStudents));
+      setCourseSelectedStudents(new Map(courseSelectedStudents));
     }
   };
 
   const toggleCurrentSelected = (studentId: string) => {
     if (selectedStudents.has(studentId)) {
       selectedStudents.delete(studentId);
-      setSelectedStudents(new Set(selectedStudents));
+      courseSelectedStudents.set(activeCourse.id, new Set(selectedStudents));
+      setCourseSelectedStudents(new Map(courseSelectedStudents));
     } else {
       selectedStudents.add(studentId);
-      setSelectedStudents(new Set(selectedStudents));
+      courseSelectedStudents.set(activeCourse.id, new Set(selectedStudents));
+      setCourseSelectedStudents(new Map(courseSelectedStudents));
     }
   };
 
