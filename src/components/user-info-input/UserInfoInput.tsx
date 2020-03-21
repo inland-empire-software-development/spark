@@ -42,9 +42,9 @@ const handleUserInformation = (event: FormEvent<HTMLFormElement>) => {
   const oldpassword: HTMLInputElement | null = document.querySelector(
     '[name="user-oldpassword"]'
   );
-  // const password: HTMLInputElement | null = document.querySelector(
-  //   '[name="password-component"]'
-  // );
+  const password: HTMLInputElement | null = document.querySelector(
+    '[name="password-component"]'
+  );
   const facebook: HTMLInputElement | null = document.querySelector(
     '[name="user-fb"]'
   );
@@ -77,7 +77,7 @@ const handleUserInformation = (event: FormEvent<HTMLFormElement>) => {
     phone: phone ? phone.value : null,
     about: about ? about.value : null,
     oldpassword: oldpassword ? oldpassword.value : null,
-    // password: password ? password.value : null,
+    password: password ? password.value : null,
     facebook: facebook ? facebook.value : null,
     twitter: twitter ? twitter.value : null,
     linkedin: linkedin ? linkedin.value : null,
