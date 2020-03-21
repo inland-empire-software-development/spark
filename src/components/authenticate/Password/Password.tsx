@@ -85,7 +85,7 @@ function Password(props?: any): JSX.Element {
       <div className="uk-width-1-1">
         <i className="uk-form-icon fal fa-lock-alt" />
         <input className="uk-input uk-form-large" onChange={(event) => handlePassword(event)}
-          type="password" placeholder="password" name="password-component" autoComplete="current-password" required={true} minLength={10} />
+          type="password" placeholder="password" name="password-component" autoComplete={props.autocomplete || "current-password"} required={true} minLength={10} />
       </div>
 
     </div>

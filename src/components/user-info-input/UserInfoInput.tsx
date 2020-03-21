@@ -3,8 +3,6 @@
 // =======================================================================
 // Bugs
 //  - Cannot submit without updating password
-//  - Saves current password into new passwod field
-//     * Add a autocomplete='new-password' to the imported password object
 // =======================================================================
 import React, {FormEvent} from 'react';
 import './UserInfoInput.scss';
@@ -212,7 +210,7 @@ function UserInfoInput(): JSX.Element {
             ></input>
 
             <label className='uk-form-label' htmlFor='new password'>
-              <Password label='New Password' />
+              <Password label='New Password' autocomplete='new-password'/>
             </label>
 
             {/* <label className='uk-form-label' htmlFor='new password'>
