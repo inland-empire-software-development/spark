@@ -89,6 +89,10 @@ const handleUserInformation = (event: FormEvent<HTMLFormElement>) => {
     });
 };
 
+const handleFileUpload = (selectorFiles: FileList | null) => {
+  console.log(selectorFiles);
+};
+
 function UserInfoInput(): JSX.Element {
   return (
     <form id='user-profile' autoComplete='off' onSubmit={(event) => handleUserInformation(event)}>
@@ -105,7 +109,7 @@ function UserInfoInput(): JSX.Element {
                 uk-img=''
               />
               <div className='uk-width-expand uk-child-width-expand uk-form-custom'>
-                <input type='file' />
+                <input type='file' name='file' onChange={(event) => handleFileUpload(event.target.files)} />
                 <button className='uk-button uiif-button'>Browse</button>
               </div>
             </div>
@@ -194,7 +198,7 @@ function UserInfoInput(): JSX.Element {
             ></input>
 
             <label className='uk-form-label' htmlFor='new password'>
-              <Password label='New Password'/>
+              <Password label='New Password' />
             </label>
 
             {/* <label className='uk-form-label' htmlFor='new password'>
