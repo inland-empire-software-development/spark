@@ -13,6 +13,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   res.setHeader('Content-Type', 'json/javascript');
 
   const {
+    profilepic,
     firstname,
     lastname,
     title,
@@ -29,7 +30,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   // example message - whatever you want to return, use this format.
   const david = {
     status: false,
-    message: `\nName: ${firstname} ${lastname} \nTitle: ${title} \nPhone: ${phone} \nAbout: ${about} \nOldPassword: ${oldpassword} \nPassword: ${password} \nfacebook: ${facebook} \nTwitter: ${twitter} \nLinkedIn: ${linkedin} \nInstagram: ${instagram}\n`
+    message: `\nPic: ${profilepic} \nName: ${firstname} ${lastname} \nTitle: ${title} \nPhone: ${phone} \nAbout: ${about} \nOldPassword: ${oldpassword} \nPassword: ${password} \nfacebook: ${facebook} \nTwitter: ${twitter} \nLinkedIn: ${linkedin} \nInstagram: ${instagram}\n`
   } as Message;
 
   // showing return example

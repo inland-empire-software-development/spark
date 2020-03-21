@@ -1,5 +1,11 @@
 /* eslint-disable indent */
 /* eslint-disable comma-dangle */
+// =======================================================================
+// Bugs
+//  - Cannot submit without updating password
+//  - Saves current password into new passwod field
+//     * Add a autocomplete='new-password' to the imported password object
+// =======================================================================
 import React, {FormEvent} from 'react';
 import './UserInfoInput.scss';
 import {Message} from '../../..';
@@ -8,7 +14,18 @@ import Password from '../authenticate/Password/Password';
 const handleUserInformation = (event: FormEvent<HTMLFormElement>) => {
   event.preventDefault(); // prevents form from reloading page (form submission)
 
+  // const handleFileUpload = (selectorFiles: FileList | null) => {
+  //   if (selectorFiles) {
+  //     console.log(selectorFiles[0]);
+  //   }
+  // };
+  //  onChange={(event) => handleFileUpload(event.target.files)}
+
   // getting user input from form.
+  const profilepic: HTMLInputElement | null = document.querySelector(
+    '[name="user-pic"]'
+  );
+  console.log('awaewaweewa: ', profilepic);
   const firstname: HTMLInputElement | null = document.querySelector(
     '[name="user-firstname"]'
   );
@@ -27,9 +44,9 @@ const handleUserInformation = (event: FormEvent<HTMLFormElement>) => {
   const oldpassword: HTMLInputElement | null = document.querySelector(
     '[name="user-oldpassword"]'
   );
-  const password: HTMLInputElement | null = document.querySelector(
-    '[name="password-component"]'
-  );
+  // const password: HTMLInputElement | null = document.querySelector(
+  //   '[name="password-component"]'
+  // );
   const facebook: HTMLInputElement | null = document.querySelector(
     '[name="user-fb"]'
   );
@@ -55,13 +72,14 @@ const handleUserInformation = (event: FormEvent<HTMLFormElement>) => {
 
   // all data you want to pass over to API, name it appropriately
   const data = {
+    // profilepic: profilepic ? profilepic : null,
     firstname: firstname ? firstname.value : null,
     lastname: lastname ? lastname.value : null,
     title: title ? title.value : null,
     phone: phone ? phone.value : null,
     about: about ? about.value : null,
     oldpassword: oldpassword ? oldpassword.value : null,
-    password: password ? password.value : null,
+    // password: password ? password.value : null,
     facebook: facebook ? facebook.value : null,
     twitter: twitter ? twitter.value : null,
     linkedin: linkedin ? linkedin.value : null,
@@ -89,10 +107,6 @@ const handleUserInformation = (event: FormEvent<HTMLFormElement>) => {
     });
 };
 
-const handleFileUpload = (selectorFiles: FileList | null) => {
-  console.log(selectorFiles);
-};
-
 function UserInfoInput(): JSX.Element {
   return (
     <form id='user-profile' autoComplete='off' onSubmit={(event) => handleUserInformation(event)}>
@@ -109,7 +123,7 @@ function UserInfoInput(): JSX.Element {
                 uk-img=''
               />
               <div className='uk-width-expand uk-child-width-expand uk-form-custom'>
-                <input type='file' name='file' onChange={(event) => handleFileUpload(event.target.files)} />
+                <input type='file' name='user-pic' />
                 <button className='uk-button uiif-button'>Browse</button>
               </div>
             </div>
