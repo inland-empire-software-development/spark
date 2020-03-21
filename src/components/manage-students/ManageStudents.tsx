@@ -5,7 +5,7 @@ interface ManageStudentsProps {
   courses: ManageStudentsCourse[];
   onManageUser: (id: string) => void;
   onViewUser: (id: string) => void;
-  onDeleteUsers: (courseStudents: DeleteCourseUser) => void;
+  onDeleteUsers: (ids: string[]) => void;
 }
 
 interface ManageStudentsCourse {
@@ -17,26 +17,17 @@ interface ManageStudentsCourse {
 
 interface ManageStudentUser {
   id: string;
-  imageUri: string;
-  name: string;
+  avatar_url: string;
+  first_name: string;
+  last_name: string;
   email: string;
   status: string;
 }
 
-interface DeleteCourseUser {
-  courseID: string;
-  userIDs: string[];
-}
-
-type CourseSelectedStudents = Map<string, Set<string>>;
-
 const ManageStudents: React.FC<ManageStudentsProps> = (props) => {
   const [activeCourse, setActiveCourse] = React.useState<ManageStudentsCourse>(props.courses[0]);
-  const [courseSelectedStudents, setCourseSelectedStudents] =
-    React.useState<CourseSelectedStudents>(new Map());
+  const [selectedStudents, setSelectedStudents] = React.useState<Set<string>>(new Set());
 
-  // selected student for active course
-  const selectedStudents = courseSelectedStudents.get(activeCourse.id) ?? new Set();
 
   // setting toggle all checkbox to indeterminate if at least one row item is selected
   React.useEffect(() => {
@@ -51,28 +42,24 @@ const ManageStudents: React.FC<ManageStudentsProps> = (props) => {
   const toggleAllSelected = () => {
     if (selectedStudents.size > 0) {
       selectedStudents.clear();
-      courseSelectedStudents.set(activeCourse.id, new Set(selectedStudents));
-      setCourseSelectedStudents(new Map(courseSelectedStudents));
+      setSelectedStudents(new Set(selectedStudents));
     } else {
       // populate selectedStudents Set with all students
       activeCourse.students.forEach((student) => {
         selectedStudents.add(student.id);
       });
 
-      courseSelectedStudents.set(activeCourse.id, new Set(selectedStudents));
-      setCourseSelectedStudents(new Map(courseSelectedStudents));
+      setSelectedStudents(new Set(selectedStudents));
     }
   };
 
   const toggleCurrentSelected = (studentId: string) => {
     if (selectedStudents.has(studentId)) {
       selectedStudents.delete(studentId);
-      courseSelectedStudents.set(activeCourse.id, new Set(selectedStudents));
-      setCourseSelectedStudents(new Map(courseSelectedStudents));
+      setSelectedStudents(new Set(selectedStudents));
     } else {
       selectedStudents.add(studentId);
-      courseSelectedStudents.set(activeCourse.id, new Set(selectedStudents));
-      setCourseSelectedStudents(new Map(courseSelectedStudents));
+      setSelectedStudents(new Set(selectedStudents));
     }
   };
 
@@ -105,12 +92,12 @@ const ManageStudents: React.FC<ManageStudentsProps> = (props) => {
         <td>
           <div className="student-photo">
             <img
-              src={student.imageUri}
+              src={student.avatar_url}
               alt="User Image"
               data-uk-img/>
           </div>
         </td>
-        <td>{student.name}</td>
+        <td className="uk-text-capitalize">{(student.first_name + " " + student.last_name)}</td>
         <td>{student.email}</td>
         <td>{student.status}</td>
         <td>
@@ -118,10 +105,7 @@ const ManageStudents: React.FC<ManageStudentsProps> = (props) => {
           {` | `}
           <a onClick={() => props.onViewUser(student.id)}>View</a>
           {` | `}
-          <a
-            onClick={() =>
-              props.onDeleteUsers({courseID: activeCourse.id, userIDs: [student.id]})}
-          >Delete</a>
+          <a onClick={() => props.onDeleteUsers([student.id])}>Delete</a>
         </td>
       </tr>
     );
@@ -139,13 +123,11 @@ const ManageStudents: React.FC<ManageStudentsProps> = (props) => {
         </ul>
         <button
           className="uk-button uk-margin-medium"
-          onClick={() =>
-            props.onDeleteUsers({courseID: activeCourse.id, userIDs: Array.from(selectedStudents.values())})}
+          onClick={() => props.onDeleteUsers(Array.from(selectedStudents.values()))}
           disabled={selectedStudents.size === 0}
         >
           Delete
         </button>
-
 
         <div className="uk-overflow-auto">
           <table className="uk-table uk-table-divider">
@@ -160,7 +142,7 @@ const ManageStudents: React.FC<ManageStudentsProps> = (props) => {
                     onChange={() => toggleAllSelected()}
                   />
                 </th>
-                <th className="uk-table-shrink">IMAGE</th>
+                <th className="uk-table-shrink"></th>
                 <th className="uk-table-expand">NAME</th>
                 <th className="uk-table-expand">EMAIL</th>
                 <th className="uk-table-expand">STATUS</th>

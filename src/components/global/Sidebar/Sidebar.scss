@@ -10,12 +10,12 @@ $transitionTime: 0.2s;
 
   &.open {
     left: -100%;
-    min-width: 235px;
+    min-width: 220px;
   }
 }
 
 #dashboard-sidebar {
-  width: 235px;
+  width: 220px;
   z-index: 9;
   right: unset;
 }
@@ -54,7 +54,6 @@ $transitionTime: 0.2s;
 
   .scroll-content {
     height: 100%;
-    width: $sidebar-width - 16;
     overflow: visible;
     box-sizing: content-box;
     border-right: 1px solid #e8e8e8;

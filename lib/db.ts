@@ -2,6 +2,7 @@
 /* eslint-disable @typescript-eslint/camelcase */
 import {Message, ArrayIndexedWithStrings, DBUpdateUser} from "..";
 import fetch from "isomorphic-unfetch";
+import {fsyncSync} from "fs";
 
 const escape = require('sql-string-escape');
 const bcrypt = require('bcryptjs');
@@ -13,6 +14,7 @@ const db = mysql.createConnection({
   password: process.env.DBPASSWORD,
   database: process.env.DBNAME,
   pool: {min: 0, max: 7},
+  multipleStatements: true,
 });
 
 /**
@@ -261,6 +263,71 @@ db.createTable = function(tableName: string, query: any) {
         return false;
       }
     });
+  });
+};
+
+// Instructor methods
+db.getAllCoursesByInstructor = function(user: number): Promise<object> {
+  return new Promise((resolve, reject) => {
+    // select all courses where current user is the instructor
+    const data: any = {
+    };
+
+    db.query(`SELECT course_id, code, students_enrolled, name FROM ${process.env.DBNAME}.course WHERE instructor = ${escape(user)} AND status = '1'`,
+        function(error: { sqlMessage: any }, results: []) {
+          if (error) reject(error.sqlMessage ? error.sqlMessage : error);
+          // const ids = results.map((course: any) => String('"' + course.course_id + '"')).join(",");
+          data.courses = results;
+          data.users = {};
+          data.userList = results.length !== 0 ? results
+              .map((course: any) => course.students_enrolled
+                  .split(",")
+                  .map((course: any) => '"' + course + '"') )
+              .join(",") : undefined;
+          // .map((course: any) => '"' + course + '"');
+
+          if (data.userList) {
+            db.query(`SELECT * FROM ${process.env.DBNAME}.user_meta WHERE user_id IN (${data.userList}); SELECT email, id, role FROM ${process.env.DBNAME}.user WHERE id IN (${data.userList});`,
+                function(error: { sqlMessage: any }, results: any) {
+                  if (error) reject(error.sqlMessage ? error.sqlMessage : error);
+
+                  // compile data in an object for consumption
+                  results[0].map((e: any) => {
+                    // if user does not exist in our object, create it.
+                    if (data.users[e.user_id] === undefined) {
+                      data.users[e.user_id] = {};
+                    }
+
+                    // if user exists and does not have this property, create it.
+                    if (data.users[e.user_id][e.meta_key] === undefined) {
+                      data.users[e.user_id][e.meta_key] = e.meta_value;
+                    }
+                  });
+
+                  // add email to existing users in user object.
+                  results[1].map((e: any) => {
+                    // if user does not exist in user object, create it.
+                    if (data.users[e.id] === undefined) {
+                      data.users[e.id] = {};
+                    }
+
+                    // if user does not have an email
+                    if (data.users[e.id]['email'] === undefined) {
+                      // add email to this user in object
+                      data.users[e.id]['email'] = e.email;
+                    }
+
+                    // if user does not have a role.
+                    if (data.users[e.id]['role'] === undefined) {
+                      // add role to this user in object.
+                      data.users[e.id]['role'] = e.role;
+                    }
+                  });
+
+                  resolve(results.length !== 0 ? {data} : undefined);
+                });
+          }
+        });
   });
 };
 
