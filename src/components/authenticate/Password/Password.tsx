@@ -70,12 +70,6 @@ const handlePassword = (event: React.ChangeEvent<HTMLInputElement>) => {
 };
 
 function Password(props?: any): JSX.Element {
-  // Temp - password required
-  let required = true;
-  if (props.required !== null) {
-    required = false;
-  }
-
   return (
     <div id="password-component" className="uk-margin password-requirements uk-margin-remove-top">
       <p className="uk-margin-remove-bottom"><strong>Password Requirements</strong></p>
@@ -91,7 +85,7 @@ function Password(props?: any): JSX.Element {
       <div className="uk-width-1-1">
         <i className="uk-form-icon fal fa-lock-alt" />
         <input className="uk-input uk-form-large" onChange={(event) => handlePassword(event)}
-          type="password" placeholder="password" name="password-component" autoComplete={props.autocomplete || "current-password"} required={required} minLength={10} />
+          type="password" placeholder="password" name="password-component" autoComplete={props.autocomplete || "current-password"} required={typeof props.required !== 'undefined' ? props.required : true} minLength={10} />
       </div>
 
     </div>
