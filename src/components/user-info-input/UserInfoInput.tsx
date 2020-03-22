@@ -2,8 +2,9 @@
 /* eslint-disable comma-dangle */
 // =======================================================================
 // Bugs
-//  - Cannot submit without updating password
+//  - Password validation stays even after password is deleted
 // =======================================================================
+
 import React, {FormEvent} from 'react';
 import './UserInfoInput.scss';
 import {Message} from '../../..';
@@ -210,7 +211,7 @@ function UserInfoInput(): JSX.Element {
             ></input>
 
             <label className='uk-form-label' htmlFor='new password'>
-              <Password label='New Password' autocomplete='new-password'/>
+              <Password label='New Password' autocomplete='new-password' required={false}/>
             </label>
 
             {/* <label className='uk-form-label' htmlFor='new password'>
