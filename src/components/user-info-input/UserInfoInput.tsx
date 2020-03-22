@@ -1,8 +1,8 @@
 /* eslint-disable indent */
 /* eslint-disable comma-dangle */
 // =======================================================================
-// Bugs
-//  - Password validation stays even after password is deleted
+// Known Issues
+//  - New password validation stays after password is deleted
 // =======================================================================
 
 import React, {FormEvent} from 'react';
@@ -31,7 +31,7 @@ const handleUserInformation = (event: FormEvent<HTMLFormElement>) => {
   const lastname: HTMLInputElement | null = document.querySelector(
     '[name="user-lastname"]'
   );
-  const title: HTMLInputElement | null = document.querySelector(
+  const title: HTMLSelectElement | null = document.querySelector(
     '[name="user-title"]'
   );
   const phone: HTMLInputElement | null = document.querySelector(
@@ -157,12 +157,11 @@ function UserInfoInput(): JSX.Element {
               <label className='uk-form-label' htmlFor='title'>
                 Title
               </label>
-              <input
-                className='uk-input'
-                type='text'
-                placeholder='Student'
-                name='user-title'
-              ></input>
+              <select className='uk-select' name='user-title'>
+                <option>Student</option>
+                <option>Instructor</option>
+                <option>Teaching Assistant</option>
+              </select>
             </div>
 
             <div className='uk-margin-bottom'>
@@ -211,7 +210,7 @@ function UserInfoInput(): JSX.Element {
             ></input>
 
             <label className='uk-form-label' htmlFor='new password'>
-              <Password label='New Password' autocomplete='new-password' required={false}/>
+              <Password label='New Password' autocomplete='new-password' required={false} />
             </label>
 
             {/* <label className='uk-form-label' htmlFor='new password'>
