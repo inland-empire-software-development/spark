@@ -5,108 +5,113 @@
 //  - New password validation stays after password is deleted
 // =======================================================================
 
-import React, {FormEvent} from 'react';
+import React, {useContext, FormEvent} from 'react';
 import './UserInfoInput.scss';
 import {Message} from '../../..';
 import Password from '../authenticate/Password/Password';
+import {Context} from '../../../src/context';
 
-const handleUserInformation = (event: FormEvent<HTMLFormElement>) => {
-  event.preventDefault(); // prevents form from reloading page (form submission)
+const UserInfoInput = () => {
+  const {user, userID} = useContext(Context);
 
-  // const handleFileUpload = (selectorFiles: FileList | null) => {
-  //   if (selectorFiles) {
-  //     console.log(selectorFiles[0]);
-  //   }
-  // };
-  //  onChange={(event) => handleFileUpload(event.target.files)}
+  const handleUserInformation = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault(); // prevents form from reloading page (form submission)
 
-  // getting user input from form.
-  const profilepic: HTMLInputElement | null = document.querySelector(
-    '[name="user-pic"]'
-  );
-  console.log('awaewaweewa: ', profilepic);
-  const firstname: HTMLInputElement | null = document.querySelector(
-    '[name="user-firstname"]'
-  );
-  const lastname: HTMLInputElement | null = document.querySelector(
-    '[name="user-lastname"]'
-  );
-  const title: HTMLSelectElement | null = document.querySelector(
-    '[name="user-title"]'
-  );
-  const phone: HTMLInputElement | null = document.querySelector(
-    '[name="user-phone"]'
-  );
-  const about: HTMLInputElement | null = document.querySelector(
-    '[name="user-about"]'
-  );
-  const oldpassword: HTMLInputElement | null = document.querySelector(
-    '[name="user-oldpassword"]'
-  );
-  const password: HTMLInputElement | null = document.querySelector(
-    '[name="password-component"]'
-  );
-  const facebook: HTMLInputElement | null = document.querySelector(
-    '[name="user-fb"]'
-  );
-  const twitter: HTMLInputElement | null = document.querySelector(
-    '[name="user-twitter"]'
-  );
-  const linkedin: HTMLInputElement | null = document.querySelector(
-    '[name="user-linkedin"]'
-  );
-  const instagram: HTMLInputElement | null = document.querySelector(
-    '[name="user-instagram"]'
-  );
+    // const handleFileUpload = (selectorFiles: FileList | null) => {
+    //   if (selectorFiles) {
+    //     console.log(selectorFiles[0]);
+    //   }
+    // };
+    //  onChange={(event) => handleFileUpload(event.target.files)}
 
-  // this gets the global spinner.
-  const spinner: HTMLElement | null = document.getElementById('spinner');
+    // getting user input from form.
+    const profilepic: HTMLInputElement | null = document.querySelector(
+      '[name="user-pic"]'
+    );
+    console.log('Profile Picture: ', profilepic);
+    const firstname: HTMLInputElement | null = document.querySelector(
+      '[name="user-firstname"]'
+    );
+    const lastname: HTMLInputElement | null = document.querySelector(
+      '[name="user-lastname"]'
+    );
+    const title: HTMLSelectElement | null = document.querySelector(
+      '[name="user-title"]'
+    );
+    const phone: HTMLInputElement | null = document.querySelector(
+      '[name="user-phone"]'
+    );
+    const about: HTMLInputElement | null = document.querySelector(
+      '[name="user-about"]'
+    );
+    const oldpassword: HTMLInputElement | null = document.querySelector(
+      '[name="user-oldpassword"]'
+    );
+    const password: HTMLInputElement | null = document.querySelector(
+      '[name="password-component"]'
+    );
+    const facebook: HTMLInputElement | null = document.querySelector(
+      '[name="user-fb"]'
+    );
+    const twitter: HTMLInputElement | null = document.querySelector(
+      '[name="user-twitter"]'
+    );
+    const linkedin: HTMLInputElement | null = document.querySelector(
+      '[name="user-linkedin"]'
+    );
+    const instagram: HTMLInputElement | null = document.querySelector(
+      '[name="user-instagram"]'
+    );
 
-  // show spinner while working
-  if (spinner) spinner.classList.remove('uk-hidden');
+    // this gets the global spinner.
+    const spinner: HTMLElement | null = document.getElementById('spinner');
 
-  // example API route that will handle signing in
-  // Call api/user/personal
-  const url = 'api/user/personal';
+    // show spinner while working
+    if (spinner) spinner.classList.remove('uk-hidden');
 
-  // all data you want to pass over to API, name it appropriately
-  const data = {
-    // profilepic: profilepic ? profilepic : null,
-    firstname: firstname ? firstname.value : null,
-    lastname: lastname ? lastname.value : null,
-    title: title ? title.value : null,
-    phone: phone ? phone.value : null,
-    about: about ? about.value : null,
-    oldpassword: oldpassword ? oldpassword.value : null,
-    password: password ? password.value : null,
-    facebook: facebook ? facebook.value : null,
-    twitter: twitter ? twitter.value : null,
-    linkedin: linkedin ? linkedin.value : null,
-    instagram: instagram ? instagram.value : null
+    // example API route that will handle signing in
+    // Call api/user/personal
+    const url = 'api/user/personal';
+
+    // all data you want to pass over to API, name it appropriately
+    const data = {
+      // profilepic: profilepic ? profilepic : null,
+      firstname: firstname ? firstname.value : null,
+      lastname: lastname ? lastname.value : null,
+      title: title ? title.value : null,
+      phone: phone ? phone.value : null,
+      about: about ? about.value : null,
+      oldpassword: oldpassword ? oldpassword.value : null,
+      password: password ? password.value : null,
+      facebook: facebook ? facebook.value : null,
+      twitter: twitter ? twitter.value : null,
+      linkedin: linkedin ? linkedin.value : null,
+      instagram: instagram ? instagram.value : null,
+      user: user,
+      userID: userID
+    };
+
+    fetch(process.env.HOST + url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    })
+      .then((response: { json: () => any }) => response.json())
+      .then((response: Message) => {
+        const {status, message} = response;
+
+        console.log(status, '\n', message); // log to console to see what it prints.
+
+        // if spinner is showing and you're done with saving stuff
+        // now hide the spinner
+        if (spinner) spinner.classList.add('uk-hidden');
+
+        // do whatever else you need to do
+      });
   };
 
-  fetch(process.env.HOST + url, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(data)
-  })
-    .then((response: { json: () => any }) => response.json())
-    .then((response: Message) => {
-      const {status, message} = response;
-
-      console.log(status, '\n', message); // log to console to see what it prints.
-
-      // if spinner is showing and you're done with saving stuff
-      // now hide the spinner
-      if (spinner) spinner.classList.add('uk-hidden');
-
-      // do whatever else you need to do
-    });
-};
-
-function UserInfoInput(): JSX.Element {
   return (
     <form id='user-profile' autoComplete='off' onSubmit={(event) => handleUserInformation(event)}>
       <div className='uk-fieldset'>
@@ -281,6 +286,6 @@ function UserInfoInput(): JSX.Element {
       </button>
     </form>
   );
-}
+};
 
 export default UserInfoInput;
