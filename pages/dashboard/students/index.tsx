@@ -55,6 +55,10 @@ const Students = () => {
     router.push(`users/${id}`);
   };
 
+  const handleRemoveStudentsFromCourse = (courseID: string, userIDs: string[]) => {
+    console.log(courseID, userIDs);
+  };
+
   return (
     <DashboardLayout>
       {courses.length !== 0 && (
@@ -62,7 +66,7 @@ const Students = () => {
           courses={courses}
           onManageUser={(id) => handleManageUser(id)}
           onViewUser={(id) => handleViewUser(id)}
-          onRemoveUsersFromCourse={({courseID, userIDs}) => console.log(`onRemoveUsersFromCourse(${courseID}, ${userIDs})`)}
+          onRemoveUsersFromCourse={({courseID, userIDs}) => handleRemoveStudentsFromCourse(courseID, userIDs)}
         />
       )}
     </DashboardLayout>
