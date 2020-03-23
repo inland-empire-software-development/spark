@@ -1,5 +1,10 @@
 /* eslint-disable indent */
 /* eslint-disable comma-dangle */
+// =======================================================================
+// Known Issues
+//  - ***Password not secured
+// =======================================================================
+
 import db from '../../../lib/db';
 import {Message} from '../../..';
 import {NextApiResponse, NextApiRequest} from 'next';
