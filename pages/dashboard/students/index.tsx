@@ -1,9 +1,11 @@
 import React, {useContext, useEffect, useState} from "react";
+import {useRouter} from "next/router";
 import {Context} from '../../../src/context';
 import DashboardLayout from "../../../src/components/layouts/DashboardLayout";
 import ManageStudents, {ManageStudentsCourse} from "../../../src/components/manage-students/ManageStudents";
 
-
+// mapDataToCourseProps is a utility function to add types to fetched data
+// we could do this in api/user/students, but parts should be independent
 const mapDataToCourseProps = (data: any): ManageStudentsCourse[] => {
   return data.map((course: any) => ({
     id: course.id,
@@ -23,6 +25,7 @@ const mapDataToCourseProps = (data: any): ManageStudentsCourse[] => {
 const Students = () => {
   const {user, userID} = useContext(Context);
   const [courses, setCourses] = useState<ManageStudentsCourse[]>([]);
+  const router = useRouter();
 
   useEffect(() => {
     fetch(process.env.HOST + "api/user/students", {
@@ -42,13 +45,23 @@ const Students = () => {
         });
   }, []);
 
+  const handleManageUser = (id: string) => {
+    console.log(`Go to manage user page for user with id: ${id}`);
+    router.push(`students/${id}`);
+  };
+
+  const handleViewUser = (id: string) => {
+    console.log(`Go to user page for user with id: ${id}`);
+    router.push(`users/${id}`);
+  };
+
   return (
     <DashboardLayout>
       {courses.length !== 0 && (
         <ManageStudents
           courses={courses}
-          onManageUser={(id) => console.log(`onManageUser(${id})`)}
-          onViewUser={(id) => console.log(`onViewUser(${id})`)}
+          onManageUser={(id) => handleManageUser(id)}
+          onViewUser={(id) => handleViewUser(id)}
           onRemoveUsersFromCourse={({courseID, userIDs}) => console.log(`onRemoveUsersFromCourse(${courseID}, ${userIDs})`)}
         />
       )}
