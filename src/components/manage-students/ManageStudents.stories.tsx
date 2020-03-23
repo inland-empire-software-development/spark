@@ -111,7 +111,7 @@ const coursesData = [
 const actionsData = {
   onManageUser: action('onManageUser'),
   onViewUser: action('onViewUser'),
-  onDeleteUsers: action('onDeleteUsers'),
+  onRemoveUsersFromCourse: action('onDeleteUsers'),
 };
 
 export const DefaultManageStudents = () => (
