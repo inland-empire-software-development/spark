@@ -8,7 +8,7 @@ interface ManageStudentsProps {
   onRemoveUsersFromCourse: (courseStudents: DeleteCourseUser) => void;
 }
 
-interface ManageStudentsCourse {
+export interface ManageStudentsCourse {
   id: string;
   code: string;
   name: string;

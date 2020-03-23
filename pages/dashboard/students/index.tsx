@@ -1,20 +1,28 @@
 import React, {useContext, useEffect, useState} from "react";
 import {Context} from '../../../src/context';
 import DashboardLayout from "../../../src/components/layouts/DashboardLayout";
-import ManageStudents from "../../../src/components/manage-students/ManageStudents";
+import ManageStudents, {ManageStudentsCourse} from "../../../src/components/manage-students/ManageStudents";
 
 
-// const fetch = require('node-fetch');
-
-const actionsData = {
-  onManageUser: () => console.log('manage user'),
-  onViewUser: () => console.log('view user'),
-  onDeleteUsers: () => console.log('delete user'),
+const mapDataToCourseProps = (data: any): ManageStudentsCourse[] => {
+  return data.map((course: any) => ({
+    id: course.id,
+    code: course.code,
+    name: course.name,
+    students: course.students.map((student: any) => ({
+      id: student.id,
+      avatarUrl: student.avatar_url,
+      firstName: student.first_name,
+      lastName: student.last_name,
+      email: student.email,
+      status: student.status,
+    })),
+  }));
 };
 
 const Students = () => {
   const {user, userID} = useContext(Context);
-  const [course, setCourse] = useState([]);
+  const [courses, setCourses] = useState<ManageStudentsCourse[]>([]);
 
   useEffect(() => {
     fetch(process.env.HOST + "api/user/students", {
@@ -29,20 +37,25 @@ const Students = () => {
     })
         .then((res) => res.json())
         .then((data) => {
-          setCourse(data);
+          const courses = mapDataToCourseProps(data);
+          setCourses(courses);
         });
   }, []);
 
   return (
     <DashboardLayout>
-      {course.length !== 0 && (
+      {courses.length !== 0 && (
         <ManageStudents
-          courses={course}
-          {...actionsData}
+          courses={courses}
+          onManageUser={(id) => console.log(`onManageUser(${id})`)}
+          onViewUser={(id) => console.log(`onViewUser(${id})`)}
+          onRemoveUsersFromCourse={({courseID, userIDs}) => console.log(`onRemoveUsersFromCourse(${courseID}, ${userIDs})`)}
         />
       )}
     </DashboardLayout>
   );
 };
 
+
 export default Students;
+
