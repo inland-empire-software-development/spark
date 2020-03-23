@@ -11,52 +11,51 @@ function Landing(): JSX.Element {
             </div>
             {/* course info */}
             <div className="uk-container course-info">
-                <div className="uk-margin-auto uk-width-2-3@s uk-card uk-card-default uk-card-body">
+                <div className="uk-margin-auto uk-width-2-3@s uk-card uk-card-default uk-card-body course-info-description">
                     <div className="uk-child-width-expand@l" uk-grid="true">
-                        <div className="uk-grid-match uk-child-width-1-4@s uk-height-small" uk-grid="true">
-                            <section className="uk-align-center uk-margin-remove">
-                                <h4>15th</h4>
-                                <h5>april</h5>
-                                <p>Start date for next cohort.</p>
+                        <div className="uk-grid-match uk-child-width-1-4@s uk-height-small course-info-section" uk-grid="true">
+                            <section className="uk-align-center uk-margin-remove course-info-section-1">
+                                <h4 className="Heavy primary course-info-top">15th</h4>
+                                <h5 className="Medium black course-info-mid">april</h5>
+                                <p className="Light black course-info-bottom">Start date for next cohort.</p>
                             </section>
-                            <section className="uk-align-center uk-margin-remove">
-                                <h4>10</h4>
-                                <h5>weeks</h5>
-                                <p>Every Saturday. 12:00 PM - 3:00 PM</p>
+                            <section className="uk-align-center uk-margin-remove course-info-section-2">
+                                <h4 className="Heavy primary course-info-top">10</h4>
+                                <h5 className="Medium black course-info-mid">weeks</h5>
+                                <p className="Light black course-info-bottom">Every Saturday. 12:00 PM - 3:00 PM</p>
                             </section>
-                            <section className="uk-align-center uk-margin-remove">
-                                <h4>15</h4>
-                                <h5>seats</h5>
-                                <p>Limited number of seats</p>
+                            <section className="uk-align-center uk-margin-remove course-info-section-3">
+                                <h4 className="Heavy primary course-info-top">15</h4>
+                                <h5 className="Medium black course-info-mid">seats</h5>
+                                <p className="Light black course-info-bottom">Limited number of seats</p>
                             </section>
-                            <section className="uk-align-center uk-margin-remove">
-                                <h4>100%</h4>
-                                <h5>scholarships</h5>
-                                <p>Apply for a full scholoarship.</p>
+                            <section className="uk-align-center uk-margin-remove bg-primary course-info-section-4">
+                                <h4 className="Heavy white course-info-top">100%</h4>
+                                <h5 className="Medium black course-info-mid">scholarships</h5>
+                                <p className="Light white course-info-bottom">Apply for a full scholoarship.</p>
                             </section>
                         </div>
                     </div>
                 </div>
-                <hr />
                 {/* course program */}
-                <div className="contianer">
-                    <div className="uk-margin-auto uk-margin-auto-vertical uk-width-2-3@s uk-card uk-card-default uk-card-body">
-                        <div className="uk-grid-divider uk-width-expand@l" uk-grid="true">
+                <div className="uk-container course-program light-gray">
+                    <div className="uk-margin-auto uk-width-2-3@s uk-card uk-card-default uk-card-body course-program-description">
+                        <div className="uk-child-width-expand@l" uk-grid="true">
+                            {/* course program description */}
                             <div className="uk-grid-match uk-child-width-1-4@s uk-height-small" uk-grid="true">
-                                {/* course program details */}
-                                <section className="uk-align-center uk-margin-remove uk-text-center">
-                                    <h4>Course Program</h4>
-                                    <p>Learn more about the details of our upcoming programs. </p>
+                                <section className="uk-align-center uk-margin-remove course-program-section-1">
+                                    <h4 className="black course-program-header">Course Program</h4>
+                                    <p className="Book black course-program-header-detail">Learn more about the details of our upcoming programs. </p>
                                 </section>
-                                <section className="uk-align-center uk-margin-remove uk-text-center">
-                                    <h4>24th</h4>
-                                    <h5>June</h5>
-                                    <p>Every Saturday. 12:00 PM - 3:00 PM</p>
+                                <section className="uk-align-center uk-margin-remove course-program-section-2">
+                                    <h4 className="Heavy primary course-program-date-header">24th</h4>
+                                    <h5 className="Book course-program-date">June</h5>
+                                    <p className="Light black course-program-time">Every Saturday. 12:00 PM - 3:00 PM</p>
                                 </section>
-                                <section className="uk-align-center uk-margin-remove uk-text-center">
-                                    {/* Map through lists */}
-                                    React Fundamentals:
-                                    <ul>
+                                {/* Need uk-grid-divider  */}
+                                <section className="uk-align-center uk-margin-remove  uk-child-width-expand@l course-program-section-3">
+                                    <h4 className="Medium black course-program-detail">React Fundamentals:</h4>
+                                    <ul className="Light black course-program-detail-list">
                                         <li>
                                             Basics of React
                                         </li>
@@ -67,12 +66,12 @@ function Landing(): JSX.Element {
                                             Creating websites with the library
                                         </li>
                                     </ul>
-                                    {/* Pagination?? */}
                                 </section>
                             </div>
                         </div>
                     </div>
                 </div>
+
             </div>
             {/* Student quote || or none?? */}
             <div className="uk-container">

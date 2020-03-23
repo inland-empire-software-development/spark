@@ -1,5 +1,113 @@
-@import "../../style/variables.scss";
+@import "../../style/pages";
 
+// Course-Info
 .course-info {
   background-color: lightgrey;
 }
+.course-info-top {
+  font-size: 36px;
+  font-weight: 500;
+  margin: 0;
+}
+.course-info-mid {
+  font-size: 22px;
+  margin: 0;
+  overflow: hidden;
+}
+.course-info-bottom {
+  font-size: 10px;
+  margin: 0;
+  padding-top: 10px;
+}
+.course-info-section-1,
+.course-info-section-2,
+.course-info-section-3,
+.course-info-section-4 {
+  padding: 20px 20px 0 20px;
+}
+.course-info-description {
+  padding: 0px 0px 0px 40px;
+}
+// Course-Program
+.course-program-description {
+  margin-top: 20px;
+  padding: 0px 10px 0px 0px;
+}
+.course-program-section-1,
+.course-program-section-2,
+.course-program-section-3 {
+  padding: 20px 0px 20px 40px;
+  // margin-bottom: 10px;
+}
+.course-program-section-1 {
+  background-color: lightgray;
+  flex-grow: .5;
+}
+.course-program-section-2 {
+  padding-left: 20px;
+  padding-right: 0px;
+  flex-grow: -0.2;
+}
+.course-program-section-3 {
+  padding-top: 0;
+}
+.course-program-header {
+  font-size: 26px;
+  font-weight: 500;
+  margin: 0px;
+  padding-top: 5px;
+}
+.course-program-header-detail {
+  font-size: 14px;
+  font-weight: 400;
+  margin: 10px 0 0 0;
+  padding: 0 10px 0 0px;
+}
+.course-program-date-header {
+  font-size: 38px;
+  font-weight: 500;
+  margin: 0;
+}
+.course-program-date {
+  font-size: 34px;
+  margin: 0 0 20px 0;
+  line-height: .7;
+}
+.course-program-time {
+  font-size: 10px;
+}
+.course-program-section-3 {
+  padding: 20px 0 0 0px;
+  margin: 0; 
+}
+.course-program-detail {
+  font-size: 26px;
+  font-weight: 400;
+  margin: 0 0 5px 0;
+  padding: 10px 10px 0 10px;
+  flex-grow: 6;
+}
+.course-program-detail-list {
+  font-size: 10px;
+  padding-left: 0px;
+  margin: 0 0 10px 10px;
+}
+.course-program-detail-list > li {
+  margin-bottom: 2px;
+}
+ul li {
+  color: black; 
+  list-style: none; 
+  padding: 0;
+  position: relative;
+}
+
+ ul li::before {
+  color: $primary;  
+  content: "\2022"; 
+  font-size: 1.2em; 
+  left: -1.1225em; 
+  top: 0em; 
+  margin-right: 10px;
+}
+// Need to move divider
