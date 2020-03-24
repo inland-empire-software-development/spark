@@ -282,7 +282,7 @@ db.updateUser = function(
   });
 };
 
-db.updateUserPassword = function(userID: string, password: string) {
+db.updateUserPassword = function(userID: number, password: string) {
   console.log('Attempting to update user password');
 
   return new Promise((resolve, reject) => {
@@ -306,7 +306,7 @@ db.updateUserPassword = function(userID: string, password: string) {
 };
 
 db.updateUserInfo = function(
-  userID: string,
+  userID: number,
   metaKey: string,
   metaValue: string
 ) {
