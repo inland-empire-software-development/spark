@@ -2,7 +2,7 @@
 /* eslint-disable comma-dangle */
 // =======================================================================
 // Known Issues/Todos
-//  - Profile picture upload not implemented
+//  - 
 // =======================================================================
 
 // import db from '../../../lib/db';
@@ -24,9 +24,9 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   //   'Cache-Control',
   //   'no-store, no-cache, must-revalidate, proxy-revalidate'
   // );
-  console.log(req.headers['image-name']);
-  // const { profilePic } = req.body;
-  req.pipe(createWriteStream("./public/images/profilepics/" + req.headers['image-name']));
+  console.log('image name: ', req.headers['image-name']);
+
+  req.pipe(createWriteStream("./public/images/profilepics/" + req.headers['user-identification']));
   res.statusCode = 200;
 
   console.log('Will be sending this image to user ID: ' + req.headers['user-identification']);

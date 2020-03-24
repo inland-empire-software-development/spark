@@ -20,7 +20,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
   // Get profile fields from JSON body
   const {
-    // profilePic,
+    avatarURL,
     firstname,
     lastname,
     title,
@@ -35,10 +35,9 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     userID
   } = req.body;
 
-  console.log('====================\n');
-  console.log(req.body);
-  console.log('====================\n');
-  // console.log('profilepic', profilePic);
+  if (avatarURL) {
+    db.updateUserInfo(userID, 'avatar_url', avatarURL);
+  }
 
   if (firstname) {
     db.updateUserInfo(userID, 'first_name', firstname);

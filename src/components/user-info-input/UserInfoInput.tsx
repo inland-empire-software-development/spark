@@ -5,46 +5,46 @@
 // ===================
 //  - new password validation stays after password is deleted
 //  - add phone number verification -- need format guidelines
-//  - profile picture file upload not implemented
 //  - should user be logged out when password is updated?
 // V2
 //  - Update placeholders with user's infomation
 //  - autocomplete wants to put saved password in new password
 //    and username in number
+//  - drag and drop pictures
 // =======================================================================
 
-import React, {useContext, FormEvent} from 'react';
+import React, { useContext, FormEvent } from 'react';
 import './UserInfoInput.scss';
-// import {Message} from '../../..';
+import { Message } from '../../..';
 import Password from '../authenticate/Password/Password';
-import {Context} from '../../../src/context';
- // import user from '../../../models/user';
+import { Context } from '../../../src/context';
 
-// let profilePic: File | null = null;
+let avatarURL: string | null = null;
+let picUploaded: boolean = false;
 const handleFileUpload = (e: FileList | null) => {
-  console.log(e);
+  console.log('\ne: ', e);
   if (e) {
-    // console.log(e);
-    // console.log(e[0]);
-    // profilePic = e[0];
-    // fetch(process.env.host + 'api/user/upload', {
-    //   method: 'POST',
-    //   headers: {
-    //     'Content-Type': file.type
-    //   },
-    //   body: file
-    // });
+    picUploaded = true;
   }
+  console.log('picUploaded:(function):, ', picUploaded);
 };
 
 const UserInfoInput = () => {
-  const {userID} = useContext(Context);
+  const { user, userID } = useContext(Context);
 
   const handleUserInformation = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault(); // prevents form from reloading page (form submission)
 
+    if (picUploaded) {
+      avatarURL = `./public/images/profilepics/${user}${userID}-pic.jpg`;
+    }
+    console.log('picUploaded:(at start) ', picUploaded);
+    console.log('avatarURL: ', avatarURL);
+
     // getting user input from form.
-    const profilepic: HTMLInputElement | null = document.querySelector('[name="userimage"]');
+    const profilepic: HTMLInputElement | null = document.querySelector(
+      '[name="user-image"]'
+    );
     console.log(profilepic);
     const firstname: HTMLInputElement | null = document.querySelector(
       '[name="user-firstname"]'
@@ -88,11 +88,12 @@ const UserInfoInput = () => {
 
     // example API route that will handle signing in
     // Call api/user/personal
-    // const url = 'api/user/personal';
+    const url = 'api/user/personal';
 
     // all data you want to pass over to API, name it appropriately
     const data = {
       profilePic: profilepic && profilepic.files ? profilepic.files : null,
+      avatarURL: avatarURL,
       firstname: firstname ? firstname.value : null,
       lastname: lastname ? lastname.value : null,
       title: title ? title.value : null,
@@ -107,43 +108,53 @@ const UserInfoInput = () => {
       userID: userID
     };
 
-    // fetch(process.env.HOST + url, {
-    //   method: 'POST',
-    //   headers: {
-    //     'Content-Type': 'application/json'
-    //   },
-    //   body: JSON.stringify(data)
-    // })
-    //   .then((response: { json: () => any }) => response.json())
-    //   .then((response: Message) => {
-    //     const {status, message} = response;
-
-    //     console.log(status, '\n', message); // log to console to see what it prints.
-
-    //     // if spinner is showing and you're done with saving stuff
-    //     // now hide the spinner
-    //     if (spinner) spinner.classList.add('uk-hidden');
-
-    //     // do whatever else you need to do
-    //     // window.location.reload(true);
-    //   });
-
-    fetch(process.env.HOST + 'api/user/upload', {
+    fetch(process.env.HOST + url, {
       method: 'POST',
       headers: {
-        'Content-Type': data.profilePic && data.profilePic.length !== 0 ? data.profilePic[0].type : 'application/json',
-        'Image-name': data.profilePic ? data.profilePic[0].name : String(userID) + "-profile-image",
-        'User-identification': String(userID),
+        'Content-Type': 'application/json'
       },
-      body: data.profilePic ? data.profilePic[0] : null,
-    });
+      body: JSON.stringify(data)
+    })
+      .then((response: { json: () => any }) => response.json())
+      .then((response: Message) => {
+        const { status, message } = response;
+
+        console.log(status, '\n', message); // log to console to see what it prints.
+
+        // if spinner is showing and you're done with saving stuff
+        // now hide the spinner
+        if (spinner) spinner.classList.add('uk-hidden');
+
+        // do whatever else you need to do
+        // window.location.reload(true);
+      });
+
+    console.log('picUploaded:(at end) ', picUploaded);
+    console.log('avatarURL: ', avatarURL);
+
+    if (picUploaded) {
+      fetch(process.env.HOST + 'api/user/upload', {
+        method: 'POST',
+        headers: {
+          'Content-Type':
+            data.profilePic && data.profilePic.length !== 0
+              ? data.profilePic[0].type
+              : 'application/json',
+          'Image-name': data.profilePic
+            ? data.profilePic[0].name
+            : String(userID) + '-profile-image',
+          'User-identification': String(user) + String(userID) + '-pic.jpg'
+        },
+        body: data.profilePic ? data.profilePic[0] : null
+      });
+    }
   };
 
   return (
     <form
       id='user-profile'
       autoComplete='off'
-      onSubmit={(event) => handleUserInformation(event)}
+      onSubmit={event => handleUserInformation(event)}
     >
       <div className='uk-fieldset'>
         <legend className='uk-legend'>Personal Details</legend>
@@ -160,8 +171,8 @@ const UserInfoInput = () => {
               <div className='uk-width-expand uk-child-width-expand uk-form-custom'>
                 <input
                   type='file'
-                  name='userimage'
-                  onChange={(event) => handleFileUpload(event.target.files)}
+                  name='user-image'
+                  onChange={event => handleFileUpload(event.target.files)}
                 />
                 <button className='uk-button uiif-button'>Browse</button>
               </div>
