@@ -1,7 +1,9 @@
 const bar = document.getElementById('js-progressbar');
 UIkit.upload('.js-upload', {
   // url: '/echo/json/',
-  'url': '/api/course/addPicture',
+  'url': '/api/course/add',
+  'data-type': 'json',
+  'name': 'test',
   'multiple': false,
   "beforeSend": function(...args) {
     console.log('beforeSend', args);
@@ -34,7 +36,7 @@ UIkit.upload('.js-upload', {
     bar.max = e.total;
     bar.value = e.loaded;
   },
-  "completeAll": function( ...args) {
+  "completeAll": function(...args) {
     console.log('completeAll', args);
     setTimeout(function() {
       bar.setAttribute('hidden', 'hidden');

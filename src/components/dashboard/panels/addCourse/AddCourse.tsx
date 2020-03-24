@@ -63,7 +63,7 @@ function AddCourse(): JSX.Element {
                   <span uk-icon="icon: cloud-upload"></span>
                   <span className="uk-text-middle"> Attach images by dropping them here or </span>
                   <div className='uk-form-custom'>
-                    <input type="file" multiple />
+                    <input type="file" multiple name='test' />
                     <span className="uk-link">selecting one</span>
                   </div>
                 </div>
