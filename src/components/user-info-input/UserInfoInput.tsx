@@ -9,14 +9,14 @@
 //  - Update placeholders with user's infomation
 // =======================================================================
 
-import React, {useContext, FormEvent} from 'react';
+import React, { useContext, FormEvent } from 'react';
 import './UserInfoInput.scss';
-import {Message} from '../../..';
+import { Message } from '../../..';
 import Password from '../authenticate/Password/Password';
-import {Context} from '../../../src/context';
+import { Context } from '../../../src/context';
 
 const UserInfoInput = () => {
-  const {user, userID} = useContext(Context);
+  const { user, userID } = useContext(Context);
 
   const handleUserInformation = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault(); // prevents form from reloading page (form submission)
@@ -104,7 +104,7 @@ const UserInfoInput = () => {
     })
       .then((response: { json: () => any }) => response.json())
       .then((response: Message) => {
-        const {status, message} = response;
+        const { status, message } = response;
 
         console.log(status, '\n', message); // log to console to see what it prints.
 
@@ -117,7 +117,11 @@ const UserInfoInput = () => {
   };
 
   return (
-    <form id='user-profile' autoComplete='off' onSubmit={(event) => handleUserInformation(event)}>
+    <form
+      id='user-profile'
+      autoComplete='off'
+      onSubmit={event => handleUserInformation(event)}
+    >
       <div className='uk-fieldset'>
         <legend className='uk-legend'>Personal Details</legend>
         <hr />
@@ -167,6 +171,7 @@ const UserInfoInput = () => {
                 Title
               </label>
               <select className='uk-select' name='user-title'>
+                <option></option>
                 <option>Student</option>
                 <option>Instructor</option>
                 <option>Teaching Assistant</option>
@@ -219,7 +224,11 @@ const UserInfoInput = () => {
             ></input>
 
             <label className='uk-form-label' htmlFor='new password'>
-              <Password label='New Password' autocomplete='new-password' required={false} />
+              <Password
+                label='New Password'
+                autocomplete='new-password'
+                required={false}
+              />
             </label>
 
             {/* <label className='uk-form-label' htmlFor='new password'>
@@ -256,14 +265,24 @@ const UserInfoInput = () => {
             <label className='uk-form-label' htmlFor='facebook'>
               Facebook
             </label>
-            <input className='uk-input' type='url' placeholder='' name='user-fb'></input>
+            <input
+              className='uk-input'
+              type='url'
+              placeholder=''
+              name='user-fb'
+            ></input>
           </div>
 
           <div className='uk-margin-bottom'>
             <label className='uk-form-label' htmlFor='twitter'>
               Twitter
             </label>
-            <input className='uk-input' type='url' placeholder='' name='user-twitter'></input>
+            <input
+              className='uk-input'
+              type='url'
+              placeholder=''
+              name='user-twitter'
+            ></input>
           </div>
         </div>
 
@@ -272,19 +291,33 @@ const UserInfoInput = () => {
             <label className='uk-form-label' htmlFor='linkedin'>
               LinkedIn
             </label>
-            <input className='uk-input' type='url' placeholder='' name='user-linkedin'></input>
+            <input
+              className='uk-input'
+              type='url'
+              placeholder=''
+              name='user-linkedin'
+            ></input>
           </div>
 
           <div className='uk-margin-bottom'>
             <label className='uk-form-label' htmlFor='instagram'>
               Instagram
             </label>
-            <input className='uk-input' type='url' placeholder='' name='user-instagram'></input>
+            <input
+              className='uk-input'
+              type='url'
+              placeholder=''
+              name='user-instagram'
+            ></input>
           </div>
         </div>
       </fieldset>
 
-      <button type='submit' form='user-profile' className='uk-button uiif-button'>
+      <button
+        type='submit'
+        form='user-profile'
+        className='uk-button uiif-button'
+      >
         Save
         <i className='fas fa-long-arrow-alt-right arrow-icon'></i>
       </button>
