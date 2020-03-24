@@ -187,9 +187,9 @@ db.getUserByEmail = function(email: string): object | boolean {
 db.getUserByID = function(id: number): object | boolean {
   return new Promise((resolve, reject) => {
     db.query(
-      `SELECT password FROM ${
-        process.env.DBNAME
-      }.user WHERE id = ${escape(id)}`,
+      `SELECT password FROM ${process.env.DBNAME}.user WHERE id = ${escape(
+        id
+      )}`,
       function(error: { sqlMessage: any }, results: string | any[]) {
         if (error) reject(error.sqlMessage ? error.sqlMessage : error);
 
@@ -282,6 +282,29 @@ db.updateUser = function(
   });
 };
 
+db.updateUserPassword = function(userID: string, password: string) {
+  console.log('Attempting to update user password');
+
+  return new Promise((resolve, reject) => {
+    const hash: string = db.createPassword(password);
+    db.query(
+      `UPDATE ${process.env.DBNAME}.user SET password='${hash}' WHERE user_ID=${userID}`,
+      function(error: { sqlMessage: any }, result: object) {
+        if (error) reject(error.sqlMessage ? error.sqlMessage : error);
+
+        resolve({
+          status: true,
+          message: `UserID: ${userID}'s password updated`
+        } as Message);
+
+        console.log(`UserID: ${userID}'s password updated`);
+
+        return true;
+      }
+    );
+  });
+};
+
 db.updateUserInfo = function(
   userID: string,
   metaKey: string,
@@ -314,7 +337,9 @@ db.updateUserInfo = function(
                 message: `UserID: ${userID}'s ${metaKey} updated to ${metaValue}`
               } as Message);
 
-              console.log(`UserID: ${userID}'s ${metaKey} updated to ${metaValue}`);
+              console.log(
+                `UserID: ${userID}'s ${metaKey} updated to ${metaValue}`
+              );
 
               return true;
             }
@@ -332,8 +357,10 @@ db.updateUserInfo = function(
                 message: `UserID: ${userID}'s ${metaKey} added as ${metaValue}`
               } as Message);
 
-              console.log(`UserID: ${userID}'s ${metaKey} added as ${metaValue}`);
-              
+              console.log(
+                `UserID: ${userID}'s ${metaKey} added as ${metaValue}`
+              );
+
               return true;
             }
           );
