@@ -13,18 +13,20 @@
 //    and username in number
 // =======================================================================
 
-import React, { useContext, FormEvent } from 'react';
+import React, {useContext, FormEvent} from 'react';
 import './UserInfoInput.scss';
-import { Message } from '../../..';
+// import {Message} from '../../..';
 import Password from '../authenticate/Password/Password';
-import { Context } from '../../../src/context';
+import {Context} from '../../../src/context';
+ // import user from '../../../models/user';
 
-//let profilePic: File | null = null;
+// let profilePic: File | null = null;
 const handleFileUpload = (e: FileList | null) => {
+  console.log(e);
   if (e) {
     // console.log(e);
     // console.log(e[0]);
-    //profilePic = e[0];
+    // profilePic = e[0];
     // fetch(process.env.host + 'api/user/upload', {
     //   method: 'POST',
     //   headers: {
@@ -36,16 +38,14 @@ const handleFileUpload = (e: FileList | null) => {
 };
 
 const UserInfoInput = () => {
-  const { userID } = useContext(Context);
+  const {userID} = useContext(Context);
 
   const handleUserInformation = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault(); // prevents form from reloading page (form submission)
 
-    //  onChange={(event) => handleFileUpload(event.target.files)}
-
     // getting user input from form.
-    // const profilepic: string | null = temp;
-    // console.log('Profile Picture: ', profilepic);
+    const profilepic: HTMLInputElement | null = document.querySelector('[name="userimage"]');
+    console.log(profilepic);
     const firstname: HTMLInputElement | null = document.querySelector(
       '[name="user-firstname"]'
     );
@@ -88,11 +88,11 @@ const UserInfoInput = () => {
 
     // example API route that will handle signing in
     // Call api/user/personal
-    const url = 'api/user/personal';
+    // const url = 'api/user/personal';
 
     // all data you want to pass over to API, name it appropriately
     const data = {
-      //profilePic: profilePic ? profilePic : null,
+      profilePic: profilepic && profilepic.files ? profilepic.files : null,
       firstname: firstname ? firstname.value : null,
       lastname: lastname ? lastname.value : null,
       title: title ? title.value : null,
@@ -107,33 +107,35 @@ const UserInfoInput = () => {
       userID: userID
     };
 
-    fetch(process.env.HOST + url, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(data)
-    })
-      .then((response: { json: () => any }) => response.json())
-      .then((response: Message) => {
-        const { status, message } = response;
+    // fetch(process.env.HOST + url, {
+    //   method: 'POST',
+    //   headers: {
+    //     'Content-Type': 'application/json'
+    //   },
+    //   body: JSON.stringify(data)
+    // })
+    //   .then((response: { json: () => any }) => response.json())
+    //   .then((response: Message) => {
+    //     const {status, message} = response;
 
-        console.log(status, '\n', message); // log to console to see what it prints.
+    //     console.log(status, '\n', message); // log to console to see what it prints.
 
-        // if spinner is showing and you're done with saving stuff
-        // now hide the spinner
-        if (spinner) spinner.classList.add('uk-hidden');
+    //     // if spinner is showing and you're done with saving stuff
+    //     // now hide the spinner
+    //     if (spinner) spinner.classList.add('uk-hidden');
 
-        // do whatever else you need to do
-        // window.location.reload(true);
-      });
+    //     // do whatever else you need to do
+    //     // window.location.reload(true);
+    //   });
 
     fetch(process.env.HOST + 'api/user/upload', {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': data.profilePic && data.profilePic.length !== 0 ? data.profilePic[0].type : 'application/json',
+        'Image-name': data.profilePic ? data.profilePic[0].name : String(userID) + "-profile-image",
+        'User-identification': String(userID),
       },
-      body: JSON.stringify(data)
+      body: data.profilePic ? data.profilePic[0] : null,
     });
   };
 
@@ -141,7 +143,7 @@ const UserInfoInput = () => {
     <form
       id='user-profile'
       autoComplete='off'
-      onSubmit={event => handleUserInformation(event)}
+      onSubmit={(event) => handleUserInformation(event)}
     >
       <div className='uk-fieldset'>
         <legend className='uk-legend'>Personal Details</legend>
@@ -158,8 +160,8 @@ const UserInfoInput = () => {
               <div className='uk-width-expand uk-child-width-expand uk-form-custom'>
                 <input
                   type='file'
-                  name='user-pic'
-                  onChange={event => handleFileUpload(event.target.files)}
+                  name='userimage'
+                  onChange={(event) => handleFileUpload(event.target.files)}
                 />
                 <button className='uk-button uiif-button'>Browse</button>
               </div>

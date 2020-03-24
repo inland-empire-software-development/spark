@@ -7,8 +7,8 @@
 
 import db from '../../../lib/db';
 import auth from '../../../lib/auth';
-import { Message } from '../../..';
-import { NextApiResponse, NextApiRequest } from 'next';
+import {Message} from '../../..';
+import {NextApiResponse, NextApiRequest} from 'next';
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   // set headers
@@ -20,7 +20,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
   // Get profile fields from JSON body
   const {
-    //profilePic,
+    // profilePic,
     firstname,
     lastname,
     title,
@@ -38,7 +38,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   console.log('====================\n');
   console.log(req.body);
   console.log('====================\n');
-  //console.log('profilepic', profilePic);
+  // console.log('profilepic', profilePic);
 
   if (firstname) {
     db.updateUserInfo(userID, 'first_name', firstname);
@@ -81,8 +81,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   if (password) {
     if (auth.verifyPassword(oldpassword, user.password)) {
       db.updateUserPassword(userID, password);
-    }
-    else {
+    } else {
       console.log('Error: password verification failed');
     }
   }
@@ -91,7 +90,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   const testMessage = {
     status: false,
     message:
-      `Success` /*`\nUser: ${user} \nUserID: ${userID} \nPic: ${profilepic} \nName: ${firstname} ${lastname} \nTitle: ${title} \nPhone: ${phone} \nAbout: ${about} \nOldPassword: ${oldpassword} \nPassword: ${password} \nfacebook: ${facebook} \nTwitter: ${twitter} \nLinkedIn: ${linkedin} \nInstagram: ${instagram}\n`*/
+      `Success` /* `\nUser: ${user} \nUserID: ${userID} \nPic: ${profilepic} \nName: ${firstname} ${lastname} \nTitle: ${title} \nPhone: ${phone} \nAbout: ${about} \nOldPassword: ${oldpassword} \nPassword: ${password} \nfacebook: ${facebook} \nTwitter: ${twitter} \nLinkedIn: ${linkedin} \nInstagram: ${instagram}\n`*/
   } as Message;
 
   // example message - whatever you want to return, use this format.
