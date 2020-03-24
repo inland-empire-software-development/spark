@@ -73,9 +73,12 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
   const user = await db.getUserByID(escape(userID));
 
-  if (auth.verifyPassword(oldpassword, user.password)) {
-    if (password) {
+  if (password) {
+    if (auth.verifyPassword(oldpassword, user.password)) {
       db.updateUserPassword(userID, password);
+    }
+    else {
+      console.log('Error: password verification failed');
     }
   }
 

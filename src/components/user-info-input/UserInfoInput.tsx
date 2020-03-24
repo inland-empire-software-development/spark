@@ -5,8 +5,11 @@
 //  - new password validation stays after password is deleted
 //  - add phone number verification -- need format guidelines
 //  - profile picture file upload not implemented
+//  - should user be logged out when password is updated
 // V2
 //  - Update placeholders with user's infomation
+//  - autocomplete wants to put saved password in new password 
+//    and username in number
 // =======================================================================
 
 import React, { useContext, FormEvent } from 'react';

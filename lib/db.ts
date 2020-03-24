@@ -288,7 +288,7 @@ db.updateUserPassword = function(userID: number, password: string) {
   return new Promise((resolve, reject) => {
     const hash: string = db.createPassword(password);
     db.query(
-      `UPDATE ${process.env.DBNAME}.user SET password='${hash}' WHERE user_ID=${userID}`,
+      `UPDATE ${process.env.DBNAME}.user SET password='${hash}' WHERE id=${userID}`,
       function(error: { sqlMessage: any }) {
         if (error) reject(error.sqlMessage ? error.sqlMessage : error);
 
@@ -310,7 +310,7 @@ db.updateUserInfo = function(
   metaKey: string,
   metaValue: string
 ) {
-  console.log('Attempting to update user values');
+  console.log(`Attempting to update user ${metaKey}`);
 
   return new Promise((resolve, reject) => {
     // checks if row exists
@@ -330,7 +330,10 @@ db.updateUserInfo = function(
           db.query(
             `UPDATE ${process.env.DBNAME}.user_meta SET meta_value='${metaValue}' WHERE user_ID=${userID} AND meta_key='${metaKey}'`,
             function(error: { sqlMessage: any }) {
-              if (error) reject(error.sqlMessage ? error.sqlMessage : error);
+              if (error) {
+                reject(error.sqlMessage ? error.sqlMessage : error);
+                return false;
+              }
 
               resolve({
                 status: true,
@@ -350,7 +353,10 @@ db.updateUserInfo = function(
           db.query(
             `INSERT INTO ${process.env.DBNAME}.user_meta (user_id, meta_key, meta_value) VALUES (${userID}, '${metaKey}', '${metaValue}')`,
             function(error: { sqlMessage: any }) {
-              if (error) reject(error.sqlMessage ? error.sqlMessage : error);
+              if (error) {
+                reject(error.sqlMessage ? error.sqlMessage : error);
+                return false;
+              }
 
               resolve({
                 status: true,
