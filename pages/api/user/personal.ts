@@ -19,7 +19,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
   // Get profile fields from JSON body
   const {
-    profilepic,
+    // profilepic,
     firstname,
     lastname,
     title,
@@ -31,7 +31,6 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     twitter,
     linkedin,
     instagram,
-    user,
     userID
   } = req.body;
 
@@ -71,6 +70,8 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     db.updateUserInfo(userID, 'instagram', instagram);
   }
 
+  //const user = await db.getUserByID(escape(userID));
+
   // // Reserved for password
   // if () {
   //   db.updateUserInfo(userID, '', );
@@ -79,7 +80,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   // check form to see how you're passing them back.
   const testMessage = {
     status: false,
-    message: `\nUser: ${user} \nUserID: ${userID} \nPic: ${profilepic} \nName: ${firstname} ${lastname} \nTitle: ${title} \nPhone: ${phone} \nAbout: ${about} \nOldPassword: ${oldpassword} \nPassword: ${password} \nfacebook: ${facebook} \nTwitter: ${twitter} \nLinkedIn: ${linkedin} \nInstagram: ${instagram}\n`
+    message: 'Success'/*`\nUser: ${user} \nUserID: ${userID} \nPic: ${profilepic} \nName: ${firstname} ${lastname} \nTitle: ${title} \nPhone: ${phone} \nAbout: ${about} \nOldPassword: ${oldpassword} \nPassword: ${password} \nfacebook: ${facebook} \nTwitter: ${twitter} \nLinkedIn: ${linkedin} \nInstagram: ${instagram}\n`*/
   } as Message;
 
   // example message - whatever you want to return, use this format.

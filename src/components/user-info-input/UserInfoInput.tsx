@@ -15,7 +15,7 @@ import Password from '../authenticate/Password/Password';
 import { Context } from '../../../src/context';
 
 const UserInfoInput = () => {
-  const { user, userID } = useContext(Context);
+  const { userID } = useContext(Context);
 
   const handleUserInformation = (/*event: FormEvent<HTMLFormElement>*/) => {
     // event.preventDefault(); // prevents form from reloading page (form submission)
@@ -90,7 +90,6 @@ const UserInfoInput = () => {
       twitter: twitter ? twitter.value : null,
       linkedin: linkedin ? linkedin.value : null,
       instagram: instagram ? instagram.value : null,
-      user: user,
       userID: userID
     };
 
