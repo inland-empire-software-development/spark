@@ -8,7 +8,7 @@
 //  - Update placeholders with user's infomation
 // =======================================================================
 
-import React, { useContext /*, FormEvent */ } from 'react';
+import React, { useContext, FormEvent } from 'react';
 import './UserInfoInput.scss';
 import { Message } from '../../..';
 import Password from '../authenticate/Password/Password';
@@ -17,8 +17,8 @@ import { Context } from '../../../src/context';
 const UserInfoInput = () => {
   const { userID } = useContext(Context);
 
-  const handleUserInformation = (/*event: FormEvent<HTMLFormElement>*/) => {
-    // event.preventDefault(); // prevents form from reloading page (form submission)
+  const handleUserInformation = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault(); // prevents form from reloading page (form submission)
 
     // const handleFileUpload = (selectorFiles: FileList | null) => {
     //   if (selectorFiles) {
@@ -111,6 +111,7 @@ const UserInfoInput = () => {
         if (spinner) spinner.classList.add('uk-hidden');
 
         // do whatever else you need to do
+        // location.reload(true);
       });
   };
 
@@ -118,9 +119,7 @@ const UserInfoInput = () => {
     <form
       id='user-profile'
       autoComplete='off'
-      onSubmit={
-        /*event => handleUserInformation(event)*/ () => handleUserInformation()
-      }
+      onSubmit={event => handleUserInformation(event)}
     >
       <div className='uk-fieldset'>
         <legend className='uk-legend'>Personal Details</legend>
@@ -230,28 +229,6 @@ const UserInfoInput = () => {
                 required={false}
               />
             </label>
-
-            {/* <label className='uk-form-label' htmlFor='new password'>
-              New Password
-            </label>
-            <input
-              className='uk-input uk-margin-bottom'
-              type='password'
-              placeholder=''
-              autoComplete='new-password'
-              name='user-password'
-            ></input> */}
-
-            {/* <label className='uk-form-label' htmlFor='confirm password'>
-              Confirm Password
-            </label>
-            <input
-              className='uk-input uk-margin-bottom'
-              type='password'
-              placeholder=''
-              autoComplete='new-password'
-              name='user-checkpass'
-            ></input> */}
           </div>
         </div>
       </fieldset>
