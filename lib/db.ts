@@ -289,7 +289,7 @@ db.updateUserPassword = function(userID: string, password: string) {
     const hash: string = db.createPassword(password);
     db.query(
       `UPDATE ${process.env.DBNAME}.user SET password='${hash}' WHERE user_ID=${userID}`,
-      function(error: { sqlMessage: any }, result: object) {
+      function(error: { sqlMessage: any }) {
         if (error) reject(error.sqlMessage ? error.sqlMessage : error);
 
         resolve({
