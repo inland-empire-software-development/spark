@@ -24,6 +24,7 @@
     "sbprod": "start-storybook -s ./public HOST=http://localhost:6003/ -p 7003 -c .storybook"
   },
   "dependencies": {
+    "@types/multer": "^1.4.2",
     "@types/uikit": "^2.27.7",
     "@zeit/next-css": "^1.0.1",
     "@zeit/next-sass": "^1.0.1",
@@ -32,10 +33,12 @@
     "bcryptjs": "^2.4.3",
     "bluebird": "^3.7.2",
     "dotenv": "^8.2.0",
+    "fs": "^0.0.1-security",
     "glob": "^7.1.6",
     "isomorphic-unfetch": "^3.0.0",
     "js-cookie": "^2.2.1",
     "jsonwebtoken": "^8.5.1",
+    "multer": "^1.4.2",
     "mysql": "^2.17.1",
     "next": "latest",
     "next-images": "^1.2.0",
