@@ -1,9 +1,10 @@
 /* eslint-disable indent */
 /* eslint-disable comma-dangle */
 // =======================================================================
-// Known Issues
-//  - New password validation stays after password is deleted
+// Known Issues/Todos
+//  - new password validation stays after password is deleted
 //  - add phone number verification -- need format guidelines
+//  - profile picture file upload not implemented
 // V2
 //  - Update placeholders with user's infomation
 // =======================================================================
@@ -111,7 +112,7 @@ const UserInfoInput = () => {
         if (spinner) spinner.classList.add('uk-hidden');
 
         // do whatever else you need to do
-        // location.reload(true);
+        // window.location.reload(true);
       });
   };
 

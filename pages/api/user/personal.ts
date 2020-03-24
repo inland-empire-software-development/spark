@@ -1,8 +1,8 @@
 /* eslint-disable indent */
 /* eslint-disable comma-dangle */
 // =======================================================================
-// Known Issues
-//  - ***Password not secured
+// Known Issues/Todos
+//  - Profile picture upload not implemented
 // =======================================================================
 
 import db from '../../../lib/db';
