@@ -6,6 +6,7 @@
 // =======================================================================
 
 import db from '../../../lib/db';
+import auth from '../../../lib/auth';
 import { Message } from '../../..';
 import { NextApiResponse, NextApiRequest } from 'next';
 
@@ -45,7 +46,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   if (title) {
     db.updateUserInfo(userID, 'title', title);
   }
-  
+
   if (phone) {
     db.updateUserInfo(userID, 'phone', phone);
   }
@@ -70,7 +71,13 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     db.updateUserInfo(userID, 'instagram', instagram);
   }
 
-  //const user = await db.getUserByID(escape(userID));
+  const user = await db.getUserByID(escape(userID));
+
+  if (auth.verifyPassword(oldpassword, user.password)) {
+    if (password) {
+      db.updateUserPassword(userID, password);
+    }
+  }
 
   // // Reserved for password
   // if () {
@@ -80,7 +87,8 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   // check form to see how you're passing them back.
   const testMessage = {
     status: false,
-    message: 'Success'/*`\nUser: ${user} \nUserID: ${userID} \nPic: ${profilepic} \nName: ${firstname} ${lastname} \nTitle: ${title} \nPhone: ${phone} \nAbout: ${about} \nOldPassword: ${oldpassword} \nPassword: ${password} \nfacebook: ${facebook} \nTwitter: ${twitter} \nLinkedIn: ${linkedin} \nInstagram: ${instagram}\n`*/
+    message:
+      'Success' /*`\nUser: ${user} \nUserID: ${userID} \nPic: ${profilepic} \nName: ${firstname} ${lastname} \nTitle: ${title} \nPhone: ${phone} \nAbout: ${about} \nOldPassword: ${oldpassword} \nPassword: ${password} \nfacebook: ${facebook} \nTwitter: ${twitter} \nLinkedIn: ${linkedin} \nInstagram: ${instagram}\n`*/
   } as Message;
 
   // example message - whatever you want to return, use this format.
