@@ -325,8 +325,7 @@ db.updateUserInfo = function(
           );
         }
         // if row exists, update row
-        const ts = Object.keys(result[0])[0];
-        if (result[0][ts]) {
+        if (result[0][Object.keys(result[0])[0]]) {
           db.query(
             `UPDATE ${process.env.DBNAME}.user_meta SET meta_value='${metaValue}' WHERE user_ID=${userID} AND meta_key='${metaKey}'`,
             function(error: { sqlMessage: any }) {
