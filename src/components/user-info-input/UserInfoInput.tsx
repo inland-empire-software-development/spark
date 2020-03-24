@@ -8,7 +8,7 @@
 //  - Update placeholders with user's infomation
 // =======================================================================
 
-import React, { useContext, FormEvent } from 'react';
+import React, { useContext /*, FormEvent */ } from 'react';
 import './UserInfoInput.scss';
 import { Message } from '../../..';
 import Password from '../authenticate/Password/Password';
@@ -17,8 +17,8 @@ import { Context } from '../../../src/context';
 const UserInfoInput = () => {
   const { user, userID } = useContext(Context);
 
-  const handleUserInformation = (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault(); // prevents form from reloading page (form submission)
+  const handleUserInformation = (/*event: FormEvent<HTMLFormElement>*/) => {
+    // event.preventDefault(); // prevents form from reloading page (form submission)
 
     // const handleFileUpload = (selectorFiles: FileList | null) => {
     //   if (selectorFiles) {
@@ -119,7 +119,9 @@ const UserInfoInput = () => {
     <form
       id='user-profile'
       autoComplete='off'
-      onSubmit={event => handleUserInformation(event)}
+      onSubmit={
+        /*event => handleUserInformation(event)*/ () => handleUserInformation()
+      }
     >
       <div className='uk-fieldset'>
         <legend className='uk-legend'>Personal Details</legend>
