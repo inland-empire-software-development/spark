@@ -20,7 +20,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
   // Get profile fields from JSON body
   const {
-    //profilepic,
+    //profilePic,
     firstname,
     lastname,
     title,
@@ -34,6 +34,11 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     instagram,
     userID
   } = req.body;
+
+  console.log('====================\n');
+  console.log(req.body);
+  console.log('====================\n');
+  //console.log('profilepic', profilePic);
 
   if (firstname) {
     db.updateUserInfo(userID, 'first_name', firstname);
@@ -86,7 +91,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   const testMessage = {
     status: false,
     message:
-      `Success: \nPic: $profilepic` /*`\nUser: ${user} \nUserID: ${userID} \nPic: ${profilepic} \nName: ${firstname} ${lastname} \nTitle: ${title} \nPhone: ${phone} \nAbout: ${about} \nOldPassword: ${oldpassword} \nPassword: ${password} \nfacebook: ${facebook} \nTwitter: ${twitter} \nLinkedIn: ${linkedin} \nInstagram: ${instagram}\n`*/
+      `Success` /*`\nUser: ${user} \nUserID: ${userID} \nPic: ${profilepic} \nName: ${firstname} ${lastname} \nTitle: ${title} \nPhone: ${phone} \nAbout: ${about} \nOldPassword: ${oldpassword} \nPassword: ${password} \nfacebook: ${facebook} \nTwitter: ${twitter} \nLinkedIn: ${linkedin} \nInstagram: ${instagram}\n`*/
   } as Message;
 
   // example message - whatever you want to return, use this format.

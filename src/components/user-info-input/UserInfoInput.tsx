@@ -19,10 +19,19 @@ import { Message } from '../../..';
 import Password from '../authenticate/Password/Password';
 import { Context } from '../../../src/context';
 
-const handleFileUpload = (selectorFiles: FileList | null) => {
-  if (selectorFiles) {
-    console.log(selectorFiles);
-    console.log(selectorFiles[0]);
+//let profilePic: File | null = null;
+const handleFileUpload = (e: FileList | null) => {
+  if (e) {
+    // console.log(e);
+    // console.log(e[0]);
+    //profilePic = e[0];
+    // fetch(process.env.host + 'api/user/upload', {
+    //   method: 'POST',
+    //   headers: {
+    //     'Content-Type': file.type
+    //   },
+    //   body: file
+    // });
   }
 };
 
@@ -83,7 +92,7 @@ const UserInfoInput = () => {
 
     // all data you want to pass over to API, name it appropriately
     const data = {
-      // profilepic: profilepic ? profilepic : null,
+      //profilePic: profilePic ? profilePic : null,
       firstname: firstname ? firstname.value : null,
       lastname: lastname ? lastname.value : null,
       title: title ? title.value : null,
@@ -118,6 +127,14 @@ const UserInfoInput = () => {
         // do whatever else you need to do
         // window.location.reload(true);
       });
+
+    fetch(process.env.HOST + 'api/user/upload', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    });
   };
 
   return (
