@@ -3,7 +3,6 @@
 // =======================================================================
 // Known Issues
 //  - New password validation stays after password is deleted
-//  - add a blank default drop down
 //  - add phone number verification -- need format guidelines
 // V2
 //  - Update placeholders with user's infomation
