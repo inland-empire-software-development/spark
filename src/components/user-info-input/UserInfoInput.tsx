@@ -36,7 +36,7 @@ const UserInfoInput = () => {
     event.preventDefault(); // prevents form from reloading page (form submission)
 
     if (picUploaded) {
-      avatarURL = `./public/images/profilepics/${user}${userID}-pic.jpg`;
+      avatarURL = `images/profilepics/${user}${userID}-pic.jpg`;
     }
     console.log('picUploaded:(at start) ', picUploaded);
     console.log('avatarURL: ', avatarURL);
