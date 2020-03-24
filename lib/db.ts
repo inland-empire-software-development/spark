@@ -276,7 +276,7 @@ db.updateUserInfo = function(
   return new Promise((resolve, reject) => {
     // checks if row exists
     db.query(
-      `SELECT EXISTS(SELECT 0 FROM ${process.env.DBNAME}.user_meta WHERE user_id = ${userID} AND meta_key = '${metaKey}')`,
+      `SELECT EXISTS(SELECT 1 FROM ${process.env.DBNAME}.user_meta WHERE user_id = ${userID} AND meta_key = '${metaKey}')`,
       function(error: any, result: any) {
         // if error
         if (error) {
@@ -286,7 +286,8 @@ db.updateUserInfo = function(
           );
         }
         // if row exists, update row
-        if (result) {
+        const ts = Object.keys(result[0])[0];
+        if (result[0][ts]) {
           db.query(
             `UPDATE ${process.env.DBNAME}.user_meta SET meta_value='${metaValue}' WHERE user_ID=${userID} AND meta_key='${metaKey}'`,
             function(error: { sqlMessage: any }) {
