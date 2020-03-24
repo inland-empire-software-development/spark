@@ -2,13 +2,14 @@
 /* eslint-disable comma-dangle */
 // =======================================================================
 // Known Issues/Todos
+// ===================
 //  - new password validation stays after password is deleted
 //  - add phone number verification -- need format guidelines
 //  - profile picture file upload not implemented
-//  - should user be logged out when password is updated
+//  - should user be logged out when password is updated?
 // V2
 //  - Update placeholders with user's infomation
-//  - autocomplete wants to put saved password in new password 
+//  - autocomplete wants to put saved password in new password
 //    and username in number
 // =======================================================================
 
@@ -18,24 +19,24 @@ import { Message } from '../../..';
 import Password from '../authenticate/Password/Password';
 import { Context } from '../../../src/context';
 
+const handleFileUpload = (selectorFiles: FileList | null) => {
+  if (selectorFiles) {
+    console.log(selectorFiles);
+    console.log(selectorFiles[0]);
+  }
+};
+
 const UserInfoInput = () => {
   const { userID } = useContext(Context);
 
   const handleUserInformation = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault(); // prevents form from reloading page (form submission)
 
-    // const handleFileUpload = (selectorFiles: FileList | null) => {
-    //   if (selectorFiles) {
-    //     console.log(selectorFiles[0]);
-    //   }
-    // };
     //  onChange={(event) => handleFileUpload(event.target.files)}
 
     // getting user input from form.
-    const profilepic: HTMLInputElement | null = document.querySelector(
-      '[name="user-pic"]'
-    );
-    console.log('Profile Picture: ', profilepic);
+    // const profilepic: string | null = temp;
+    // console.log('Profile Picture: ', profilepic);
     const firstname: HTMLInputElement | null = document.querySelector(
       '[name="user-firstname"]'
     );
@@ -138,7 +139,11 @@ const UserInfoInput = () => {
                 uk-img=''
               />
               <div className='uk-width-expand uk-child-width-expand uk-form-custom'>
-                <input type='file' name='user-pic' />
+                <input
+                  type='file'
+                  name='user-pic'
+                  onChange={event => handleFileUpload(event.target.files)}
+                />
                 <button className='uk-button uiif-button'>Browse</button>
               </div>
             </div>

@@ -20,7 +20,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
   // Get profile fields from JSON body
   const {
-    // profilepic,
+    //profilepic,
     firstname,
     lastname,
     title,
@@ -86,7 +86,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   const testMessage = {
     status: false,
     message:
-      'Success' /*`\nUser: ${user} \nUserID: ${userID} \nPic: ${profilepic} \nName: ${firstname} ${lastname} \nTitle: ${title} \nPhone: ${phone} \nAbout: ${about} \nOldPassword: ${oldpassword} \nPassword: ${password} \nfacebook: ${facebook} \nTwitter: ${twitter} \nLinkedIn: ${linkedin} \nInstagram: ${instagram}\n`*/
+      `Success: \nPic: $profilepic` /*`\nUser: ${user} \nUserID: ${userID} \nPic: ${profilepic} \nName: ${firstname} ${lastname} \nTitle: ${title} \nPhone: ${phone} \nAbout: ${about} \nOldPassword: ${oldpassword} \nPassword: ${password} \nfacebook: ${facebook} \nTwitter: ${twitter} \nLinkedIn: ${linkedin} \nInstagram: ${instagram}\n`*/
   } as Message;
 
   // example message - whatever you want to return, use this format.
