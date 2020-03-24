@@ -184,6 +184,22 @@ db.getUserByEmail = function(email: string): object | boolean {
   });
 };
 
+db.getUserByID = function(id: number): object | boolean {
+  return new Promise((resolve, reject) => {
+    db.query(
+      `SELECT password FROM ${
+        process.env.DBNAME
+      }.user WHERE id = ${escape(id)}`,
+      function(error: { sqlMessage: any }, results: string | any[]) {
+        if (error) reject(error.sqlMessage ? error.sqlMessage : error);
+
+        // returns only the first user it finds - assumes it will only have one to choose from
+        resolve(results.length !== 0 ? results[0] : false);
+      }
+    );
+  });
+};
+
 db.userExists = function(user: string): Promise<object> {
   return new Promise((resolve, reject) => {
     db.query(
