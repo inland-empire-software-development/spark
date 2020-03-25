@@ -1,0 +1,63 @@
+#profile {
+  #title {
+    // height: auto;
+    height: 220px;
+    background-image: url("/images/code.png");
+    position: relative;
+    overflow: hidden;
+
+    @media screen and (max-width: 680px) {
+      min-height: 420px;
+    }
+
+    // .uk-overlay-primary #user {
+    //   background-color: rgba(0, 0, 0, 0.8) !important;
+    // }
+
+    .user-centered {
+      position: relative;
+      display: flex;
+      top: 30%;
+      justify-content: center;
+    }
+
+    .profile-title {
+      font-size: 34px;
+      bottom: auto;
+      color: white;
+      font-family: "Light", sans-serif;
+      margin: 0 auto;
+      padding: 10px 0;
+      text-decoration: none;
+    }
+
+    .role {
+      font-size: 16px;
+      color: white;
+    }
+
+    #profilepic {
+      width: 150px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      box-shadow: 0 0 0 1px #fff;
+    }
+  }
+
+  #Summary {
+    min-height: 500px;
+
+    .medium-text {
+      font-size: 20px;
+    }
+
+    #Professional_Summary {
+      color: black;
+    }
+
+    #InfoCard {
+      color: black;
+    }
+  }
+}
