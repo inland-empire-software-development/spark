@@ -22,11 +22,9 @@ import { Context } from '../../../src/context';
 let avatarURL: string | null = null;
 let picUploaded: boolean = false;
 const handleFileUpload = (e: FileList | null) => {
-  console.log('\ne: ', e);
   if (e) {
     picUploaded = true;
   }
-  console.log('picUploaded:(function):, ', picUploaded);
 };
 
 const UserInfoInput = () => {
@@ -36,16 +34,13 @@ const UserInfoInput = () => {
     event.preventDefault(); // prevents form from reloading page (form submission)
 
     if (picUploaded) {
-      avatarURL = `images/profilepics/${user}${userID}-pic.jpg`;
+      avatarURL = `./images/profilepics/${user}${userID}-pic.jpg`;
     }
-    console.log('picUploaded:(at start) ', picUploaded);
-    console.log('avatarURL: ', avatarURL);
 
     // getting user input from form.
     const profilepic: HTMLInputElement | null = document.querySelector(
       '[name="user-image"]'
     );
-    console.log(profilepic);
     const firstname: HTMLInputElement | null = document.querySelector(
       '[name="user-firstname"]'
     );
@@ -128,9 +123,6 @@ const UserInfoInput = () => {
         // do whatever else you need to do
         // window.location.reload(true);
       });
-
-    console.log('picUploaded:(at end) ', picUploaded);
-    console.log('avatarURL: ', avatarURL);
 
     if (picUploaded) {
       fetch(process.env.HOST + 'api/user/upload', {

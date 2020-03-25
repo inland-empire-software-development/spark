@@ -24,7 +24,6 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   //   'Cache-Control',
   //   'no-store, no-cache, must-revalidate, proxy-revalidate'
   // );
-  console.log('image name: ', req.headers['image-name']);
 
   req.pipe(createWriteStream("./public/images/profilepics/" + req.headers['user-identification']));
   res.statusCode = 200;
