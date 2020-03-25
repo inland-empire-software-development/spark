@@ -1,6 +1,5 @@
-import React, {useContext, useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import {useRouter} from "next/router";
-import {Context} from '../../../src/context';
 import DashboardLayout from "../../../src/components/layouts/DashboardLayout";
 import ManageStudents, {ManageStudentsCourse} from "../../../src/components/manage-students/ManageStudents";
 
@@ -23,23 +22,18 @@ const mapDataToCourseProps = (data: any): ManageStudentsCourse[] => {
 };
 
 const Students = () => {
-  const {user, userID} = useContext(Context);
   const [courses, setCourses] = useState<ManageStudentsCourse[]>([]);
   const router = useRouter();
 
   useEffect(() => {
     fetch(process.env.HOST + "api/course-students", {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
+      method: 'GET',
+      // headers: {
+      //   'Content-Type': 'application/json',
+      // },
       credentials: 'same-origin',
-      body: JSON.stringify({
-        user,
-        userID,
-      }),
     })
-        .then((res) => res.json())
+        .then((res) => res.json()) // TODO - check response code
         .then((data) => {
           const courses = mapDataToCourseProps(data);
           setCourses(courses);
