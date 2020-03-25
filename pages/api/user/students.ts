@@ -18,7 +18,8 @@ interface Course {
 }
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
-  const {user, userID} = req.body;
+  const user = req.cookies['portal-user'];
+  const userID = req.cookies['portal-user-id'];
 
   if (user && userID) {
     db.getAllCoursesByInstructor(userID)
