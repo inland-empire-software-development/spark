@@ -28,9 +28,9 @@ const Students = () => {
   useEffect(() => {
     fetch(process.env.HOST + "api/course-students", {
       method: 'GET',
-      // headers: {
-      //   'Content-Type': 'application/json',
-      // },
+      headers: {
+        'Content-Type': 'application/json',
+      },
       credentials: 'same-origin',
     })
         .then((res) => res.json()) // TODO - check response code
@@ -42,12 +42,12 @@ const Students = () => {
 
   const handleManageUser = (id: string) => {
     console.log(`Go to manage user page for user with id: ${id}`);
-    router.push(`students/${id}`);
+    router.push(`/students/${id}`);
   };
 
   const handleViewUser = (id: string) => {
     console.log(`Go to user page for user with id: ${id}`);
-    router.push(`users/${id}`);
+    router.push(`/users/${id}`);
   };
 
   const handleRemoveStudentsFromCourse = (courseID: string, userIDs: string[]) => {
