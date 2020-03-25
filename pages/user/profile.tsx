@@ -1,25 +1,23 @@
 import SEO from "../../next-seo.config";
 import { DefaultSeo } from "next-seo";
-import Footer from '../../src/components/global/Footer/Footer';
+// import Footer from '../../src/components/global/Footer/Footer';
 import Navigation from "../../src/components/global/Navigation/Navigation";
-
+import Title from "../user/title";
+import Summary from "../user/summary";
 // render Profile page.
 function Profile(): JSX.Element {
   return (
     <main>
       <Navigation />
-      <section>
-        <div className="uk-container" >
-          <DefaultSeo {...Object.assign(SEO, {
-            title: `Profile`,
-          })}
-          />
-          <section className="uk-padding">
-            <p>just a test 2 </p>
-          </section>
-        </div>
+      <section id="profile" className="container-full" >
+        <DefaultSeo {...Object.assign(SEO, {
+          title: `Profile`,
+        })}
+        />
+        <Title/>
+        <Summary/>
       </section>
-      <Footer />
+      {/* <Footer /> */}
     </main>
 
   );
