@@ -28,7 +28,7 @@ const Students = () => {
   const router = useRouter();
 
   useEffect(() => {
-    fetch(process.env.HOST + "api/user/students", {
+    fetch(process.env.HOST + "api/course-students", {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
