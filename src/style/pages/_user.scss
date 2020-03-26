@@ -1,4 +1,33 @@
 #profile {
+  //fonts
+  .font34 {
+    font-size: 34px;
+  }
+
+  .font26 {
+    font-size: 26px;
+  }
+
+  .font20 {
+    font-size: 20px;
+  }
+
+  .font18 {
+    font-size: 18px;
+  }
+
+  .font16 {
+    font-size: 16px;
+  }
+
+  .font14 {
+    font-size: 14px;
+  }
+
+  .smallPadingTop {
+    margin-top: 20px;
+  }
+
   #title {
     // height: auto;
     height: 220px;
@@ -22,7 +51,6 @@
     }
 
     .profile-title {
-      font-size: 34px;
       bottom: auto;
       color: white;
       font-family: "Light", sans-serif;
@@ -31,8 +59,7 @@
       text-decoration: none;
     }
 
-    .role {
-      font-size: 16px;
+    .roleColor {
       color: white;
     }
 
@@ -48,16 +75,62 @@
   #Summary {
     min-height: 500px;
 
-    .medium-text {
-      font-size: 20px;
-    }
-
-    #Professional_Summary {
+    #professional_Summary {
       color: black;
     }
 
-    #InfoCard {
+    #infoCard {
       color: black;
+    }
+
+    .borderCard {
+      border-radius: 5px;
+      border: 2px solid rgba(0, 0, 0, 0.1);
+    }
+
+    #education {
+      .circle {
+        border: 2px solid red;
+        padding: 10px 40px;
+        background: red;
+        width: 1px;
+        height: 60px;
+        border-radius: 100px;
+        transform: scale(0.1, 0.1);
+      }
     }
   }
+}
+
+html,
+body {
+  font-size: 1em;
+}
+
+.logo {
+  text-align: left;
+  float: left;
+  margin-left: 10px;
+}
+
+.outer-circle {
+  display: block;
+  position: relative;
+  height: 14px;
+  width: 14px;
+  margin: 0 auto;
+  border-radius: 50%;
+  background-color: #cd0000;
+}
+
+.inner-circle {
+  top: 1px;
+  left: 1px;
+  display: block;
+  position: relative;
+  height: 11px;
+  width: 11px;
+  border-radius: 50%;
+  border: 2px solid white;
+  background-color: #cd0000;
 }
