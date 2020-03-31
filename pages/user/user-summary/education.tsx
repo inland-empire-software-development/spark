@@ -1,17 +1,44 @@
 // render education page.
 function Education(): JSX.Element {
   return (
-    <section id="education" className="">
+    <section id="education" className="uk-width-3-3">
       <h2 className="font20 uk-text-bold">My Education</h2>
-      <p className="logo">
-  <b className="outer-circle">
-    <b className="inner-circle"></b>
-  </b>
-</p>
-      {/* <p className=" font14 uk-text-muted">is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-      <p className=" font14 uk-text-muted">It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p> */}
-
-    </section>
+            <div className='timeline uk-width-3-3'>
+              <div className='container  right'><div className="container2 right2"></div>
+                <div className='contents'>
+                  <h2>2016</h2>
+                  <p>
+                    Lorem ipsum dolor sit amet, quo ei simul congue exerci, ad
+                    nec admodum perfecto mnesarchum, vim ea mazim fierent
+                    detracto. Ea quis iuvaret expetendis his, te elit voluptua
+                    dignissim per, habeo iusto primis ea eam.
+                  </p>
+                </div>
+              </div>
+              <div className='container right'><div className="container2 right2"></div>
+                <div className='contents'>
+                  <h2>2012</h2>
+                  <p>
+                    Lorem ipsum dolor sit amet, quo ei simul congue exerci, ad
+                    nec admodum perfecto mnesarchum, vim ea mazim fierent
+                    detracto. Ea quis iuvaret expetendis his, te elit voluptua
+                    dignissim per, habeo iusto primis ea eam.
+                  </p>
+                </div>
+              </div>
+              <div className='container right'><div className="container2 right2"></div>
+                <div className='contents'>
+                  <h2>2007</h2>
+                  <p>
+                    Lorem ipsum dolor sit amet, quo ei simul congue exerci, ad
+                    nec admodum perfecto mnesarchum, vim ea mazim fierent
+                    detracto. Ea quis iuvaret expetendis his, te elit voluptua
+                    dignissim per, habeo iusto primis ea eam.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </section>
 
   );
 }
