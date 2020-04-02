@@ -14,7 +14,7 @@
     "production": "next start -p 6003",
     "build": "next build",
     "start": "next start",
-    "lint": "./node_modules/.bin/eslint ./**/*.{js,ts,tsx} --quiet --fix || true",
+    "lint": "./node_modules/.bin/eslint './**/*.{js,ts,tsx}' --quiet --fix || true",
     "test": "jest || true",
     "jest": "jest --watchAll",
     "reset": "rm -rf src/ sass/ pages/ .next/ node_modules/ yarn.lock models/ lib/ email/ && git reset --hard && yarn install",
