@@ -13,14 +13,14 @@
 //  - drag and drop pictures
 // =======================================================================
 
-import React, { useContext, FormEvent } from 'react';
+import React, {useContext, FormEvent} from 'react';
 import './UserInfoInput.scss';
-import { Message } from '../../..';
+import {Message} from '../../..';
 import Password from '../authenticate/Password/Password';
-import { Context } from '../../../src/context';
+import {Context} from '../../../src/context';
 
 let avatarURL: string | null = null;
-let picUploaded: boolean = false;
+let picUploaded = false;
 const handleFileUpload = (e: FileList | null) => {
   if (e) {
     picUploaded = true;
@@ -28,7 +28,7 @@ const handleFileUpload = (e: FileList | null) => {
 };
 
 const UserInfoInput = () => {
-  const { user, userID } = useContext(Context);
+  const {user, userID} = useContext(Context);
 
   const handleUserInformation = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault(); // prevents form from reloading page (form submission)
@@ -112,7 +112,7 @@ const UserInfoInput = () => {
     })
       .then((response: { json: () => any }) => response.json())
       .then((response: Message) => {
-        const { status, message } = response;
+        const {status, message} = response;
 
         console.log(status, '\n', message); // log to console to see what it prints.
 
@@ -129,12 +129,12 @@ const UserInfoInput = () => {
         method: 'POST',
         headers: {
           'Content-Type':
-            data.profilePic && data.profilePic.length !== 0
-              ? data.profilePic[0].type
-              : 'application/json',
-          'Image-name': data.profilePic
-            ? data.profilePic[0].name
-            : String(userID) + '-profile-image',
+            data.profilePic && data.profilePic.length !== 0 ?
+              data.profilePic[0].type :
+              'application/json',
+          'Image-name': data.profilePic ?
+            data.profilePic[0].name :
+            String(userID) + '-profile-image',
           'User-identification': String(user) + String(userID) + '-pic.jpg'
         },
         body: data.profilePic ? data.profilePic[0] : null
@@ -146,7 +146,7 @@ const UserInfoInput = () => {
     <form
       id='user-profile'
       autoComplete='off'
-      onSubmit={event => handleUserInformation(event)}
+      onSubmit={(event) => handleUserInformation(event)}
     >
       <div className='uk-fieldset'>
         <legend className='uk-legend'>Personal Details</legend>
@@ -164,7 +164,7 @@ const UserInfoInput = () => {
                 <input
                   type='file'
                   name='user-image'
-                  onChange={event => handleFileUpload(event.target.files)}
+                  onChange={(event) => handleFileUpload(event.target.files)}
                 />
                 <button className='uk-button uiif-button'>Browse</button>
               </div>
