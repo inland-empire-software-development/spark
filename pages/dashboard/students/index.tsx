@@ -1,6 +1,5 @@
-import React, {useContext, useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import {useRouter} from "next/router";
-import {Context} from '../../../src/context';
 import DashboardLayout from "../../../src/components/layouts/DashboardLayout";
 import ManageStudents, {ManageStudentsCourse} from "../../../src/components/manage-students/ManageStudents";
 
@@ -23,22 +22,18 @@ const mapDataToCourseProps = (data: any): ManageStudentsCourse[] => {
 };
 
 const Students = () => {
-  const {user, userID} = useContext(Context);
   const [courses, setCourses] = useState<ManageStudentsCourse[]>([]);
   const router = useRouter();
 
   useEffect(() => {
-    fetch(process.env.HOST + "api/user/students", {
-      method: 'POST',
+    fetch(process.env.HOST + "api/course-students", {
+      method: 'GET',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({
-        user,
-        userID,
-      }),
+      credentials: 'same-origin',
     })
-        .then((res) => res.json())
+        .then((res) => res.json()) // TODO - check response code
         .then((data) => {
           const courses = mapDataToCourseProps(data);
           setCourses(courses);
@@ -47,12 +42,12 @@ const Students = () => {
 
   const handleManageUser = (id: string) => {
     console.log(`Go to manage user page for user with id: ${id}`);
-    router.push(`students/${id}`);
+    router.push(`/students/${id}`);
   };
 
   const handleViewUser = (id: string) => {
     console.log(`Go to user page for user with id: ${id}`);
-    router.push(`users/${id}`);
+    router.push(`/users/${id}`);
   };
 
   const handleRemoveStudentsFromCourse = (courseID: string, userIDs: string[]) => {
