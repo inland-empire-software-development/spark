@@ -1,4 +1,12 @@
-@import '../../style/variables.scss';
+@import "../../style/variables.scss";
+
+.uk-input {
+  color: black;
+}
+
+.profile-pic-container {
+  min-width: 182px;
+}
 
 .img-upload-container {
   position: relative;
@@ -16,7 +24,7 @@
 }
 
 .uiif-textarea-width {
-  min-width: 100%;
+  resize: vertical;
 }
 
 .uiif-button {

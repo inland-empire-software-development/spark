@@ -1,0 +1,97 @@
+@import '../../style/variables.scss';
+
+.manage-students {
+  .uk-tab {
+    a {
+      font-family: "Book", sans-serif;
+      font-size: 20px;
+      color: $light-gray;
+      border-bottom: 2px solid transparent;
+    }
+
+    .uk-active {
+      a {
+        border-color: $tertiary;
+        color: $dark-gray;
+      }
+    }
+  }
+
+  .uk-checkbox {
+    transition: none;
+
+    &:checked {
+      background-color: $tertiary;
+    }
+
+    &:indeterminate {
+      background-color: $tertiary;
+    }
+  }
+
+  .uk-breadcrumb {
+    font-family: "Book", sans-serif;
+    font-size: 18px;
+
+    :first-child {
+      font-family: "Medium", sans-serif;
+      color: $black;
+    }
+  }
+
+  .student-photo {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    overflow: hidden;
+    display: inline-block;
+
+    img {
+      width: 100%;
+      min-height: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+  }
+
+  button {
+    background-color: $tertiary;
+    color: $white;
+    transition: color linear 0.1s;
+    transition: background-color linear 0.1s;
+
+    &:hover {
+      background-color: #e56c21;
+    }
+
+    &:disabled {
+      background-color: white;
+      color: rgba(98, 98, 98, 0.3);
+      border: 1px solid rgba(98, 98, 98, 0.3);
+    }
+  }
+
+  table {
+    font-family: "Book", sans-serif;
+    font-size: 16px;
+    color: $light-gray;
+
+    th {
+      font-family: "Light", sans-serif;
+      font-size: 18px;
+    }
+
+    td {
+      vertical-align: middle;
+
+      img {
+        height: 150px;
+      }
+
+      a {
+        color: $dark-gray;
+      }
+    }
+  }
+}
