@@ -1,8 +1,17 @@
 @import "../../style/pages";
-
+.uk-container {
+  padding: 0;
+  margin: 0;
+}
+// Top image
+.top-image {
+  width: 100%;
+  min-height: 300px ;  
+}
 // Course-Info
 .course-info {
   background-color: lightgrey;
+  min-height: 320px ;
 }
 .course-info-top {
   font-size: 36px;
@@ -19,6 +28,9 @@
   margin: 0;
   padding-top: 10px;
 }
+.course-info-section {
+  margin: 0;
+}
 .course-info-section-1,
 .course-info-section-2,
 .course-info-section-3,
@@ -26,12 +38,21 @@
   padding: 20px 20px 0 20px;
 }
 .course-info-description {
-  padding: 0px 0px 0px 40px;
+  padding: 0;
+  position: relative;
+  top: 50%;
+  left: 40%;
+  transform: translate(-60%, -50%);
 }
 // Course-Program
 .course-program-description {
   margin-top: 20px;
   padding: 0px 10px 0px 0px;
+  padding: 0;
+  position: relative;
+  top: 0;
+  left: 40%;
+  transform: translate(-60%, -40%);
 }
 .course-program-section-1,
 .course-program-section-2,
@@ -52,7 +73,7 @@
   padding-top: 0;
 }
 .course-program-header {
-  font-size: 26px;
+  font-size: 24px;
   font-weight: 500;
   margin: 0px;
   padding-top: 5px;
@@ -111,3 +132,21 @@ ul li {
   margin-right: 10px;
 }
 // Need to move divider
+
+// Student Quote
+.student-quote {
+  font-size: 16px;
+  text-align: center;
+  max-width: 45%;
+}
+.student {
+  font-size: 12px;
+}
+.student-quote-section {
+  width: 100%;
+  min-height: 250px;
+}
+.random-quote-section {
+  width: 100%;
+  min-height: 250px;
+}
