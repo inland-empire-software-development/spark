@@ -3,7 +3,7 @@
 // render Title page.
 function Title(): JSX.Element {
   return (
-      <section id="title" className="">
+    <section id="title" className="">
       {/* TODO: Find a way to NOT render this under 960px */}
       <p className="user-centered font34 profile-title uk-padding-remove-bottom">Andy Mendez</p>
       {/* <div className="uk-overlay-primary uk-position-cover"></div> */}

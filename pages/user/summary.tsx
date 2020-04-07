@@ -4,8 +4,8 @@ import InfoCard from "./user-summary/card";
 // render Summary page.
 function Summary(): JSX.Element {
   return (
-      <section id="Summary" className="uk-container uk-padding-large">
-        <section className="uk-grid">
+    <section id="Summary" className="uk-container uk-padding-large">
+      <section className="uk-grid">
         <section className="uk-width-2-3">
           <Professional_Summary/>
           <Education/>
@@ -13,8 +13,8 @@ function Summary(): JSX.Element {
         <section className="uk-width-1-3">
           <InfoCard/>
         </section>
-        </section>
       </section>
+    </section>
 
   );
 }

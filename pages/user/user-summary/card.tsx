@@ -13,7 +13,7 @@ function InfoCard(): JSX.Element {
         <h4 className="meduimP-text smallPadingTop uk-margin-small-bottom uk-text-muted font14  ">Social Media</h4>
 
       </section>
-        <section className="borderCard uk-card uk-card-body uk-margin-medium">
+      <section className="borderCard uk-card uk-card-body uk-margin-medium">
         <h4 className="meduimP-text smallPadingTop uk-margin-small-bottom uk-text-muted font16  ">Courses</h4>
         <p className=" uk-text-bolder book-text uk-margin-remove font14">Intro to Web development</p>
         <p className=" uk-text-bolder book-text uk-margin-remove font14">Backend development</p>
@@ -23,7 +23,7 @@ function InfoCard(): JSX.Element {
         <h4 className="meduimP-text smallPadingTop uk-margin-small-bottom uk-text-muted font16  ">Open to Interview</h4>
         <p className=" uk-text-bolder book-text uk-margin-remove font14">Yes</p>
 
-        </section>
+      </section>
     </section>
 
   );
