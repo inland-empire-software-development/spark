@@ -1,14 +1,19 @@
 @import "../../style/pages";
+// 1440
 .uk-container {
   padding: 0;
   margin: 0;
 }
-// Top image
+
+//** Top image **//
+
 .top-image {
   width: 100%;
   min-height: 300px ;  
 }
-// Course-Info
+
+//** Course-Info **//
+
 .course-info {
   background-color: lightgrey;
   min-height: 320px ;
@@ -31,28 +36,60 @@
 .course-info-section {
   margin: 0;
 }
-.course-info-section-1,
-.course-info-section-2,
-.course-info-section-3,
+// .course-info-section-1,
+// .course-info-section-2,
+// .course-info-section-3,
+// .course-info-section-4 {
+//   padding: 20px 20px 0 20px;
+// }
+.course-info-section-1 {
+  padding: 20px 0 0 20px;
+}
+.course-info-section-2 {
+  padding: 20px 0 0 25px;
+}
+.course-info-section-3 {
+  padding-left: 30px;
+  padding: 20px 20px 0 30px;
+}
 .course-info-section-4 {
   padding: 20px 20px 0 20px;
 }
+
 .course-info-description {
+  // padding: 0;
+  // position: relative;
+  // top: 50%;
+  // left: 40%;
+  // transform: translate(-60%, -50%);
   padding: 0;
   position: relative;
   top: 50%;
   left: 40%;
-  transform: translate(-60%, -50%);
+  transform: translate(-54%, -50%);
+  min-width: 72%;
 }
-// Course-Program
+
+//** Course-Program **//
+
 .course-program-description {
-  margin-top: 20px;
-  padding: 0px 10px 0px 0px;
-  padding: 0;
-  position: relative;
-  top: 0;
-  left: 40%;
-  transform: translate(-60%, -40%);
+  // margin-top: 40px;
+  // padding: 0px 10px 0px 0px;
+  // padding: 0;
+  // position: relative;
+  // top: 0;
+  // left: 40%;
+  // transform: translate(-60%, -40%);
+  // min-height: 200px;
+  margin-top: 40px;
+    padding: 0px 10px 0px 0px;
+    padding: 0;
+    position: relative;
+    top: 0;
+    left: 40%;
+    transform: translate(-54%, -40%);
+    min-height: 200px;
+    min-width: 72%;
 }
 .course-program-section-1,
 .course-program-section-2,
@@ -62,27 +99,33 @@
 }
 .course-program-section-1 {
   background-color: lightgray;
-  flex-grow: .5;
+  max-width: 29%;
+  min-height: 200px;
 }
 .course-program-section-2 {
   padding-left: 20px;
-  padding-right: 0px;
-  flex-grow: -0.2;
+  padding-right: 20px;
+  max-width: 28px;
 }
 .course-program-section-3 {
   padding-top: 0;
+  position: relative;
+    top: -4%;
+    left: -20%;
 }
 .course-program-header {
   font-size: 24px;
-  font-weight: 500;
+  font-weight: 700;
   margin: 0px;
   padding-top: 5px;
+  position: relative;
+  top: 2%;
 }
 .course-program-header-detail {
   font-size: 14px;
   font-weight: 400;
-  margin: 10px 0 0 0;
-  padding: 0 10px 0 0px;
+  margin: 10px 10px 0 0;
+  padding: 0 50px 0 0;
 }
 .course-program-date-header {
   font-size: 38px;
@@ -96,10 +139,22 @@
 }
 .course-program-time {
   font-size: 10px;
+  min-width: 100px;
 }
 .course-program-section-3 {
   padding: 20px 0 0 0px;
   margin: 0; 
+  position: relative;
+  top: -2%;
+  left: 18%;
+}
+.uk-divider-vertical {
+  position: relative;
+  height: 140px;
+  top: 18%;
+  left: 14%;
+  max-width: 2px;
+  padding: 0;
 }
 .course-program-detail {
   font-size: 26px;
@@ -131,9 +186,9 @@ ul li {
   top: 0em; 
   margin-right: 10px;
 }
-// Need to move divider
 
-// Student Quote
+//** Student Quote **//
+
 .student-quote {
   font-size: 16px;
   text-align: center;
@@ -141,12 +196,101 @@ ul li {
 }
 .student {
   font-size: 12px;
+  position: relative;
+  top: 65%;
 }
 .student-quote-section {
   width: 100%;
-  min-height: 250px;
+  min-height: 300px;
 }
+
+// ** Random Quote **//
+
 .random-quote-section {
   width: 100%;
-  min-height: 250px;
+  min-height: 220px;
+}
+.random-quote {
+  font-size: 17px;
+  text-align: center;
+  max-width: 45%;
+}
+.random-author {
+  font-size: 17px;
+  position: relative;
+  top: 65%;
+}
+
+//** Venue **//
+
+.venue-image {
+  min-height: 300px;
+}
+.venue-body {
+  min-height: 300px;
+}
+.venue-title {
+  font-size: 32px;
+  font-weight: 650;
+  position: relative;
+  top: 10%;
+  left: 8%;
+}
+.venue-description {
+  text-align: left;
+  width: 70%;
+  margin-left: 8px;
+  margin-top: 50px;
+}
+.venue-street-address {
+  font-weight: bold;
+  text-align: left;
+  margin: 0 0 0 8px;
+}
+.venue-county-state {
+  font-weight: bold;
+  text-align: left;
+  margin: 0 0 0 8px;
+}
+
+// ** Program ** //
+
+.program-body {
+  min-height: 300px;
+}
+.program-title {
+  font-size: 32px;
+  font-weight: 650;
+  position: relative;
+  top: 10%;
+  left: 64%;
+}
+// Help with alignment
+.program-description {
+  text-align: justify;
+  width: 70%;
+  margin-left: 150px;
+  margin-right: 0;
+  margin-top: 50px;
+}
+.request-button {
+  font-size: 12px;
+  height: 42px;
+  width: 235px;
+  position: relative;
+  left: 26%;
+}
+.program-image {
+  min-height: 300px;
+}
+.footer {
+  text-align: -webkit-center;
+}
+.copywrite {
+  font-size: 10px;
+  margin: 20px 0 0px 0;
+}
+.footer-description {
+  font-size: 10px;  
+  margin: 0 0 20px 0;
 }

@@ -13,7 +13,7 @@ function Landing(): JSX.Element {
             <div className="uk-container course-info">
                 <div className="uk-margin-auto uk-width-2-3@s uk-card uk-card-default uk-card-body course-info-description">
                     <div className="uk-child-width-expand@l course" uk-grid="true">
-                        <div className="uk-grid-match uk-child-width-1-4@s uk-height-small course-info-section" uk-grid="true">
+                        <div className="uk-grid-match uk-child-width-1-4@l uk-height-small course-info-section" uk-grid="true">
                             <section className="uk-align-center uk-margin-remove course-info-section-1">
                                 <h4 className="Heavy primary course-info-top">15th</h4>
                                 <h5 className="Medium black course-info-mid">april</h5>
@@ -50,8 +50,9 @@ function Landing(): JSX.Element {
                                 <section className="uk-align-center uk-margin-remove course-program-section-2">
                                     <h4 className="Heavy primary course-program-date-header">24th</h4>
                                     <h5 className="Book course-program-date">June</h5>
-                                    <p className="Light black course-program-time">Every Saturday. 12:00 PM - 3:00 PM</p>
+                                    <p className="Light black course-program-time">Every Saturday. 1:00 PM - 3:00 PM</p>
                                 </section>
+                                <hr className="uk-divider-vertical" />
                                 {/* Need uk-grid-divider  */}
                                 <section className="uk-align-center uk-margin-remove  uk-child-width-expand@l course-program-section-3">
                                     <h4 className="Medium black course-program-detail">React Fundamentals:</h4>
@@ -82,45 +83,54 @@ function Landing(): JSX.Element {
             </div>
 
             {/* Venue */}
-            <div className="uk-grid-collapse uk-child-width-expand@s uk-text-center" uk-grid="true">
+            <div className="uk-grid-collapse uk-child-width-expand@s uk-text-center venue-section" uk-grid="true">
                 {/* Background image left  */}
                 <div>
-                    <div className="uk-background-contain uk-background-secondary uk-padding uk-height-small">Venue Image</div>
+                    <div className="uk-background-contain uk-background-secondary uk-padding uk-height-small venue-image">
+                        <img src="" alt="Venue Image" />
+                    </div>
                 </div>
                 {/* Venue description right */}
                 <div>
-                    <div className="uk-margin-auto uk-margin-auto-vertical uk-card uk-card-default uk-card-body">
-                        <h4 className="uk-position-left">Venue</h4>
-                        <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor."</p>
+                    <div className="uk-margin-auto uk-margin-auto-vertical uk-card uk-card-default uk-card-body venue-body">
+                        <h4 className="uk-position-left venue-title black">Venue</h4>
+                        <p className="venue-description Book black">Our program will take place at one of the fastest growing incubators in the city of Riverside. It can host large meetings, be used as a co-hosting space, and is at the center of the bustling city.</p>
+                        <p className="venue-street-address black Medium">3499 Tenth St.</p>
+                        <p className="venue-county-state black Medium">Riverside, CA 92501</p>
                     </div>
                 </div>
             </div>
             {/* Random quote */}
             <div className="uk-container">
-                <div className="uk-margin-auto uk-margin-auto-vertical uk-card uk-card-default uk-card-body uk-height-small random-quote-section">
-                    <p className="uk-position-center Light random-quote">"Education is the passport to the future, for tomorrow belongs to those who prepare for it today."</p>
-                    <p className="uk-position-center Light random">-Malcom X</p>
+                <div className="uk-margin-auto uk-margin-auto-vertical uk-card uk-card-default uk-card-body uk-height-small random-quote-section bg-dark-gray">
+                    <p className="uk-position-center Light random-quote">"Education is the passport to the future, for tomorrow belongs to those who prepare for it today." - Malcom X</p>
+                    {/* <p className="uk-position-center Light random-author">-Malcom X</p> */}
                 </div>
             </div>
 
             {/* Program */}
             <div className="uk-contianer">
-                <div className="uk-grid-collapse uk-child-width-expand@s uk-text-center" uk-grid="true">
+                <div className="uk-grid-collapse uk-child-width-expand@s uk-text-center program-section" uk-grid="true">
                     <div>
                         {/* Program description left */}
-                        <div className="uk-margin-auto uk-margin-auto-vertical uk-card uk-card-default uk-card-body">
-                            <h4 className="uk-position-right">Program</h4>
-                            <p>Spark program is a community driven learning program....</p>
-                            <button className="uk-button uk-button-small uk-button-default">Request Information</button>
+                        <div className="uk-margin-auto uk-margin-auto-vertical uk-card uk-card-default uk-card-body program-body">
+                            <h4 className="uk-position-right program-title">Program</h4>
+                            <p className="program-description black">Spark program is a community driven learning program that provides students a working set of skills to get started building useful applications. Our courses are realistically designed and we make no false promises.</p>
+                            <button className="uk-button uk-button-small uk-button-default request-button Book bg-primary white">Request Information</button>
                         </div>
                     </div>
                     {/* Background image right  */}
                     <div>
-                        <div className="uk-background-contain uk-background-secondary uk-padding uk-height-small">
-                            Program Image
+                        <div className="uk-background-contain uk-background-secondary uk-padding uk-height-small program-image">
+                            <img src="" alt="Program Image" />
                         </div>
                     </div>
                 </div>
+            </div>
+            {/* footer */}
+            <div className="footer">
+                <p className="copywrite">&copy; 2020 Spark.</p>
+                <p className="footer-description">An open source LMS project</p>
             </div>
         </div>
     );
