@@ -11,6 +11,8 @@ const course = async (db: CreateTable) => {
         code VARCHAR(45) NULL,
         status TINYINT NOT NULL DEFAULT 0,
         name VARCHAR(150) NOT NULL,
+        instructor VARCHAR(10) NOT NULL,
+        students_enrolled VARCHAR(255) NOT NULL,
         PRIMARY KEY (course_id),
         UNIQUE INDEX name_UNIQUE (name ASC),
         UNIQUE INDEX course_id_UNIQUE (course_id ASC),

@@ -19,7 +19,7 @@ function getUserImage(userDetails: { avatar_url: any; first_name: any; last_name
   return (
     <Link href="/user-profile">
       <a className="white">
-        <img src={userDetails && userDetails.avatar_url ? userDetails.avatar_url : process.env.HOST + "images/logo/spark-360x360.png"}
+        <img src={userDetails && userDetails.avatar_url ? process.env.HOST + userDetails.avatar_url : process.env.HOST + "images/logo/spark-360x360.png"}
           alt="user profile image"
           className="bg-white"
           title={userDetails ? userDetails?.first_name + " " + userDetails?.last_name : "user profile image"}
