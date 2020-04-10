@@ -1,8 +1,8 @@
-// render education page.
-function Education(): JSX.Element {
+// render experience page.
+function Experience(): JSX.Element {
   return (
-    <section id="education" className="uk-width-3-3">
-      <h2 className="font20 uk-text-bold">My Education</h2>
+    <section id="experience" className="uk-width-3-3">
+      <h2 className="font20 uk-text-bold">My Experience</h2>
       <section className='timeline uk-width-3-3'>
         <section  className='container right '>
           <section id="rss"></section>
@@ -35,4 +35,4 @@ function Education(): JSX.Element {
   );
 }
 
-export default Education;
+export default Experience;
