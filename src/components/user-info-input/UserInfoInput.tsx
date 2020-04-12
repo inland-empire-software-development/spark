@@ -27,6 +27,25 @@ const handleFileUpload = (e: FileList | null) => {
   }
 };
 
+function getUserImage(userDetails: { avatar_url: any }) {
+  return (
+    <img
+      data-src={
+        userDetails && userDetails.avatar_url
+          ? process.env.HOST + userDetails.avatar_url
+          : process.env.HOST + 'images/profilepics/placeholder_image.png'
+      }
+      src={
+        userDetails && userDetails.avatar_url
+          ? process.env.HOST + userDetails.avatar_url
+          : process.env.HOST + 'images/profilepics/placeholder_image.png'
+      }
+      alt='Placeholder Image'
+      uk-img=''
+    />
+  );
+}
+
 const UserInfoInput = () => {
   const { user, userID } = useContext(Context);
   const data = {
@@ -59,8 +78,6 @@ const UserInfoInput = () => {
     instagram: undefined
   });
 
-  console.log(userDetails);
-  
   useEffect(() => {
     const abortController = new AbortController();
 
@@ -207,12 +224,7 @@ const UserInfoInput = () => {
         <div className='uk-grid'>
           <div className='uk-width-1-5@m uk-margin-bottom profile-pic-container'>
             <div className='js-upload uk-placeholder uk-width-medium img-upload-container'>
-              <img
-                data-src='https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png'
-                src='https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png'
-                alt='Placeholder Image'
-                uk-img=''
-              />
+              {getUserImage(userDetails)}
               <div className='uk-width-expand uk-child-width-expand uk-form-custom'>
                 <input
                   type='file'
