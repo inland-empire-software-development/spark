@@ -13,7 +13,7 @@
 //  - drag and drop pictures
 // =======================================================================
 
-import React, { useContext, FormEvent } from 'react';
+import React, { useContext, useState, useEffect, FormEvent } from 'react';
 import './UserInfoInput.scss';
 import { Message } from '../../..';
 import Password from '../authenticate/Password/Password';
@@ -29,6 +29,59 @@ const handleFileUpload = (e: FileList | null) => {
 
 const UserInfoInput = () => {
   const { user, userID } = useContext(Context);
+  const data = {
+    key: [
+      'avatar_url',
+      'first_name',
+      'last_name',
+      'title',
+      'phone',
+      'about',
+      'facebook',
+      'twitter',
+      'linkedin',
+      'instagram'
+    ],
+    table: 'user_meta',
+    identifier: 'user_ID',
+    value: userID
+  };
+  const [userDetails, setUserDetails] = useState({
+    avatar_url: undefined,
+    first_name: undefined,
+    last_name: undefined,
+    title: undefined,
+    phone: undefined,
+    about: undefined,
+    facebook: undefined,
+    twitter: undefined,
+    linkedin: undefined,
+    instagram: undefined
+  });
+
+  console.log(userDetails);
+  
+  useEffect(() => {
+    const abortController = new AbortController();
+
+    if (userID !== undefined) {
+      fetch(process.env.HOST + 'api/meta', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+      })
+        .then(response => response.json())
+        .then(response => {
+          setUserDetails(response);
+        });
+    }
+
+    return () => {
+      abortController.abort();
+    };
+  }, []);
 
   const handleUserInformation = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault(); // prevents form from reloading page (form submission)
