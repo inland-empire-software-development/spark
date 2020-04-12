@@ -24,12 +24,16 @@ let picUploaded: boolean = false;
 const handleFileUpload = (e: FileList | null) => {
   if (e) {
     picUploaded = true;
+    let avatarImg = document.getElementById('avatarID') as HTMLImageElement;
+    avatarImg.src = process.env.HOST + 'images/logo/spark-360x360.png';
+    avatarImg.src = URL.createObjectURL(e[0]);
   }
 };
 
 function getUserImage(userDetails: { avatar_url: any }) {
   return (
     <img
+      id='avatarID'
       data-src={
         userDetails && userDetails.avatar_url
           ? process.env.HOST + userDetails.avatar_url
