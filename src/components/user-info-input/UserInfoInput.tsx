@@ -10,7 +10,8 @@
 // V2
 //  - Update placeholders with user's infomation
 //  - drag and drop pictures
-//  - can't clear input fields
+//  - reset input fields remove user info from db
+//      * i.e. remove facebook address from db
 // =======================================================================
 
 import React, { useContext, useState, useEffect, FormEvent } from 'react';
@@ -89,18 +90,19 @@ const UserInfoInput = () => {
   });
 
   // set user title
-  let title_selector: HTMLSelectElement | null = document.querySelector(
-    '[name="user-title"]'
-  );
-  const title_options = title_selector?.options;
-  if (title_options && title_selector) {
-    for (let i = 0; i < title_options?.length; i++) {
-      if (title_options[i].value == getUserTitle(userDetails)) {
-        title_selector.selectedIndex = i;
+  useEffect(() => {
+    const title_selector: HTMLSelectElement | null = document.querySelector(
+      '[name="user-title"]'
+    );
+    const title_options = title_selector?.options;
+    if (title_options && title_selector) {
+      for (let i = 0; i < title_options?.length; i++) {
+        if (title_options[i].value == getUserTitle(userDetails)) {
+          title_selector.selectedIndex = i;
+        }
       }
     }
-  }
-  // set user title end
+  }, [userDetails.title]);
 
   useEffect(() => {
     const abortController = new AbortController();
