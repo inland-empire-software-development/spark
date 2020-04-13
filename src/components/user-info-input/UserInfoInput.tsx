@@ -191,6 +191,24 @@ const UserInfoInput = () => {
 
         console.log(status, '\n', message); // log to console to see what it prints.
 
+        if (picUploaded) {
+          fetch(process.env.HOST + 'api/user/upload', {
+            method: 'POST',
+            headers: {
+              'Content-Type':
+                data.profilePic && data.profilePic.length !== 0
+                  ? data.profilePic[0].type
+                  : 'application/json',
+              'Image-name': data.profilePic
+                ? data.profilePic[0].name
+                : String(userID) + '-profile-image',
+              'User-identification': String(user) + String(userID) + '-pic.jpg'
+            },
+            body: data.profilePic ? data.profilePic[0] : null
+          });
+        }
+      })
+      .then((response: string) => {
         // if spinner is showing and you're done with saving stuff
         // now hide the spinner
         if (spinner) spinner.classList.add('uk-hidden');
@@ -198,23 +216,6 @@ const UserInfoInput = () => {
         // do whatever else you need to do
         // window.location.reload(true);
       });
-
-    if (picUploaded) {
-      fetch(process.env.HOST + 'api/user/upload', {
-        method: 'POST',
-        headers: {
-          'Content-Type':
-            data.profilePic && data.profilePic.length !== 0
-              ? data.profilePic[0].type
-              : 'application/json',
-          'Image-name': data.profilePic
-            ? data.profilePic[0].name
-            : String(userID) + '-profile-image',
-          'User-identification': String(user) + String(userID) + '-pic.jpg'
-        },
-        body: data.profilePic ? data.profilePic[0] : null
-      });
-    }
   };
 
   return (
