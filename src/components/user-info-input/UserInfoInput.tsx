@@ -45,7 +45,11 @@ function getUserImage(userDetails: { avatar_url: any }) {
 }
 
 function getUserFirstName(userDetails: { first_name: any }) {
-  return userDetails ? userDetails?.first_name : 'pal';
+  return userDetails ? userDetails.first_name : '';
+}
+
+function getUserLastName(userDetails: { last_name: any }) {
+  return userDetails ? userDetails.last_name : '';
 }
 
 const UserInfoInput = () => {
@@ -113,37 +117,37 @@ const UserInfoInput = () => {
     const profilepic: HTMLInputElement | null = document.querySelector(
       '[name="user-image"]'
     );
-    const firstname: HTMLInputElement | null = document.querySelector(
+    const firstname_field: HTMLInputElement | null = document.querySelector(
       '[name="user-firstname"]'
     );
-    const lastname: HTMLInputElement | null = document.querySelector(
+    const lastname_field: HTMLInputElement | null = document.querySelector(
       '[name="user-lastname"]'
     );
-    const title: HTMLSelectElement | null = document.querySelector(
+    const title_field: HTMLSelectElement | null = document.querySelector(
       '[name="user-title"]'
     );
-    const phone: HTMLInputElement | null = document.querySelector(
+    const phone_field: HTMLInputElement | null = document.querySelector(
       '[name="user-phone"]'
     );
-    const about: HTMLInputElement | null = document.querySelector(
+    const about_field: HTMLInputElement | null = document.querySelector(
       '[name="user-about"]'
     );
-    const oldpassword: HTMLInputElement | null = document.querySelector(
+    const oldpassword_field: HTMLInputElement | null = document.querySelector(
       '[name="user-oldpassword"]'
     );
-    const password: HTMLInputElement | null = document.querySelector(
+    const password_field: HTMLInputElement | null = document.querySelector(
       '[name="password-component"]'
     );
-    const facebook: HTMLInputElement | null = document.querySelector(
+    const facebook_field: HTMLInputElement | null = document.querySelector(
       '[name="user-fb"]'
     );
-    const twitter: HTMLInputElement | null = document.querySelector(
+    const twitter_field: HTMLInputElement | null = document.querySelector(
       '[name="user-twitter"]'
     );
-    const linkedin: HTMLInputElement | null = document.querySelector(
+    const linkedin_field: HTMLInputElement | null = document.querySelector(
       '[name="user-linkedin"]'
     );
-    const instagram: HTMLInputElement | null = document.querySelector(
+    const instagram_field: HTMLInputElement | null = document.querySelector(
       '[name="user-instagram"]'
     );
 
@@ -162,22 +166,34 @@ const UserInfoInput = () => {
       profilePic: profilepic && profilepic.files ? profilepic.files : null,
       avatarURL: avatarURL,
       firstname:
-        firstname && firstname.value !== userDetails.first_name
-          ? firstname.value
+        firstname_field && firstname_field.value !== userDetails.first_name
+          ? firstname_field.value
           : null,
       lastname:
-        lastname && lastname.value !== userDetails.last_name
-          ? lastname.value
+        lastname_field && lastname_field.value !== userDetails.last_name
+          ? lastname_field.value
           : null,
-      title: title ? title.value : null,
-      phone: phone ? phone.value : null,
-      about: about ? about.value : null,
-      oldpassword: oldpassword ? oldpassword.value : null,
-      password: password ? password.value : null,
-      facebook: facebook ? facebook.value : null,
-      twitter: twitter ? twitter.value : null,
-      linkedin: linkedin ? linkedin.value : null,
-      instagram: instagram ? instagram.value : null,
+      title:
+        title_field && title_field.value !== userDetails.title
+          ? title_field.value
+          : null,
+      phone:
+        phone_field && phone_field.value !== userDetails.phone
+          ? phone_field.value
+          : null,
+      about:
+        about_field && about_field.value !== userDetails.about
+          ? about_field.value
+          : null,
+      oldpassword: oldpassword_field ? oldpassword_field.value : null,
+      password: password_field ? password_field.value : null,
+      facebook:
+        facebook_field && facebook_field.value !== userDetails.facebook
+          ? facebook_field.value
+          : null,
+      twitter: twitter_field ? twitter_field.value : null,
+      linkedin: linkedin_field ? linkedin_field.value : null,
+      instagram: instagram_field ? instagram_field.value : null,
       userID: userID
     };
 
@@ -272,7 +288,8 @@ const UserInfoInput = () => {
               <input
                 className='uk-input'
                 type='text'
-                placeholder='Alas'
+                placeholder='Enter your last name here'
+                defaultValue={getUserLastName(userDetails)}
                 name='user-lastname'
               ></input>
             </div>
