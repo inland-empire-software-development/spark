@@ -23,7 +23,7 @@ import { Context } from '../../../src/context';
 let avatarURL: string | null = null;
 let picUploaded: boolean = false;
 const handleFileUpload = (e: FileList | null) => {
-  if (e) {
+  if (e && e[0]) {
     picUploaded = true;
     let avatarImg = document.getElementById('avatarID') as HTMLImageElement;
     avatarImg.src = process.env.HOST + 'images/logo/spark-360x360.png';
