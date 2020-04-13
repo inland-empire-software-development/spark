@@ -44,12 +44,16 @@ function getUserImage(userDetails: { avatar_url: any }) {
   );
 }
 
-function getUserFirstName(userDetails: { first_name: any }) {
+function getUserFirstName(userDetails: { first_name: string }) {
   return userDetails ? userDetails.first_name : '';
 }
 
-function getUserLastName(userDetails: { last_name: any }) {
+function getUserLastName(userDetails: { last_name: string }) {
   return userDetails ? userDetails.last_name : '';
+}
+
+function getUserTitle(userDetails: { title: string }) {
+  return userDetails ? userDetails.title : '';
 }
 
 const UserInfoInput = () => {
@@ -83,6 +87,20 @@ const UserInfoInput = () => {
     linkedin: (undefined as unknown) as string,
     instagram: (undefined as unknown) as string
   });
+
+  // set user title
+  let title_selector: HTMLSelectElement | null = document.querySelector(
+    '[name="user-title"]'
+  );
+  const title_options = title_selector?.options;
+  if (title_options && title_selector) {
+    for (let i = 0; i < title_options?.length; i++) {
+      if (title_options[i].value == getUserTitle(userDetails)) {
+        title_selector.selectedIndex = i;
+      }
+    }
+  }
+  // set user title end
 
   useEffect(() => {
     const abortController = new AbortController();
@@ -307,8 +325,8 @@ const UserInfoInput = () => {
               <label className='uk-form-label' htmlFor='title'>
                 Title
               </label>
-              <select className='uk-select' name='user-title'>
-                <option></option>
+              <select className='uk-select' name='user-title' defaultValue=''>
+                <option hidden>Select One</option>
                 <option>Student</option>
                 <option>Instructor</option>
                 <option>Teaching Assistant</option>
