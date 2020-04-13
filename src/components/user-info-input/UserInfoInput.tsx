@@ -8,7 +8,6 @@
 //  - Need error checking for uploaded file, img needs optimization
 //  - should user be logged out when password is updated?
 // V2
-//  - Update placeholders with user's infomation
 //  - drag and drop pictures
 //  - reset input fields remove user info from db
 //      * i.e. remove facebook address from db
@@ -55,6 +54,30 @@ function getUserLastName(userDetails: { last_name: string }) {
 
 function getUserTitle(userDetails: { title: string }) {
   return userDetails ? userDetails.title : '';
+}
+
+function getUserPhone(userDetails: { phone: string }) {
+  return userDetails ? userDetails.phone : '';
+}
+
+function getUserAbout(userDetails: { about: string }) {
+  return userDetails ? userDetails.about : '';
+}
+
+function getUserFacebook(userDetails: { facebook: string }) {
+  return userDetails ? userDetails.facebook : '';
+}
+
+function getUserTwitter(userDetails: { twitter: string }) {
+  return userDetails ? userDetails.twitter : '';
+}
+
+function getUserLinkedin(userDetails: { linkedin: string }) {
+  return userDetails ? userDetails.linkedin : '';
+}
+
+function getUserInstagram(userDetails: { instagram: string }) {
+  return userDetails ? userDetails.instagram : '';
 }
 
 const UserInfoInput = () => {
@@ -343,6 +366,7 @@ const UserInfoInput = () => {
                 className='uk-input'
                 type='tel'
                 placeholder='xxx-xxx-xxxx'
+                defaultValue={getUserPhone(userDetails)}
                 name='user-phone'
                 autoComplete='off'
               ></input>
@@ -358,7 +382,7 @@ const UserInfoInput = () => {
             className='uk-textarea uiif-textarea-width'
             rows={5}
             placeholder='Something interesting about you!'
-            defaultValue=''
+            defaultValue={getUserAbout(userDetails)}
             name='user-about'
           ></textarea>
         </div>
@@ -404,7 +428,8 @@ const UserInfoInput = () => {
             <input
               className='uk-input'
               type='url'
-              placeholder=''
+              placeholder='https://...'
+              defaultValue={getUserFacebook(userDetails)}
               name='user-fb'
             ></input>
           </div>
@@ -416,7 +441,8 @@ const UserInfoInput = () => {
             <input
               className='uk-input'
               type='url'
-              placeholder=''
+              placeholder='https://...'
+              defaultValue={getUserTwitter(userDetails)}
               name='user-twitter'
             ></input>
           </div>
@@ -430,7 +456,8 @@ const UserInfoInput = () => {
             <input
               className='uk-input'
               type='url'
-              placeholder=''
+              placeholder='https://...'
+              defaultValue={getUserLinkedin(userDetails)}
               name='user-linkedin'
             ></input>
           </div>
@@ -442,7 +469,8 @@ const UserInfoInput = () => {
             <input
               className='uk-input'
               type='url'
-              placeholder=''
+              placeholder='https://...'
+              defaultValue={getUserInstagram(userDetails)}
               name='user-instagram'
             ></input>
           </div>
