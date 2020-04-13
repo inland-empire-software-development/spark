@@ -9,9 +9,8 @@
 //  - should user be logged out when password is updated?
 // V2
 //  - Update placeholders with user's infomation
-//  - autocomplete wants to put saved password in new password
-//    and username in number
 //  - drag and drop pictures
+//  - can't clear input fields
 // =======================================================================
 
 import React, { useContext, useState, useEffect, FormEvent } from 'react';
@@ -69,16 +68,16 @@ const UserInfoInput = () => {
     value: userID
   };
   const [userDetails, setUserDetails] = useState({
-    avatar_url: undefined as unknown as string,
-    first_name: undefined as unknown as string,
-    last_name: undefined as unknown as string,
-    title: undefined as unknown as string,
-    phone: undefined as unknown as string,
-    about: undefined as unknown as string,
-    facebook: undefined as unknown as string,
-    twitter: undefined as unknown as string,
-    linkedin: undefined as unknown as string,
-    instagram: undefined as unknown as string
+    avatar_url: (undefined as unknown) as string,
+    first_name: (undefined as unknown) as string,
+    last_name: (undefined as unknown) as string,
+    title: (undefined as unknown) as string,
+    phone: (undefined as unknown) as string,
+    about: (undefined as unknown) as string,
+    facebook: (undefined as unknown) as string,
+    twitter: (undefined as unknown) as string,
+    linkedin: (undefined as unknown) as string,
+    instagram: (undefined as unknown) as string
   });
 
   useEffect(() => {
@@ -166,7 +165,10 @@ const UserInfoInput = () => {
         firstname && firstname.value !== userDetails.first_name
           ? firstname.value
           : null,
-      lastname: lastname ? lastname.value : null,
+      lastname:
+        lastname && lastname.value !== userDetails.last_name
+          ? lastname.value
+          : null,
       title: title ? title.value : null,
       phone: phone ? phone.value : null,
       about: about ? about.value : null,
@@ -179,10 +181,10 @@ const UserInfoInput = () => {
       userID: userID
     };
 
-    console.log(
-      `Data.firstname: ${data.firstname} \nfirstname.value: ${firstname?.value} \nuserDetails.firstname: ${userDetails.first_name} \n`
-    );
-    console.log(`${data.firstname && data.firstname !== userDetails.first_name} \n`);
+    // console.log(
+    //   `\n\nData.firstname: ${data.firstname} \nfirstname.value: ${firstname?.value} \nuserDetails.firstname: ${userDetails.first_name} \n`
+    // );
+    // console.log(`${data.firstname && data.firstname !== userDetails.first_name} \n`);
 
     fetch(process.env.HOST + url, {
       method: 'POST',
@@ -316,7 +318,7 @@ const UserInfoInput = () => {
         </div>
       </div>
 
-      <fieldset id='password-componenet' className='uk-fieldset'>
+      <fieldset className='uk-fieldset'>
         <legend className='uk-legend'>Change Password</legend>
         <hr />
 
