@@ -208,7 +208,7 @@ const UserInfoInput = () => {
           });
         }
       })
-      .then((response: string) => {
+      .then(() => {
         // if spinner is showing and you're done with saving stuff
         // now hide the spinner
         if (spinner) spinner.classList.add('uk-hidden');
