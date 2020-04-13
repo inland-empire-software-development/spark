@@ -191,9 +191,18 @@ const UserInfoInput = () => {
         facebook_field && facebook_field.value !== userDetails.facebook
           ? facebook_field.value
           : null,
-      twitter: twitter_field ? twitter_field.value : null,
-      linkedin: linkedin_field ? linkedin_field.value : null,
-      instagram: instagram_field ? instagram_field.value : null,
+      twitter:
+        twitter_field && twitter_field.value !== userDetails.twitter
+          ? twitter_field.value
+          : null,
+      linkedin:
+        linkedin_field && linkedin_field.value !== userDetails.linkedin
+          ? linkedin_field.value
+          : null,
+      instagram:
+        instagram_field && instagram_field.value !== userDetails.instagram
+          ? instagram_field.value
+          : null,
       userID: userID
     };
 
