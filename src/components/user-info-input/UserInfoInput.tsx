@@ -35,18 +35,12 @@ function getUserImage(userDetails: { avatar_url: any }) {
   return (
     <img
       id='avatarID'
-      data-src={
-        userDetails && userDetails.avatar_url
-          ? process.env.HOST + userDetails.avatar_url
-          : process.env.HOST + 'images/profilepics/placeholder_image.png'
-      }
       src={
         userDetails && userDetails.avatar_url
           ? process.env.HOST + userDetails.avatar_url
           : process.env.HOST + 'images/profilepics/placeholder_image.png'
       }
       alt='Placeholder Image'
-      uk-img=''
     />
   );
 }
