@@ -45,6 +45,10 @@ function getUserImage(userDetails: { avatar_url: any }) {
   );
 }
 
+function getUserFirstName(userDetails: { first_name: any }) {
+  return userDetails ? userDetails?.first_name : 'pal';
+}
+
 const UserInfoInput = () => {
   const { user, userID } = useContext(Context);
   const data = {
@@ -65,16 +69,16 @@ const UserInfoInput = () => {
     value: userID
   };
   const [userDetails, setUserDetails] = useState({
-    avatar_url: undefined,
-    first_name: undefined,
-    last_name: undefined,
-    title: undefined,
-    phone: undefined,
-    about: undefined,
-    facebook: undefined,
-    twitter: undefined,
-    linkedin: undefined,
-    instagram: undefined
+    avatar_url: undefined as unknown as string,
+    first_name: undefined as unknown as string,
+    last_name: undefined as unknown as string,
+    title: undefined as unknown as string,
+    phone: undefined as unknown as string,
+    about: undefined as unknown as string,
+    facebook: undefined as unknown as string,
+    twitter: undefined as unknown as string,
+    linkedin: undefined as unknown as string,
+    instagram: undefined as unknown as string
   });
 
   useEffect(() => {
@@ -97,7 +101,7 @@ const UserInfoInput = () => {
     return () => {
       abortController.abort();
     };
-  }, []);
+  }, [userDetails]);
 
   const handleUserInformation = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault(); // prevents form from reloading page (form submission)
@@ -158,7 +162,10 @@ const UserInfoInput = () => {
     const data = {
       profilePic: profilepic && profilepic.files ? profilepic.files : null,
       avatarURL: avatarURL,
-      firstname: firstname ? firstname.value : null,
+      firstname:
+        firstname && firstname.value !== userDetails.first_name
+          ? firstname.value
+          : null,
       lastname: lastname ? lastname.value : null,
       title: title ? title.value : null,
       phone: phone ? phone.value : null,
@@ -171,6 +178,11 @@ const UserInfoInput = () => {
       instagram: instagram ? instagram.value : null,
       userID: userID
     };
+
+    console.log(
+      `Data.firstname: ${data.firstname} \nfirstname.value: ${firstname?.value} \nuserDetails.firstname: ${userDetails.first_name} \n`
+    );
+    console.log(`${data.firstname && data.firstname !== userDetails.first_name} \n`);
 
     fetch(process.env.HOST + url, {
       method: 'POST',
@@ -228,6 +240,7 @@ const UserInfoInput = () => {
               <div className='uk-width-expand uk-child-width-expand uk-form-custom'>
                 <input
                   type='file'
+                  accept='image/*'
                   name='user-image'
                   onChange={event => handleFileUpload(event.target.files)}
                 />
@@ -244,7 +257,8 @@ const UserInfoInput = () => {
               <input
                 className='uk-input'
                 type='text'
-                placeholder='Lloan'
+                placeholder='Enter your first name here'
+                defaultValue={getUserFirstName(userDetails)}
                 name='user-firstname'
               ></input>
             </div>
@@ -296,6 +310,7 @@ const UserInfoInput = () => {
             className='uk-textarea uiif-textarea-width'
             rows={5}
             placeholder='Something interesting about you!'
+            defaultValue=''
             name='user-about'
           ></textarea>
         </div>
