@@ -41,3 +41,9 @@
 .arrow-icon {
   margin-left: 10px;
 }
+
+@media screen and (min-width: 960px) {
+  .profile-pic-container {
+    max-width: 232px;
+  }
+}
