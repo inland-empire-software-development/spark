@@ -3,7 +3,6 @@
 // =======================================================================
 // Known Issues/Todos
 // ===================
-//  - new password validation stays after password is deleted
 //  - add phone number verification -- need format guidelines
 //  - Need error checking for uploaded file, img needs optimization
 //  - should user be logged out when password is updated?
