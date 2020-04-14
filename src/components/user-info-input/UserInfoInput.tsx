@@ -7,6 +7,7 @@
 //  - Need error checking for uploaded file, img needs optimization
 //  - should user be logged out when password is updated?
 //  - (X) max width on image container in media query {good first issue}
+//  - error messages/notifications when erros happen i.e. fail to change data
 // V2
 //  - drag and drop pictures
 //  - reset input fields remove user info from db
@@ -15,9 +16,9 @@
 
 import React, { useContext, useState, useEffect, FormEvent } from 'react';
 import './UserInfoInput.scss';
-import {Message} from '../../..';
+import { Message } from '../../..';
 import Password from '../authenticate/Password/Password';
-import {Context} from '../../../src/context';
+import { Context } from '../../../src/context';
 
 let avatarURL: string | null = null;
 let picUploaded = false;
@@ -93,11 +94,11 @@ const UserInfoInput = () => {
       'facebook',
       'twitter',
       'linkedin',
-      'instagram'
+      'instagram',
     ],
     table: 'user_meta',
     identifier: 'user_ID',
-    value: userID
+    value: userID,
   };
   const [userDetails, setUserDetails] = useState({
     avatar_url: (undefined as unknown) as string,
@@ -109,7 +110,7 @@ const UserInfoInput = () => {
     facebook: (undefined as unknown) as string,
     twitter: (undefined as unknown) as string,
     linkedin: (undefined as unknown) as string,
-    instagram: (undefined as unknown) as string
+    instagram: (undefined as unknown) as string,
   });
 
   // set user title
@@ -134,12 +135,12 @@ const UserInfoInput = () => {
       fetch(process.env.HOST + 'api/meta', {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
         },
-        body: JSON.stringify(data)
+        body: JSON.stringify(data),
       })
-        .then(response => response.json())
-        .then(response => {
+        .then((response) => response.json())
+        .then((response) => {
           setUserDetails(response);
         });
     }
@@ -246,7 +247,7 @@ const UserInfoInput = () => {
         instagram_field && instagram_field.value !== userDetails.instagram
           ? instagram_field.value
           : null,
-      userID: userID
+      userID: userID,
     };
 
     // console.log(
@@ -257,13 +258,13 @@ const UserInfoInput = () => {
     fetch(process.env.HOST + url, {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
       },
-      body: JSON.stringify(data)
+      body: JSON.stringify(data),
     })
       .then((response: { json: () => any }) => response.json())
       .then((response: Message) => {
-        const {status, message} = response;
+        const { status, message } = response;
 
         console.log(status, '\n', message); // log to console to see what it prints.
 
@@ -278,9 +279,9 @@ const UserInfoInput = () => {
               'Image-name': data.profilePic
                 ? data.profilePic[0].name
                 : String(userID) + '-profile-image',
-              'User-identification': String(user) + String(userID) + '-pic.jpg'
+              'User-identification': String(user) + String(userID) + '-pic.jpg',
             },
-            body: data.profilePic ? data.profilePic[0] : null
+            body: data.profilePic ? data.profilePic[0] : null,
           });
         }
       })
@@ -291,6 +292,16 @@ const UserInfoInput = () => {
 
         // do whatever else you need to do
         // window.location.reload(true);
+        // if (oldpassword_field) {
+        //   oldpassword_field.value = '';
+        // }
+        // if (password_field) {
+        //   password_field.value = '';
+        // }
+        const resetForm: HTMLFormElement = document.getElementById(
+          'user-profile'
+        ) as HTMLFormElement;
+        resetForm.reset();
       });
   };
 
