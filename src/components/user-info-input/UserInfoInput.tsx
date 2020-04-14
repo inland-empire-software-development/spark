@@ -7,7 +7,7 @@
 //  - Need error checking for uploaded file, img needs optimization
 //  - should user be logged out when password is updated?
 //  - (X) max width on image container in media query {good first issue}
-//  - error messages/notifications when erros happen i.e. fail to change data
+//  - error messages/notifications when errors happen i.e. fail to change data
 // V2
 //  - drag and drop pictures
 //  - reset input fields remove user info from db
