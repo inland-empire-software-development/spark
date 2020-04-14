@@ -291,7 +291,7 @@ const UserInfoInput = () => {
         if (spinner) spinner.classList.add('uk-hidden');
 
         // do whatever else you need to do
-        window.location.reload(true);
+        // window.location.reload(true);
         if (oldpassword_field) {
           oldpassword_field.value = '';
         }
