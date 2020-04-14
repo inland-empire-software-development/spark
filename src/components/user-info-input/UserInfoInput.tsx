@@ -291,6 +291,7 @@ const UserInfoInput = () => {
         if (spinner) spinner.classList.add('uk-hidden');
 
         // do whatever else you need to do
+
         // window.location.reload(true);
         // if (oldpassword_field) {
         //   oldpassword_field.value = '';
@@ -298,10 +299,10 @@ const UserInfoInput = () => {
         // if (password_field) {
         //   password_field.value = '';
         // }
-        const resetForm: HTMLFormElement = document.getElementById(
+        const profileForm: HTMLFormElement = document.getElementById(
           'user-profile'
         ) as HTMLFormElement;
-        resetForm.reset();
+        profileForm.reset();
       });
   };
 
