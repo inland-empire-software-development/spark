@@ -11,7 +11,7 @@
 // V2
 //  - drag and drop pictures
 //  - reset input fields remove user info from db
-//      * i.e. remove facebook address from db
+//      * i.e. remove facebook, etc address from db
 // =======================================================================
 
 import React, { useContext, useState, useEffect, FormEvent } from 'react';
