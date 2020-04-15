@@ -1,7 +1,7 @@
 const bar = document.getElementById('js-progressbar');
 UIkit.upload('.js-upload', {
   // url: '/echo/json/',
-  'url': '/api/course/add',
+  'url': '/api/course/addPicture',
   'data-type': 'json',
   'name': 'test',
   'multiple': false,

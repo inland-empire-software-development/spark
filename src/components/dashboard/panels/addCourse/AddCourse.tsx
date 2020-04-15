@@ -9,12 +9,25 @@ function AddCourse(): JSX.Element {
     const courseStart = document.getElementById('courseStart') as HTMLInputElement;
     const courseExpire = document.getElementById('courseExpire') as HTMLInputElement;
     const courseDescription = document.getElementById('courseDescription') as HTMLInputElement;
-    console.log(courseTitle.value);
-    console.log(cohortID.value);
-    console.log(courseStart.value);
-    console.log(courseExpire.value);
-    console.log(courseDescription.value);
+    // console.log(courseTitle.value);
+    // console.log(cohortID.value);
+    // console.log(courseStart.value);
+    // console.log(courseExpire.value);
+    // console.log(courseDescription.value);
+    const userInfo = {
+      'courseTitle': courseTitle.value,
+      'cohortID': cohortID.value,
+      'courseStart': courseStart.value,
+      'courseExpire': courseExpire.value,
+      'courseDescription': courseDescription.value,
+    };
 
+    fetch("/api/course/add", {
+      method: "POST",
+      body: JSON.stringify(userInfo),
+    }).then((res) => {
+      console.log("Request complete! response:", res);
+    });
 
     event.preventDefault();
   };
