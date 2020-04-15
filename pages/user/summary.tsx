@@ -2,7 +2,7 @@ import Professional_Summary from "./user-summary/professional_summary";
 import Education from "./user-summary/education";
 import InfoCard from "./user-summary/card";
 import Experience from "./user-summary/experience";
-import Projects from "./user-summary/projects";
+// import Projects from "./user-summary/projects";
 // render Summary page.
 function Summary(): JSX.Element {
   return (
@@ -17,9 +17,7 @@ function Summary(): JSX.Element {
           <InfoCard/>
         </section>
       </section>
-      <section className="uk-grid">
-        <Projects/>
-      </section>
+      
 
     </section>
 

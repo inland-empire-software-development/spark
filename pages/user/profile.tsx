@@ -4,22 +4,30 @@ import { DefaultSeo } from "next-seo";
 import Navigation from "../../src/components/global/Navigation/Navigation";
 import Title from "../user/title";
 import Summary from "../user/summary";
+import Slider from "../../src/components/slider/Slider";
+
 // render Profile page.
 function Profile(): JSX.Element {
   return (
     <main>
       <Navigation />
-      <section id="profile" className="container-full" >
-        <DefaultSeo {...Object.assign(SEO, {
-          title: `Profile`,
-        })}
+      <section id="profile" className="container-full">
+        <DefaultSeo
+          {...Object.assign(SEO, {
+            title: `Profile`
+          })}
         />
-        <Title/>
-        <Summary/>
+        <Title />
+        <Summary />
       </section>
+      <section className="bg-gray">
+      <section className="uk-container uk-padding-large">
+        <section className="uk-grid">
+          <Slider />
+        </section>
+      </section></section>
       {/* <Footer /> */}
     </main>
-
   );
 }
 

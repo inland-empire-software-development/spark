@@ -1,12 +1,16 @@
-// render projects page.
-function Projects(): JSX.Element {
+import React from "react";
+import "./Slider.scss";
+// render Slider page.
+
+function Slider(): JSX.Element {
   return (
-    <section id="projects" className="uk-width-1-3 ">
+    <section id="slider" className="uk-width-1-3 ">
+      <h2 className="uk-flex uk-flex-center">Projects by AndyMendez</h2>
       <div uk-slider="" className="uk-slider">
         <div className="uk-position-relative">
-          <div className="uk-slider-container uk-light">
+          <div className="uk-slider-container uk-light slider-spacing">
             <ul id="project-slider"
-              className="uk-slider-items uk-child-width-1-2 uk-child-width-1-3@s uk-child-width-1-4@m uk-grid uk-padding-small uk-margin-auto"
+              className="uk-slider-items uk-child-width-1-2 uk-child-width-1-3@s uk-child-width-1-4@m uk-grid "
               data-style="transform: translate3d(-175px, 0px, 0px);"
             >
               <li data-tabindex="-1" className="" data-style="order: 1;">
@@ -129,14 +133,14 @@ function Projects(): JSX.Element {
 
           <div className="uk-visible@s">
             <a
-              className="uk-position-center-left-out uk-position-large uk-icon uk-slidenav-previous uk-slidenav"
+              className="uk-position-center-left-out uk-position-large uk-icon uk-slidenav-previous uk-slidenav uk-card uk-card-default"
               href="#"
               uk-slidenav-previous=""
               uk-slider-item="previous"
             >
             </a>
             <a
-              className="uk-position-center-right-out uk-position-small uk-icon uk-slidenav-next uk-slidenav"
+              className="uk-position-center-right-out uk-position-small uk-icon uk-slidenav-next uk-slidenav uk-card uk-card-default"
               href="#"
               uk-slidenav-next=""
               uk-slider-item="next"
@@ -149,4 +153,4 @@ function Projects(): JSX.Element {
   );
 }
 
-export default Projects;
+export default Slider;

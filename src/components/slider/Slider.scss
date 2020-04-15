@@ -1,0 +1,38 @@
+#slider {
+  .uk-slidenav-next {
+    background-color: white;
+    color: rgb(238, 108, 103);
+    border-radius: 10%;
+  }
+
+  .uk-slidenav-next:hover {
+    background-color: rgb(238, 108, 103);
+    color: white;
+  }
+
+  .uk-slidenav-previous {
+    background-color: white;
+    color: rgb(238, 108, 103);
+    border-radius: 10%;
+  }
+
+  .uk-slidenav-previous:hover {
+    background-color: rgb(238, 108, 103);
+    color: white;
+  }
+
+  .porject-preview {
+    height: 150px;
+    width: auto;
+    background-color: black;
+  }
+
+  .slider-spacing {
+    padding: 0 5px 5px 5px;
+  }
+
+  .uk-card,
+  .uk-card-default {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+  }
+}
