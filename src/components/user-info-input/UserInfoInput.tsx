@@ -23,6 +23,7 @@ import { Context } from '../../../src/context';
 let avatarURL: string | null = null;
 let avatarData: File | null = null;
 let picUploaded: boolean = false;
+
 const handleFileUpload = (e: FileList | null) => {
   if (e && e[0]) {
     picUploaded = true;
@@ -33,14 +34,14 @@ const handleFileUpload = (e: FileList | null) => {
   }
 };
 
-function getUserImage(userDetails: { avatar_url: any }) {
+function getUserImage(userDetails: { avatar_url: string }) {
   return (
     <img
       id='avatarID'
       src={
         userDetails && userDetails.avatar_url
           ? process.env.HOST + userDetails.avatar_url
-          : process.env.HOST + 'images/profilepics/placeholder_image.png'
+          : process.env.HOST + 'images/avatars/placeholder_image.png'
       }
       alt='Placeholder Image'
     />
@@ -120,7 +121,7 @@ const UserInfoInput = () => {
     event.preventDefault(); // prevents form from reloading page (form submission)
 
     if (picUploaded) {
-      avatarURL = `./images/profilepics/${user}-${userID}-avatar.jpg`;
+      avatarURL = `./images/avatars/${user}-${userID}-avatar.jpg`;
     }
 
     // getting user input from form.
