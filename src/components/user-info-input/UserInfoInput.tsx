@@ -21,12 +21,14 @@ import Password from '../authenticate/Password/Password';
 import { Context } from '../../../src/context';
 
 let avatarURL: string | null = null;
-let picUploaded = false;
+let avatarData: File | null = null;
+let picUploaded: boolean = false;
 const handleFileUpload = (e: FileList | null) => {
   if (e && e[0]) {
     picUploaded = true;
-    let avatarImg = document.getElementById('avatarID') as HTMLImageElement;
-    avatarImg.src = process.env.HOST + 'images/logo/spark-360x360.png';
+    const avatarImg = document.getElementById('avatarID') as HTMLImageElement;
+    avatarData = e[0];
+    //avatarImg.src = process.env.HOST + 'images/logo/spark-360x360.png';
     avatarImg.src = URL.createObjectURL(e[0]);
   }
 };
@@ -43,42 +45,6 @@ function getUserImage(userDetails: { avatar_url: any }) {
       alt='Placeholder Image'
     />
   );
-}
-
-function getUserFirstName(userDetails: { first_name: string }) {
-  return userDetails ? userDetails.first_name : '';
-}
-
-function getUserLastName(userDetails: { last_name: string }) {
-  return userDetails ? userDetails.last_name : '';
-}
-
-function getUserTitle(userDetails: { title: string }) {
-  return userDetails ? userDetails.title : '';
-}
-
-function getUserPhone(userDetails: { phone: string }) {
-  return userDetails ? userDetails.phone : '';
-}
-
-function getUserAbout(userDetails: { about: string }) {
-  return userDetails ? userDetails.about : '';
-}
-
-function getUserFacebook(userDetails: { facebook: string }) {
-  return userDetails ? userDetails.facebook : '';
-}
-
-function getUserTwitter(userDetails: { twitter: string }) {
-  return userDetails ? userDetails.twitter : '';
-}
-
-function getUserLinkedin(userDetails: { linkedin: string }) {
-  return userDetails ? userDetails.linkedin : '';
-}
-
-function getUserInstagram(userDetails: { instagram: string }) {
-  return userDetails ? userDetails.instagram : '';
 }
 
 const UserInfoInput = () => {
@@ -121,7 +87,7 @@ const UserInfoInput = () => {
     const title_options = title_selector?.options;
     if (title_options && title_selector) {
       for (let i = 0; i < title_options?.length; i++) {
-        if (title_options[i].value == getUserTitle(userDetails)) {
+        if (title_options[i].value == userDetails.title) {
           title_selector.selectedIndex = i;
         }
       }
@@ -154,13 +120,10 @@ const UserInfoInput = () => {
     event.preventDefault(); // prevents form from reloading page (form submission)
 
     if (picUploaded) {
-      avatarURL = `./images/profilepics/${user}${userID}-pic.jpg`;
+      avatarURL = `./images/profilepics/${user}-${userID}-avatar.jpg`;
     }
 
     // getting user input from form.
-    const profilepic: HTMLInputElement | null = document.querySelector(
-      '[name="user-image"]'
-    );
     const firstname_field: HTMLInputElement | null = document.querySelector(
       '[name="user-firstname"]'
     );
@@ -207,7 +170,6 @@ const UserInfoInput = () => {
 
     // all data you want to pass over to API, name it appropriately
     const data = {
-      profilePic: profilepic && profilepic.files ? profilepic.files : null,
       avatarURL: avatarURL,
       firstname:
         firstname_field && firstname_field.value !== userDetails.first_name
@@ -272,16 +234,11 @@ const UserInfoInput = () => {
           fetch(process.env.HOST + 'api/user/upload', {
             method: 'POST',
             headers: {
-              'Content-Type':
-                data.profilePic && data.profilePic.length !== 0
-                  ? data.profilePic[0].type
-                  : 'application/json',
-              'Image-name': data.profilePic
-                ? data.profilePic[0].name
-                : String(userID) + '-profile-image',
-              'User-identification': String(user) + String(userID) + '-pic.jpg',
+              'Content-Type': avatarData ? avatarData.type : 'application/json',
+              'User-identification':
+                String(user) + '-' + String(userID) + '-avatar.jpg',
             },
-            body: data.profilePic ? data.profilePic[0] : null,
+            body: avatarData ? avatarData : null,
           });
         }
       })
@@ -339,7 +296,7 @@ const UserInfoInput = () => {
                 className='uk-input'
                 type='text'
                 placeholder='Enter your first name here'
-                defaultValue={getUserFirstName(userDetails)}
+                defaultValue={userDetails.first_name}
                 name='user-firstname'
               ></input>
             </div>
@@ -352,7 +309,7 @@ const UserInfoInput = () => {
                 className='uk-input'
                 type='text'
                 placeholder='Enter your last name here'
-                defaultValue={getUserLastName(userDetails)}
+                defaultValue={userDetails.last_name}
                 name='user-lastname'
               ></input>
             </div>
@@ -377,7 +334,7 @@ const UserInfoInput = () => {
                 className='uk-input'
                 type='tel'
                 placeholder='xxx-xxx-xxxx'
-                defaultValue={getUserPhone(userDetails)}
+                defaultValue={userDetails.phone}
                 name='user-phone'
                 autoComplete='off'
               ></input>
@@ -393,7 +350,7 @@ const UserInfoInput = () => {
             className='uk-textarea uiif-textarea-width'
             rows={5}
             placeholder='Something interesting about you!'
-            defaultValue={getUserAbout(userDetails)}
+            defaultValue={userDetails.about}
             name='user-about'
           ></textarea>
         </div>
@@ -440,7 +397,7 @@ const UserInfoInput = () => {
               className='uk-input'
               type='url'
               placeholder='https://...'
-              defaultValue={getUserFacebook(userDetails)}
+              defaultValue={userDetails.facebook}
               name='user-fb'
             ></input>
           </div>
@@ -453,7 +410,7 @@ const UserInfoInput = () => {
               className='uk-input'
               type='url'
               placeholder='https://...'
-              defaultValue={getUserTwitter(userDetails)}
+              defaultValue={userDetails.twitter}
               name='user-twitter'
             ></input>
           </div>
@@ -468,7 +425,7 @@ const UserInfoInput = () => {
               className='uk-input'
               type='url'
               placeholder='https://...'
-              defaultValue={getUserLinkedin(userDetails)}
+              defaultValue={userDetails.linkedin}
               name='user-linkedin'
             ></input>
           </div>
@@ -481,7 +438,7 @@ const UserInfoInput = () => {
               className='uk-input'
               type='url'
               placeholder='https://...'
-              defaultValue={getUserInstagram(userDetails)}
+              defaultValue={userDetails.instagram}
               name='user-instagram'
             ></input>
           </div>
