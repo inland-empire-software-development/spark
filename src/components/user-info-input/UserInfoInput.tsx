@@ -20,6 +20,7 @@ import { Message } from '../../..';
 import Password from '../authenticate/Password/Password';
 import { Context } from '../../../src/context';
 import ReactCrop from 'react-image-crop';
+import "react-image-crop/dist/ReactCrop.css";
 
 let avatarURL: string | null = null;
 let avatarData: File | null = null;
@@ -41,8 +42,8 @@ function getUserImage(userDetails: { avatar_url: string }) {
 
 const UserInfoInput = () => {
   const { user, userID } = useContext(Context);
-  //const [upImg, setUpImg] = useState();
-  const [crop, setCrop] = useState({});
+  const [upImg, setUpImg] = useState((undefined as unknown) as any);
+  const [crop, setCrop] = useState({ });
 
   const [userDetails, setUserDetails] = useState({
     avatar_url: (undefined as unknown) as string,
@@ -119,11 +120,14 @@ const UserInfoInput = () => {
       picUploaded = true;
       avatarData = e[0];
 
-      //setUpImg(avatarData);
+      const reader = new FileReader();
+      console.log(reader.result);
+      reader.addEventListener('load', () => setUpImg(reader.result));
+      reader.readAsDataURL(avatarData);
 
-      const avatarImg = document.getElementById('avatarID') as HTMLImageElement;
-      //avatarImg.src = process.env.HOST + 'images/logo/spark-360x360.png';
-      avatarImg.src = URL.createObjectURL(e[0]);
+      // const avatarImg = document.getElementById('avatarID') as HTMLImageElement;
+      // //avatarImg.src = process.env.HOST + 'images/logo/spark-360x360.png';
+      // avatarImg.src = URL.createObjectURL(e[0]);
 
       const userInput = document.getElementById(
         'user-input'
@@ -282,11 +286,10 @@ const UserInfoInput = () => {
     <div>
       <div id='avatarModal' className='uk-modal uk-open uk-flex-top'>
         <div className='uk-modal-dialog uk-margin-auto-vertical uk-modal-body'>
-          <p>aweaweaeweawe</p>
           <ReactCrop
-            src={process.env.HOST + 'images/logo/spark-360x360.png'}
+            src={upImg}
             crop={crop}
-            onChange={newCrop => setCrop(newCrop)}
+            onChange={(newCrop) => setCrop(newCrop)}
           />
           <p className='uk-text-right'>
             <button
