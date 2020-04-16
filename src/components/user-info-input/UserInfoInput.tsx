@@ -45,10 +45,10 @@ const UserInfoInput = () => {
   const [upImg, setUpImg] = useState((undefined as unknown) as any);
   const [crop, setCrop] = useState({
     unit: '%',
-    width: 50,
-    height: 50,
-    x: 25,
-    y: 25,
+    width: 80,
+    height: 80,
+    x: 10,
+    y: 10,
   } as any);
 
   const [userDetails, setUserDetails] = useState({
