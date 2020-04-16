@@ -20,7 +20,7 @@ import { Message } from '../../..';
 import Password from '../authenticate/Password/Password';
 import { Context } from '../../../src/context';
 import ReactCrop from 'react-image-crop';
-import "react-image-crop/dist/ReactCrop.css";
+import 'react-image-crop/lib/ReactCrop.scss';
 
 let avatarURL: string | null = null;
 let avatarData: File | null = null;
@@ -43,7 +43,13 @@ function getUserImage(userDetails: { avatar_url: string }) {
 const UserInfoInput = () => {
   const { user, userID } = useContext(Context);
   const [upImg, setUpImg] = useState((undefined as unknown) as any);
-  const [crop, setCrop] = useState({ });
+  const [crop, setCrop] = useState({
+    unit: '%',
+    width: 50,
+    height: 50,
+    x: 25,
+    y: 25,
+  } as any);
 
   const [userDetails, setUserDetails] = useState({
     avatar_url: (undefined as unknown) as string,
@@ -135,6 +141,8 @@ const UserInfoInput = () => {
       userInput.value = '';
     }
   };
+
+  const onCropChange = (_crop: any, percentCrop: any) => setCrop(percentCrop);
 
   const handleUserInformation = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault(); // prevents form from reloading page (form submission)
@@ -289,7 +297,8 @@ const UserInfoInput = () => {
           <ReactCrop
             src={upImg}
             crop={crop}
-            onChange={(newCrop) => setCrop(newCrop)}
+            onChange={onCropChange}
+            ruleOfThirds={true}
           />
           <p className='uk-text-right'>
             <button
