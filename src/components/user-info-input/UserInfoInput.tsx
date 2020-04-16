@@ -26,11 +26,15 @@ let picUploaded: boolean = false;
 
 const handleFileUpload = (e: FileList | null) => {
   if (e && e[0]) {
+    UIkit.modal('#avatarModal').show();
+
     picUploaded = true;
-    const avatarImg = document.getElementById('avatarID') as HTMLImageElement;
     avatarData = e[0];
+    const avatarImg = document.getElementById('avatarID') as HTMLImageElement;
     //avatarImg.src = process.env.HOST + 'images/logo/spark-360x360.png';
     avatarImg.src = URL.createObjectURL(e[0]);
+    const userInput = document.getElementById('user-input') as HTMLInputElement;
+    userInput.value = '';
   }
 };
 
@@ -264,197 +268,217 @@ const UserInfoInput = () => {
   };
 
   return (
-    <form
-      id='user-profile'
-      autoComplete='off'
-      onSubmit={(event) => handleUserInformation(event)}
-    >
-      <div className='uk-fieldset'>
-        <legend className='uk-legend'>Personal Details</legend>
-        <hr />
-        <div className='uk-grid'>
-          <div className='uk-width-1-5@m uk-margin-bottom profile-pic-container'>
-            <div className='js-upload uk-placeholder uk-width-medium img-upload-container'>
-              {getUserImage(userDetails)}
-              <div className='uk-width-expand uk-child-width-expand uk-form-custom'>
+    <div>
+      <div id='avatarModal' className='uk-modal uk-open uk-flex-top'>
+        <div className='uk-modal-dialog uk-margin-auto-vertical uk-modal-body'>
+          <p>aweaweaeweawe</p>
+          <p className='uk-text-right'>
+            <button
+              className='uk-button uk-button-default uk-modal-close'
+              type='button'
+            >
+              Cancel
+            </button>
+            <button className='uk-button uk-button-primary' type='button'>
+              Save
+            </button>
+          </p>
+        </div>
+      </div>
+
+      <form
+        id='user-profile'
+        autoComplete='off'
+        onSubmit={(event) => handleUserInformation(event)}
+      >
+        <div className='uk-fieldset'>
+          <legend className='uk-legend'>Personal Details</legend>
+          <hr />
+          <div className='uk-grid'>
+            <div className='uk-width-1-5@m uk-margin-bottom profile-pic-container'>
+              <div className='js-upload uk-placeholder uk-width-medium img-upload-container'>
+                {getUserImage(userDetails)}
+                <div className='uk-width-expand uk-child-width-expand uk-form-custom'>
+                  <input
+                    id='user-input'
+                    type='file'
+                    accept='image/*'
+                    name='user-image'
+                    onChange={(event) => handleFileUpload(event.target.files)}
+                  />
+                  <button className='uk-button uiif-button'>Browse</button>
+                </div>
+              </div>
+            </div>
+
+            <div className='uk-width-expand@m uk-grid uk-margin-remove uk-padding-remove uk-child-width-1-2@s'>
+              <div className='uk-margin-bottom'>
+                <label className='uk-form-label' htmlFor='first name'>
+                  First Name
+                </label>
                 <input
-                  type='file'
-                  accept='image/*'
-                  name='user-image'
-                  onChange={(event) => handleFileUpload(event.target.files)}
-                />
-                <button className='uk-button uiif-button'>Browse</button>
+                  className='uk-input'
+                  type='text'
+                  placeholder='Enter your first name here'
+                  defaultValue={userDetails.first_name}
+                  name='user-firstname'
+                ></input>
+              </div>
+
+              <div className='uk-margin-bottom'>
+                <label className='uk-form-label' htmlFor='last name'>
+                  Last Name
+                </label>
+                <input
+                  className='uk-input'
+                  type='text'
+                  placeholder='Enter your last name here'
+                  defaultValue={userDetails.last_name}
+                  name='user-lastname'
+                ></input>
+              </div>
+
+              <div className='uk-margin-bottom'>
+                <label className='uk-form-label' htmlFor='title'>
+                  Title
+                </label>
+                <select className='uk-select' name='user-title' defaultValue=''>
+                  <option hidden>Select One</option>
+                  <option>Student</option>
+                  <option>Instructor</option>
+                  <option>Teaching Assistant</option>
+                </select>
+              </div>
+
+              <div className='uk-margin-bottom'>
+                <label className='uk-form-label' htmlFor='phone number'>
+                  Phone #
+                </label>
+                <input
+                  className='uk-input'
+                  type='tel'
+                  placeholder='xxx-xxx-xxxx'
+                  defaultValue={userDetails.phone}
+                  name='user-phone'
+                  autoComplete='off'
+                ></input>
               </div>
             </div>
           </div>
 
-          <div className='uk-width-expand@m uk-grid uk-margin-remove uk-padding-remove uk-child-width-1-2@s'>
+          <div className='uk-margin-bottom'>
+            <label className='uk-form-label' htmlFor='personal information'>
+              Personal Info
+            </label>
+            <textarea
+              className='uk-textarea uiif-textarea-width'
+              rows={5}
+              placeholder='Something interesting about you!'
+              defaultValue={userDetails.about}
+              name='user-about'
+            ></textarea>
+          </div>
+        </div>
+
+        <fieldset className='uk-fieldset'>
+          <legend className='uk-legend'>Change Password</legend>
+          <hr />
+
+          <div className='uk-grid uk-child-width-1-2@s'>
+            <div>
+              <label className='uk-form-label' htmlFor='current password'>
+                Current Password
+              </label>
+              <input
+                className='uk-input uk-form-large uk-margin-bottom'
+                type='password'
+                placeholder=''
+                autoComplete='new-password'
+                name='user-oldpassword'
+              ></input>
+
+              <label className='uk-form-label' htmlFor='new password'>
+                <Password
+                  label='New Password'
+                  autocomplete='new-password'
+                  required={false}
+                />
+              </label>
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset className='uk-fieldset uk-margin-top'>
+          <legend className='uk-legend'>Social Links</legend>
+          <hr />
+
+          <div className='uk-grid uk-child-width-1-2@s'>
             <div className='uk-margin-bottom'>
-              <label className='uk-form-label' htmlFor='first name'>
-                First Name
+              <label className='uk-form-label' htmlFor='facebook'>
+                Facebook
               </label>
               <input
                 className='uk-input'
-                type='text'
-                placeholder='Enter your first name here'
-                defaultValue={userDetails.first_name}
-                name='user-firstname'
+                type='url'
+                placeholder='https://...'
+                defaultValue={userDetails.facebook}
+                name='user-fb'
               ></input>
             </div>
 
             <div className='uk-margin-bottom'>
-              <label className='uk-form-label' htmlFor='last name'>
-                Last Name
+              <label className='uk-form-label' htmlFor='twitter'>
+                Twitter
               </label>
               <input
                 className='uk-input'
-                type='text'
-                placeholder='Enter your last name here'
-                defaultValue={userDetails.last_name}
-                name='user-lastname'
+                type='url'
+                placeholder='https://...'
+                defaultValue={userDetails.twitter}
+                name='user-twitter'
+              ></input>
+            </div>
+          </div>
+
+          <div className='uk-grid uk-child-width-1-2@s uk-margin-remove-top'>
+            <div className='uk-margin-bottom'>
+              <label className='uk-form-label' htmlFor='linkedin'>
+                LinkedIn
+              </label>
+              <input
+                className='uk-input'
+                type='url'
+                placeholder='https://...'
+                defaultValue={userDetails.linkedin}
+                name='user-linkedin'
               ></input>
             </div>
 
             <div className='uk-margin-bottom'>
-              <label className='uk-form-label' htmlFor='title'>
-                Title
-              </label>
-              <select className='uk-select' name='user-title' defaultValue=''>
-                <option hidden>Select One</option>
-                <option>Student</option>
-                <option>Instructor</option>
-                <option>Teaching Assistant</option>
-              </select>
-            </div>
-
-            <div className='uk-margin-bottom'>
-              <label className='uk-form-label' htmlFor='phone number'>
-                Phone #
+              <label className='uk-form-label' htmlFor='instagram'>
+                Instagram
               </label>
               <input
                 className='uk-input'
-                type='tel'
-                placeholder='xxx-xxx-xxxx'
-                defaultValue={userDetails.phone}
-                name='user-phone'
-                autoComplete='off'
+                type='url'
+                placeholder='https://...'
+                defaultValue={userDetails.instagram}
+                name='user-instagram'
               ></input>
             </div>
           </div>
-        </div>
+        </fieldset>
 
-        <div className='uk-margin-bottom'>
-          <label className='uk-form-label' htmlFor='personal information'>
-            Personal Info
-          </label>
-          <textarea
-            className='uk-textarea uiif-textarea-width'
-            rows={5}
-            placeholder='Something interesting about you!'
-            defaultValue={userDetails.about}
-            name='user-about'
-          ></textarea>
-        </div>
-      </div>
-
-      <fieldset className='uk-fieldset'>
-        <legend className='uk-legend'>Change Password</legend>
-        <hr />
-
-        <div className='uk-grid uk-child-width-1-2@s'>
-          <div>
-            <label className='uk-form-label' htmlFor='current password'>
-              Current Password
-            </label>
-            <input
-              className='uk-input uk-form-large uk-margin-bottom'
-              type='password'
-              placeholder=''
-              autoComplete='new-password'
-              name='user-oldpassword'
-            ></input>
-
-            <label className='uk-form-label' htmlFor='new password'>
-              <Password
-                label='New Password'
-                autocomplete='new-password'
-                required={false}
-              />
-            </label>
-          </div>
-        </div>
-      </fieldset>
-
-      <fieldset className='uk-fieldset uk-margin-top'>
-        <legend className='uk-legend'>Social Links</legend>
-        <hr />
-
-        <div className='uk-grid uk-child-width-1-2@s'>
-          <div className='uk-margin-bottom'>
-            <label className='uk-form-label' htmlFor='facebook'>
-              Facebook
-            </label>
-            <input
-              className='uk-input'
-              type='url'
-              placeholder='https://...'
-              defaultValue={userDetails.facebook}
-              name='user-fb'
-            ></input>
-          </div>
-
-          <div className='uk-margin-bottom'>
-            <label className='uk-form-label' htmlFor='twitter'>
-              Twitter
-            </label>
-            <input
-              className='uk-input'
-              type='url'
-              placeholder='https://...'
-              defaultValue={userDetails.twitter}
-              name='user-twitter'
-            ></input>
-          </div>
-        </div>
-
-        <div className='uk-grid uk-child-width-1-2@s uk-margin-remove-top'>
-          <div className='uk-margin-bottom'>
-            <label className='uk-form-label' htmlFor='linkedin'>
-              LinkedIn
-            </label>
-            <input
-              className='uk-input'
-              type='url'
-              placeholder='https://...'
-              defaultValue={userDetails.linkedin}
-              name='user-linkedin'
-            ></input>
-          </div>
-
-          <div className='uk-margin-bottom'>
-            <label className='uk-form-label' htmlFor='instagram'>
-              Instagram
-            </label>
-            <input
-              className='uk-input'
-              type='url'
-              placeholder='https://...'
-              defaultValue={userDetails.instagram}
-              name='user-instagram'
-            ></input>
-          </div>
-        </div>
-      </fieldset>
-
-      <button
-        type='submit'
-        form='user-profile'
-        className='uk-button uiif-button'
-      >
-        Save
-        <i className='fas fa-long-arrow-alt-right arrow-icon'></i>
-      </button>
-    </form>
+        <button
+          type='submit'
+          form='user-profile'
+          className='uk-button uiif-button'
+        >
+          Save
+          <i className='fas fa-long-arrow-alt-right arrow-icon'></i>
+        </button>
+      </form>
+    </div>
   );
 };
 
