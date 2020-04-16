@@ -21,7 +21,7 @@ function Profile(): JSX.Element {
         <Summary />
       </section>
       <section className="bg-gray">
-      <section className="uk-container uk-padding-large">
+      <section className="uk-container">
         <section className="uk-grid">
           <Slider />
         </section>

@@ -35,4 +35,22 @@
   .uk-card-default {
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
   }
+
+  #prev-slide,
+  #next-slide {
+    height: 45px;
+    width: 45px;
+    text-decoration: none;
+    padding: 20px 0 0 10px;
+    font-size: 30px;
+  }
+
+  .card-body {
+    padding: 15px 20px;
+  }
+
+  .hr-slider {
+    margin: 0;
+    padding: 10px;
+  }
 }
