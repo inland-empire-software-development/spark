@@ -19,24 +19,11 @@ import './UserInfoInput.scss';
 import { Message } from '../../..';
 import Password from '../authenticate/Password/Password';
 import { Context } from '../../../src/context';
+import ReactCrop from 'react-image-crop';
 
 let avatarURL: string | null = null;
 let avatarData: File | null = null;
 let picUploaded: boolean = false;
-
-const handleFileUpload = (e: FileList | null) => {
-  if (e && e[0]) {
-    UIkit.modal('#avatarModal').show();
-
-    picUploaded = true;
-    avatarData = e[0];
-    const avatarImg = document.getElementById('avatarID') as HTMLImageElement;
-    //avatarImg.src = process.env.HOST + 'images/logo/spark-360x360.png';
-    avatarImg.src = URL.createObjectURL(e[0]);
-    const userInput = document.getElementById('user-input') as HTMLInputElement;
-    userInput.value = '';
-  }
-};
 
 function getUserImage(userDetails: { avatar_url: string }) {
   return (
@@ -54,6 +41,22 @@ function getUserImage(userDetails: { avatar_url: string }) {
 
 const UserInfoInput = () => {
   const { user, userID } = useContext(Context);
+  //const [upImg, setUpImg] = useState();
+  const [crop, setCrop] = useState({});
+
+  const [userDetails, setUserDetails] = useState({
+    avatar_url: (undefined as unknown) as string,
+    first_name: (undefined as unknown) as string,
+    last_name: (undefined as unknown) as string,
+    title: (undefined as unknown) as string,
+    phone: (undefined as unknown) as string,
+    about: (undefined as unknown) as string,
+    facebook: (undefined as unknown) as string,
+    twitter: (undefined as unknown) as string,
+    linkedin: (undefined as unknown) as string,
+    instagram: (undefined as unknown) as string,
+  });
+
   const data = {
     key: [
       'avatar_url',
@@ -71,18 +74,6 @@ const UserInfoInput = () => {
     identifier: 'user_ID',
     value: userID,
   };
-  const [userDetails, setUserDetails] = useState({
-    avatar_url: (undefined as unknown) as string,
-    first_name: (undefined as unknown) as string,
-    last_name: (undefined as unknown) as string,
-    title: (undefined as unknown) as string,
-    phone: (undefined as unknown) as string,
-    about: (undefined as unknown) as string,
-    facebook: (undefined as unknown) as string,
-    twitter: (undefined as unknown) as string,
-    linkedin: (undefined as unknown) as string,
-    instagram: (undefined as unknown) as string,
-  });
 
   // set user title
   useEffect(() => {
@@ -120,6 +111,26 @@ const UserInfoInput = () => {
       abortController.abort();
     };
   }, [userDetails]);
+
+  const handleFileUpload = (e: FileList | null) => {
+    if (e && e[0]) {
+      UIkit.modal('#avatarModal').show();
+
+      picUploaded = true;
+      avatarData = e[0];
+
+      //setUpImg(avatarData);
+
+      const avatarImg = document.getElementById('avatarID') as HTMLImageElement;
+      //avatarImg.src = process.env.HOST + 'images/logo/spark-360x360.png';
+      avatarImg.src = URL.createObjectURL(e[0]);
+
+      const userInput = document.getElementById(
+        'user-input'
+      ) as HTMLInputElement;
+      userInput.value = '';
+    }
+  };
 
   const handleUserInformation = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault(); // prevents form from reloading page (form submission)
@@ -272,6 +283,11 @@ const UserInfoInput = () => {
       <div id='avatarModal' className='uk-modal uk-open uk-flex-top'>
         <div className='uk-modal-dialog uk-margin-auto-vertical uk-modal-body'>
           <p>aweaweaeweawe</p>
+          <ReactCrop
+            src={process.env.HOST + 'images/logo/spark-360x360.png'}
+            crop={crop}
+            onChange={newCrop => setCrop(newCrop)}
+          />
           <p className='uk-text-right'>
             <button
               className='uk-button uk-button-default uk-modal-close'
