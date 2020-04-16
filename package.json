@@ -24,6 +24,7 @@
     "sbprod": "start-storybook -s ./public HOST=http://localhost:6003/ -p 7003 -c .storybook"
   },
   "dependencies": {
+    "@types/react-image-crop": "^8.1.2",
     "@types/uikit": "^2.27.7",
     "@zeit/next-css": "^1.0.1",
     "@zeit/next-sass": "^1.0.1",
@@ -44,6 +45,7 @@
     "node-sass": "^4.13.0",
     "nodemailer": "^6.4.1",
     "react": "16.12.0",
+    "react-image-crop": "^8.6.2",
     "redis": "^2.8.0",
     "sass": "^1.25.0",
     "sql-string-escape": "^1.1.6",
