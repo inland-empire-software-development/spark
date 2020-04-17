@@ -23,8 +23,8 @@ import ReactCrop from 'react-image-crop';
 import 'react-image-crop/lib/ReactCrop.scss';
 
 //let avatarURL: string | null = null;
-let avatarData: File | null = null;
 //let picUploaded: boolean = false;
+let avatarData: File | null = null;
 
 function getUserImage(userDetails: { avatar_url: string }) {
   return (
@@ -134,13 +134,25 @@ const UserInfoInput = () => {
 
       const avatarImg = document.getElementById('avatarID') as HTMLImageElement;
       //avatarImg.src = process.env.HOST + 'images/logo/spark-360x360.png';
-      avatarImg.src = URL.createObjectURL(e[0]);
+      avatarImg.src = URL.createObjectURL(avatarData);
+
+      console.log('avaarData: ', typeof avatarData, ':', avatarData, '\n');
+      console.log('e[0]: ', typeof e[0], ':', e[0], '\n');
+      console.log('crop: ', typeof crop, ':', crop, '\n');
+      //console.log('UploadedImg: ', typeof(upImg), ':', upImg, '\n');
 
       // clear file input
       const userInput = document.getElementById(
         'user-input'
       ) as HTMLInputElement;
       userInput.value = '';
+    }
+  };
+
+  const makeCropImage = () => {
+    console.log('\n\nmakeCropImage called\n\n');
+    if (upImg && crop.width && crop.height) {
+      console.log('UploadedImg: ', typeof upImg, ':', upImg, '\n');
     }
   };
 
@@ -310,7 +322,11 @@ const UserInfoInput = () => {
             >
               Cancel
             </button>
-            <button className='uk-button uk-button-primary' type='button'>
+            <button
+              className='uk-button uk-button-primary'
+              type='button'
+              onClick={makeCropImage}
+            >
               Save
             </button>
           </p>
