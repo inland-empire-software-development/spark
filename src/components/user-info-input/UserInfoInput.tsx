@@ -323,11 +323,11 @@ const UserInfoInput = () => {
               Cancel
             </button>
             <button
-              className='uk-button uk-button-primary'
+              className='uk-button uiif-button'
               type='button'
               onClick={makeCropImage}
             >
-              Save
+              Crop
             </button>
           </p>
         </div>
