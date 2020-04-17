@@ -6,9 +6,9 @@
 //  - add phone number verification -- need format guidelines
 //  - Need error checking for uploaded file, img needs optimization
 //  - should user be logged out when password is updated?
-//  - error messages/notifications when errors happen 
+//  - error messages/notifications when errors happen
 //      * i.e. fail to change data
-//  - seperate concerns 
+//  - seperate concerns
 //      * image crop should be it's own file
 // V2
 //  - drag and drop pictures
@@ -33,12 +33,13 @@ import 'react-image-crop/lib/ReactCrop.scss';
 
 //let avatarURL: string | null = null;
 //let picUploaded: boolean = false;
-let avatarData: File | null = null;
+//let avatarData: File | null = null;
 
 const UserInfoInput = () => {
   const { user, userID } = useContext(Context);
   const [picUploaded, setPicUploaded] = useState(false as boolean);
   const [avatarURL, setAvatarURL] = useState((undefined as unknown) as string);
+  const [avatarData, setAvatarData] = useState((undefined as unknown) as File);
   const [upImg, setUpImg] = useState((undefined as unknown) as any);
   const [imgRef, setImgRef] = useState(null as any);
   const [previewURL, setPreviewURL] = useState((undefined as unknown) as any);
@@ -49,7 +50,6 @@ const UserInfoInput = () => {
     x: 10,
     y: 10,
   } as any);
-
   const [userDetails, setUserDetails] = useState({
     avatar_url: (undefined as unknown) as string,
     first_name: (undefined as unknown) as string,
@@ -139,20 +139,20 @@ const UserInfoInput = () => {
       UIkit.modal('#avatarModal').show();
 
       setPicUploaded(true);
-      avatarData = e[0];
+      //avatarData = e[0];
 
       const reader = new FileReader();
       reader.addEventListener('load', () => setUpImg(reader.result));
-      reader.readAsDataURL(avatarData);
+      reader.readAsDataURL(e[0]);
 
       // const avatarImg = document.getElementById('avatarID') as HTMLImageElement;
       // //avatarImg.src = process.env.HOST + 'images/logo/spark-360x360.png';
       // avatarImg.src = URL.createObjectURL(avatarData);
 
-      // console.log('avaarData: ', typeof avatarData, ':', avatarData, '\n');
-      // console.log('e[0]: ', typeof e[0], ':', e[0], '\n');
-      // console.log('crop: ', typeof crop, ':', crop, '\n');
-      //console.log('UploadedImg: ', typeof(upImg), ':', upImg, '\n');
+      // console.log('UploadedImg: ', typeof(upImg), ':', upImg, '\n');
+      // console.log('imgRef: ', typeof(imgRef), ':', imgRef, '\n');
+      // console.log('PreviewURL: ', typeof(previewURL), ':', previewURL, '\n');
+      // console.log('Crop: ', typeof(crop), ':', crop, '\n');
 
       // clear file input
       const userInput = document.getElementById(
@@ -204,7 +204,9 @@ const UserInfoInput = () => {
           reject(new Error('Canvas is empty'));
           return;
         }
-        
+
+        setAvatarData(blob);
+
         window.URL.revokeObjectURL(previewURL);
         setPreviewURL(window.URL.createObjectURL(blob));
       }, 'image/jpeg');
@@ -324,6 +326,8 @@ const UserInfoInput = () => {
         console.log(status, '\n', message); // log to console to see what it prints.
 
         if (picUploaded) {
+          console.log('avatarData: ', typeof avatarData, ':', avatarData, '\n');
+
           fetch(process.env.HOST + 'api/user/upload', {
             method: 'POST',
             headers: {
