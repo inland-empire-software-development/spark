@@ -6,7 +6,10 @@
 //  - add phone number verification -- need format guidelines
 //  - Need error checking for uploaded file, img needs optimization
 //  - should user be logged out when password is updated?
-//  - error messages/notifications when errors happen i.e. fail to change data
+//  - error messages/notifications when errors happen 
+//      * i.e. fail to change data
+//  - seperate concerns 
+//      * image crop should be it's own file
 // V2
 //  - drag and drop pictures
 //  - reset input fields remove user info from db
@@ -167,11 +170,11 @@ const UserInfoInput = () => {
     if (imgRef && crop.width && crop.height) {
       console.log('UploadedImg: ', typeof upImg, ':', upImg, '\n');
       console.log('ImgRef: ', typeof imgRef, ':', imgRef, '\n');
-      createCropPreview(imgRef, crop, 'newFile.jpeg');
+      createCropPreview(imgRef, crop);
     }
   };
 
-  const createCropPreview = async (image: any, crop: any, fileName: any) => {
+  const createCropPreview = async (image: any, crop: any) => {
     const canvas = document.createElement('canvas');
     const scaleX = image.naturalWidth / image.width;
     const scaleY = image.naturalHeight / image.height;
@@ -201,71 +204,12 @@ const UserInfoInput = () => {
           reject(new Error('Canvas is empty'));
           return;
         }
-        blob.name = fileName;
+        
         window.URL.revokeObjectURL(previewURL);
         setPreviewURL(window.URL.createObjectURL(blob));
       }, 'image/jpeg');
     });
   };
-
-  // const makeCropImage = async () => {
-  //   console.log('\n\nmakeCropImage called\n\n');
-  //   if (imgRef && crop.width && crop.height) {
-  //     console.log('ImgRef: ', typeof imgRef, ':', imgRef, '\n');
-  //     console.log('UploadedImg: ', typeof upImg, ':', upImg, '\n');
-
-  //     const canvas = document.createElement('canvas');
-  //     const scaleX = imgRef.naturalWidth / imgRef.width;
-  //     const scaleY = imgRef.natturalHeight / imgRef.height;
-  //     canvas.width = crop.width;
-  //     canvas.height = crop.height;
-  //     const ctx = canvas.getContext('2d');
-
-  //     if (ctx) {
-  //       ctx.drawImage(
-  //         imgRef,
-  //         crop.x * scaleX,
-  //         crop.y * scaleY,
-  //         crop.width * scaleX,
-  //         crop.height * scaleY,
-  //         0,
-  //         0,
-  //         crop.width,
-  //         crop.height
-  //       );
-  //     }
-
-  //     return new Promise((resolve, reject) => {
-  //       canvas.toBlob((blob: any) => {
-  //         if (!blob) {
-  //           reject(new Error('Canvas is empty'));
-  //           return;
-  //         }
-  //         let fileName = 'newFile.jpg';
-  //         blob.name = fileName;
-  //         //window.URL.revokeObjectURL(previewURL);
-  //         setPreviewURL(window.URL.createObjectURL(blob));
-
-  //         const avatarImg = document.getElementById(
-  //           'avatarID'
-  //         ) as HTMLImageElement;
-  //         //avatarImg.src = process.env.HOST + 'images/logo/spark-360x360.png';
-  //         console.log(
-  //           'avatarData: ',
-  //           typeof avatarData,
-  //           ':\n',
-  //           avatarData,
-  //           '\n'
-  //         );
-  //         console.log('blob: ', typeof blob, ':\n', blob, '\n');
-
-  //         avatarImg.src = window.URL.createObjectURL(blob);
-
-  //         resolve(previewURL);
-  //       }, 'image/jpg');
-  //     });
-  //   }
-  // };
 
   const onCropChange = (_crop: any, percentCrop: any) => setCrop(percentCrop);
 
@@ -365,11 +309,6 @@ const UserInfoInput = () => {
           : null,
       userID: userID,
     };
-
-    // console.log(
-    //   `\n\nData.firstname: ${data.firstname} \nfirstname.value: ${firstname?.value} \nuserDetails.firstname: ${userDetails.first_name} \n`
-    // );
-    // console.log(`${data.firstname && data.firstname !== userDetails.first_name} \n`);
 
     fetch(process.env.HOST + url, {
       method: 'POST',
