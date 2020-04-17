@@ -42,6 +42,10 @@
   margin-left: 10px;
 }
 
+.uk-modal {
+  z-index: 9999999;
+}
+
 @media screen and (min-width: 960px) {
   .profile-pic-container {
     max-width: 232px;
