@@ -164,8 +164,6 @@ const UserInfoInput = () => {
 
   const makeClientCrop = async () => {
     if (imgRef && crop.width && crop.height) {
-      console.log('UploadedImg: ', typeof upImg, ':', upImg, '\n');
-      console.log('ImgRef: ', typeof imgRef, ':', imgRef, '\n');
       createCropPreview(imgRef, crop);
     }
   };
@@ -174,17 +172,20 @@ const UserInfoInput = () => {
     const canvas = document.createElement('canvas');
     const scaleX = image.naturalWidth / image.width;
     const scaleY = image.naturalHeight / image.height;
+    const cropX = (crop.x / 100) * image.width;
+    const cropY = (crop.y / 100) * image.height;
     canvas.width = (crop.width / 100) * image.width;
     canvas.height = (crop.height / 100) * image.height;
+
     const ctx = canvas.getContext('2d');
 
-    console.log('Crop: ', crop, '\n');
+    //console.log('Crop: ', crop, '\n');
 
     if (ctx) {
       ctx.drawImage(
         image,
-        (crop.x / 100) * image.width * scaleX,
-        (crop.y / 100) * image.height * scaleY,
+        cropX * scaleX,
+        cropY * scaleY,
         canvas.width * scaleX,
         canvas.height * scaleY,
         0,
@@ -374,7 +375,7 @@ const UserInfoInput = () => {
               Cancel
             </button>
             <button
-              className='uk-button uiif-button'
+              className='uk-button uiif-button uk-modal-close'
               type='button'
               onClick={makeClientCrop}
             >
