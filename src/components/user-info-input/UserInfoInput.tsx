@@ -31,10 +31,6 @@ import { Context } from '../../../src/context';
 import ReactCrop from 'react-image-crop';
 import 'react-image-crop/lib/ReactCrop.scss';
 
-//let avatarURL: string | null = null;
-//let picUploaded: boolean = false;
-//let avatarData: File | null = null;
-
 const UserInfoInput = () => {
   const { user, userID } = useContext(Context);
   const [picUploaded, setPicUploaded] = useState(false as boolean);
