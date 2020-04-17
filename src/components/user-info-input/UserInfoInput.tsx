@@ -14,7 +14,13 @@
 //  - toast notifications
 // =======================================================================
 
-import React, { useContext, useState, useEffect, FormEvent } from 'react';
+import React, {
+  useContext,
+  useState,
+  useEffect,
+  useCallback,
+  FormEvent,
+} from 'react';
 import './UserInfoInput.scss';
 import { Message } from '../../..';
 import Password from '../authenticate/Password/Password';
@@ -35,6 +41,11 @@ function getUserImage(userDetails: { avatar_url: string }) {
           ? process.env.HOST + userDetails.avatar_url
           : process.env.HOST + 'images/avatars/placeholder_image.png'
       }
+      // src={
+      //   previewURL
+      //     ? previewURL
+      //     : process.env.HOST + 'images/avatars/placeholder_image.png'
+      // }
       alt='Placeholder Image'
     />
   );
@@ -45,6 +56,8 @@ const UserInfoInput = () => {
   const [picUploaded, setPicUploaded] = useState(false as boolean);
   const [avatarURL, setAvatarURL] = useState((undefined as unknown) as string);
   const [upImg, setUpImg] = useState((undefined as unknown) as any);
+  const [imgRef, setImgRef] = useState(null as any);
+  const [previewURL, setPreviewURL] = useState((undefined as unknown) as any);
   const [crop, setCrop] = useState({
     unit: '%',
     width: 80,
@@ -132,13 +145,13 @@ const UserInfoInput = () => {
       reader.addEventListener('load', () => setUpImg(reader.result));
       reader.readAsDataURL(avatarData);
 
-      const avatarImg = document.getElementById('avatarID') as HTMLImageElement;
-      //avatarImg.src = process.env.HOST + 'images/logo/spark-360x360.png';
-      avatarImg.src = URL.createObjectURL(avatarData);
+      // const avatarImg = document.getElementById('avatarID') as HTMLImageElement;
+      // //avatarImg.src = process.env.HOST + 'images/logo/spark-360x360.png';
+      // avatarImg.src = URL.createObjectURL(avatarData);
 
-      console.log('avaarData: ', typeof avatarData, ':', avatarData, '\n');
-      console.log('e[0]: ', typeof e[0], ':', e[0], '\n');
-      console.log('crop: ', typeof crop, ':', crop, '\n');
+      // console.log('avaarData: ', typeof avatarData, ':', avatarData, '\n');
+      // console.log('e[0]: ', typeof e[0], ':', e[0], '\n');
+      // console.log('crop: ', typeof crop, ':', crop, '\n');
       //console.log('UploadedImg: ', typeof(upImg), ':', upImg, '\n');
 
       // clear file input
@@ -149,12 +162,116 @@ const UserInfoInput = () => {
     }
   };
 
-  const makeCropImage = () => {
-    console.log('\n\nmakeCropImage called\n\n');
-    if (upImg && crop.width && crop.height) {
+  const onLoad = useCallback((img) => {
+    setImgRef(img);
+  }, []);
+
+  const makeClientCrop = async () => {
+    if (imgRef && crop.width && crop.height) {
       console.log('UploadedImg: ', typeof upImg, ':', upImg, '\n');
+      console.log('ImgRef: ', typeof imgRef, ':', imgRef, '\n');
+      createCropPreview(imgRef, crop, 'newFile.jpeg');
     }
   };
+
+  const createCropPreview = async (image: any, crop: any, fileName: any) => {
+    const canvas = document.createElement('canvas');
+    const scaleX = image.naturalWidth / image.width;
+    const scaleY = image.naturalHeight / image.height;
+    canvas.width = crop.width;
+    canvas.height = crop.height;
+    const ctx = canvas.getContext('2d');
+
+    if (ctx) {
+      ctx.drawImage(
+        image,
+        crop.x * scaleX,
+        crop.y * scaleY,
+        crop.width * scaleX,
+        crop.height * scaleY,
+        0,
+        0,
+        crop.width,
+        crop.height
+      );
+    }
+
+    return new Promise((_resolve, reject) => {
+      canvas.toBlob((blob: any) => {
+        if (!blob) {
+          reject(new Error('Canvas is empty'));
+          return;
+        }
+        blob.name = fileName;
+        window.URL.revokeObjectURL(previewURL);
+        setPreviewURL(window.URL.createObjectURL(blob));
+
+        const avatarImg = document.getElementById('avatarID') as HTMLImageElement;
+        // //avatarImg.src = process.env.HOST + 'images/logo/spark-360x360.png';
+        avatarImg.src = URL.createObjectURL(blob);
+
+      }, 'image/jpeg');
+    });
+  };
+
+  // const makeCropImage = async () => {
+  //   console.log('\n\nmakeCropImage called\n\n');
+  //   if (imgRef && crop.width && crop.height) {
+  //     console.log('ImgRef: ', typeof imgRef, ':', imgRef, '\n');
+  //     console.log('UploadedImg: ', typeof upImg, ':', upImg, '\n');
+
+  //     const canvas = document.createElement('canvas');
+  //     const scaleX = imgRef.naturalWidth / imgRef.width;
+  //     const scaleY = imgRef.natturalHeight / imgRef.height;
+  //     canvas.width = crop.width;
+  //     canvas.height = crop.height;
+  //     const ctx = canvas.getContext('2d');
+
+  //     if (ctx) {
+  //       ctx.drawImage(
+  //         imgRef,
+  //         crop.x * scaleX,
+  //         crop.y * scaleY,
+  //         crop.width * scaleX,
+  //         crop.height * scaleY,
+  //         0,
+  //         0,
+  //         crop.width,
+  //         crop.height
+  //       );
+  //     }
+
+  //     return new Promise((resolve, reject) => {
+  //       canvas.toBlob((blob: any) => {
+  //         if (!blob) {
+  //           reject(new Error('Canvas is empty'));
+  //           return;
+  //         }
+  //         let fileName = 'newFile.jpg';
+  //         blob.name = fileName;
+  //         //window.URL.revokeObjectURL(previewURL);
+  //         setPreviewURL(window.URL.createObjectURL(blob));
+
+  //         const avatarImg = document.getElementById(
+  //           'avatarID'
+  //         ) as HTMLImageElement;
+  //         //avatarImg.src = process.env.HOST + 'images/logo/spark-360x360.png';
+  //         console.log(
+  //           'avatarData: ',
+  //           typeof avatarData,
+  //           ':\n',
+  //           avatarData,
+  //           '\n'
+  //         );
+  //         console.log('blob: ', typeof blob, ':\n', blob, '\n');
+
+  //         avatarImg.src = window.URL.createObjectURL(blob);
+
+  //         resolve(previewURL);
+  //       }, 'image/jpg');
+  //     });
+  //   }
+  // };
 
   const onCropChange = (_crop: any, percentCrop: any) => setCrop(percentCrop);
 
@@ -311,6 +428,7 @@ const UserInfoInput = () => {
         <div className='uk-modal-dialog uk-margin-auto-vertical uk-modal-body'>
           <ReactCrop
             src={upImg}
+            onImageLoaded={onLoad}
             crop={crop}
             onChange={onCropChange}
             ruleOfThirds={true}
@@ -325,7 +443,7 @@ const UserInfoInput = () => {
             <button
               className='uk-button uiif-button'
               type='button'
-              onClick={makeCropImage}
+              onClick={makeClientCrop}
             >
               Crop
               <i className='fas fa-crop-alt fas-icon'></i>
