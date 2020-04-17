@@ -1,0 +1,35 @@
+
+#rss {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background-color: red;
+  left: -55px;
+  position: relative;
+  z-index: 1;
+}
+
+#rss::before {
+  content: '';
+  z-index: 1;
+  display: block;
+  height: 0.97em;
+  width: 0.97em;
+  background: red;
+  border-radius: 50%;
+  position: relative;
+  top: 6.6px;
+  left: 6.5px;
+}
+
+#rss::after {
+  content: '';
+  display: block;
+  background: white;
+  width: 22px;
+  height: 22px;
+  top: -12.2px;
+  left: 2.9px;
+  border-radius: 50%;
+  position: relative;
+}

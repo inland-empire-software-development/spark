@@ -46,8 +46,14 @@
     .user-centered {
       position: relative;
       display: flex;
-      top: 30%;
+      top: 25%;
       justify-content: center;
+    }
+
+    .user-fixed-centered {
+      position: fixed;
+      left: calc(50% - 75px);
+      top: 25%;
     }
 
     .profile-title {

@@ -11,21 +11,18 @@ function Profile(): JSX.Element {
   return (
     <main>
       <Navigation />
-      <section id="profile" className="container-full">
-        <DefaultSeo
-          {...Object.assign(SEO, {
-            title: `Profile`
-          })}
-        />
-        <Title />
-        <Summary />
-      </section>
-      <section className="bg-gray">
-      <section className="uk-container">
-        <section className="uk-grid">
-          <Slider />
+      <section id="profile">
+        <section className="container-full">
+          <DefaultSeo
+            {...Object.assign(SEO, {
+              title: `Profile`
+            })}
+          />
+          <Title />
+          <Summary />
         </section>
-      </section></section>
+        <Slider />
+      </section>
       {/* <Footer /> */}
     </main>
   );

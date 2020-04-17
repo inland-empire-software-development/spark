@@ -8,7 +8,7 @@ function Title(): JSX.Element {
       <p className="user-centered font34 profile-title uk-padding-remove-bottom">Andy Mendez</p>
       {/* <div className="uk-overlay-primary uk-position-cover"></div> */}
       <p className=" user-centered font16 roleColor uk-margin-small uk-margin-remove-top">Cold Fusion Developer</p>
-      <img id="profilepic" className=" user-centered uk-border-circle" src="https://api.iesd.com/wp-content/uploads/2019/10/robin-asm.jpg "/>
+      <img id="profilepic" className="user-fixed-centered uk-border-circle" src="https://api.iesd.com/wp-content/uploads/2019/10/robin-asm.jpg "/>
     </section>
 
   );
