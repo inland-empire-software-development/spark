@@ -32,24 +32,24 @@ import 'react-image-crop/lib/ReactCrop.scss';
 //let picUploaded: boolean = false;
 let avatarData: File | null = null;
 
-function getUserImage(userDetails: { avatar_url: string }) {
-  return (
-    <img
-      id='avatarID'
-      src={
-        userDetails && userDetails.avatar_url
-          ? process.env.HOST + userDetails.avatar_url
-          : process.env.HOST + 'images/avatars/placeholder_image.png'
-      }
-      // src={
-      //   previewURL
-      //     ? previewURL
-      //     : process.env.HOST + 'images/avatars/placeholder_image.png'
-      // }
-      alt='Placeholder Image'
-    />
-  );
-}
+// function getUserImage(userDetails: { avatar_url: string }) {
+//   return (
+//     <img
+//       id='avatarID'
+//       src={
+//         userDetails && userDetails.avatar_url
+//           ? process.env.HOST + userDetails.avatar_url
+//           : process.env.HOST + 'images/avatars/placeholder_image.png'
+//       }
+//       // src={
+//       //   previewURL
+//       //     ? previewURL
+//       //     : process.env.HOST + 'images/avatars/placeholder_image.png'
+//       // }
+//       alt='Placeholder Image'
+//     />
+//   );
+// }
 
 const UserInfoInput = () => {
   const { user, userID } = useContext(Context);
@@ -134,6 +134,25 @@ const UserInfoInput = () => {
     };
   }, [userDetails]);
 
+  function getUserImage(userDetails: { avatar_url: string }) {
+    return (
+      <img
+        id='avatarID'
+        src={
+          userDetails && userDetails.avatar_url
+            ? process.env.HOST + userDetails.avatar_url
+            : process.env.HOST + 'images/avatars/placeholder_image.png'
+        }
+        // src={
+        //   previewURL
+        //     ? previewURL
+        //     : process.env.HOST + 'images/avatars/placeholder_image.png'
+        // }
+        // alt='Placeholder Image'
+      />
+    );
+  }
+
   const handleFileUpload = (e: FileList | null) => {
     if (e && e[0]) {
       UIkit.modal('#avatarModal').show();
@@ -178,21 +197,23 @@ const UserInfoInput = () => {
     const canvas = document.createElement('canvas');
     const scaleX = image.naturalWidth / image.width;
     const scaleY = image.naturalHeight / image.height;
-    canvas.width = crop.width;
-    canvas.height = crop.height;
+    canvas.width = (crop.width / 100) * image.width;
+    canvas.height = (crop.height / 100) * image.height;
     const ctx = canvas.getContext('2d');
+
+    console.log('Crop: ', crop, '\n');
 
     if (ctx) {
       ctx.drawImage(
         image,
-        crop.x * scaleX,
-        crop.y * scaleY,
-        crop.width * scaleX,
-        crop.height * scaleY,
+        (crop.x / 100) * image.width * scaleX,
+        (crop.y / 100) * image.height * scaleY,
+        canvas.width * scaleX,
+        canvas.height * scaleY,
         0,
         0,
-        crop.width,
-        crop.height
+        canvas.width,
+        canvas.height
       );
     }
 
@@ -207,7 +228,7 @@ const UserInfoInput = () => {
         setPreviewURL(window.URL.createObjectURL(blob));
 
         const avatarImg = document.getElementById('avatarID') as HTMLImageElement;
-        // //avatarImg.src = process.env.HOST + 'images/logo/spark-360x360.png';
+        //avatarImg.src = process.env.HOST + 'images/logo/spark-360x360.png';
         avatarImg.src = URL.createObjectURL(blob);
 
       }, 'image/jpeg');
