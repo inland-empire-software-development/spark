@@ -32,25 +32,6 @@ import 'react-image-crop/lib/ReactCrop.scss';
 //let picUploaded: boolean = false;
 let avatarData: File | null = null;
 
-// function getUserImage(userDetails: { avatar_url: string }) {
-//   return (
-//     <img
-//       id='avatarID'
-//       src={
-//         userDetails && userDetails.avatar_url
-//           ? process.env.HOST + userDetails.avatar_url
-//           : process.env.HOST + 'images/avatars/placeholder_image.png'
-//       }
-//       // src={
-//       //   previewURL
-//       //     ? previewURL
-//       //     : process.env.HOST + 'images/avatars/placeholder_image.png'
-//       // }
-//       alt='Placeholder Image'
-//     />
-//   );
-// }
-
 const UserInfoInput = () => {
   const { user, userID } = useContext(Context);
   const [picUploaded, setPicUploaded] = useState(false as boolean);
@@ -139,16 +120,13 @@ const UserInfoInput = () => {
       <img
         id='avatarID'
         src={
-          userDetails && userDetails.avatar_url
+          previewURL
+            ? previewURL
+            : userDetails && userDetails.avatar_url
             ? process.env.HOST + userDetails.avatar_url
             : process.env.HOST + 'images/avatars/placeholder_image.png'
         }
-        // src={
-        //   previewURL
-        //     ? previewURL
-        //     : process.env.HOST + 'images/avatars/placeholder_image.png'
-        // }
-        // alt='Placeholder Image'
+        alt='Placeholder Image'
       />
     );
   }
@@ -226,11 +204,6 @@ const UserInfoInput = () => {
         blob.name = fileName;
         window.URL.revokeObjectURL(previewURL);
         setPreviewURL(window.URL.createObjectURL(blob));
-
-        const avatarImg = document.getElementById('avatarID') as HTMLImageElement;
-        //avatarImg.src = process.env.HOST + 'images/logo/spark-360x360.png';
-        avatarImg.src = URL.createObjectURL(blob);
-
       }, 'image/jpeg');
     });
   };
