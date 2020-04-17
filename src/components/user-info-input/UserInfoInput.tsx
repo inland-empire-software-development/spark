@@ -22,9 +22,9 @@ import { Context } from '../../../src/context';
 import ReactCrop from 'react-image-crop';
 import 'react-image-crop/lib/ReactCrop.scss';
 
-let avatarURL: string | null = null;
+//let avatarURL: string | null = null;
 let avatarData: File | null = null;
-let picUploaded: boolean = false;
+//let picUploaded: boolean = false;
 
 function getUserImage(userDetails: { avatar_url: string }) {
   return (
@@ -42,6 +42,8 @@ function getUserImage(userDetails: { avatar_url: string }) {
 
 const UserInfoInput = () => {
   const { user, userID } = useContext(Context);
+  const [picUploaded, setPicUploaded] = useState(false as boolean);
+  const [avatarURL, setAvatarURL] = useState((undefined as unknown) as string);
   const [upImg, setUpImg] = useState((undefined as unknown) as any);
   const [crop, setCrop] = useState({
     unit: '%',
@@ -123,18 +125,18 @@ const UserInfoInput = () => {
     if (e && e[0]) {
       UIkit.modal('#avatarModal').show();
 
-      picUploaded = true;
+      setPicUploaded(true);
       avatarData = e[0];
 
       const reader = new FileReader();
-      console.log(reader.result);
       reader.addEventListener('load', () => setUpImg(reader.result));
       reader.readAsDataURL(avatarData);
 
-      // const avatarImg = document.getElementById('avatarID') as HTMLImageElement;
-      // //avatarImg.src = process.env.HOST + 'images/logo/spark-360x360.png';
-      // avatarImg.src = URL.createObjectURL(e[0]);
+      const avatarImg = document.getElementById('avatarID') as HTMLImageElement;
+      //avatarImg.src = process.env.HOST + 'images/logo/spark-360x360.png';
+      avatarImg.src = URL.createObjectURL(e[0]);
 
+      // clear file input
       const userInput = document.getElementById(
         'user-input'
       ) as HTMLInputElement;
@@ -148,7 +150,8 @@ const UserInfoInput = () => {
     event.preventDefault(); // prevents form from reloading page (form submission)
 
     if (picUploaded) {
-      avatarURL = `./images/avatars/${user}-${userID}-avatar.jpg`;
+      //avatarURL = `./images/avatars/${user}-${userID}-avatar.jpg`;
+      setAvatarURL(`./images/avatars/${user}-${userID}-avatar.jpg`);
     }
 
     // getting user input from form.
