@@ -328,6 +328,7 @@ const UserInfoInput = () => {
               onClick={makeCropImage}
             >
               Crop
+              <i className='fas fa-crop-alt fas-icon'></i>
             </button>
           </p>
         </div>
@@ -522,7 +523,7 @@ const UserInfoInput = () => {
           className='uk-button uiif-button'
         >
           Save
-          <i className='fas fa-long-arrow-alt-right arrow-icon'></i>
+          <i className='fas fa-long-arrow-alt-right fas-icon'></i>
         </button>
       </form>
     </div>
