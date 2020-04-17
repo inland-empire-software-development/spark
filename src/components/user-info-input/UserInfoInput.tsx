@@ -8,8 +8,8 @@
 //  - should user be logged out when password is updated?
 //  - error messages/notifications when errors happen
 //      * i.e. fail to change data
-//  - seperate concerns
-//      * image crop should be it's own file
+// Nice to have
+//  - image crop should be it's own component
 // V2
 //  - drag and drop pictures
 //  - reset input fields remove user info from db
