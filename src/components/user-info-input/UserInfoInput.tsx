@@ -203,35 +203,23 @@ const UserInfoInput = () => {
           return;
         }
 
-        // ====
+        // compress image crop
         var imageFile = blob;
-        console.log('originalFile instanceof Blob', imageFile instanceof Blob); // true
-        console.log(`originalFile size ${imageFile.size / 1024 / 1024} MB`);
 
         var options = {
           maxSizeMB: 0.5,
-          maxWidthOrHeight: 1920,
           useWebWorker: true,
         };
         imageCompression(imageFile, options)
           .then(function(compressedFile) {
-            console.log(
-              'compressedFile instanceof Blob',
-              compressedFile instanceof Blob
-            ); // true
-            console.log(
-              `compressedFile size ${compressedFile.size / 1024 / 1024} MB`
-            ); // smaller than maxSizeMB
-
             window.URL.revokeObjectURL(previewURL);
             setPreviewURL(window.URL.createObjectURL(blob));
 
-            return setAvatarData(compressedFile); // write your own logic
+            return setAvatarData(compressedFile);
           })
           .catch(function(error) {
             console.log(error.message);
           });
-        // ====
 
         //setAvatarData(blob);
 
