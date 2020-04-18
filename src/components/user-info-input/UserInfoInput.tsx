@@ -27,6 +27,7 @@ import './UserInfoInput.scss';
 import { Message } from '../../..';
 import Password from '../authenticate/Password/Password';
 import { Context } from '../../../src/context';
+import notify from '../utility/Notify';
 import ReactCrop from 'react-image-crop';
 import 'react-image-crop/lib/ReactCrop.scss';
 import imageCompression from 'browser-image-compression';
@@ -48,6 +49,7 @@ const UserInfoInput = () => {
     height: 80,
     x: 10,
     y: 10,
+    aspect: 1/1
   } as any);
   const [userDetails, setUserDetails] = useState({
     avatar_url: (undefined as unknown) as string,
@@ -165,6 +167,14 @@ const UserInfoInput = () => {
       testImage.onerror = () => {
         console.log('Is not a image\n');
 
+        const message = 'Please choose a image file';
+        notify({
+          message,
+          status: 'warning',
+          pos: 'bottom-right',
+          timeout: 1500
+        });
+
         // now hide the spinner
         if (spinner) spinner.classList.add('uk-hidden');
       }
@@ -172,6 +182,14 @@ const UserInfoInput = () => {
 
     } else {
       console.log('no file');
+
+      const message = 'no file';
+      notify({
+        message,
+        status: 'danger',
+        pos: 'top-right',
+        timeout: 1500
+      });
     }
   };
 
