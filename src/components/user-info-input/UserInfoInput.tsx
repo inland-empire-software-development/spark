@@ -209,6 +209,8 @@ const UserInfoInput = () => {
         var options = {
           maxSizeMB: 0.5,
           useWebWorker: true,
+          fileType: 'image/jpg',
+          onProgress: () => null
         };
         imageCompression(imageFile, options)
           .then(function(compressedFile) {

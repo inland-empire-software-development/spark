@@ -1,4 +1,4 @@
-@import "../../style/variables.scss";
+@import '../../style/variables.scss';
 
 .uk-input {
   color: black;
@@ -11,6 +11,7 @@
 .img-upload-container {
   position: relative;
   margin: auto;
+  height: 100%;
 
   &.uk-placeholder {
     padding: 0;
@@ -26,6 +27,8 @@
     width: -moz-available;
     width: -webkit-fill-available;
     width: fill-available; //stretch
+    object-fit: cover;
+    min-height: 100%;
   }
 }
 
