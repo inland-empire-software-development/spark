@@ -32,6 +32,7 @@
     "babel-jest": "^24.9.0",
     "bcryptjs": "^2.4.3",
     "bluebird": "^3.7.2",
+    "browser-image-compression": "^1.0.9",
     "dotenv": "^8.2.0",
     "glob": "^7.1.6",
     "isomorphic-unfetch": "^3.0.0",
