@@ -30,12 +30,13 @@ import Password from '../authenticate/Password/Password';
 import { Context } from '../../../src/context';
 import ReactCrop from 'react-image-crop';
 import 'react-image-crop/lib/ReactCrop.scss';
+import imageCompression from 'browser-image-compression';
 
 const UserInfoInput = () => {
   const { user, userID } = useContext(Context);
   const [picUploaded, setPicUploaded] = useState(false as boolean);
   const [avatarURL, setAvatarURL] = useState((undefined as unknown) as string);
-  const [avatarData, setAvatarData] = useState((undefined as unknown) as File);
+  const [avatarData, setAvatarData] = useState((undefined as unknown) as any);
   const [upImg, setUpImg] = useState((undefined as unknown) as any);
   const [imgRef, setImgRef] = useState(null as any);
   const [previewURL, setPreviewURL] = useState((undefined as unknown) as any);
@@ -202,10 +203,40 @@ const UserInfoInput = () => {
           return;
         }
 
-        setAvatarData(blob);
+        // ====
+        var imageFile = blob;
+        console.log('originalFile instanceof Blob', imageFile instanceof Blob); // true
+        console.log(`originalFile size ${imageFile.size / 1024 / 1024} MB`);
 
-        window.URL.revokeObjectURL(previewURL);
-        setPreviewURL(window.URL.createObjectURL(blob));
+        var options = {
+          maxSizeMB: 0.5,
+          maxWidthOrHeight: 1920,
+          useWebWorker: true,
+        };
+        imageCompression(imageFile, options)
+          .then(function(compressedFile) {
+            console.log(
+              'compressedFile instanceof Blob',
+              compressedFile instanceof Blob
+            ); // true
+            console.log(
+              `compressedFile size ${compressedFile.size / 1024 / 1024} MB`
+            ); // smaller than maxSizeMB
+
+            window.URL.revokeObjectURL(previewURL);
+            setPreviewURL(window.URL.createObjectURL(blob));
+
+            return setAvatarData(compressedFile); // write your own logic
+          })
+          .catch(function(error) {
+            console.log(error.message);
+          });
+        // ====
+
+        //setAvatarData(blob);
+
+        // window.URL.revokeObjectURL(previewURL);
+        // setPreviewURL(window.URL.createObjectURL(blob));
       }, 'image/jpeg');
     });
   };
