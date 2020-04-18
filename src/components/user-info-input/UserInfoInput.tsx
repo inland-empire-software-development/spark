@@ -8,14 +8,12 @@
 //  - should user be logged out when password is updated?
 //  - error messages/notifications when errors happen
 //      * i.e. fail to change data
-//  - convert title back to input field
 // Nice to have
 //  - image crop should be it's own component
 //  - improve image display
 // V2
 //  - drag and drop pictures
-//  - clear input fields remove user info from db
-//      * i.e. remove facebook, etc address from db
+//  - clear user picture from database
 //  - toast notifications
 // =======================================================================
 
@@ -35,6 +33,9 @@ import 'react-image-crop/lib/ReactCrop.scss';
 import imageCompression from 'browser-image-compression';
 
 const UserInfoInput = () => {
+  // this gets the global spinner.
+  const spinner: HTMLElement | null = document.getElementById('spinner');
+
   const { user, userID } = useContext(Context);
   const [picUploaded, setPicUploaded] = useState(false as boolean);
   const [avatarURL, setAvatarURL] = useState((undefined as unknown) as string);
@@ -135,13 +136,21 @@ const UserInfoInput = () => {
 
   const handleFileUpload = (e: FileList | null) => {
     if (e && e[0]) {
-      UIkit.modal('#avatarModal').show();
+      // show spinner while working
+      if (spinner) spinner.classList.remove('uk-hidden');
 
       setPicUploaded(true);
       //avatarData = e[0];
 
       const reader = new FileReader();
-      reader.addEventListener('load', () => setUpImg(reader.result));
+      reader.addEventListener('load', () => {
+        setUpImg(reader.result);
+
+        // now hide the spinner
+        if (spinner) spinner.classList.add('uk-hidden');
+        
+        UIkit.modal('#avatarModal').show();
+      });
       reader.readAsDataURL(e[0]);
 
       // const avatarImg = document.getElementById('avatarID') as HTMLImageElement;
@@ -158,6 +167,8 @@ const UserInfoInput = () => {
         'user-input'
       ) as HTMLInputElement;
       userInput.value = '';
+    } else {
+      console.log('no file');
     }
   };
 
@@ -277,9 +288,6 @@ const UserInfoInput = () => {
       '[name="user-instagram"]'
     );
 
-    // this gets the global spinner.
-    const spinner: HTMLElement | null = document.getElementById('spinner');
-
     // show spinner while working
     if (spinner) spinner.classList.remove('uk-hidden');
 
@@ -299,17 +307,11 @@ const UserInfoInput = () => {
           ? lastname_field?.value
           : null,
       title:
-        title_field?.value !== userDetails.title
-          ? title_field?.value
-          : null,
+        title_field?.value !== userDetails.title ? title_field?.value : null,
       phone:
-        phone_field?.value !== userDetails.phone
-          ? phone_field?.value
-          : null,
+        phone_field?.value !== userDetails.phone ? phone_field?.value : null,
       about:
-        about_field?.value !== userDetails.about
-          ? about_field?.value
-          : null,
+        about_field?.value !== userDetails.about ? about_field?.value : null,
       oldpassword: oldpassword_field ? oldpassword_field.value : null,
       password: password_field ? password_field.value : null,
       facebook:
@@ -331,8 +333,18 @@ const UserInfoInput = () => {
       userID: userID,
     };
 
-    console.log('firstname_field: ', typeof(firstname_field?.value), firstname_field?.value, '\n');
-    console.log('userDetails.firstname: ', typeof(userDetails.first_name), userDetails.first_name, '\n');
+    console.log(
+      'firstname_field: ',
+      typeof firstname_field?.value,
+      firstname_field?.value,
+      '\n'
+    );
+    console.log(
+      'userDetails.firstname: ',
+      typeof userDetails.first_name,
+      userDetails.first_name,
+      '\n'
+    );
 
     fetch(process.env.HOST + url, {
       method: 'POST',
