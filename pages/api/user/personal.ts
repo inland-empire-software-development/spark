@@ -7,8 +7,8 @@
 
 import db from '../../../lib/db';
 import auth from '../../../lib/auth';
-import {Message} from '../../..';
-import {NextApiResponse, NextApiRequest} from 'next';
+import { Message } from '../../..';
+import { NextApiResponse, NextApiRequest } from 'next';
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   // set headers
@@ -32,46 +32,46 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     twitter,
     linkedin,
     instagram,
-    userID
+    userID,
   } = req.body;
 
   if (avatarURL) {
     db.updateUserInfo(userID, 'avatar_url', avatarURL);
   }
 
-  if (firstname) {
+  if (firstname || firstname === '') {
     db.updateUserInfo(userID, 'first_name', firstname);
   }
 
-  if (lastname) {
+  if (lastname || lastname === '') {
     db.updateUserInfo(userID, 'last_name', lastname);
   }
 
-  if (title) {
+  if (title || title === '') {
     db.updateUserInfo(userID, 'title', title);
   }
 
-  if (phone) {
+  if (phone || phone === '') {
     db.updateUserInfo(userID, 'phone', phone);
   }
 
-  if (about) {
+  if (about || about === '') {
     db.updateUserInfo(userID, 'about', about);
   }
 
-  if (facebook) {
+  if (facebook || facebook === '') {
     db.updateUserInfo(userID, 'facebook', facebook);
   }
 
-  if (twitter) {
+  if (twitter || twitter === '') {
     db.updateUserInfo(userID, 'twitter', twitter);
   }
 
-  if (linkedin) {
+  if (linkedin || linkedin === '') {
     db.updateUserInfo(userID, 'linkedin', linkedin);
   }
 
-  if (instagram) {
+  if (instagram || instagram === '') {
     db.updateUserInfo(userID, 'instagram', instagram);
   }
 
@@ -88,8 +88,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   // check form to see how you're passing them back.
   const testMessage = {
     status: false,
-    message:
-      `Success` /* `\nUser: ${user} \nUserID: ${userID} \nPic: ${profilepic} \nName: ${firstname} ${lastname} \nTitle: ${title} \nPhone: ${phone} \nAbout: ${about} \nOldPassword: ${oldpassword} \nPassword: ${password} \nfacebook: ${facebook} \nTwitter: ${twitter} \nLinkedIn: ${linkedin} \nInstagram: ${instagram}\n`*/
+    message: `${firstname}` /* `\nUser: ${user} \nUserID: ${userID} \nPic: ${profilepic} \nName: ${firstname} ${lastname} \nTitle: ${title} \nPhone: ${phone} \nAbout: ${about} \nOldPassword: ${oldpassword} \nPassword: ${password} \nfacebook: ${facebook} \nTwitter: ${twitter} \nLinkedIn: ${linkedin} \nInstagram: ${instagram}\n`*/,
   } as Message;
 
   // example message - whatever you want to return, use this format.

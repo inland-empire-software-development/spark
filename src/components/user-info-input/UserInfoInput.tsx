@@ -291,45 +291,48 @@ const UserInfoInput = () => {
     const data = {
       avatarURL: avatarURL,
       firstname:
-        firstname_field && firstname_field.value !== userDetails.first_name
-          ? firstname_field.value
+        firstname_field?.value !== userDetails.first_name
+          ? firstname_field?.value
           : null,
       lastname:
-        lastname_field && lastname_field.value !== userDetails.last_name
-          ? lastname_field.value
+        lastname_field?.value !== userDetails.last_name
+          ? lastname_field?.value
           : null,
       title:
-        title_field && title_field.value !== userDetails.title
-          ? title_field.value
+        title_field?.value !== userDetails.title
+          ? title_field?.value
           : null,
       phone:
-        phone_field && phone_field.value !== userDetails.phone
-          ? phone_field.value
+        phone_field?.value !== userDetails.phone
+          ? phone_field?.value
           : null,
       about:
-        about_field && about_field.value !== userDetails.about
-          ? about_field.value
+        about_field?.value !== userDetails.about
+          ? about_field?.value
           : null,
       oldpassword: oldpassword_field ? oldpassword_field.value : null,
       password: password_field ? password_field.value : null,
       facebook:
-        facebook_field && facebook_field.value !== userDetails.facebook
-          ? facebook_field.value
+        facebook_field?.value !== userDetails.facebook
+          ? facebook_field?.value
           : null,
       twitter:
-        twitter_field && twitter_field.value !== userDetails.twitter
-          ? twitter_field.value
+        twitter_field?.value !== userDetails.twitter
+          ? twitter_field?.value
           : null,
       linkedin:
-        linkedin_field && linkedin_field.value !== userDetails.linkedin
-          ? linkedin_field.value
+        linkedin_field?.value !== userDetails.linkedin
+          ? linkedin_field?.value
           : null,
       instagram:
-        instagram_field && instagram_field.value !== userDetails.instagram
-          ? instagram_field.value
+        instagram_field?.value !== userDetails.instagram
+          ? instagram_field?.value
           : null,
       userID: userID,
     };
+
+    console.log('firstname_field: ', typeof(firstname_field?.value), firstname_field?.value, '\n');
+    console.log('userDetails.firstname: ', typeof(userDetails.first_name), userDetails.first_name, '\n');
 
     fetch(process.env.HOST + url, {
       method: 'POST',
