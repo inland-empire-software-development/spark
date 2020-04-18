@@ -80,20 +80,20 @@ const UserInfoInput = () => {
     value: userID,
   };
 
-  // set user title
-  useEffect(() => {
-    const title_selector: HTMLSelectElement | null = document.querySelector(
-      '[name="user-title"]'
-    );
-    const title_options = title_selector?.options;
-    if (title_options && title_selector) {
-      for (let i = 0; i < title_options?.length; i++) {
-        if (title_options[i].value == userDetails.title) {
-          title_selector.selectedIndex = i;
-        }
-      }
-    }
-  }, [userDetails.title]);
+  // // set user title
+  // useEffect(() => {
+  //   const title_selector: HTMLSelectElement | null = document.querySelector(
+  //     '[name="user-title"]'
+  //   );
+  //   const title_options = title_selector?.options;
+  //   if (title_options && title_selector) {
+  //     for (let i = 0; i < title_options?.length; i++) {
+  //       if (title_options[i].value == userDetails.title) {
+  //         title_selector.selectedIndex = i;
+  //       }
+  //     }
+  //   }
+  // }, [userDetails.title]);
 
   useEffect(() => {
     const abortController = new AbortController();
@@ -211,7 +211,7 @@ const UserInfoInput = () => {
         var options = {
           maxSizeMB: 0.5,
           useWebWorker: true,
-          onProgress: () => null
+          onProgress: () => null,
         };
         imageCompression(imageFile, options)
           .then(function(compressedFile) {
@@ -249,7 +249,7 @@ const UserInfoInput = () => {
     const lastname_field: HTMLInputElement | null = document.querySelector(
       '[name="user-lastname"]'
     );
-    const title_field: HTMLSelectElement | null = document.querySelector(
+    const title_field: HTMLInputElement | null = document.querySelector(
       '[name="user-title"]'
     );
     const phone_field: HTMLInputElement | null = document.querySelector(
@@ -390,6 +390,7 @@ const UserInfoInput = () => {
             ruleOfThirds={true}
           />
           <hr />
+
           <p className='uk-text-right'>
             <button
               className='uk-button uk-button-default uk-modal-close'
@@ -465,12 +466,13 @@ const UserInfoInput = () => {
                 <label className='uk-form-label' htmlFor='title'>
                   Title
                 </label>
-                <select className='uk-select' name='user-title' defaultValue=''>
-                  <option hidden>Select One</option>
-                  <option>Student</option>
-                  <option>Instructor</option>
-                  <option>Teaching Assistant</option>
-                </select>
+                <input
+                  className='uk-input'
+                  type='text'
+                  placeholder='Student'
+                  defaultValue={userDetails.title}
+                  name='user-title'
+                ></input>
               </div>
 
               <div className='uk-margin-bottom'>
