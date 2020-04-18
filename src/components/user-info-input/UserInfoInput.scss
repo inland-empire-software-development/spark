@@ -52,5 +52,7 @@
 @media screen and (min-width: 960px) {
   .profile-pic-container {
     max-width: 232px;
+    max-height: 192px;
+    overflow: hidden;
   }
 }

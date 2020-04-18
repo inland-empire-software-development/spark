@@ -4,10 +4,11 @@
 // Known Issues/Todos
 // ===================
 //  - add phone number verification -- need format guidelines
-//  - Need error checking for uploaded file, img needs optimization
+//  - Need error checking for uploaded file, img display needs tweaking
 //  - should user be logged out when password is updated?
 //  - error messages/notifications when errors happen
 //      * i.e. fail to change data
+//  - convert title back to input field
 // Nice to have
 //  - image crop should be it's own component
 // V2
@@ -388,6 +389,7 @@ const UserInfoInput = () => {
             onChange={onCropChange}
             ruleOfThirds={true}
           />
+          <hr />
           <p className='uk-text-right'>
             <button
               className='uk-button uk-button-default uk-modal-close'
