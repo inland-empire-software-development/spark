@@ -419,7 +419,7 @@ const UserInfoInput = () => {
             onImageLoaded={onLoad}
             crop={crop}
             onChange={onCropChange}
-            ruleOfThirds={true}
+            ruleOfThirds={false}
           />
           <hr />
 
