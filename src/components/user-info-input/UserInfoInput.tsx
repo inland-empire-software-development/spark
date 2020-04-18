@@ -4,16 +4,17 @@
 // Known Issues/Todos
 // ===================
 //  - add phone number verification -- need format guidelines
-//  - Need error checking for uploaded file, img display needs tweaking
+//  - Need error checking for uploaded file
 //  - should user be logged out when password is updated?
 //  - error messages/notifications when errors happen
 //      * i.e. fail to change data
 //  - convert title back to input field
 // Nice to have
 //  - image crop should be it's own component
+//  - improve image display
 // V2
 //  - drag and drop pictures
-//  - reset input fields remove user info from db
+//  - clear input fields remove user info from db
 //      * i.e. remove facebook, etc address from db
 //  - toast notifications
 // =======================================================================
