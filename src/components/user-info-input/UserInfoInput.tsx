@@ -3,18 +3,17 @@
 // =======================================================================
 // Known Issues/Todos
 // ===================
-//  - add phone number verification -- need format guidelines
-//  - Need error checking for uploaded file
+//  - add phone number verification -- format any way you see fit
 //  - should user be logged out when password is updated?
-//  - error messages/notifications when errors happen
-//      * i.e. fail to change data
+//  - error messages/notifications when errors happen(**)
+//      -- i.e. fail to change data
 // Nice to have
 //  - image crop should be it's own component
-//  - improve image display
+//  - improve image displayed responsive sizes
 // V2
 //  - drag and drop pictures
 //  - clear user picture from database
-//  - toast notifications
+//  - toast notifications(**)
 // =======================================================================
 
 import React, {
