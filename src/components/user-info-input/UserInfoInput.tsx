@@ -139,34 +139,38 @@ const UserInfoInput = () => {
       // show spinner while working
       if (spinner) spinner.classList.remove('uk-hidden');
 
-      setPicUploaded(true);
-      //avatarData = e[0];
+      // Check if valid image
+      const testImage = new Image();
+      testImage.onload = () => {
+        console.log('Is a image\n');
+        setPicUploaded(true);
 
-      const reader = new FileReader();
-      reader.addEventListener('load', () => {
-        setUpImg(reader.result);
+        const reader = new FileReader();
+        reader.addEventListener('load', () => {
+  
+          setUpImg(reader.result);
+  
+          // clear file input
+          const userInput = document.getElementById(
+            'user-input'
+          ) as HTMLInputElement;
+          userInput.value = '';
+  
+          // now hide the spinner
+          if (spinner) spinner.classList.add('uk-hidden');
+  
+          UIkit.modal('#avatarModal').show();
+        });
+        reader.readAsDataURL(e[0]);
+      }
+      testImage.onerror = () => {
+        console.log('Is not a image\n');
 
         // now hide the spinner
         if (spinner) spinner.classList.add('uk-hidden');
+      }
+      testImage.src = URL.createObjectURL(e[0]);
 
-        UIkit.modal('#avatarModal').show();
-      });
-      reader.readAsDataURL(e[0]);
-
-      // const avatarImg = document.getElementById('avatarID') as HTMLImageElement;
-      // //avatarImg.src = process.env.HOST + 'images/logo/spark-360x360.png';
-      // avatarImg.src = URL.createObjectURL(avatarData);
-
-      // console.log('UploadedImg: ', typeof(upImg), ':', upImg, '\n');
-      // console.log('imgRef: ', typeof(imgRef), ':', imgRef, '\n');
-      // console.log('PreviewURL: ', typeof(previewURL), ':', previewURL, '\n');
-      // console.log('Crop: ', typeof(crop), ':', crop, '\n');
-
-      // clear file input
-      const userInput = document.getElementById(
-        'user-input'
-      ) as HTMLInputElement;
-      userInput.value = '';
     } else {
       console.log('no file');
     }
@@ -341,19 +345,6 @@ const UserInfoInput = () => {
           : null,
       userID: userID,
     };
-
-    console.log(
-      'firstname_field: ',
-      typeof firstname_field?.value,
-      firstname_field?.value,
-      '\n'
-    );
-    console.log(
-      'userDetails.firstname: ',
-      typeof userDetails.first_name,
-      userDetails.first_name,
-      '\n'
-    );
 
     fetch(process.env.HOST + url, {
       method: 'POST',
