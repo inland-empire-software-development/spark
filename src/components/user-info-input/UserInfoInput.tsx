@@ -148,7 +148,7 @@ const UserInfoInput = () => {
 
         // now hide the spinner
         if (spinner) spinner.classList.add('uk-hidden');
-        
+
         UIkit.modal('#avatarModal').show();
       });
       reader.readAsDataURL(e[0]);
@@ -178,6 +178,9 @@ const UserInfoInput = () => {
 
   const makeClientCrop = async () => {
     if (imgRef && crop.width && crop.height) {
+      // show spinner while working
+      if (spinner) spinner.classList.remove('uk-hidden');
+
       createCropPreview(imgRef, crop);
     }
   };
@@ -229,9 +232,15 @@ const UserInfoInput = () => {
             window.URL.revokeObjectURL(previewURL);
             setPreviewURL(window.URL.createObjectURL(blob));
 
+            // now hide the spinner
+            if (spinner) spinner.classList.add('uk-hidden');
+
             return setAvatarData(compressedFile);
           })
           .catch(function(error) {
+            // now hide the spinner
+            if (spinner) spinner.classList.add('uk-hidden');
+
             console.log(error.message);
           });
 
