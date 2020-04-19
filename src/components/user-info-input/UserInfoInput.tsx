@@ -6,12 +6,13 @@
 //  - add phone number verification -- format any way you see fit
 //  - should user be logged out when password is updated?
 //  - if multiple notifications subsequent notifications are ignored
-// Nice to have
-//  - image crop should be it's own component
+//     - One big notification or change this behavior?
+// Version 1.5 
 //  - optimize db queries
 //  - rewrite logic to push form data to api
 //  - rewrite logic for checks
-// V2
+//  - image crop should be it's own component
+// Version 2
 //  - need more robust error checking
 //  - drag and drop pictures
 //  - clear user picture from database
