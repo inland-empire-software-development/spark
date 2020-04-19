@@ -5,15 +5,16 @@
 // ===================
 //  - add phone number verification -- format any way you see fit
 //  - should user be logged out when password is updated?
-//  - error messages/notifications when errors happen(**)
-//      -- i.e. fail to change data
+//  - if multiple notifications subsequent notifications are ignored
 // Nice to have
 //  - image crop should be it's own component
-//  - improve image displayed responsive sizes
+//  - optimize db queries
+//  - rewrite logic to push form data to api
+//  - rewrite logic for checks
 // V2
+//  - need more robust error checking
 //  - drag and drop pictures
 //  - clear user picture from database
-//  - toast notifications(**)
 // =======================================================================
 
 import React, {
@@ -35,10 +36,10 @@ import imageCompression from 'browser-image-compression';
 const UserInfoInput = () => {
   // this gets the global spinner.
   const spinner: HTMLElement | null = document.getElementById('spinner');
-
+  let message: string | null = null;
   const { user, userID } = useContext(Context);
   const [picUploaded, setPicUploaded] = useState(false as boolean);
-  const [avatarURL, setAvatarURL] = useState((undefined as unknown) as string);
+  const [avatarURL, setAvatarURL] = useState((null as unknown) as string);
   const [avatarData, setAvatarData] = useState((undefined as unknown) as any);
   const [upImg, setUpImg] = useState((undefined as unknown) as any);
   const [imgRef, setImgRef] = useState(null as any);
@@ -49,7 +50,7 @@ const UserInfoInput = () => {
     height: 80,
     x: 10,
     y: 10,
-    aspect: 1/1
+    aspect: 1 / 1,
   } as any);
   const [userDetails, setUserDetails] = useState({
     avatar_url: (undefined as unknown) as string,
@@ -143,52 +144,47 @@ const UserInfoInput = () => {
       // Check if valid image
       const testImage = new Image();
       testImage.onload = () => {
-        console.log('Is a image\n');
-        setPicUploaded(true);
-
         const reader = new FileReader();
         reader.addEventListener('load', () => {
-  
           setUpImg(reader.result);
-  
+
           // clear file input
           const userInput = document.getElementById(
             'user-input'
           ) as HTMLInputElement;
           userInput.value = '';
-  
+
           // now hide the spinner
           if (spinner) spinner.classList.add('uk-hidden');
-  
+
           UIkit.modal('#avatarModal').show();
         });
         reader.readAsDataURL(e[0]);
-      }
+      };
       testImage.onerror = () => {
         console.log('Is not a image\n');
 
-        const message = 'Please choose a image file';
+        message = 'Invalid file: Please choose a image';
         notify({
           message,
           status: 'warning',
           pos: 'bottom-right',
-          timeout: 1500
+          timeout: 1500,
         });
 
         // now hide the spinner
         if (spinner) spinner.classList.add('uk-hidden');
-      }
+      };
       testImage.src = URL.createObjectURL(e[0]);
-
     } else {
       console.log('no file');
 
-      const message = 'no file';
+      message = 'No file detected';
       notify({
         message,
         status: 'danger',
-        pos: 'top-right',
-        timeout: 1500
+        pos: 'bottom-right',
+        timeout: 1500,
       });
     }
   };
@@ -203,6 +199,14 @@ const UserInfoInput = () => {
       if (spinner) spinner.classList.remove('uk-hidden');
 
       createCropPreview(imgRef, crop);
+    } else {
+      message = 'Invalid crop: Please contact support';
+      notify({
+        message,
+        status: 'danger',
+        pos: 'bottom-right',
+        timeout: 1500,
+      });
     }
   };
 
@@ -241,9 +245,9 @@ const UserInfoInput = () => {
         }
 
         // compress image crop
-        var imageFile = blob;
+        const imageFile = blob;
 
-        var options = {
+        const options = {
           maxSizeMB: 0.5,
           useWebWorker: true,
           onProgress: () => null,
@@ -252,6 +256,8 @@ const UserInfoInput = () => {
           .then(function(compressedFile) {
             window.URL.revokeObjectURL(previewURL);
             setPreviewURL(window.URL.createObjectURL(blob));
+
+            setPicUploaded(true);
 
             // now hide the spinner
             if (spinner) spinner.classList.add('uk-hidden');
@@ -264,11 +270,6 @@ const UserInfoInput = () => {
 
             console.log(error.message);
           });
-
-        //setAvatarData(blob);
-
-        // window.URL.revokeObjectURL(previewURL);
-        // setPreviewURL(window.URL.createObjectURL(blob));
       }, 'image/jpeg');
     });
   };
@@ -318,13 +319,6 @@ const UserInfoInput = () => {
       '[name="user-instagram"]'
     );
 
-    // show spinner while working
-    if (spinner) spinner.classList.remove('uk-hidden');
-
-    // example API route that will handle signing in
-    // Call api/user/personal
-    const url = 'api/user/personal';
-
     // all data you want to pass over to API, name it appropriately
     const data = {
       avatarURL: avatarURL,
@@ -363,51 +357,223 @@ const UserInfoInput = () => {
       userID: userID,
     };
 
-    fetch(process.env.HOST + url, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(data),
-    })
-      .then((response: { json: () => any }) => response.json())
-      .then((response: Message) => {
-        const { status, message } = response;
+    if (
+      picUploaded ||
+      data.firstname ||
+      data.firstname === '' ||
+      data.lastname ||
+      data.lastname === '' ||
+      data.title ||
+      data.title === '' ||
+      data.phone ||
+      data.phone === '' ||
+      data.about ||
+      data.about === '' ||
+      data.oldpassword ||
+      data.password ||
+      data.facebook ||
+      data.facebook === '' ||
+      data.twitter ||
+      data.twitter === '' ||
+      data.linkedin ||
+      data.linkedin === '' ||
+      data.instagram ||
+      data.instagram === ''
+    ) {
+      // show spinner while working
+      if (spinner) spinner.classList.remove('uk-hidden');
 
-        console.log(status, '\n', message); // log to console to see what it prints.
+      let formFieldsSuccess: boolean = false;
+      let formImageSuccess: boolean = false;
 
-        if (picUploaded) {
-          console.log('avatarData: ', typeof avatarData, ':', avatarData, '\n');
-
-          fetch(process.env.HOST + 'api/user/upload', {
-            method: 'POST',
-            headers: {
-              'Content-Type': avatarData ? avatarData.type : 'application/json',
-              'User-identification':
-                String(user) + '-' + String(userID) + '-avatar.jpg',
-            },
-            body: avatarData ? avatarData : null,
-          });
-        }
+      // Call api/user/personal
+      fetch(process.env.HOST + 'api/user/personal', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
       })
-      .then(() => {
-        // if spinner is showing and you're done with saving stuff
-        // now hide the spinner
-        if (spinner) spinner.classList.add('uk-hidden');
+        .then((response: { json: () => any }) => response.json())
+        .then((response: Message) => {
+          let { status, message } = response;
+          const {
+            firstNameMessage,
+            lastNameMessage,
+            titleMessage,
+            phoneMessage,
+            aboutMessage,
+            facebookMessage,
+            twitterMessage,
+            linkedinMessage,
+            instagramMessage,
+          }: {
+            firstNameMessage: string;
+            lastNameMessage: string;
+            titleMessage: string;
+            phoneMessage: string;
+            aboutMessage: string;
+            facebookMessage: string;
+            twitterMessage: string;
+            linkedinMessage: string;
+            instagramMessage: string;
+          } = JSON.parse(message);
 
-        // do whatever else you need to do
-        // window.location.reload(true);
-        if (oldpassword_field) {
-          oldpassword_field.value = '';
-        }
-        if (password_field) {
-          password_field.value = '';
-        }
-        // const profileForm: HTMLFormElement = document.getElementById(
-        //   'user-profile'
-        // ) as HTMLFormElement;
-        // profileForm.reset();
+          if (!status) {
+            if (firstNameMessage) {
+              console.log('FirstNameMessage', firstNameMessage, '\n');
+              notify({
+                message: firstNameMessage,
+                status: 'danger',
+                pos: 'bottom-right',
+                timeout: 1500,
+              });
+            }
+            if (lastNameMessage) {
+              console.log('LastNameMessage: ', lastNameMessage, '\n');
+              notify({
+                message: lastNameMessage,
+                status: 'danger',
+                pos: 'bottom-right',
+                timeout: 1500,
+              });
+            }
+            if (titleMessage) {
+              console.log('LastNameMessage: ', titleMessage, '\n');
+              notify({
+                message: titleMessage,
+                status: 'danger',
+                pos: 'bottom-right',
+                timeout: 1500,
+              });
+            }
+            if (phoneMessage) {
+              console.log('LastNameMessage: ', phoneMessage, '\n');
+              notify({
+                message: phoneMessage,
+                status: 'danger',
+                pos: 'bottom-right',
+                timeout: 1500,
+              });
+            }
+            if (aboutMessage) {
+              console.log('LastNameMessage: ', aboutMessage, '\n');
+              notify({
+                message: aboutMessage,
+                status: 'danger',
+                pos: 'bottom-right',
+                timeout: 1500,
+              });
+            }
+            if (facebookMessage) {
+              console.log('LastNameMessage: ', facebookMessage, '\n');
+              notify({
+                message: facebookMessage,
+                status: 'danger',
+                pos: 'bottom-right',
+                timeout: 1500,
+              });
+            }
+            if (twitterMessage) {
+              console.log('LastNameMessage: ', twitterMessage, '\n');
+              notify({
+                message: twitterMessage,
+                status: 'danger',
+                pos: 'bottom-right',
+                timeout: 1500,
+              });
+            }
+            if (linkedinMessage) {
+              console.log('LastNameMessage: ', linkedinMessage, '\n');
+              notify({
+                message: linkedinMessage,
+                status: 'danger',
+                pos: 'bottom-right',
+                timeout: 1500,
+              });
+            }
+            if (instagramMessage) {
+              console.log('LastNameMessage: ', instagramMessage, '\n');
+              notify({
+                message: instagramMessage,
+                status: 'danger',
+                pos: 'bottom-right',
+                timeout: 1500,
+              });
+            }
+          } else {
+            formFieldsSuccess = status;
+          }
+
+          //console.log(status, '\n', message); // log to console to see what it prints.
+
+          if (picUploaded) {
+            //console.log('avatarData: ', typeof avatarData, ':', avatarData, '\n');
+
+            fetch(process.env.HOST + 'api/user/upload', {
+              method: 'POST',
+              headers: {
+                'Content-Type': avatarData
+                  ? avatarData.type
+                  : 'application/json',
+                'User-identification':
+                  String(user) + '-' + String(userID) + '-avatar.jpg',
+              },
+              body: avatarData ? avatarData : null,
+            })
+              .then((response: { json: () => any }) => response.json())
+              .then((response: Message) => {
+                let { status, message } = response;
+                if (!status) {
+                  console.log(message, '\n');
+                  notify({
+                    message: message,
+                    status: 'danger',
+                    pos: 'bottom-right',
+                    timeout: 1500,
+                  });
+                } else {
+                  formImageSuccess = status;
+                }
+              });
+          }
+        })
+        .then(() => {
+          setPicUploaded(false);
+          // if spinner is showing and you're done with saving stuff
+          // now hide the spinner
+          if (spinner) spinner.classList.add('uk-hidden');
+
+          // do whatever else you need to do
+          if (formFieldsSuccess || formImageSuccess) {
+            notify({
+              message: 'Form successfully submitted',
+              status: 'success',
+              pos: 'bottom-right',
+              timeout: 1500,
+            });
+          }
+
+          // window.location.reload(true);
+          if (oldpassword_field) {
+            oldpassword_field.value = '';
+          }
+          if (password_field) {
+            password_field.value = '';
+          }
+          // const profileForm: HTMLFormElement = document.getElementById(
+          //   'user-profile'
+          // ) as HTMLFormElement;
+          // profileForm.reset();
+        });
+    } else {
+      notify({
+        message: 'Nothing to update...',
+        status: 'primary',
+        pos: 'bottom-right',
+        timeout: 1500,
       });
+    }
   };
 
   return (

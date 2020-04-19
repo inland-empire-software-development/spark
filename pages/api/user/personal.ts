@@ -18,6 +18,21 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   );
   res.setHeader('Content-Type', 'json/javascript');
 
+  let status: boolean = true;
+  let messageObj = {
+    avatarURLMessage: (null as unknown) as string,
+    firstNameMessage: (null as unknown) as string,
+    lastNameMessage: (null as unknown) as string,
+    titleMessage: (null as unknown) as string,
+    phoneMessage: (null as unknown) as string,
+    aboutMessage: (null as unknown) as string,
+    facebookMessage: (null as unknown) as string,
+    twitterMessage: (null as unknown) as string,
+    linkedinMessage: (null as unknown) as string,
+    instagramMessage: (null as unknown) as string,
+    passwordMessage: (null as unknown) as string,
+  };
+
   // Get profile fields from JSON body
   const {
     avatarURL,
@@ -40,39 +55,84 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   }
 
   if (firstname || firstname === '') {
-    db.updateUserInfo(userID, 'first_name', firstname);
+    if (!db.updateUserInfo(userID, 'first_name', firstname)) {
+      if (status) {
+        status = false;
+      }
+      messageObj.firstNameMessage = 'Error: First name failed to update';
+    }
   }
 
   if (lastname || lastname === '') {
-    db.updateUserInfo(userID, 'last_name', lastname);
+    if (!db.updateUserInfo(userID, 'last_name', lastname)) {
+      if (status) {
+        status = false;
+      }
+      messageObj.lastNameMessage = 'Error: Last name failed to update';
+    }
   }
 
   if (title || title === '') {
-    db.updateUserInfo(userID, 'title', title);
+    if (!db.updateUserInfo(userID, 'title', title)) {
+      if (status) {
+        status = false;
+      }
+      messageObj.titleMessage = 'Error: Title failed to update';
+    }
   }
 
   if (phone || phone === '') {
-    db.updateUserInfo(userID, 'phone', phone);
+    if (!db.updateUserInfo(userID, 'phone', phone)) {
+      if (status) {
+        status = false;
+      }
+      messageObj.phoneMessage = 'Error: Phone # failed to update';
+    }
   }
 
   if (about || about === '') {
-    db.updateUserInfo(userID, 'about', about);
+    if (!db.updateUserInfo(userID, 'about', about)) {
+      if (status) {
+        status = false;
+      }
+      messageObj.aboutMessage = 'Error: Personal info failed to update';
+    }
   }
 
   if (facebook || facebook === '') {
-    db.updateUserInfo(userID, 'facebook', facebook);
+    if (!db.updateUserInfo(userID, 'facebook', facebook)) {
+      if (status) {
+        status = false;
+      }
+      messageObj.facebookMessage = 'Error: Facebook address failed to update';
+    }
   }
 
   if (twitter || twitter === '') {
-    db.updateUserInfo(userID, 'twitter', twitter);
+    if (!db.updateUserInfo(userID, 'twitter', twitter)) {
+      if (status) {
+        status = false;
+      }
+      messageObj.twitterMessage = 'Error: Twitter address failed to update';
+    }
   }
 
   if (linkedin || linkedin === '') {
-    db.updateUserInfo(userID, 'linkedin', linkedin);
+    if (!db.updateUserInfo(userID, 'linkedin', linkedin)) {
+      if (status) {
+        status = false;
+      }
+      messageObj.linkedinMessage = 'Error: LinkedIn address failed to update';
+    }
   }
 
   if (instagram || instagram === '') {
-    db.updateUserInfo(userID, 'instagram', instagram);
+    if (!db.updateUserInfo(userID, 'instagram', instagram)) {
+      if (status) {
+        status = false;
+      }
+      messageObj.facebookMessage = 'Error: Instagram address failed to update';
+    }
   }
 
   const user = await db.getUserByID(escape(userID));
@@ -81,17 +141,21 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     if (auth.verifyPassword(oldpassword, user.password)) {
       db.updateUserPassword(userID, password);
     } else {
-      console.log('Error: password verification failed');
+      if (status) {
+        status = false;
+      }
+      messageObj.passwordMessage = 'Error: Current Password does not match';
     }
   }
 
+  const message = JSON.stringify(messageObj);
   // check form to see how you're passing them back.
-  const testMessage = {
-    status: false,
-    message: `${firstname}` /* `\nUser: ${user} \nUserID: ${userID} \nPic: ${profilepic} \nName: ${firstname} ${lastname} \nTitle: ${title} \nPhone: ${phone} \nAbout: ${about} \nOldPassword: ${oldpassword} \nPassword: ${password} \nfacebook: ${facebook} \nTwitter: ${twitter} \nLinkedIn: ${linkedin} \nInstagram: ${instagram}\n`*/,
-  } as Message;
+  const statusMessage = ({
+    status: status,
+    message: message,
+  } as unknown) as Message;
 
   // example message - whatever you want to return, use this format.
   // showing return example
-  res.send(testMessage);
+  res.send(statusMessage);
 };
