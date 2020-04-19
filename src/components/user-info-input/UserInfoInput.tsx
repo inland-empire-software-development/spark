@@ -547,7 +547,7 @@ const UserInfoInput = () => {
           // do whatever else you need to do
           if (formFieldsSuccess || formImageSuccess) {
             notify({
-              message: 'Form successfully submitted',
+              message: 'User information successfully updated',
               status: 'success',
               pos: 'bottom-right',
               timeout: 1500,
