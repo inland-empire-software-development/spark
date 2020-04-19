@@ -10,6 +10,23 @@ import auth from '../../../lib/auth';
 import { Message } from '../../..';
 import { NextApiResponse, NextApiRequest } from 'next';
 
+//https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html
+const sanitize = (string: string) => {
+  const map: any = {
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    '"': '&quot;',
+    "'": '&#x27;',
+    '/': '&#x2F;',
+    '`': '&grave;',
+  };
+  const reg = /[&<>"'/]/gi;
+  return string.replace(reg, (match) => map[match]);
+};
+
+sanitize('/asd/');
+
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   // set headers
   res.setHeader(
