@@ -7,7 +7,8 @@
 //  - should user be logged out when password is updated?
 //  - if multiple notifications subsequent notifications are ignored
 //     - One big notification or change this behavior?
-// Version 1.5 
+//  - Server side validation
+// Version 1.5
 //  - optimize db queries
 //  - rewrite logic to push form data to api
 //  - rewrite logic for checks
@@ -679,12 +680,14 @@ const UserInfoInput = () => {
                   Phone #
                 </label>
                 <input
+                  id='phoneNumber'
                   className='uk-input'
                   type='tel'
                   placeholder='xxx-xxx-xxxx'
                   defaultValue={userDetails.phone}
                   name='user-phone'
                   autoComplete='off'
+                  // pattern='/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im'
                 ></input>
               </div>
             </div>
