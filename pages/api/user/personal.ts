@@ -2,7 +2,7 @@
 /* eslint-disable comma-dangle */
 // =======================================================================
 // Known Issues/Todos
-//  -
+//  -Need clarification: Do I need to check if userid exists? To access userID should exist
 // =======================================================================
 
 import db from '../../../lib/db';
@@ -11,21 +11,22 @@ import { Message } from '../../..';
 import { NextApiResponse, NextApiRequest } from 'next';
 
 //https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html
-const sanitize = (string: string) => {
-  const map: any = {
-    '&': '&amp;',
-    '<': '&lt;',
-    '>': '&gt;',
-    '"': '&quot;',
-    "'": '&#x27;',
-    '/': '&#x2F;',
-    '`': '&grave;',
-  };
-  const reg = /[&<>"'/]/gi;
-  return string.replace(reg, (match) => map[match]);
+const sanitize = (str: string) => {
+  if (str) {
+    const map: any = {
+      '&': '&amp;',
+      '<': '&lt;',
+      '>': '&gt;',
+      '"': '&quot;',
+      "'": '&#x27;',
+      '/': '&#x2F;',
+      '`': '&grave;',
+    };
+    const reg = /[&<>"'/]/gi;
+    return str.replace(reg, (match) => map[match]);
+  }
+  return null;
 };
-
-sanitize('/asd/');
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   // set headers
@@ -51,21 +52,35 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   };
 
   // Get profile fields from JSON body
-  const {
-    avatarURL,
-    firstname,
-    lastname,
-    title,
-    phone,
-    about,
-    oldpassword,
-    password,
-    facebook,
-    twitter,
-    linkedin,
-    instagram,
-    userID,
-  } = req.body;
+  // const {
+  //   avatarURL,
+  //   firstname,
+  //   lastname,
+  //   title,
+  //   phone,
+  //   about,
+  //   oldpassword,
+  //   password,
+  //   facebook,
+  //   twitter,
+  //   linkedin,
+  //   instagram,
+  //   userID,
+  // } = req.body;
+
+  const avatarURL: string | null = req.body.avatarURL;
+  const firstname: string | null = sanitize(req.body.firstname);
+  const lastname: string | null = sanitize(req.body.lastname);
+  const title: string | null = sanitize(req.body.title);
+  const phone: string | null = sanitize(req.body.phone);
+  const about: string | null = sanitize(req.body.about);
+  const oldpassword: string | null = sanitize(req.body.oldpassword);
+  const password: string | null = sanitize(req.body.password);
+  const facebook: string | null = sanitize(req.body.facebook);
+  const twitter: string | null = sanitize(req.body.twitter);
+  const linkedin: string | null = sanitize(req.body.linkedin);
+  const instagram: string | null = sanitize(req.body.instagram);
+  const userID: number = req.body.userID;
 
   if (avatarURL) {
     db.updateUserInfo(userID, 'avatar_url', avatarURL);
