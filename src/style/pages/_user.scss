@@ -29,35 +29,32 @@
   }
 
   #title {
-    // height: auto;
-    height: 220px;
+    height: 240px;
     background-image: url("/images/code.png");
     position: relative;
-    overflow: hidden;
 
-    @media screen and (max-width: 680px) {
-      min-height: 420px;
+    @media screen and (max-width: 959px) {
+      max-height: 200px;
     }
 
-    // .uk-overlay-primary #user {
-    //   background-color: rgba(0, 0, 0, 0.8) !important;
+    // @media screen and (min-width: 960px) {
+    //   min-height: 220px;
     // }
 
-    .user-centered {
-      position: relative;
-      display: flex;
-      top: 25%;
-      justify-content: center;
-    }
+    // .user-centered {
+    //   position: relative;
+    //   display: flex;
+    //   top: calc(100% - 60px);
+    //   justify-content: center;
+    // }
 
-    .user-fixed-centered {
-      position: fixed;
-      left: calc(50% - 75px);
-      top: 25%;
-    }
+    // .user-fixed-centered {
+    //   position: fixed;
+    //   left: calc(50% - 75px);
+    //   top: 25%;
+    // }
 
     .profile-title {
-      bottom: auto;
       color: white;
       font-family: "Light", sans-serif;
       margin: 0 auto;
@@ -65,12 +62,14 @@
       text-decoration: none;
     }
 
-    .roleColor {
+    .role-Color {
       color: white;
     }
 
     #profilepic {
-      width: 150px;
+      position: relative;
+      top: calc(100% - 80px);
+      width: 125px;
       display: block;
       margin-left: auto;
       margin-right: auto;

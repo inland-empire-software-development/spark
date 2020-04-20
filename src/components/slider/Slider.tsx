@@ -7,7 +7,7 @@ function Slider(): JSX.Element {
     <section id="slider" className="bg-gray">
       <section className="uk-container">
         <section className="uk-grid">
-          <section  className="uk-width-1-3 ">
+          <section className="uk-width-1-3 ">
             <h2 className="uk-flex uk-flex-center uk-padding-large">
               Projects by AndyMendez
             </h2>
