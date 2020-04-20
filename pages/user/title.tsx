@@ -14,7 +14,7 @@ function Title(): JSX.Element {
       </section>
       <img
         id="profilepic"
-        className="uk-border-circle uk-visible@s  "
+        className="uk-border-circle uk-visible@s "
         src="https://api.iesd.com/wp-content/uploads/2019/10/robin-asm.jpg "
       />
     </section>
