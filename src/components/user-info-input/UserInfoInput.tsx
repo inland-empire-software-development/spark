@@ -35,6 +35,24 @@ import ReactCrop from 'react-image-crop';
 import 'react-image-crop/lib/ReactCrop.scss';
 import imageCompression from 'browser-image-compression';
 
+// //https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html
+// const desanitize = (str: string) => {
+//   if (str) {
+//     const map: any = {
+//       '&amp;': '&',
+//       '&lt;': '<',
+//       '&gt;': '>',
+//       '&quot;': '"',
+//       '&#x27;': "'",
+//       '&#x2F;': '/',
+//       '&grave;': '`',
+//     };
+//     const reg = /&amp;/gi;
+//     return str.replace(reg, (match) => map[match]);
+//   }
+//   return null;
+// };
+
 const UserInfoInput = () => {
   // this gets the global spinner.
   const spinner: HTMLElement | null = document.getElementById('spinner');
@@ -113,6 +131,8 @@ const UserInfoInput = () => {
       })
         .then((response) => response.json())
         .then((response) => {
+          //response.firstname = desanitize(response.firstname as string);
+          console.log('Response: ', response);
           setUserDetails(response);
         });
     }
@@ -120,7 +140,7 @@ const UserInfoInput = () => {
     return () => {
       abortController.abort();
     };
-  }, [userDetails]);
+  }, []);
 
   function getUserImage(userDetails: { avatar_url: string }) {
     return (
