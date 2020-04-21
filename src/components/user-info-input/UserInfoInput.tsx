@@ -31,27 +31,10 @@ import { Message } from '../../..';
 import Password from '../authenticate/Password/Password';
 import { Context } from '../../../src/context';
 import notify from '../utility/Notify';
+import { desanitize } from './sanitize/sanitize';
 import ReactCrop from 'react-image-crop';
 import 'react-image-crop/lib/ReactCrop.scss';
 import imageCompression from 'browser-image-compression';
-
-// //https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html
-// const desanitize = (str: string) => {
-//   if (str) {
-//     const map: any = {
-//       '&amp;': '&',
-//       '&lt;': '<',
-//       '&gt;': '>',
-//       '&quot;': '"',
-//       '&#x27;': "'",
-//       '&#x2F;': '/',
-//       '&grave;': '`',
-//     };
-//     const reg = /&amp;/gi;
-//     return str.replace(reg, (match) => map[match]);
-//   }
-//   return null;
-// };
 
 const UserInfoInput = () => {
   // this gets the global spinner.
@@ -131,7 +114,12 @@ const UserInfoInput = () => {
       })
         .then((response) => response.json())
         .then((response) => {
-          //response.firstname = desanitize(response.firstname as string);
+          response.first_name = desanitize(response.first_name);
+          console.log(response.first_name);
+
+          const temp = desanitize(response.first_name);
+          console.log(temp);
+
           console.log('Response: ', response);
           setUserDetails(response);
         });
