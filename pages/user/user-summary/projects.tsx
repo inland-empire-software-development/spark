@@ -5,7 +5,8 @@ function Projects(): JSX.Element {
       <section uk-slider="" className="uk-slider">
         <section className="uk-position-relative">
           <section className="uk-slider-container uk-light">
-            <ul id="project-slider"
+            <ul
+              id="project-slider"
               className="uk-slider-items uk-child-width-1-2 uk-child-width-1-3@s uk-child-width-1-4@m uk-grid uk-padding-small uk-margin-auto"
               data-style="transform: translate3d(-175px, 0px, 0px);"
             >
@@ -116,15 +117,13 @@ function Projects(): JSX.Element {
               href="#"
               uk-slidenav-previous=""
               uk-slider-item="previous"
-            >
-            </a>
+            ></a>
             <a
               className="uk-position-center-right uk-position-small uk-icon uk-slidenav-next uk-slidenav"
               href="#"
               uk-slidenav-next=""
               uk-slider-item="next"
-            >
-            </a>
+            ></a>
           </section>
 
           <section className="uk-visible@s">
@@ -133,15 +132,13 @@ function Projects(): JSX.Element {
               href="#"
               uk-slidenav-previous=""
               uk-slider-item="previous"
-            >
-            </a>
+            ></a>
             <a
               className="uk-position-center-right-out uk-position-small uk-icon uk-slidenav-next uk-slidenav"
               href="#"
               uk-slidenav-next=""
               uk-slider-item="next"
-            >
-            </a>
+            ></a>
           </section>
         </section>
       </section>

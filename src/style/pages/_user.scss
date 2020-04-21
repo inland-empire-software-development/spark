@@ -76,15 +76,19 @@
 
     #infoCard {
       color: black;
-    }
 
-    .borderCard {
-      border-radius: 5px;
-      border: 2px solid rgba(0, 0, 0, 0.1);
-    }
-  }
+      .borderCard {
+        border-radius: 5px;
+        border: 2px solid rgba(0, 0, 0, 0.1);
 
-  #slider {
-    background-color: #f5f5f5;
+        @media screen and (min-width: 400px) and (max-width: 639px) {
+          max-width: 70%;
+        }
+
+        @media screen and (max-width: 639px) {
+          margin: 0 auto 0 auto;
+        }
+      }
+    }
   }
 }

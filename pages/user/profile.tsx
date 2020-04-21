@@ -1,5 +1,5 @@
 import SEO from "../../next-seo.config";
-import {DefaultSeo} from "next-seo";
+import { DefaultSeo } from "next-seo";
 // import Footer from '../../src/components/global/Footer/Footer';
 import Navigation from "../../src/components/global/Navigation/Navigation";
 import Title from "../user/title";
@@ -13,15 +13,17 @@ function Profile(): JSX.Element {
       <Navigation />
       <section id="profile">
         <section className="container-full">
-          <DefaultSeo
-            {...Object.assign(SEO, {
-              title: `Profile`
-            })}
-          />
-          <Title />
-          <Summary />
+          <section className="grid">
+            <DefaultSeo
+              {...Object.assign(SEO, {
+                title: `Profile`,
+              })}
+            />
+            <Title />
+            <Summary />
+          </section>
+          <Slider />
         </section>
-        <Slider />
       </section>
       {/* <Footer /> */}
     </main>

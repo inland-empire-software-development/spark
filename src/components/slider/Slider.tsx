@@ -1,24 +1,27 @@
 import React from "react";
 import "./Slider.scss";
-// render Slider page.
+//  render Slider page.
 
 function Slider(): JSX.Element {
   return (
-    <section id="slider" >
+    <section id="slider" className="uk-margin-medium-top">
       <section className="uk-container">
         <section className="uk-grid">
           <section className="uk-width-1-3 ">
             <h2 className="uk-flex uk-flex-center uk-padding-large">
               Projects by AndyMendez
             </h2>
+            {/* slider */}
             <section uk-slider="" className="uk-slider uk-margin-large-bottom">
               <section className="uk-position-relative">
-                <section className="uk-slider-container slider-spacing">
+                <section className="uk-slider-container ">
+                  {/* how many slide per viewport size */}
                   <ul
                     id="project-slider"
                     className="uk-slider-items uk-child-width-1-2 uk-child-width-1-3@s uk-child-width-1-4@m uk-grid "
                     data-style="transform: translate3d(-175px, 0px, 0px);"
                   >
+                    {/* every slide */}
                     <li data-tabindex="-1" className="" data-style="order: 1;">
                       <section className="uk-card uk-card-default">
                         <section className="uk-card-media-top">
@@ -133,7 +136,7 @@ function Slider(): JSX.Element {
                     </li>
                   </ul>
                 </section>
-
+                 {/* Inner buttons */}
                 <section className="uk-hidden@l uk-light">
                   <a
                     id="prev-slide"
@@ -152,7 +155,7 @@ function Slider(): JSX.Element {
                     <span>&#8594;</span>
                   </a>
                 </section>
-
+                 {/* outer buttons */}
                 <section className="uk-visible@l">
                   <a
                     id="prev-slide"
