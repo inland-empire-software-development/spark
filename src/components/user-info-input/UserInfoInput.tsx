@@ -41,9 +41,9 @@ const UserInfoInput = () => {
   const spinner: HTMLElement | null = document.getElementById('spinner');
   let message: string | null = null;
   let avatarURL: string | null = null;
-  let formSubmittedFlag: boolean = false;
   //let picUploaded: boolean = false;
   const { user, userID } = useContext(Context);
+  const [formSubmittedFlag, setFormSubmittedFlag] = useState(false as boolean);
   const [picUploaded, setPicUploaded] = useState(false as boolean);
   const [avatarData, setAvatarData] = useState((undefined as unknown) as any);
   const [upImg, setUpImg] = useState((undefined as unknown) as any);
@@ -559,7 +559,7 @@ const UserInfoInput = () => {
         })
         .then(() => {
           setPicUploaded(false);
-          formSubmittedFlag = !formSubmittedFlag;
+          setFormSubmittedFlag(!formSubmittedFlag);
           // if spinner is showing and you're done with saving stuff
           // now hide the spinner
           if (spinner) spinner.classList.add('uk-hidden');
