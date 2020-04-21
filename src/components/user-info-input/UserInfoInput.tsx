@@ -54,7 +54,7 @@ const UserInfoInput = () => {
     height: 80,
     x: 10,
     y: 10,
-    aspect: 1 / 1,
+    aspect: 1,
   } as any);
   const [userDetails, setUserDetails] = useState({
     avatar_url: (undefined as unknown) as string,
@@ -126,7 +126,7 @@ const UserInfoInput = () => {
           response.linkedin = desanitize(response.linkedin);
           response.instagram = desanitize(response.instagram);
 
-          console.log('Response: ', response);
+          // console.log('Response: ', response);
           setUserDetails(response);
         });
     }
@@ -215,6 +215,25 @@ const UserInfoInput = () => {
       if (spinner) spinner.classList.remove('uk-hidden');
 
       createCropPreview(imgRef, crop);
+    } else if (imgRef) {
+      // Center a square percent crop.
+      const width =
+        imgRef.width > imgRef.height ? (imgRef.height / imgRef.width) * 100 : 100;
+      const height =
+        imgRef.height > imgRef.width ? (imgRef.width / imgRef.height) * 100 : 100;
+      const x = width === 100 ? 0 : (100 - width) / 2;
+      const y = height === 100 ? 0 : (100 - height) / 2;
+
+      const defaultCrop = {
+        unit: '%',
+        width,
+        height,
+        x,
+        y,
+        aspect: 1,
+      };
+
+      createCropPreview(imgRef, defaultCrop);
     } else {
       message = 'Invalid crop: Please contact support';
       notify({
@@ -372,10 +391,10 @@ const UserInfoInput = () => {
       userID: userID,
     };
 
-    console.log('firstname_field.value: ', firstname_field?.value, '\n');
-    console.log('UserDetails.first_name: ', userDetails.first_name, '\n');
-    console.log('title_field.value: ', title_field?.value, '\n');
-    console.log('UserDetails.title: ', userDetails.title, '\n');
+    // console.log('firstname_field.value: ', firstname_field?.value, '\n');
+    // console.log('UserDetails.first_name: ', userDetails.first_name, '\n');
+    // console.log('title_field.value: ', title_field?.value, '\n');
+    // console.log('UserDetails.title: ', userDetails.title, '\n');
 
     if (
       picUploaded ||
