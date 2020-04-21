@@ -40,9 +40,9 @@ const UserInfoInput = () => {
   // this gets the global spinner.
   const spinner: HTMLElement | null = document.getElementById('spinner');
   let message: string | null = null;
+  let avatarURL: string | null = null;
   const { user, userID } = useContext(Context);
   const [picUploaded, setPicUploaded] = useState(false as boolean);
-  const [avatarURL, setAvatarURL] = useState((null as unknown) as string);
   const [avatarData, setAvatarData] = useState((undefined as unknown) as any);
   const [upImg, setUpImg] = useState((undefined as unknown) as any);
   const [imgRef, setImgRef] = useState(null as any);
@@ -114,13 +114,18 @@ const UserInfoInput = () => {
       })
         .then((response) => response.json())
         .then((response) => {
+          response.avatar_url = desanitize(response.avatar_url);
           response.first_name = desanitize(response.first_name);
-          console.log(response.first_name);
+          response.last_name = desanitize(response.last_name);
+          response.title = desanitize(response.title);
+          response.phone = desanitize(response.phone);
+          response.about = desanitize(response.about);
+          response.facebook = desanitize(response.facebook);
+          response.twitter = desanitize(response.twitter);
+          response.linkedin = desanitize(response.linkedin);
+          response.instagram = desanitize(response.instagram);
 
-          const temp = desanitize(response.first_name);
-          console.log(temp);
-
-          console.log('Response: ', response);
+          // console.log('Response: ', response);
           setUserDetails(response);
         });
     }
@@ -290,8 +295,7 @@ const UserInfoInput = () => {
     event.preventDefault(); // prevents form from reloading page (form submission)
 
     if (picUploaded) {
-      //avatarURL = `./images/avatars/${user}-${userID}-avatar.jpg`;
-      setAvatarURL(`./images/avatars/${user}-${userID}-avatar.jpg`);
+      avatarURL = `./images/avatars/${user}-${userID}-avatar.jpg`;
     }
 
     // getting user input from form.

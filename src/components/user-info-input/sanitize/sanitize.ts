@@ -16,6 +16,7 @@ const sanitize = (str: string) => {
   return null;
 };
 
+// call this restore?
 const desanitize = (str: string) => {
   if (str) {
     const map: any = {
@@ -27,7 +28,7 @@ const desanitize = (str: string) => {
       '&#x2F;': '/',
       '&grave;': '`',
     };
-    const reg = /&amp;/gi;
+    const reg = /(&amp;|&lt;|&gt;|&quot;|&#x27;|&#x2F;|&grave;)/gi;
     return str.replace(reg, (match) => map[match]);
   }
   return null;
