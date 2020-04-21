@@ -41,6 +41,8 @@ const UserInfoInput = () => {
   const spinner: HTMLElement | null = document.getElementById('spinner');
   let message: string | null = null;
   let avatarURL: string | null = null;
+  let formSubmittedFlag: boolean = false;
+  //let picUploaded: boolean = false;
   const { user, userID } = useContext(Context);
   const [picUploaded, setPicUploaded] = useState(false as boolean);
   const [avatarData, setAvatarData] = useState((undefined as unknown) as any);
@@ -125,7 +127,7 @@ const UserInfoInput = () => {
           response.linkedin = desanitize(response.linkedin);
           response.instagram = desanitize(response.instagram);
 
-          // console.log('Response: ', response);
+          console.log('Response: ', response);
           setUserDetails(response);
         });
     }
@@ -133,7 +135,7 @@ const UserInfoInput = () => {
     return () => {
       abortController.abort();
     };
-  }, []);
+  }, [formSubmittedFlag]);
 
   function getUserImage(userDetails: { avatar_url: string }) {
     return (
@@ -371,6 +373,9 @@ const UserInfoInput = () => {
       userID: userID,
     };
 
+    console.log('firstname_field.value: ', firstname_field?.value, '\n');
+    console.log('UserDetails.first_name: ', userDetails.first_name, '\n');
+
     if (
       picUploaded ||
       data.firstname ||
@@ -554,6 +559,7 @@ const UserInfoInput = () => {
         })
         .then(() => {
           setPicUploaded(false);
+          formSubmittedFlag = !formSubmittedFlag;
           // if spinner is showing and you're done with saving stuff
           // now hide the spinner
           if (spinner) spinner.classList.add('uk-hidden');
