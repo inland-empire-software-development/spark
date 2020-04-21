@@ -41,7 +41,6 @@ const UserInfoInput = () => {
   const spinner: HTMLElement | null = document.getElementById('spinner');
   let message: string | null = null;
   let avatarURL: string | null = null;
-  //let picUploaded: boolean = false;
   const { user, userID } = useContext(Context);
   const [formSubmittedFlag, setFormSubmittedFlag] = useState(false as boolean);
   const [picUploaded, setPicUploaded] = useState(false as boolean);
@@ -375,6 +374,8 @@ const UserInfoInput = () => {
 
     console.log('firstname_field.value: ', firstname_field?.value, '\n');
     console.log('UserDetails.first_name: ', userDetails.first_name, '\n');
+    console.log('title_field.value: ', title_field?.value, '\n');
+    console.log('UserDetails.title: ', userDetails.title, '\n');
 
     if (
       picUploaded ||
