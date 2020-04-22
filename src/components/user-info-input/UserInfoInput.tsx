@@ -31,6 +31,7 @@ import { Message } from '../../..';
 import Password from '../authenticate/Password/Password';
 import { Context } from '../../../src/context';
 import notify from '../utility/Notify';
+import PhoneNumber from './phone-number/PhoneNumber';
 import { desanitize } from './sanitize/sanitize';
 import ReactCrop from 'react-image-crop';
 import 'react-image-crop/lib/ReactCrop.scss';
@@ -717,7 +718,8 @@ const UserInfoInput = () => {
                 <label className='uk-form-label' htmlFor='phone number'>
                   Phone #
                 </label>
-                <input
+                <PhoneNumber defaultValue={userDetails.phone} />
+                {/* <input
                   id='phoneNumber'
                   className='uk-input'
                   type='tel'
@@ -726,7 +728,7 @@ const UserInfoInput = () => {
                   name='user-phone'
                   autoComplete='off'
                   // pattern='/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im'
-                ></input>
+                ></input> */}
               </div>
             </div>
           </div>
