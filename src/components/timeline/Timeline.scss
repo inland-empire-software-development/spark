@@ -1,4 +1,12 @@
 #timeline {
+  .medium-family {
+    font-family: 'medium', sans-serif;
+  }
+
+  .book-family {
+    font-family: 'book', sans-serif;
+  }
+
   /* The actual timeline (the vertical ruler) */
   .timeline {
     position: relative;

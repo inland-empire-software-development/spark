@@ -8,7 +8,7 @@ function Title(): JSX.Element {
           Andy Mendez
         </p>
         {/* <div className="uk-overlay-primary uk-position-cover"></div> */}
-        <p className="uk-text-center font16 role-Color uk-padding-small uk-padding-remove-top uk-margin-remove-top">
+        <p className="profile-sub-title uk-text-center font16 role-Color uk-padding-small uk-padding-remove-top uk-margin-remove-top">
           Cold Fusion Developer
         </p>
       </section>

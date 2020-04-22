@@ -8,7 +8,7 @@ function Slider(): JSX.Element {
       <section className="uk-container">
         <section className="uk-grid">
           <section className="uk-width-1-3 ">
-            <h2 className="uk-flex uk-flex-center uk-padding-large">
+            <h2 className="uk-flex uk-flex-center uk-padding-large font26 medium-family">
               Projects by AndyMendez
             </h2>
             {/* slider */}
@@ -28,7 +28,7 @@ function Slider(): JSX.Element {
                           <section className="porject-preview"></section>
                         </section>
                         <section className="card-body">
-                          <h6 className="uk-text-muted ">React</h6>
+                          <h6 className="uk-text-muted font14 book-family">React</h6>
                           <p>
                             Lorem ipsum dolor sit amet, consectetur adipiscing
                             elit, sed do eiusmod tempor incididunt.
@@ -44,7 +44,7 @@ function Slider(): JSX.Element {
                           <section className="porject-preview"></section>
                         </section>
                         <section className="card-body">
-                          <h6 className="uk-text-muted ">React</h6>
+                          <h6 className="uk-text-muted font14 book-family">React</h6>
                           <p>
                             Lorem ipsum dolor sit amet, consectetur adipiscing
                             elit, sed do eiusmod tempor incididunt.
@@ -60,7 +60,7 @@ function Slider(): JSX.Element {
                           <section className="porject-preview"></section>
                         </section>
                         <section className="card-body">
-                          <h6 className="uk-text-muted ">React</h6>
+                          <h6 className="uk-text-muted font14 book-family">React</h6>
                           <p>
                             Lorem ipsum dolor sit amet, consectetur adipiscing
                             elit, sed do eiusmod tempor incididunt.
@@ -76,7 +76,7 @@ function Slider(): JSX.Element {
                           <section className="porject-preview"></section>
                         </section>
                         <section className="card-body">
-                          <h6 className="uk-text-muted ">React</h6>
+                          <h6 className="uk-text-muted font14 book-family">React</h6>
                           <p>
                             Lorem ipsum dolor sit amet, consectetur adipiscing
                             elit, sed do eiusmod tempor incididunt.
@@ -92,7 +92,7 @@ function Slider(): JSX.Element {
                           <section className="porject-preview"></section>
                         </section>
                         <section className="card-body">
-                          <h6 className="uk-text-muted ">React</h6>
+                          <h6 className="uk-text-muted font14 book-family">React</h6>
                           <p>
                             Lorem ipsum dolor sit amet, consectetur adipiscing
                             elit, sed do eiusmod tempor incididunt.
@@ -108,7 +108,7 @@ function Slider(): JSX.Element {
                           <section className="porject-preview"></section>
                         </section>
                         <section className="card-body">
-                          <h6 className="uk-text-muted ">React</h6>
+                          <h6 className="uk-text-muted font14 book-family">React</h6>
                           <p>
                             Lorem ipsum dolor sit amet, consectetur adipiscing
                             elit, sed do eiusmod tempor incididunt.
@@ -124,7 +124,7 @@ function Slider(): JSX.Element {
                           <section className="porject-preview"></section>
                         </section>
                         <section className="card-body">
-                          <h6 className="uk-text-muted ">React</h6>
+                          <h6 className="uk-text-muted font14 book-family">React</h6>
                           <p>
                             Lorem ipsum dolor sit amet, consectetur adipiscing
                             elit, sed do eiusmod tempor incididunt.

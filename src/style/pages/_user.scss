@@ -24,6 +24,14 @@
     font-size: 14px;
   }
 
+  .medium-family {
+    font-family: "medium", sans-serif;
+  }
+
+  .book-family {
+    font-family: "book", sans-serif;
+  }
+
   .smallPadingTop {
     margin-top: 20px;
   }
@@ -40,9 +48,13 @@
 
     .profile-title {
       color: white;
-      font-family: "Light", sans-serif;
+      font-family: "medium";
       margin: 0;
       text-decoration: none;
+    }
+
+    .profile-sub-title {
+      font-family: "light", sans-serif;
     }
 
     .role-Color {
@@ -52,7 +64,8 @@
     #profilepic {
       position: relative;
       top: calc(100% - 80px);
-      width: 125px;
+      width: 150px;
+      height: 150px;
       display: block;
       margin-left: auto;
       margin-right: auto;
@@ -72,6 +85,7 @@
     // Summary block
     #professional_Summary {
       color: black;
+      font-family: "medium", sans-serif;
     }
 
     #infoCard {
