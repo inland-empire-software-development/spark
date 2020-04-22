@@ -3,7 +3,7 @@
 // =======================================================================
 // Known Issues/Todos
 // ===================
-//  - add phone number verification -- format any way you see fit
+//  - add phone number verification -- see PhoneNumber.tsx for details
 //  - should user be logged out when password is updated?
 //  - if multiple notifications subsequent notifications are ignored
 //     - One big notification or change this behavior?
