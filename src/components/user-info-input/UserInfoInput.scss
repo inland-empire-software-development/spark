@@ -1,8 +1,18 @@
 @import '../../style/variables.scss';
 
+.uk-input {
+  color: black;
+}
+
+.profile-pic-container {
+  min-width: 182px;
+  min-height: 170px;
+}
+
 .img-upload-container {
   position: relative;
   margin: auto;
+  height: 100%;
 
   &.uk-placeholder {
     padding: 0;
@@ -13,10 +23,18 @@
     bottom: 0;
     left: 0;
   }
+
+  img {
+    width: -moz-available;
+    width: -webkit-fill-available;
+    width: fill-available; //stretch
+    object-fit: cover;
+    min-height: 100%;
+  }
 }
 
 .uiif-textarea-width {
-  min-width: 100%;
+  resize: vertical;
 }
 
 .uiif-button {
@@ -24,6 +42,18 @@
   color: $snow;
 }
 
-.arrow-icon {
+.fas-icon {
   margin-left: 10px;
+}
+
+.uk-modal {
+  z-index: 9999999;
+}
+
+@media screen and (min-width: 960px) {
+  .profile-pic-container {
+    max-width: 232px;
+    max-height: 192px;
+    overflow: hidden;
+  }
 }
