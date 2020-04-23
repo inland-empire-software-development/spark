@@ -9,30 +9,34 @@
 
 .top-image {
   width: 100%;
-  min-height: 300px ;  
+  min-height: 300px;
 }
 
 //** Course-Info **//
 
 .course-info {
   background-color: lightgrey;
-  min-height: 320px ;
+  min-height: 320px;
 }
+
 .course-info-top {
   font-size: 36px;
   font-weight: 500;
   margin: 0;
 }
+
 .course-info-mid {
   font-size: 22px;
   margin: 0;
   overflow: hidden;
 }
+
 .course-info-bottom {
   font-size: 10px;
   margin: 0;
   padding-top: 10px;
 }
+
 .course-info-section {
   margin: 0;
 }
@@ -45,13 +49,15 @@
 .course-info-section-1 {
   padding: 20px 0 0 20px;
 }
+
 .course-info-section-2 {
   padding: 20px 0 0 25px;
 }
+
 .course-info-section-3 {
-  padding-left: 30px;
   padding: 20px 20px 0 30px;
 }
+
 .course-info-section-4 {
   padding: 20px 20px 0 20px;
 }
@@ -82,72 +88,83 @@
   // transform: translate(-60%, -40%);
   // min-height: 200px;
   margin-top: 40px;
-    padding: 0px 10px 0px 0px;
-    padding: 0;
-    position: relative;
-    top: 0;
-    left: 40%;
-    transform: translate(-54%, -40%);
-    min-height: 200px;
-    min-width: 72%;
+  padding: 0 10px 0 0;
+  padding: 0;
+  position: relative;
+  top: 0;
+  left: 40%;
+  transform: translate(-54%, -40%);
+  min-height: 200px;
+  min-width: 72%;
 }
+
 .course-program-section-1,
 .course-program-section-2,
 .course-program-section-3 {
-  padding: 20px 0px 20px 40px;
+  padding: 20px 0 20px 40px;
   // margin-bottom: 10px;
 }
+
 .course-program-section-1 {
   background-color: lightgray;
   max-width: 29%;
   min-height: 200px;
 }
+
 .course-program-section-2 {
   padding-left: 20px;
   padding-right: 20px;
   max-width: 28px;
 }
-.course-program-section-3 {
-  padding-top: 0;
-  position: relative;
-    top: -4%;
-    left: -20%;
-}
+
+// .course-program-section-3 {
+//   padding-top: 0;
+//   position: relative;
+//   top: -4%;
+//   left: -20%;
+// }
+
 .course-program-header {
   font-size: 24px;
   font-weight: 700;
-  margin: 0px;
+  margin: 0;
   padding-top: 5px;
   position: relative;
   top: 2%;
 }
+
 .course-program-header-detail {
   font-size: 14px;
   font-weight: 400;
   margin: 10px 10px 0 0;
   padding: 0 50px 0 0;
 }
+
 .course-program-date-header {
   font-size: 38px;
   font-weight: 500;
   margin: 0;
 }
+
 .course-program-date {
   font-size: 34px;
   margin: 0 0 20px 0;
-  line-height: .7;
+  line-height: 0.7;
 }
+
 .course-program-time {
   font-size: 10px;
   min-width: 100px;
 }
+
 .course-program-section-3 {
-  padding: 20px 0 0 0px;
-  margin: 0; 
+  padding: 20px 0 0 0;
+  margin: 0;
   position: relative;
   top: -2%;
   left: 18%;
 }
+
 .uk-divider-vertical {
   position: relative;
   height: 140px;
@@ -156,6 +173,7 @@
   max-width: 2px;
   padding: 0;
 }
+
 .course-program-detail {
   font-size: 26px;
   font-weight: 400;
@@ -163,27 +181,30 @@
   padding: 10px 10px 0 10px;
   flex-grow: 6;
 }
+
 .course-program-detail-list {
   font-size: 10px;
-  padding-left: 0px;
+  padding-left: 0;
   margin: 0 0 10px 10px;
 }
+
 .course-program-detail-list > li {
   margin-bottom: 2px;
 }
+
 ul li {
-  color: black; 
-  list-style: none; 
+  color: black;
+  list-style: none;
   padding: 0;
   position: relative;
 }
 
- ul li::before {
-  color: $primary;  
-  content: "\2022"; 
-  font-size: 1.2em; 
-  left: -1.1225em; 
-  top: 0em; 
+ul li::before {
+  color: $primary;
+  content: "\2022";
+  font-size: 1.2em;
+  left: -1.1225em;
+  top: 0;
   margin-right: 10px;
 }
 
@@ -194,11 +215,13 @@ ul li {
   text-align: center;
   max-width: 45%;
 }
+
 .student {
   font-size: 12px;
   position: relative;
   top: 65%;
 }
+
 .student-quote-section {
   width: 100%;
   min-height: 300px;
@@ -210,11 +233,13 @@ ul li {
   width: 100%;
   min-height: 220px;
 }
+
 .random-quote {
   font-size: 17px;
   text-align: center;
   max-width: 45%;
 }
+
 .random-author {
   font-size: 17px;
   position: relative;
@@ -226,9 +251,11 @@ ul li {
 .venue-image {
   min-height: 300px;
 }
+
 .venue-body {
   min-height: 300px;
 }
+
 .venue-title {
   font-size: 32px;
   font-weight: 650;
@@ -236,17 +263,20 @@ ul li {
   top: 10%;
   left: 8%;
 }
+
 .venue-description {
   text-align: left;
   width: 70%;
   margin-left: 8px;
   margin-top: 50px;
 }
+
 .venue-street-address {
   font-weight: bold;
   text-align: left;
   margin: 0 0 0 8px;
 }
+
 .venue-county-state {
   font-weight: bold;
   text-align: left;
@@ -258,6 +288,7 @@ ul li {
 .program-body {
   min-height: 300px;
 }
+
 .program-title {
   font-size: 32px;
   font-weight: 650;
@@ -273,6 +304,7 @@ ul li {
   margin-right: 0;
   margin-top: 50px;
 }
+
 .request-button {
   font-size: 12px;
   height: 42px;
@@ -280,17 +312,21 @@ ul li {
   position: relative;
   left: 26%;
 }
+
 .program-image {
   min-height: 300px;
 }
+
 .footer {
   text-align: -webkit-center;
 }
+
 .copywrite {
   font-size: 10px;
-  margin: 20px 0 0px 0;
+  margin: 20px 0 0 0;
 }
+
 .footer-description {
-  font-size: 10px;  
+  font-size: 10px;
   margin: 0 0 20px 0;
 }
