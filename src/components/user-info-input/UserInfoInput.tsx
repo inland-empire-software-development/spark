@@ -197,46 +197,6 @@ const UserInfoInput = () => {
     setImgRef(img);
   }, []);
 
-  const makeClientCrop = async () => {
-    if (imgRef && crop.width && crop.height) {
-      // show spinner while working
-      if (spinner) spinner.classList.remove('uk-hidden');
-
-      createCropPreview(imgRef, crop);
-    } else if (imgRef) {
-      // Center a square percent crop.
-      const width =
-        imgRef.width > imgRef.height ?
-          (imgRef.height / imgRef.width) * 100 :
-          100;
-      const height =
-        imgRef.height > imgRef.width ?
-          (imgRef.width / imgRef.height) * 100 :
-          100;
-      const x = width === 100 ? 0 : (100 - width) / 2;
-      const y = height === 100 ? 0 : (100 - height) / 2;
-
-      const defaultCrop = {
-        unit: '%',
-        width,
-        height,
-        x,
-        y,
-        aspect: 1,
-      };
-
-      createCropPreview(imgRef, defaultCrop);
-    } else {
-      message = 'Invalid crop: Please contact support';
-      notify({
-        message,
-        status: 'danger',
-        pos: 'bottom-right',
-        timeout: 1500,
-      });
-    }
-  };
-
   const createCropPreview = async (image: any, crop: any) => {
     const canvas = document.createElement('canvas');
     const scaleX = image.naturalWidth / image.width;
@@ -299,6 +259,46 @@ const UserInfoInput = () => {
           });
       }, 'image/jpeg');
     });
+  };
+
+  const makeClientCrop = async () => {
+    if (imgRef && crop.width && crop.height) {
+      // show spinner while working
+      if (spinner) spinner.classList.remove('uk-hidden');
+
+      createCropPreview(imgRef, crop);
+    } else if (imgRef) {
+      // Center a square percent crop.
+      const width =
+        imgRef.width > imgRef.height ?
+          (imgRef.height / imgRef.width) * 100 :
+          100;
+      const height =
+        imgRef.height > imgRef.width ?
+          (imgRef.width / imgRef.height) * 100 :
+          100;
+      const x = width === 100 ? 0 : (100 - width) / 2;
+      const y = height === 100 ? 0 : (100 - height) / 2;
+
+      const defaultCrop = {
+        unit: '%',
+        width,
+        height,
+        x,
+        y,
+        aspect: 1,
+      };
+
+      createCropPreview(imgRef, defaultCrop);
+    } else {
+      message = 'Invalid crop: Please contact support';
+      notify({
+        message,
+        status: 'danger',
+        pos: 'bottom-right',
+        timeout: 1500,
+      });
+    }
   };
 
   const onCropChange = (_crop: any, percentCrop: any) => setCrop(percentCrop);
