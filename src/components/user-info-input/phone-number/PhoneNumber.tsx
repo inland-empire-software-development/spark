@@ -73,7 +73,7 @@ const PhoneNumber = (props?: any) => {
       autoComplete='off'
       onKeyDown={(event) => enforceFormat(event)}
       onKeyUp={(event) => formatToPhone(event)}
-      // pattern='/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im'
+    // pattern='/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im'
     ></input>
   );
 };

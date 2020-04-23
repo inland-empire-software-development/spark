@@ -1,3 +1,5 @@
+// first_name and last_name prperties already existed on db do we want to change?
+/* eslint-disable @typescript-eslint/camelcase */
 /* eslint-disable indent */
 /* eslint-disable comma-dangle */
 // =======================================================================
@@ -27,12 +29,12 @@ import React, {
   FormEvent,
 } from 'react';
 import './UserInfoInput.scss';
-import { Message } from '../../..';
+import {Message} from '../../..';
 import Password from '../authenticate/Password/Password';
-import { Context } from '../../../src/context';
+import {Context} from '../../../src/context';
 import notify from '../utility/Notify';
 import PhoneNumber from './phone-number/PhoneNumber';
-import { desanitize } from './sanitize/sanitize';
+import {desanitize} from './sanitize/sanitize';
 import ReactCrop from 'react-image-crop';
 import 'react-image-crop/lib/ReactCrop.scss';
 import imageCompression from 'browser-image-compression';
@@ -42,7 +44,7 @@ const UserInfoInput = () => {
   const spinner: HTMLElement | null = document.getElementById('spinner');
   let message: string | null = null;
   let avatarURL: string | null = null;
-  const { user, userID } = useContext(Context);
+  const {user, userID} = useContext(Context);
   const [formSubmittedFlag, setFormSubmittedFlag] = useState(false as boolean);
   const [picUploaded, setPicUploaded] = useState(false as boolean);
   const [avatarData, setAvatarData] = useState((undefined as unknown) as any);
@@ -88,21 +90,6 @@ const UserInfoInput = () => {
     value: userID,
   };
 
-  // // set user title
-  // useEffect(() => {
-  //   const title_selector: HTMLSelectElement | null = document.querySelector(
-  //     '[name="user-title"]'
-  //   );
-  //   const title_options = title_selector?.options;
-  //   if (title_options && title_selector) {
-  //     for (let i = 0; i < title_options?.length; i++) {
-  //       if (title_options[i].value == userDetails.title) {
-  //         title_selector.selectedIndex = i;
-  //       }
-  //     }
-  //   }
-  // }, [userDetails.title]);
-
   useEffect(() => {
     const abortController = new AbortController();
 
@@ -127,7 +114,7 @@ const UserInfoInput = () => {
           response.linkedin = desanitize(response.linkedin);
           response.instagram = desanitize(response.instagram);
 
-          // console.log('Response: ', response);
+          console.log('Response: ', response);
           setUserDetails(response);
         });
     }
@@ -142,11 +129,11 @@ const UserInfoInput = () => {
       <img
         id='avatarID'
         src={
-          previewURL
-            ? previewURL
-            : userDetails && userDetails.avatar_url
-            ? process.env.HOST + userDetails.avatar_url
-            : process.env.HOST + 'images/avatars/placeholder_image.png'
+          previewURL ?
+            previewURL :
+            userDetails && userDetails.avatar_url ?
+              process.env.HOST + userDetails.avatar_url :
+              process.env.HOST + 'images/avatars/placeholder_image.png'
         }
         alt='Placeholder Image'
       />
@@ -219,13 +206,13 @@ const UserInfoInput = () => {
     } else if (imgRef) {
       // Center a square percent crop.
       const width =
-        imgRef.width > imgRef.height
-          ? (imgRef.height / imgRef.width) * 100
-          : 100;
+        imgRef.width > imgRef.height ?
+          (imgRef.height / imgRef.width) * 100 :
+          100;
       const height =
-        imgRef.height > imgRef.width
-          ? (imgRef.width / imgRef.height) * 100
-          : 100;
+        imgRef.height > imgRef.width ?
+          (imgRef.width / imgRef.height) * 100 :
+          100;
       const x = width === 100 ? 0 : (100 - width) / 2;
       const y = height === 100 ? 0 : (100 - height) / 2;
 
@@ -261,7 +248,7 @@ const UserInfoInput = () => {
 
     const ctx = canvas.getContext('2d');
 
-    //console.log('Crop: ', crop, '\n');
+    // console.log('Crop: ', crop, '\n');
 
     if (ctx) {
       ctx.drawImage(
@@ -324,37 +311,37 @@ const UserInfoInput = () => {
     }
 
     // getting user input from form.
-    const firstname_field: HTMLInputElement | null = document.querySelector(
+    const firstnameField: HTMLInputElement | null = document.querySelector(
       '[name="user-firstname"]'
     );
-    const lastname_field: HTMLInputElement | null = document.querySelector(
+    const lastnameField: HTMLInputElement | null = document.querySelector(
       '[name="user-lastname"]'
     );
-    const title_field: HTMLInputElement | null = document.querySelector(
+    const titleField: HTMLInputElement | null = document.querySelector(
       '[name="user-title"]'
     );
-    const phone_field: HTMLInputElement | null = document.querySelector(
+    const phoneField: HTMLInputElement | null = document.querySelector(
       '[name="user-phone"]'
     );
-    const about_field: HTMLInputElement | null = document.querySelector(
+    const aboutField: HTMLInputElement | null = document.querySelector(
       '[name="user-about"]'
     );
-    const oldpassword_field: HTMLInputElement | null = document.querySelector(
+    const oldpasswordField: HTMLInputElement | null = document.querySelector(
       '[name="user-oldpassword"]'
     );
-    const password_field: HTMLInputElement | null = document.querySelector(
+    const passwordField: HTMLInputElement | null = document.querySelector(
       '[name="password-component"]'
     );
-    const facebook_field: HTMLInputElement | null = document.querySelector(
+    const facebookField: HTMLInputElement | null = document.querySelector(
       '[name="user-fb"]'
     );
-    const twitter_field: HTMLInputElement | null = document.querySelector(
+    const twitterField: HTMLInputElement | null = document.querySelector(
       '[name="user-twitter"]'
     );
-    const linkedin_field: HTMLInputElement | null = document.querySelector(
+    const linkedinField: HTMLInputElement | null = document.querySelector(
       '[name="user-linkedin"]'
     );
-    const instagram_field: HTMLInputElement | null = document.querySelector(
+    const instagramField: HTMLInputElement | null = document.querySelector(
       '[name="user-instagram"]'
     );
 
@@ -362,45 +349,39 @@ const UserInfoInput = () => {
     const data = {
       avatarURL: avatarURL,
       firstname:
-        firstname_field?.value !== userDetails.first_name
-          ? firstname_field?.value
-          : null,
+        firstnameField?.value !== userDetails.first_name ? firstnameField?.value : null,
       lastname:
-        lastname_field?.value !== userDetails.last_name
-          ? lastname_field?.value
-          : null,
-      title:
-        title_field?.value !== userDetails.title ? title_field?.value : null,
+        lastnameField?.value !== userDetails.last_name ? lastnameField?.value : null,
+      title: titleField?.value !== userDetails.title ? titleField?.value : null,
       phone:
-        phone_field?.value.replace(/\D/g, '') !== userDetails.phone
-          ? phone_field?.value
-          : null,
-      about:
-        about_field?.value !== userDetails.about ? about_field?.value : null,
-      oldpassword: oldpassword_field ? oldpassword_field.value : null,
-      password: password_field ? password_field.value : null,
+        phoneField?.value.replace(/\D/g, '') !== userDetails.phone ?
+          phoneField?.value :
+          null,
+      about: aboutField?.value !== userDetails.about ? aboutField?.value : null,
+      oldpassword: oldpasswordField ? oldpasswordField.value : null,
+      password: passwordField ? passwordField.value : null,
       facebook:
-        facebook_field?.value !== userDetails.facebook
-          ? facebook_field?.value
-          : null,
+        facebookField?.value !== userDetails.facebook ?
+          facebookField?.value :
+          null,
       twitter:
-        twitter_field?.value !== userDetails.twitter
-          ? twitter_field?.value
-          : null,
+        twitterField?.value !== userDetails.twitter ?
+          twitterField?.value :
+          null,
       linkedin:
-        linkedin_field?.value !== userDetails.linkedin
-          ? linkedin_field?.value
-          : null,
+        linkedinField?.value !== userDetails.linkedin ?
+          linkedinField?.value :
+          null,
       instagram:
-        instagram_field?.value !== userDetails.instagram
-          ? instagram_field?.value
-          : null,
+        instagramField?.value !== userDetails.instagram ?
+          instagramField?.value :
+          null,
       userID: userID,
     };
 
-    // console.log('firstname_field.value: ', firstname_field?.value, '\n');
+    // console.log('firstnameField.value: ', firstnameField?.value, '\n');
     // console.log('UserDetails.first_name: ', userDetails.first_name, '\n');
-    // console.log('title_field.value: ', title_field?.value, '\n');
+    // console.log('titleField.value: ', titleField?.value, '\n');
     // console.log('UserDetails.title: ', userDetails.title, '\n');
 
     if (
@@ -429,8 +410,8 @@ const UserInfoInput = () => {
       // show spinner while working
       if (spinner) spinner.classList.remove('uk-hidden');
 
-      let formFieldsSuccess: boolean = false;
-      let formImageSuccess: boolean = false;
+      let formFieldsSuccess = false;
+      let formImageSuccess = false;
 
       // Call api/user/personal
       fetch(process.env.HOST + 'api/user/personal', {
@@ -442,7 +423,7 @@ const UserInfoInput = () => {
       })
         .then((response: { json: () => any }) => response.json())
         .then((response: Message) => {
-          let { status, message } = response;
+          const {status, message} = response;
           const {
             firstNameMessage,
             lastNameMessage,
@@ -551,17 +532,17 @@ const UserInfoInput = () => {
             formFieldsSuccess = status;
           }
 
-          //console.log(status, '\n', message); // log to console to see what it prints.
+          // console.log(status, '\n', message); // log to console to see what it prints.
 
           if (picUploaded) {
-            //console.log('avatarData: ', typeof avatarData, ':', avatarData, '\n');
+            // console.log('avatarData: ', typeof avatarData, ':', avatarData, '\n');
 
             fetch(process.env.HOST + 'api/user/upload', {
               method: 'POST',
               headers: {
-                'Content-Type': avatarData
-                  ? avatarData.type
-                  : 'application/json',
+                'Content-Type': avatarData ?
+                  avatarData.type :
+                  'application/json',
                 'User-identification':
                   String(user) + '-' + String(userID) + '-avatar.jpg',
               },
@@ -569,7 +550,7 @@ const UserInfoInput = () => {
             })
               .then((response: { json: () => any }) => response.json())
               .then((response: Message) => {
-                let { status, message } = response;
+                const {status, message} = response;
                 if (!status) {
                   console.log(message, '\n');
                   notify({
@@ -602,11 +583,11 @@ const UserInfoInput = () => {
           }
 
           // window.location.reload(true);
-          if (oldpassword_field) {
-            oldpassword_field.value = '';
+          if (oldpasswordField) {
+            oldpasswordField.value = '';
           }
-          if (password_field) {
-            password_field.value = '';
+          if (passwordField) {
+            passwordField.value = '';
           }
           // const profileForm: HTMLFormElement = document.getElementById(
           //   'user-profile'
