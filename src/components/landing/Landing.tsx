@@ -76,7 +76,7 @@ function Landing(): JSX.Element {
       {/* Student quote || or none?? */}
       <div className="uk-container">
         <div className="uk-margin-auto uk-margin-auto-vertical uk-card uk-card-default uk-card-body uk-height-small student-quote-section">
-          <p className="uk-position-center student-quote Light black">&quotThis program changed my life. Oh em gee. The instructor is amazing and the students are all passionate.&quot</p>
+          <p className="uk-position-center student-quote Light black">&quot;This program changed my life. Oh em gee. The instructor is amazing and the students are all passionate.&quot;</p>
           <p className="uk-position-center student Light black">-Cutie Pie, Student</p>
         </div>
       </div>
@@ -102,7 +102,7 @@ function Landing(): JSX.Element {
       {/* Random quote */}
       <div className="uk-container">
         <div className="uk-margin-auto uk-margin-auto-vertical uk-card uk-card-default uk-card-body uk-height-small random-quote-section bg-dark-gray">
-          <p className="uk-position-center Light random-quote">&quotEducation is the passport to the future, for tomorrow belongs to those who prepare for it today.&quot - Malcom X</p>
+          <p className="uk-position-center Light random-quote">&quot;Education is the passport to the future, for tomorrow belongs to those who prepare for it today.&quot; - Malcom X</p>
           {/* <p className="uk-position-center Light random-author">-Malcom X</p> */}
         </div>
       </div>
