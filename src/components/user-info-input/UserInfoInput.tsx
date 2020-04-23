@@ -355,7 +355,7 @@ const UserInfoInput = () => {
       title: titleField?.value !== userDetails.title ? titleField?.value : null,
       phone:
         phoneField?.value.replace(/\D/g, '') !== userDetails.phone ?
-          phoneField?.value :
+          phoneField?.value.replace(/\D/g, '') :
           null,
       about: aboutField?.value !== userDetails.about ? aboutField?.value : null,
       oldpassword: oldpasswordField ? oldpasswordField.value : null,
