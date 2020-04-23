@@ -219,9 +219,13 @@ const UserInfoInput = () => {
     } else if (imgRef) {
       // Center a square percent crop.
       const width =
-        imgRef.width > imgRef.height ? (imgRef.height / imgRef.width) * 100 : 100;
+        imgRef.width > imgRef.height
+          ? (imgRef.height / imgRef.width) * 100
+          : 100;
       const height =
-        imgRef.height > imgRef.width ? (imgRef.width / imgRef.height) * 100 : 100;
+        imgRef.height > imgRef.width
+          ? (imgRef.width / imgRef.height) * 100
+          : 100;
       const x = width === 100 ? 0 : (100 - width) / 2;
       const y = height === 100 ? 0 : (100 - height) / 2;
 
@@ -368,7 +372,9 @@ const UserInfoInput = () => {
       title:
         title_field?.value !== userDetails.title ? title_field?.value : null,
       phone:
-        phone_field?.value !== userDetails.phone ? phone_field?.value : null,
+        phone_field?.value.replace(/\D/g, '') !== userDetails.phone
+          ? phone_field?.value
+          : null,
       about:
         about_field?.value !== userDetails.about ? about_field?.value : null,
       oldpassword: oldpassword_field ? oldpassword_field.value : null,
