@@ -55,7 +55,9 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   const firstname: string | null = sanitize(req.body.firstname);
   const lastname: string | null = sanitize(req.body.lastname);
   const title: string | null = sanitize(req.body.title);
-  const phone: string | null = sanitize(req.body.phone);
+  const phone: string | null = sanitize(
+    req.body.phone ? req.body.phone.replace(/\D/g, '') : req.body.phone
+  );
   const about: string | null = sanitize(req.body.about);
   const oldpassword: string | null = req.body.oldpassword;
   const password: string | null = req.body.password;

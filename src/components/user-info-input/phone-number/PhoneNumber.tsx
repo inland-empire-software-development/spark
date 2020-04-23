@@ -4,7 +4,7 @@
 //  - add phone number verification -- format any way you see fit
 //  - editing number caret placement after you set an element's value
 //  - minimum number of characters
-//  - strip spaces and special characters before saving to db
+//  - convert to react hooks number needs to be formated on page load
 // Version 2
 // =======================================================================
 
@@ -47,7 +47,6 @@ const formatToPhone = (event: any) => {
     return;
   }
 
-  // I am lazy and don't like to type things more than once
   const target = event.target;
   const input = target.value.replace(/\D/g, '').substring(0, 10); // First ten digits of input only
   const zip = input.substring(0, 3);
