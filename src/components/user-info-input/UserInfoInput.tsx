@@ -1,7 +1,3 @@
-// first_name and last_name prperties already existed on db do we want to change?
-/* eslint-disable @typescript-eslint/camelcase */
-/* eslint-disable indent */
-/* eslint-disable comma-dangle */
 // =======================================================================
 // Known Issues/Todos
 // ===================
@@ -60,8 +56,11 @@ const UserInfoInput = () => {
     aspect: 1,
   } as any);
   const [userDetails, setUserDetails] = useState({
+    // eslint-disable-next-line @typescript-eslint/camelcase
     avatar_url: (undefined as unknown) as string,
+    // eslint-disable-next-line @typescript-eslint/camelcase
     first_name: (undefined as unknown) as string,
+    // eslint-disable-next-line @typescript-eslint/camelcase
     last_name: (undefined as unknown) as string,
     title: (undefined as unknown) as string,
     phone: (undefined as unknown) as string,
@@ -101,22 +100,25 @@ const UserInfoInput = () => {
         },
         body: JSON.stringify(data),
       })
-        .then((response) => response.json())
-        .then((response) => {
-          response.avatar_url = desanitize(response.avatar_url);
-          response.first_name = desanitize(response.first_name);
-          response.last_name = desanitize(response.last_name);
-          response.title = desanitize(response.title);
-          response.phone = desanitize(response.phone);
-          response.about = desanitize(response.about);
-          response.facebook = desanitize(response.facebook);
-          response.twitter = desanitize(response.twitter);
-          response.linkedin = desanitize(response.linkedin);
-          response.instagram = desanitize(response.instagram);
+          .then((response) => response.json())
+          .then((response) => {
+            // eslint-disable-next-line @typescript-eslint/camelcase
+            response.avatar_url = desanitize(response.avatar_url);
+            // eslint-disable-next-line @typescript-eslint/camelcase
+            response.first_name = desanitize(response.first_name);
+            // eslint-disable-next-line @typescript-eslint/camelcase
+            response.last_name = desanitize(response.last_name);
+            response.title = desanitize(response.title);
+            response.phone = desanitize(response.phone);
+            response.about = desanitize(response.about);
+            response.facebook = desanitize(response.facebook);
+            response.twitter = desanitize(response.twitter);
+            response.linkedin = desanitize(response.linkedin);
+            response.instagram = desanitize(response.instagram);
 
-          console.log('Response: ', response);
-          setUserDetails(response);
-        });
+            console.log('Response: ', response);
+            setUserDetails(response);
+          });
     }
 
     return () => {
@@ -154,7 +156,7 @@ const UserInfoInput = () => {
 
           // clear file input
           const userInput = document.getElementById(
-            'user-input'
+              'user-input',
           ) as HTMLInputElement;
           userInput.value = '';
 
@@ -212,15 +214,15 @@ const UserInfoInput = () => {
 
     if (ctx) {
       ctx.drawImage(
-        image,
-        cropX * scaleX,
-        cropY * scaleY,
-        canvas.width * scaleX,
-        canvas.height * scaleY,
-        0,
-        0,
-        canvas.width,
-        canvas.height
+          image,
+          cropX * scaleX,
+          cropY * scaleY,
+          canvas.width * scaleX,
+          canvas.height * scaleY,
+          0,
+          0,
+          canvas.width,
+          canvas.height,
       );
     }
 
@@ -240,23 +242,23 @@ const UserInfoInput = () => {
           onProgress: () => null,
         };
         imageCompression(imageFile, options)
-          .then(function(compressedFile) {
-            window.URL.revokeObjectURL(previewURL);
-            setPreviewURL(window.URL.createObjectURL(blob));
+            .then(function(compressedFile) {
+              window.URL.revokeObjectURL(previewURL);
+              setPreviewURL(window.URL.createObjectURL(blob));
 
-            setPicUploaded(true);
+              setPicUploaded(true);
 
+              // now hide the spinner
+              if (spinner) spinner.classList.add('uk-hidden');
+
+              return setAvatarData(compressedFile);
+            })
+            .catch(function(error) {
             // now hide the spinner
-            if (spinner) spinner.classList.add('uk-hidden');
+              if (spinner) spinner.classList.add('uk-hidden');
 
-            return setAvatarData(compressedFile);
-          })
-          .catch(function(error) {
-            // now hide the spinner
-            if (spinner) spinner.classList.add('uk-hidden');
-
-            console.log(error.message);
-          });
+              console.log(error.message);
+            });
       }, 'image/jpeg');
     });
   };
@@ -312,37 +314,37 @@ const UserInfoInput = () => {
 
     // getting user input from form.
     const firstnameField: HTMLInputElement | null = document.querySelector(
-      '[name="user-firstname"]'
+        '[name="user-firstname"]',
     );
     const lastnameField: HTMLInputElement | null = document.querySelector(
-      '[name="user-lastname"]'
+        '[name="user-lastname"]',
     );
     const titleField: HTMLInputElement | null = document.querySelector(
-      '[name="user-title"]'
+        '[name="user-title"]',
     );
     const phoneField: HTMLInputElement | null = document.querySelector(
-      '[name="user-phone"]'
+        '[name="user-phone"]',
     );
     const aboutField: HTMLInputElement | null = document.querySelector(
-      '[name="user-about"]'
+        '[name="user-about"]',
     );
     const oldpasswordField: HTMLInputElement | null = document.querySelector(
-      '[name="user-oldpassword"]'
+        '[name="user-oldpassword"]',
     );
     const passwordField: HTMLInputElement | null = document.querySelector(
-      '[name="password-component"]'
+        '[name="password-component"]',
     );
     const facebookField: HTMLInputElement | null = document.querySelector(
-      '[name="user-fb"]'
+        '[name="user-fb"]',
     );
     const twitterField: HTMLInputElement | null = document.querySelector(
-      '[name="user-twitter"]'
+        '[name="user-twitter"]',
     );
     const linkedinField: HTMLInputElement | null = document.querySelector(
-      '[name="user-linkedin"]'
+        '[name="user-linkedin"]',
     );
     const instagramField: HTMLInputElement | null = document.querySelector(
-      '[name="user-instagram"]'
+        '[name="user-instagram"]',
     );
 
     // all data you want to pass over to API, name it appropriately
@@ -421,20 +423,20 @@ const UserInfoInput = () => {
         },
         body: JSON.stringify(data),
       })
-        .then((response: { json: () => any }) => response.json())
-        .then((response: Message) => {
-          const {status, message} = response;
-          const {
-            firstNameMessage,
-            lastNameMessage,
-            titleMessage,
-            phoneMessage,
-            aboutMessage,
-            facebookMessage,
-            twitterMessage,
-            linkedinMessage,
-            instagramMessage,
-          }: {
+          .then((response: { json: () => any }) => response.json())
+          .then((response: Message) => {
+            const {status, message} = response;
+            const {
+              firstNameMessage,
+              lastNameMessage,
+              titleMessage,
+              phoneMessage,
+              aboutMessage,
+              facebookMessage,
+              twitterMessage,
+              linkedinMessage,
+              instagramMessage,
+            }: {
             firstNameMessage: string;
             lastNameMessage: string;
             titleMessage: string;
@@ -446,154 +448,154 @@ const UserInfoInput = () => {
             instagramMessage: string;
           } = JSON.parse(message);
 
-          if (!status) {
-            if (firstNameMessage) {
-              console.log('FirstNameMessage', firstNameMessage, '\n');
-              notify({
-                message: firstNameMessage,
-                status: 'danger',
-                pos: 'bottom-right',
-                timeout: 1500,
-              });
+            if (!status) {
+              if (firstNameMessage) {
+                console.log('FirstNameMessage', firstNameMessage, '\n');
+                notify({
+                  message: firstNameMessage,
+                  status: 'danger',
+                  pos: 'bottom-right',
+                  timeout: 1500,
+                });
+              }
+              if (lastNameMessage) {
+                console.log('LastNameMessage: ', lastNameMessage, '\n');
+                notify({
+                  message: lastNameMessage,
+                  status: 'danger',
+                  pos: 'bottom-right',
+                  timeout: 1500,
+                });
+              }
+              if (titleMessage) {
+                console.log('LastNameMessage: ', titleMessage, '\n');
+                notify({
+                  message: titleMessage,
+                  status: 'danger',
+                  pos: 'bottom-right',
+                  timeout: 1500,
+                });
+              }
+              if (phoneMessage) {
+                console.log('LastNameMessage: ', phoneMessage, '\n');
+                notify({
+                  message: phoneMessage,
+                  status: 'danger',
+                  pos: 'bottom-right',
+                  timeout: 1500,
+                });
+              }
+              if (aboutMessage) {
+                console.log('LastNameMessage: ', aboutMessage, '\n');
+                notify({
+                  message: aboutMessage,
+                  status: 'danger',
+                  pos: 'bottom-right',
+                  timeout: 1500,
+                });
+              }
+              if (facebookMessage) {
+                console.log('LastNameMessage: ', facebookMessage, '\n');
+                notify({
+                  message: facebookMessage,
+                  status: 'danger',
+                  pos: 'bottom-right',
+                  timeout: 1500,
+                });
+              }
+              if (twitterMessage) {
+                console.log('LastNameMessage: ', twitterMessage, '\n');
+                notify({
+                  message: twitterMessage,
+                  status: 'danger',
+                  pos: 'bottom-right',
+                  timeout: 1500,
+                });
+              }
+              if (linkedinMessage) {
+                console.log('LastNameMessage: ', linkedinMessage, '\n');
+                notify({
+                  message: linkedinMessage,
+                  status: 'danger',
+                  pos: 'bottom-right',
+                  timeout: 1500,
+                });
+              }
+              if (instagramMessage) {
+                console.log('LastNameMessage: ', instagramMessage, '\n');
+                notify({
+                  message: instagramMessage,
+                  status: 'danger',
+                  pos: 'bottom-right',
+                  timeout: 1500,
+                });
+              }
+            } else {
+              formFieldsSuccess = status;
             }
-            if (lastNameMessage) {
-              console.log('LastNameMessage: ', lastNameMessage, '\n');
-              notify({
-                message: lastNameMessage,
-                status: 'danger',
-                pos: 'bottom-right',
-                timeout: 1500,
-              });
-            }
-            if (titleMessage) {
-              console.log('LastNameMessage: ', titleMessage, '\n');
-              notify({
-                message: titleMessage,
-                status: 'danger',
-                pos: 'bottom-right',
-                timeout: 1500,
-              });
-            }
-            if (phoneMessage) {
-              console.log('LastNameMessage: ', phoneMessage, '\n');
-              notify({
-                message: phoneMessage,
-                status: 'danger',
-                pos: 'bottom-right',
-                timeout: 1500,
-              });
-            }
-            if (aboutMessage) {
-              console.log('LastNameMessage: ', aboutMessage, '\n');
-              notify({
-                message: aboutMessage,
-                status: 'danger',
-                pos: 'bottom-right',
-                timeout: 1500,
-              });
-            }
-            if (facebookMessage) {
-              console.log('LastNameMessage: ', facebookMessage, '\n');
-              notify({
-                message: facebookMessage,
-                status: 'danger',
-                pos: 'bottom-right',
-                timeout: 1500,
-              });
-            }
-            if (twitterMessage) {
-              console.log('LastNameMessage: ', twitterMessage, '\n');
-              notify({
-                message: twitterMessage,
-                status: 'danger',
-                pos: 'bottom-right',
-                timeout: 1500,
-              });
-            }
-            if (linkedinMessage) {
-              console.log('LastNameMessage: ', linkedinMessage, '\n');
-              notify({
-                message: linkedinMessage,
-                status: 'danger',
-                pos: 'bottom-right',
-                timeout: 1500,
-              });
-            }
-            if (instagramMessage) {
-              console.log('LastNameMessage: ', instagramMessage, '\n');
-              notify({
-                message: instagramMessage,
-                status: 'danger',
-                pos: 'bottom-right',
-                timeout: 1500,
-              });
-            }
-          } else {
-            formFieldsSuccess = status;
-          }
 
-          // console.log(status, '\n', message); // log to console to see what it prints.
+            // console.log(status, '\n', message); // log to console to see what it prints.
 
-          if (picUploaded) {
+            if (picUploaded) {
             // console.log('avatarData: ', typeof avatarData, ':', avatarData, '\n');
 
-            fetch(process.env.HOST + 'api/user/upload', {
-              method: 'POST',
-              headers: {
-                'Content-Type': avatarData ?
+              fetch(process.env.HOST + 'api/user/upload', {
+                method: 'POST',
+                headers: {
+                  'Content-Type': avatarData ?
                   avatarData.type :
                   'application/json',
-                'User-identification':
+                  'User-identification':
                   String(user) + '-' + String(userID) + '-avatar.jpg',
-              },
-              body: avatarData ? avatarData : null,
-            })
-              .then((response: { json: () => any }) => response.json())
-              .then((response: Message) => {
-                const {status, message} = response;
-                if (!status) {
-                  console.log(message, '\n');
-                  notify({
-                    message: message,
-                    status: 'danger',
-                    pos: 'bottom-right',
-                    timeout: 1500,
+                },
+                body: avatarData ? avatarData : null,
+              })
+                  .then((response: { json: () => any }) => response.json())
+                  .then((response: Message) => {
+                    const {status, message} = response;
+                    if (!status) {
+                      console.log(message, '\n');
+                      notify({
+                        message: message,
+                        status: 'danger',
+                        pos: 'bottom-right',
+                        timeout: 1500,
+                      });
+                    } else {
+                      formImageSuccess = status;
+                    }
                   });
-                } else {
-                  formImageSuccess = status;
-                }
+            }
+          })
+          .then(() => {
+            setPicUploaded(false);
+            setFormSubmittedFlag(!formSubmittedFlag);
+            // if spinner is showing and you're done with saving stuff
+            // now hide the spinner
+            if (spinner) spinner.classList.add('uk-hidden');
+
+            // do whatever else you need to do
+            if (formFieldsSuccess || formImageSuccess) {
+              notify({
+                message: 'User information successfully updated',
+                status: 'success',
+                pos: 'bottom-right',
+                timeout: 1500,
               });
-          }
-        })
-        .then(() => {
-          setPicUploaded(false);
-          setFormSubmittedFlag(!formSubmittedFlag);
-          // if spinner is showing and you're done with saving stuff
-          // now hide the spinner
-          if (spinner) spinner.classList.add('uk-hidden');
+            }
 
-          // do whatever else you need to do
-          if (formFieldsSuccess || formImageSuccess) {
-            notify({
-              message: 'User information successfully updated',
-              status: 'success',
-              pos: 'bottom-right',
-              timeout: 1500,
-            });
-          }
-
-          // window.location.reload(true);
-          if (oldpasswordField) {
-            oldpasswordField.value = '';
-          }
-          if (passwordField) {
-            passwordField.value = '';
-          }
+            // window.location.reload(true);
+            if (oldpasswordField) {
+              oldpasswordField.value = '';
+            }
+            if (passwordField) {
+              passwordField.value = '';
+            }
           // const profileForm: HTMLFormElement = document.getElementById(
           //   'user-profile'
           // ) as HTMLFormElement;
           // profileForm.reset();
-        });
+          });
     } else {
       notify({
         message: 'Nothing to update...',
