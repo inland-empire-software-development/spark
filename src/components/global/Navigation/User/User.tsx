@@ -127,7 +127,8 @@ function User(props: { isMobile?: boolean }): JSX.Element {
                   </Link>
                 </li>
                 <li>
-                  <Link href='/settings/profile'>
+                  {/* <Link href='/profile'> */}
+                  <Link href='/user/profile'>
                     <a>Profile</a>
                   </Link>
                 </li>
