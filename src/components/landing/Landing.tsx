@@ -3,13 +3,13 @@ import './Landing.scss';
 
 function Landing(): JSX.Element {
   return (
-    <div className="uk-container">
+    <div className="landing-page">
       {/* top background image */}
       <div className="uk-background-secondary uk-light uk-padding uk-panel uk-height-small top-image">
         <img className="uk-h8"></img>
       </div>
       {/* course info */}
-      <div className="uk-container course-info">
+      <div className="course-info">
         <div className="uk-margin-auto uk-width-2-3@s uk-card uk-card-default uk-card-body course-info-description">
           <div className="uk-child-width-expand@l course" uk-grid="true">
             <div className="uk-grid-match uk-child-width-1-4@l uk-height-small course-info-section" uk-grid="true">
@@ -37,7 +37,7 @@ function Landing(): JSX.Element {
           </div>
         </div>
         {/* course program */}
-        <div className="uk-container course-program light-gray">
+        <div className="course-program light-gray">
           <div className="uk-margin-auto uk-width-2-3@s uk-card uk-card-default uk-card-body course-program-description">
             <div className="uk-child-width-expand@l" uk-grid="true">
               {/* course program description */}
@@ -74,12 +74,12 @@ function Landing(): JSX.Element {
 
       </div>
       {/* Student quote || or none?? */}
-      <div className="uk-container">
-        <div className="uk-margin-auto uk-margin-auto-vertical uk-card uk-card-default uk-card-body uk-height-small student-quote-section">
-          <p className="uk-position-center student-quote Light black">&quot;This program changed my life. Oh em gee. The instructor is amazing and the students are all passionate.&quot;</p>
-          <p className="uk-position-center student Light black">-Cutie Pie, Student</p>
-        </div>
+
+      <div className="uk-margin-auto uk-margin-auto-vertical uk-card uk-card-default uk-card-body uk-height-small student-quote-section">
+        <p className="uk-position-center student-quote Light black">&quot;This program changed my life. Oh em gee. The instructor is amazing and the students are all passionate.&quot;</p>
+        <p className="uk-position-center student Light black">-Cutie Pie, Student</p>
       </div>
+
 
       {/* Venue */}
       <div className="uk-grid-collapse uk-child-width-expand@s uk-text-center venue-section" uk-grid="true">
@@ -100,12 +100,12 @@ function Landing(): JSX.Element {
         </div>
       </div>
       {/* Random quote */}
-      <div className="uk-container">
-        <div className="uk-margin-auto uk-margin-auto-vertical uk-card uk-card-default uk-card-body uk-height-small random-quote-section bg-dark-gray">
-          <p className="uk-position-center Light random-quote">&quot;Education is the passport to the future, for tomorrow belongs to those who prepare for it today.&quot; - Malcom X</p>
-          {/* <p className="uk-position-center Light random-author">-Malcom X</p> */}
-        </div>
+
+      <div className="uk-margin-auto uk-margin-auto-vertical uk-card uk-card-default uk-card-body uk-height-small random-quote-section bg-dark-gray">
+        <p className="uk-position-center Light random-quote">&quot;Education is the passport to the future, for tomorrow belongs to those who prepare for it today.&quot; - Malcom X</p>
+        {/* <p className="uk-position-center Light random-author">-Malcom X</p> */}
       </div>
+
 
       {/* Program */}
       <div className="uk-contianer">
