@@ -1,7 +1,13 @@
 import React from 'react';
-import {storiesOf} from '@storybook/react';
 import Landing from '../landing/Landing';
 
-storiesOf('Landing', module).add('landing page', () => {
+export default {
+  title: "Landing Page",
+  decorators: [],
+  excludeStories: /.*Data$/,
+
+};
+
+export const DefaultLandingPage = () => {
   return <Landing />;
-});
+};
