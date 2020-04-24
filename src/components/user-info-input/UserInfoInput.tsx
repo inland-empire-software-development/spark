@@ -1,9 +1,7 @@
-/* eslint-disable indent */
-/* eslint-disable comma-dangle */
 // =======================================================================
 // Known Issues/Todos
 // ===================
-//  - add phone number verification -- format any way you see fit
+//  - add phone number verification -- see PhoneNumber.tsx for details
 //  - should user be logged out when password is updated?
 //  - if multiple notifications subsequent notifications are ignored
 //     - One big notification or change this behavior?
@@ -27,11 +25,12 @@ import React, {
   FormEvent,
 } from 'react';
 import './UserInfoInput.scss';
-import { Message } from '../../..';
+import {Message} from '../../..';
 import Password from '../authenticate/Password/Password';
-import { Context } from '../../../src/context';
+import {Context} from '../../../src/context';
 import notify from '../utility/Notify';
-import { desanitize } from './sanitize/sanitize';
+import PhoneNumber from './phone-number/PhoneNumber';
+import {desanitize} from './sanitize/sanitize';
 import ReactCrop from 'react-image-crop';
 import 'react-image-crop/lib/ReactCrop.scss';
 import imageCompression from 'browser-image-compression';
@@ -41,7 +40,7 @@ const UserInfoInput = () => {
   const spinner: HTMLElement | null = document.getElementById('spinner');
   let message: string | null = null;
   let avatarURL: string | null = null;
-  const { user, userID } = useContext(Context);
+  const {user, userID} = useContext(Context);
   const [formSubmittedFlag, setFormSubmittedFlag] = useState(false as boolean);
   const [picUploaded, setPicUploaded] = useState(false as boolean);
   const [avatarData, setAvatarData] = useState((undefined as unknown) as any);
@@ -57,8 +56,11 @@ const UserInfoInput = () => {
     aspect: 1,
   } as any);
   const [userDetails, setUserDetails] = useState({
+    // eslint-disable-next-line @typescript-eslint/camelcase
     avatar_url: (undefined as unknown) as string,
+    // eslint-disable-next-line @typescript-eslint/camelcase
     first_name: (undefined as unknown) as string,
+    // eslint-disable-next-line @typescript-eslint/camelcase
     last_name: (undefined as unknown) as string,
     title: (undefined as unknown) as string,
     phone: (undefined as unknown) as string,
@@ -87,21 +89,6 @@ const UserInfoInput = () => {
     value: userID,
   };
 
-  // // set user title
-  // useEffect(() => {
-  //   const title_selector: HTMLSelectElement | null = document.querySelector(
-  //     '[name="user-title"]'
-  //   );
-  //   const title_options = title_selector?.options;
-  //   if (title_options && title_selector) {
-  //     for (let i = 0; i < title_options?.length; i++) {
-  //       if (title_options[i].value == userDetails.title) {
-  //         title_selector.selectedIndex = i;
-  //       }
-  //     }
-  //   }
-  // }, [userDetails.title]);
-
   useEffect(() => {
     const abortController = new AbortController();
 
@@ -113,22 +100,25 @@ const UserInfoInput = () => {
         },
         body: JSON.stringify(data),
       })
-        .then((response) => response.json())
-        .then((response) => {
-          response.avatar_url = desanitize(response.avatar_url);
-          response.first_name = desanitize(response.first_name);
-          response.last_name = desanitize(response.last_name);
-          response.title = desanitize(response.title);
-          response.phone = desanitize(response.phone);
-          response.about = desanitize(response.about);
-          response.facebook = desanitize(response.facebook);
-          response.twitter = desanitize(response.twitter);
-          response.linkedin = desanitize(response.linkedin);
-          response.instagram = desanitize(response.instagram);
+          .then((response) => response.json())
+          .then((response) => {
+            // eslint-disable-next-line @typescript-eslint/camelcase
+            response.avatar_url = desanitize(response.avatar_url);
+            // eslint-disable-next-line @typescript-eslint/camelcase
+            response.first_name = desanitize(response.first_name);
+            // eslint-disable-next-line @typescript-eslint/camelcase
+            response.last_name = desanitize(response.last_name);
+            response.title = desanitize(response.title);
+            response.phone = desanitize(response.phone);
+            response.about = desanitize(response.about);
+            response.facebook = desanitize(response.facebook);
+            response.twitter = desanitize(response.twitter);
+            response.linkedin = desanitize(response.linkedin);
+            response.instagram = desanitize(response.instagram);
 
-          // console.log('Response: ', response);
-          setUserDetails(response);
-        });
+            console.log('Response: ', response);
+            setUserDetails(response);
+          });
     }
 
     return () => {
@@ -141,11 +131,11 @@ const UserInfoInput = () => {
       <img
         id='avatarID'
         src={
-          previewURL
-            ? previewURL
-            : userDetails && userDetails.avatar_url
-            ? process.env.HOST + userDetails.avatar_url
-            : process.env.HOST + 'images/avatars/placeholder_image.png'
+          previewURL ?
+            previewURL :
+            userDetails && userDetails.avatar_url ?
+              process.env.HOST + userDetails.avatar_url :
+              process.env.HOST + 'images/avatars/placeholder_image.png'
         }
         alt='Placeholder Image'
       />
@@ -166,7 +156,7 @@ const UserInfoInput = () => {
 
           // clear file input
           const userInput = document.getElementById(
-            'user-input'
+              'user-input',
           ) as HTMLInputElement;
           userInput.value = '';
 
@@ -209,6 +199,70 @@ const UserInfoInput = () => {
     setImgRef(img);
   }, []);
 
+  const createCropPreview = async (image: any, crop: any) => {
+    const canvas = document.createElement('canvas');
+    const scaleX = image.naturalWidth / image.width;
+    const scaleY = image.naturalHeight / image.height;
+    const cropX = (crop.x / 100) * image.width;
+    const cropY = (crop.y / 100) * image.height;
+    canvas.width = (crop.width / 100) * image.width;
+    canvas.height = (crop.height / 100) * image.height;
+
+    const ctx = canvas.getContext('2d');
+
+    // console.log('Crop: ', crop, '\n');
+
+    if (ctx) {
+      ctx.drawImage(
+          image,
+          cropX * scaleX,
+          cropY * scaleY,
+          canvas.width * scaleX,
+          canvas.height * scaleY,
+          0,
+          0,
+          canvas.width,
+          canvas.height,
+      );
+    }
+
+    return new Promise((_resolve, reject) => {
+      canvas.toBlob((blob: any) => {
+        if (!blob) {
+          reject(new Error('Canvas is empty'));
+          return;
+        }
+
+        // compress image crop
+        const imageFile = blob;
+
+        const options = {
+          maxSizeMB: 0.5,
+          useWebWorker: true,
+          onProgress: () => null,
+        };
+        imageCompression(imageFile, options)
+            .then(function(compressedFile) {
+              window.URL.revokeObjectURL(previewURL);
+              setPreviewURL(window.URL.createObjectURL(blob));
+
+              setPicUploaded(true);
+
+              // now hide the spinner
+              if (spinner) spinner.classList.add('uk-hidden');
+
+              return setAvatarData(compressedFile);
+            })
+            .catch(function(error) {
+            // now hide the spinner
+              if (spinner) spinner.classList.add('uk-hidden');
+
+              console.log(error.message);
+            });
+      }, 'image/jpeg');
+    });
+  };
+
   const makeClientCrop = async () => {
     if (imgRef && crop.width && crop.height) {
       // show spinner while working
@@ -218,9 +272,13 @@ const UserInfoInput = () => {
     } else if (imgRef) {
       // Center a square percent crop.
       const width =
-        imgRef.width > imgRef.height ? (imgRef.height / imgRef.width) * 100 : 100;
+        imgRef.width > imgRef.height ?
+          (imgRef.height / imgRef.width) * 100 :
+          100;
       const height =
-        imgRef.height > imgRef.width ? (imgRef.width / imgRef.height) * 100 : 100;
+        imgRef.height > imgRef.width ?
+          (imgRef.width / imgRef.height) * 100 :
+          100;
       const x = width === 100 ? 0 : (100 - width) / 2;
       const y = height === 100 ? 0 : (100 - height) / 2;
 
@@ -245,70 +303,6 @@ const UserInfoInput = () => {
     }
   };
 
-  const createCropPreview = async (image: any, crop: any) => {
-    const canvas = document.createElement('canvas');
-    const scaleX = image.naturalWidth / image.width;
-    const scaleY = image.naturalHeight / image.height;
-    const cropX = (crop.x / 100) * image.width;
-    const cropY = (crop.y / 100) * image.height;
-    canvas.width = (crop.width / 100) * image.width;
-    canvas.height = (crop.height / 100) * image.height;
-
-    const ctx = canvas.getContext('2d');
-
-    //console.log('Crop: ', crop, '\n');
-
-    if (ctx) {
-      ctx.drawImage(
-        image,
-        cropX * scaleX,
-        cropY * scaleY,
-        canvas.width * scaleX,
-        canvas.height * scaleY,
-        0,
-        0,
-        canvas.width,
-        canvas.height
-      );
-    }
-
-    return new Promise((_resolve, reject) => {
-      canvas.toBlob((blob: any) => {
-        if (!blob) {
-          reject(new Error('Canvas is empty'));
-          return;
-        }
-
-        // compress image crop
-        const imageFile = blob;
-
-        const options = {
-          maxSizeMB: 0.5,
-          useWebWorker: true,
-          onProgress: () => null,
-        };
-        imageCompression(imageFile, options)
-          .then(function(compressedFile) {
-            window.URL.revokeObjectURL(previewURL);
-            setPreviewURL(window.URL.createObjectURL(blob));
-
-            setPicUploaded(true);
-
-            // now hide the spinner
-            if (spinner) spinner.classList.add('uk-hidden');
-
-            return setAvatarData(compressedFile);
-          })
-          .catch(function(error) {
-            // now hide the spinner
-            if (spinner) spinner.classList.add('uk-hidden');
-
-            console.log(error.message);
-          });
-      }, 'image/jpeg');
-    });
-  };
-
   const onCropChange = (_crop: any, percentCrop: any) => setCrop(percentCrop);
 
   const handleUserInformation = (event: FormEvent<HTMLFormElement>) => {
@@ -319,81 +313,77 @@ const UserInfoInput = () => {
     }
 
     // getting user input from form.
-    const firstname_field: HTMLInputElement | null = document.querySelector(
-      '[name="user-firstname"]'
+    const firstnameField: HTMLInputElement | null = document.querySelector(
+        '[name="user-firstname"]',
     );
-    const lastname_field: HTMLInputElement | null = document.querySelector(
-      '[name="user-lastname"]'
+    const lastnameField: HTMLInputElement | null = document.querySelector(
+        '[name="user-lastname"]',
     );
-    const title_field: HTMLInputElement | null = document.querySelector(
-      '[name="user-title"]'
+    const titleField: HTMLInputElement | null = document.querySelector(
+        '[name="user-title"]',
     );
-    const phone_field: HTMLInputElement | null = document.querySelector(
-      '[name="user-phone"]'
+    const phoneField: HTMLInputElement | null = document.querySelector(
+        '[name="user-phone"]',
     );
-    const about_field: HTMLInputElement | null = document.querySelector(
-      '[name="user-about"]'
+    const aboutField: HTMLInputElement | null = document.querySelector(
+        '[name="user-about"]',
     );
-    const oldpassword_field: HTMLInputElement | null = document.querySelector(
-      '[name="user-oldpassword"]'
+    const oldpasswordField: HTMLInputElement | null = document.querySelector(
+        '[name="user-oldpassword"]',
     );
-    const password_field: HTMLInputElement | null = document.querySelector(
-      '[name="password-component"]'
+    const passwordField: HTMLInputElement | null = document.querySelector(
+        '[name="password-component"]',
     );
-    const facebook_field: HTMLInputElement | null = document.querySelector(
-      '[name="user-fb"]'
+    const facebookField: HTMLInputElement | null = document.querySelector(
+        '[name="user-fb"]',
     );
-    const twitter_field: HTMLInputElement | null = document.querySelector(
-      '[name="user-twitter"]'
+    const twitterField: HTMLInputElement | null = document.querySelector(
+        '[name="user-twitter"]',
     );
-    const linkedin_field: HTMLInputElement | null = document.querySelector(
-      '[name="user-linkedin"]'
+    const linkedinField: HTMLInputElement | null = document.querySelector(
+        '[name="user-linkedin"]',
     );
-    const instagram_field: HTMLInputElement | null = document.querySelector(
-      '[name="user-instagram"]'
+    const instagramField: HTMLInputElement | null = document.querySelector(
+        '[name="user-instagram"]',
     );
 
     // all data you want to pass over to API, name it appropriately
     const data = {
       avatarURL: avatarURL,
       firstname:
-        firstname_field?.value !== userDetails.first_name
-          ? firstname_field?.value
-          : null,
+        firstnameField?.value !== userDetails.first_name ? firstnameField?.value : null,
       lastname:
-        lastname_field?.value !== userDetails.last_name
-          ? lastname_field?.value
-          : null,
-      title:
-        title_field?.value !== userDetails.title ? title_field?.value : null,
+        lastnameField?.value !== userDetails.last_name ? lastnameField?.value : null,
+      title: titleField?.value !== userDetails.title ? titleField?.value : null,
       phone:
-        phone_field?.value !== userDetails.phone ? phone_field?.value : null,
-      about:
-        about_field?.value !== userDetails.about ? about_field?.value : null,
-      oldpassword: oldpassword_field ? oldpassword_field.value : null,
-      password: password_field ? password_field.value : null,
+        phoneField?.value.replace(/\D/g, '') !== userDetails.phone ?
+          phoneField?.value.replace(/\D/g, '') :
+          null,
+      about: aboutField?.value !== userDetails.about ? aboutField?.value : null,
+      oldpassword: oldpasswordField ? oldpasswordField.value : null,
+      password: passwordField ? passwordField.value : null,
       facebook:
-        facebook_field?.value !== userDetails.facebook
-          ? facebook_field?.value
-          : null,
+        facebookField?.value !== userDetails.facebook ?
+          facebookField?.value :
+          null,
       twitter:
-        twitter_field?.value !== userDetails.twitter
-          ? twitter_field?.value
-          : null,
+        twitterField?.value !== userDetails.twitter ?
+          twitterField?.value :
+          null,
       linkedin:
-        linkedin_field?.value !== userDetails.linkedin
-          ? linkedin_field?.value
-          : null,
+        linkedinField?.value !== userDetails.linkedin ?
+          linkedinField?.value :
+          null,
       instagram:
-        instagram_field?.value !== userDetails.instagram
-          ? instagram_field?.value
-          : null,
+        instagramField?.value !== userDetails.instagram ?
+          instagramField?.value :
+          null,
       userID: userID,
     };
 
-    // console.log('firstname_field.value: ', firstname_field?.value, '\n');
+    // console.log('firstnameField.value: ', firstnameField?.value, '\n');
     // console.log('UserDetails.first_name: ', userDetails.first_name, '\n');
-    // console.log('title_field.value: ', title_field?.value, '\n');
+    // console.log('titleField.value: ', titleField?.value, '\n');
     // console.log('UserDetails.title: ', userDetails.title, '\n');
 
     if (
@@ -422,8 +412,8 @@ const UserInfoInput = () => {
       // show spinner while working
       if (spinner) spinner.classList.remove('uk-hidden');
 
-      let formFieldsSuccess: boolean = false;
-      let formImageSuccess: boolean = false;
+      let formFieldsSuccess = false;
+      let formImageSuccess = false;
 
       // Call api/user/personal
       fetch(process.env.HOST + 'api/user/personal', {
@@ -433,20 +423,20 @@ const UserInfoInput = () => {
         },
         body: JSON.stringify(data),
       })
-        .then((response: { json: () => any }) => response.json())
-        .then((response: Message) => {
-          let { status, message } = response;
-          const {
-            firstNameMessage,
-            lastNameMessage,
-            titleMessage,
-            phoneMessage,
-            aboutMessage,
-            facebookMessage,
-            twitterMessage,
-            linkedinMessage,
-            instagramMessage,
-          }: {
+          .then((response: { json: () => any }) => response.json())
+          .then((response: Message) => {
+            const {status, message} = response;
+            const {
+              firstNameMessage,
+              lastNameMessage,
+              titleMessage,
+              phoneMessage,
+              aboutMessage,
+              facebookMessage,
+              twitterMessage,
+              linkedinMessage,
+              instagramMessage,
+            }: {
             firstNameMessage: string;
             lastNameMessage: string;
             titleMessage: string;
@@ -458,154 +448,154 @@ const UserInfoInput = () => {
             instagramMessage: string;
           } = JSON.parse(message);
 
-          if (!status) {
-            if (firstNameMessage) {
-              console.log('FirstNameMessage', firstNameMessage, '\n');
-              notify({
-                message: firstNameMessage,
-                status: 'danger',
-                pos: 'bottom-right',
-                timeout: 1500,
-              });
+            if (!status) {
+              if (firstNameMessage) {
+                console.log('FirstNameMessage', firstNameMessage, '\n');
+                notify({
+                  message: firstNameMessage,
+                  status: 'danger',
+                  pos: 'bottom-right',
+                  timeout: 1500,
+                });
+              }
+              if (lastNameMessage) {
+                console.log('LastNameMessage: ', lastNameMessage, '\n');
+                notify({
+                  message: lastNameMessage,
+                  status: 'danger',
+                  pos: 'bottom-right',
+                  timeout: 1500,
+                });
+              }
+              if (titleMessage) {
+                console.log('LastNameMessage: ', titleMessage, '\n');
+                notify({
+                  message: titleMessage,
+                  status: 'danger',
+                  pos: 'bottom-right',
+                  timeout: 1500,
+                });
+              }
+              if (phoneMessage) {
+                console.log('LastNameMessage: ', phoneMessage, '\n');
+                notify({
+                  message: phoneMessage,
+                  status: 'danger',
+                  pos: 'bottom-right',
+                  timeout: 1500,
+                });
+              }
+              if (aboutMessage) {
+                console.log('LastNameMessage: ', aboutMessage, '\n');
+                notify({
+                  message: aboutMessage,
+                  status: 'danger',
+                  pos: 'bottom-right',
+                  timeout: 1500,
+                });
+              }
+              if (facebookMessage) {
+                console.log('LastNameMessage: ', facebookMessage, '\n');
+                notify({
+                  message: facebookMessage,
+                  status: 'danger',
+                  pos: 'bottom-right',
+                  timeout: 1500,
+                });
+              }
+              if (twitterMessage) {
+                console.log('LastNameMessage: ', twitterMessage, '\n');
+                notify({
+                  message: twitterMessage,
+                  status: 'danger',
+                  pos: 'bottom-right',
+                  timeout: 1500,
+                });
+              }
+              if (linkedinMessage) {
+                console.log('LastNameMessage: ', linkedinMessage, '\n');
+                notify({
+                  message: linkedinMessage,
+                  status: 'danger',
+                  pos: 'bottom-right',
+                  timeout: 1500,
+                });
+              }
+              if (instagramMessage) {
+                console.log('LastNameMessage: ', instagramMessage, '\n');
+                notify({
+                  message: instagramMessage,
+                  status: 'danger',
+                  pos: 'bottom-right',
+                  timeout: 1500,
+                });
+              }
+            } else {
+              formFieldsSuccess = status;
             }
-            if (lastNameMessage) {
-              console.log('LastNameMessage: ', lastNameMessage, '\n');
-              notify({
-                message: lastNameMessage,
-                status: 'danger',
-                pos: 'bottom-right',
-                timeout: 1500,
-              });
-            }
-            if (titleMessage) {
-              console.log('LastNameMessage: ', titleMessage, '\n');
-              notify({
-                message: titleMessage,
-                status: 'danger',
-                pos: 'bottom-right',
-                timeout: 1500,
-              });
-            }
-            if (phoneMessage) {
-              console.log('LastNameMessage: ', phoneMessage, '\n');
-              notify({
-                message: phoneMessage,
-                status: 'danger',
-                pos: 'bottom-right',
-                timeout: 1500,
-              });
-            }
-            if (aboutMessage) {
-              console.log('LastNameMessage: ', aboutMessage, '\n');
-              notify({
-                message: aboutMessage,
-                status: 'danger',
-                pos: 'bottom-right',
-                timeout: 1500,
-              });
-            }
-            if (facebookMessage) {
-              console.log('LastNameMessage: ', facebookMessage, '\n');
-              notify({
-                message: facebookMessage,
-                status: 'danger',
-                pos: 'bottom-right',
-                timeout: 1500,
-              });
-            }
-            if (twitterMessage) {
-              console.log('LastNameMessage: ', twitterMessage, '\n');
-              notify({
-                message: twitterMessage,
-                status: 'danger',
-                pos: 'bottom-right',
-                timeout: 1500,
-              });
-            }
-            if (linkedinMessage) {
-              console.log('LastNameMessage: ', linkedinMessage, '\n');
-              notify({
-                message: linkedinMessage,
-                status: 'danger',
-                pos: 'bottom-right',
-                timeout: 1500,
-              });
-            }
-            if (instagramMessage) {
-              console.log('LastNameMessage: ', instagramMessage, '\n');
-              notify({
-                message: instagramMessage,
-                status: 'danger',
-                pos: 'bottom-right',
-                timeout: 1500,
-              });
-            }
-          } else {
-            formFieldsSuccess = status;
-          }
 
-          //console.log(status, '\n', message); // log to console to see what it prints.
+            // console.log(status, '\n', message); // log to console to see what it prints.
 
-          if (picUploaded) {
-            //console.log('avatarData: ', typeof avatarData, ':', avatarData, '\n');
+            if (picUploaded) {
+            // console.log('avatarData: ', typeof avatarData, ':', avatarData, '\n');
 
-            fetch(process.env.HOST + 'api/user/upload', {
-              method: 'POST',
-              headers: {
-                'Content-Type': avatarData
-                  ? avatarData.type
-                  : 'application/json',
-                'User-identification':
+              fetch(process.env.HOST + 'api/user/upload', {
+                method: 'POST',
+                headers: {
+                  'Content-Type': avatarData ?
+                  avatarData.type :
+                  'application/json',
+                  'User-identification':
                   String(user) + '-' + String(userID) + '-avatar.jpg',
-              },
-              body: avatarData ? avatarData : null,
-            })
-              .then((response: { json: () => any }) => response.json())
-              .then((response: Message) => {
-                let { status, message } = response;
-                if (!status) {
-                  console.log(message, '\n');
-                  notify({
-                    message: message,
-                    status: 'danger',
-                    pos: 'bottom-right',
-                    timeout: 1500,
+                },
+                body: avatarData ? avatarData : null,
+              })
+                  .then((response: { json: () => any }) => response.json())
+                  .then((response: Message) => {
+                    const {status, message} = response;
+                    if (!status) {
+                      console.log(message, '\n');
+                      notify({
+                        message: message,
+                        status: 'danger',
+                        pos: 'bottom-right',
+                        timeout: 1500,
+                      });
+                    } else {
+                      formImageSuccess = status;
+                    }
                   });
-                } else {
-                  formImageSuccess = status;
-                }
+            }
+          })
+          .then(() => {
+            setPicUploaded(false);
+            setFormSubmittedFlag(!formSubmittedFlag);
+            // if spinner is showing and you're done with saving stuff
+            // now hide the spinner
+            if (spinner) spinner.classList.add('uk-hidden');
+
+            // do whatever else you need to do
+            if (formFieldsSuccess || formImageSuccess) {
+              notify({
+                message: 'User information successfully updated',
+                status: 'success',
+                pos: 'bottom-right',
+                timeout: 1500,
               });
-          }
-        })
-        .then(() => {
-          setPicUploaded(false);
-          setFormSubmittedFlag(!formSubmittedFlag);
-          // if spinner is showing and you're done with saving stuff
-          // now hide the spinner
-          if (spinner) spinner.classList.add('uk-hidden');
+            }
 
-          // do whatever else you need to do
-          if (formFieldsSuccess || formImageSuccess) {
-            notify({
-              message: 'User information successfully updated',
-              status: 'success',
-              pos: 'bottom-right',
-              timeout: 1500,
-            });
-          }
-
-          // window.location.reload(true);
-          if (oldpassword_field) {
-            oldpassword_field.value = '';
-          }
-          if (password_field) {
-            password_field.value = '';
-          }
+            // window.location.reload(true);
+            if (oldpasswordField) {
+              oldpasswordField.value = '';
+            }
+            if (passwordField) {
+              passwordField.value = '';
+            }
           // const profileForm: HTMLFormElement = document.getElementById(
           //   'user-profile'
           // ) as HTMLFormElement;
           // profileForm.reset();
-        });
+          });
     } else {
       notify({
         message: 'Nothing to update...',
@@ -717,7 +707,8 @@ const UserInfoInput = () => {
                 <label className='uk-form-label' htmlFor='phone number'>
                   Phone #
                 </label>
-                <input
+                <PhoneNumber defaultValue={userDetails.phone} />
+                {/* <input
                   id='phoneNumber'
                   className='uk-input'
                   type='tel'
@@ -726,7 +717,7 @@ const UserInfoInput = () => {
                   name='user-phone'
                   autoComplete='off'
                   // pattern='/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im'
-                ></input>
+                ></input> */}
               </div>
             </div>
           </div>

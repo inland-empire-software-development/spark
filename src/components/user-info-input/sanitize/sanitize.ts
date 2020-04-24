@@ -1,9 +1,8 @@
-//https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html
+// https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html
 const sanitize = (str: string) => {
   if (str === null) {
     return null;
-  }
-  else if (str) {
+  } else if (str) {
     const map: any = {
       '&': '&amp;',
       '<': '&lt;',
@@ -37,4 +36,4 @@ const desanitize = (str: string) => {
   return '';
 };
 
-export { sanitize, desanitize };
+export {sanitize, desanitize};

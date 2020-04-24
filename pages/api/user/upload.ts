@@ -24,8 +24,8 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   //   'no-store, no-cache, must-revalidate, proxy-revalidate'
   // );
 
-  let status: boolean = false;
-  let message: string = 'Error: Image failed to upload';
+  let status = false;
+  let message = 'Error: Image failed to upload';
 
   if (req.pipe(createWriteStream("./public/images/avatars/" + req.headers['user-identification']))) {
     status = true;

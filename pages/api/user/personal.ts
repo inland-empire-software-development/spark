@@ -7,9 +7,9 @@
 
 import db from '../../../lib/db';
 import auth from '../../../lib/auth';
-import { Message } from '../../..';
-import { NextApiResponse, NextApiRequest } from 'next';
-import { sanitize } from '../../../src/components/user-info-input/sanitize/sanitize';
+import {Message} from '../../..';
+import {NextApiResponse, NextApiRequest} from 'next';
+import {sanitize} from '../../../src/components/user-info-input/sanitize/sanitize';
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   // set headers
@@ -19,8 +19,8 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   );
   res.setHeader('Content-Type', 'json/javascript');
 
-  let status: boolean = true;
-  let messageObj = {
+  let status = true;
+  const messageObj = {
     avatarURLMessage: (null as unknown) as string,
     firstNameMessage: (null as unknown) as string,
     lastNameMessage: (null as unknown) as string,

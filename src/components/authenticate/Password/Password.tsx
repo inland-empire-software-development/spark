@@ -9,9 +9,9 @@ const handleVisibilityToggle = (index: string, state: boolean) => {
   const requirement = document.querySelector(`[data-check="${index}"]`);
 
   if (requirement) {
-    state
-      ? requirement.classList.remove('uk-hidden')
-      : requirement.classList.add('uk-hidden');
+    state ?
+      requirement.classList.remove('uk-hidden') :
+      requirement.classList.add('uk-hidden');
   }
 };
 
@@ -34,7 +34,7 @@ const handleRequirements = (password: string) => {
 
 // Allows user to toggle password view
 const showPassword = (
-  event: React.MouseEvent<HTMLAnchorElement, MouseEvent>
+    event: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
 ) => {
   event.preventDefault();
 
@@ -55,8 +55,8 @@ const showPassword = (
 
 // Handles password validation as a whole
 const handlePassword = (
-  event: React.ChangeEvent<HTMLInputElement>,
-  passwordRequired: boolean = true
+    event: React.ChangeEvent<HTMLInputElement>,
+    passwordRequired = true,
 ) => {
   if (passwordRequired) {
     const password: HTMLInputElement = event.target;
