@@ -19,7 +19,7 @@ function getUserImage(userDetails: { avatar_url: any; first_name: any; last_name
   return (
     <Link href="/user-profile">
       <a className="white">
-        <img src={userDetails && userDetails.avatar_url ? userDetails.avatar_url : process.env.HOST + "images/logo/spark-360x360.png"}
+        <img src={userDetails && userDetails.avatar_url ? process.env.HOST + userDetails.avatar_url : process.env.HOST + "images/logo/spark-360x360.png"}
           alt="user profile image"
           className="bg-white"
           title={userDetails ? userDetails?.first_name + " " + userDetails?.last_name : "user profile image"}
@@ -55,7 +55,7 @@ function User(props: { isMobile?: boolean }): JSX.Element {
     value: userID,
   };
 
-  const [userDetails, setUserDetails]= useState({
+  const [userDetails, setUserDetails] = useState({
     "avatar_url": undefined,
     "first_name": undefined,
     "last_name": undefined,
@@ -118,7 +118,7 @@ function User(props: { isMobile?: boolean }): JSX.Element {
             <div className="uk-navbar-dropdown">
               <div>
                 <p className="uk-text-capitalize">Hello {getUserFirstName(userDetails)}!</p>
-                <hr/>
+                <hr />
               </div>
               <ul className="uk-nav uk-navbar-dropdown-nav">
                 <li>
@@ -127,7 +127,7 @@ function User(props: { isMobile?: boolean }): JSX.Element {
                   </Link>
                 </li>
                 <li>
-                  <Link href='/profile'>
+                  <Link href='/settings/profile'>
                     <a>Profile</a>
                   </Link>
                 </li>
@@ -154,7 +154,7 @@ function User(props: { isMobile?: boolean }): JSX.Element {
             className="offcanvas-logo"
             title="Spark mobile menu"
           />
-          <hr/>
+          <hr />
           {getLoginLink("black")}
         </>
       )}
@@ -162,7 +162,7 @@ function User(props: { isMobile?: boolean }): JSX.Element {
       {userDetails.first_name !== undefined && isMobile && access && (
         <>
           <span id="mobile-user-nav-toggle">
-            <i className="fas fa-caret-right primary" uk-toggle="target: .toggle-user-nav-mobile; animation: uk-animation-slide-right"/>
+            <i className="fas fa-caret-right primary" uk-toggle="target: .toggle-user-nav-mobile; animation: uk-animation-slide-right" />
           </span>
 
 
@@ -179,10 +179,10 @@ function User(props: { isMobile?: boolean }): JSX.Element {
                 </Link>
                 <div id="user-details-mobile" className="w-100 grid">
                   <div className="w-15 user-details-notifications-mobile">
-                    <Notifications mobile={true}/>
+                    <Notifications mobile={true} />
                   </div>
                   <div className="w-15 user-details-messages-mobile">
-                    <Messages mobile={true}/>
+                    <Messages mobile={true} />
                   </div>
                 </div>
               </div>
@@ -194,7 +194,7 @@ function User(props: { isMobile?: boolean }): JSX.Element {
               <li className="w-50 uk-text-center dark-gray" title="Your user dashboard">
                 <Link href="/dashboard">
                   <a>
-                    <i className="fal fa-tachometer-alt-fast"/>
+                    <i className="fal fa-tachometer-alt-fast" />
                     <span className="uk-display-block">Dashboard</span>
                   </a>
                 </Link>
@@ -202,7 +202,7 @@ function User(props: { isMobile?: boolean }): JSX.Element {
               <li className="w-50 uk-text-center dark-gray" title="Your account settings">
                 <Link href="/settings">
                   <a>
-                    <i className="fal fa-cog"/>
+                    <i className="fal fa-cog" />
                     <span className="uk-display-block">Settings</span>
                   </a>
                 </Link>
@@ -210,7 +210,7 @@ function User(props: { isMobile?: boolean }): JSX.Element {
               <li className="w-50 uk-text-center dark-gray" title="Your profile">
                 <Link href="/profile">
                   <a>
-                    <i className="fal fa-user-circle"/>
+                    <i className="fal fa-user-circle" />
                     <span className="uk-display-block">Profile</span>
                   </a>
                 </Link>
@@ -218,14 +218,14 @@ function User(props: { isMobile?: boolean }): JSX.Element {
               <li className="w-50 uk-text-center dark-gray" title="Logout">
                 <LogOut content={
                   <>
-                    <i className="fal fa-sign-out"/>
+                    <i className="fal fa-sign-out" />
                     <span className="uk-display-block">Sign Out</span>
                   </>
                 } />
               </li>
             </ul>
           </div>
-          <hr/>
+          <hr />
         </>
       )}
 

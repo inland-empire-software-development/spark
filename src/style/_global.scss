@@ -1,4 +1,7 @@
+@import './variables.scss';
+
 html {
+  background-color: $snow;
   scroll-behavior: smooth;
   height: 100%;
   -webkit-font-smoothing: antialiased;
