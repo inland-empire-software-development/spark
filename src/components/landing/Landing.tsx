@@ -73,9 +73,11 @@ function Landing(): JSX.Element {
       </div>
       {/* Student quote || or none?? */}
 
-      <div className="uk-margin-auto uk-margin-auto-vertical uk-card uk-card-default uk-card-body uk-height-small student-quote-section">
-        <p className="uk-position-center student-quote Light black">&quot;This program changed my life. Oh em gee. The instructor is amazing and the students are all passionate.&quot;</p>
-        <p className="uk-position-center student Light black">-Cutie Pie, Student</p>
+      <div className="uk-card uk-card-default uk-card-body uk-flex uk-flex-column uk-flex-center student-quote-section">
+        <div className="uk-margin-large-bottom uk-margin-large-top">
+          <p className="uk-text-center student-quote black uk-margin-auto">&quot;This program changed my life. Oh em gee. The instructor is amazing and the students are all passionate.&quot;</p>
+          <p className="uk-text-center student black uk-margin-auto">-Cutie Pie, Student</p>
+        </div>
       </div>
 
 
@@ -98,8 +100,8 @@ function Landing(): JSX.Element {
       </div>
       {/* Random quote */}
 
-      <div className="uk-margin-auto uk-margin-auto-vertical uk-card uk-card-default uk-card-body random-quote-section bg-dark-gray">
-        <p className="uk-position-center Light random-quote">&quot;Education is the passport to the future, for tomorrow belongs to those who prepare for it today.&quot; - Malcom X</p>
+      <div className="uk-card uk-card-default uk-card-body random-quote-section bg-light-gray">
+        <p className="uk-margin-auto uk-margin-large-top uk-margin-large-bottom uk-text-center white random-quote">&quot;Education is the passport to the future, for tomorrow belongs to those who prepare for it today.&quot; - Malcom X</p>
       </div>
 
 
@@ -115,7 +117,7 @@ function Landing(): JSX.Element {
             </div>
           </div>
           {/* Background image right  */}
-          <div className="uk-background-contain uk-background-secondary uk-flex-first uk-padding program-image">
+          <div className="uk-background-contain uk-background-secondary uk-padding program-image">
             <img src="" alt="Program Image" />
           </div>
 

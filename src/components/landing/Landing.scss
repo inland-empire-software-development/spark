@@ -181,34 +181,24 @@
   .student-quote {
     font-size: 20px;
     font-family: "Light", sans-serif;
-    text-align: center;
-    max-width: 45%;
+    max-width: 600px;
   }
 
   .student {
     font-size: 16px;
     font-family: "Light", sans-serif;
-    position: relative;
-    top: 65%;
-  }
-
-  .student-quote-section {
-    width: 100%;
-    min-height: 300px;
   }
 
   // ** Random Quote **//
 
-  .random-quote-section {
-    width: 100%;
-    min-height: 220px;
-  }
+  // .random-quote-section {
+  //   // width: 100%;
+  // }
 
   .random-quote {
     font-size: 22px;
     font-family: "Light", sans-serif;
-    text-align: center;
-    max-width: 45%;
+    max-width: 600px;
   }
 
   .random-author {
