@@ -80,48 +80,45 @@ function Landing(): JSX.Element {
 
 
       {/* Venue */}
-      <div className="uk-grid-collapse uk-child-width-expand@s uk-text-center venue-section" uk-grid="true">
+      <div className="uk-grid-collapse uk-child-width-1-2@s uk-text-center venue-section" uk-grid="true">
         {/* Background image left  */}
-        <div>
-          <div className="uk-background-contain uk-background-secondary uk-padding uk-height-small venue-image">
-            <img src="" alt="Venue Image" />
-          </div>
+        <div className="uk-background-contain uk-background-secondary uk-padding venue-image">
+          <img src="" alt="Venue Image" />
         </div>
+
         {/* Venue description right */}
-        <div>
-          <div className="uk-margin-auto uk-margin-auto-vertical uk-card uk-card-default uk-card-body venue-body">
-            <h4 className="uk-position-left venue-title black">Venue</h4>
-            <p className="venue-description Book black">Our program will take place at one of the fastest growing incubators in the city of Riverside. It can host large meetings, be used as a co-hosting space, and is at the center of the bustling city.</p>
-            <p className="venue-street-address black Medium">3499 Tenth St.</p>
-            <p className="venue-county-state black Medium">Riverside, CA 92501</p>
-          </div>
+
+        <div className="uk-margin-auto uk-margin-auto-vertical uk-card uk-card-default uk-card-body uk-text-left venue-body">
+          <h4 className="venue-title black">Venue</h4>
+          <p className="venue-description black">Our program will take place at one of the fastest growing incubators in the city of Riverside. It can host large meetings, be used as a co-hosting space, and is at the center of the bustling city.</p>
+          <p className="venue-street-address black">3499 Tenth St.</p>
+          <p className="venue-county-state black">Riverside, CA 92501</p>
         </div>
+
       </div>
       {/* Random quote */}
 
-      <div className="uk-margin-auto uk-margin-auto-vertical uk-card uk-card-default uk-card-body uk-height-small random-quote-section bg-dark-gray">
+      <div className="uk-margin-auto uk-margin-auto-vertical uk-card uk-card-default uk-card-body random-quote-section bg-dark-gray">
         <p className="uk-position-center Light random-quote">&quot;Education is the passport to the future, for tomorrow belongs to those who prepare for it today.&quot; - Malcom X</p>
-        {/* <p className="uk-position-center Light random-author">-Malcom X</p> */}
       </div>
 
 
       {/* Program */}
       <div className="uk-contianer">
-        <div className="uk-grid-collapse uk-child-width-expand@s uk-text-center program-section" uk-grid="true">
+        <div className="uk-grid-collapse uk-child-width-1-2@s uk-text-center program-section" uk-grid="true">
           <div>
             {/* Program description left */}
-            <div className="uk-margin-auto uk-margin-auto-vertical uk-card uk-card-default uk-card-body program-body">
-              <h4 className="uk-position-right program-title">Program</h4>
+            <div className="uk-margin-auto uk-margin-auto-vertical uk-card uk-card-default uk-card-body uk-text-right program-body">
+              <h4 className="program-title">Program</h4>
               <p className="program-description black">Spark program is a community driven learning program that provides students a working set of skills to get started building useful applications. Our courses are realistically designed and we make no false promises.</p>
-              <button className="uk-button uk-button-small uk-button-default request-button Book bg-primary white">Request Information</button>
+              <button className="uk-button uk-button-default request-button bg-primary white">Request Information</button>
             </div>
           </div>
           {/* Background image right  */}
-          <div>
-            <div className="uk-background-contain uk-background-secondary uk-padding uk-height-small program-image">
-              <img src="" alt="Program Image" />
-            </div>
+          <div className="uk-background-contain uk-background-secondary uk-padding program-image">
+            <img src="" alt="Program Image" />
           </div>
+
         </div>
       </div>
       {/* footer */}

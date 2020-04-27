@@ -220,43 +220,34 @@
 
   //** Venue **//
 
-  .venue-image {
-    min-height: 300px;
-  }
-
-  .venue-body {
-    min-height: 300px;
-  }
-
   .venue-title {
     font-size: 48px;
     font-family: "Black", sans-serif;
-    position: relative;
-    top: 10%;
-    left: 8%;
   }
 
   .venue-description {
-    text-align: left;
+    text-align: justify;
     font-size: 32px;
     font-family: "Book", sans-serif;
-    // width: 70%;
-    margin-left: 8px;
-    margin-top: 50px;
+    padding-right: 1.5em;
+  }
+
+  .venue-image {
+    min-height: 300px;
   }
 
   .venue-street-address {
     font-family: "Medium", sans-serif;
     font-size: 32px;
     text-align: left;
-    margin: 0 0 0 8px;
+    margin: 36px 0 0 0;
   }
 
   .venue-county-state {
     font-family: "Medium", sans-serif;
     font-size: 32px;
     text-align: left;
-    margin: 0 0 0 8px;
+    margin: 0 0 0 0;
   }
 
   // ** Program ** //
@@ -268,27 +259,22 @@
   .program-title {
     font-size: 48px;
     font-family: "Black", sans-serif;
-    position: relative;
-    top: 10%;
-    left: 64%;
   }
   // Help with alignment
   .program-description {
     font-size: 32px;
     font-family: "Book", sans-serif;
     text-align: justify;
-    margin-left: 150px;
-    margin-right: 0;
-    margin-top: 50px;
+    padding-left: 1.5em;
   }
 
   .request-button {
     font-size: 22px;
     font-family: "Book", sans-serif;
-    height: 42px;
-    // width: 235px;
-    position: relative;
-    left: 26%;
+
+    &:hover {
+      background-color: $tertiary;
+    }
   }
 
   .program-image {
