@@ -18,55 +18,35 @@
   }
 
   .course-info-top {
-    font-size: 36px;
-    font-weight: 500;
+    font-size: 46px;
+    font-family: "Heavy", sans-serif;
     margin: 0;
   }
 
   .course-info-mid {
-    font-size: 22px;
+    font-size: 32px;
+    font-family: "Medium", sans-serif;
     margin: 0;
-    overflow: hidden;
   }
 
   .course-info-bottom {
-    font-size: 10px;
+    font-size: 14px;
+    font-family: "Light", sans-serif;
     margin: 0;
     padding-top: 10px;
   }
 
   .course-info-section {
     margin: 0;
+    padding: 24px;
   }
 
-  .course-info-section-1 {
-    padding: 20px 0 0 20px;
-  }
-
-  .course-info-section-2 {
-    padding: 20px 0 0 25px;
-  }
-
-  .course-info-section-3 {
-    padding: 20px 20px 0 30px;
-  }
-
-  .course-info-section-4 {
-    padding: 20px 20px 0 20px;
-  }
-
+  // TODO - Media query for small devices < 960 px
   .course-info-description {
-    // padding: 0;
-    // position: relative;
-    // top: 50%;
-    // left: 40%;
-    // transform: translate(-60%, -50%);
     padding: 0;
     position: relative;
     top: 50%;
-    left: 40%;
-    transform: translate(-54%, -50%);
-    min-width: 72%;
+    transform: translate(0, -50%);
   }
 
   //** Course-Program **//

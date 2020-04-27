@@ -10,30 +10,28 @@ function Landing(): JSX.Element {
       </div>
       {/* course info */}
       <div className="course-info">
-        <div className="uk-margin-auto uk-width-2-3@s uk-card uk-card-default uk-card-body course-info-description">
-          <div className="uk-child-width-expand@l course" uk-grid="true">
-            <div className="uk-grid-match uk-child-width-1-4@l uk-height-small course-info-section" uk-grid="true">
-              <section className="uk-align-center uk-margin-remove course-info-section-1">
-                <h4 className="Heavy primary course-info-top">15th</h4>
-                <h5 className="Medium black course-info-mid">april</h5>
-                <p className="Light black course-info-bottom">Start date for next cohort.</p>
-              </section>
-              <section className="uk-align-center uk-margin-remove course-info-section-2">
-                <h4 className="Heavy primary course-info-top">10</h4>
-                <h5 className="Medium black course-info-mid">weeks</h5>
-                <p className="Light black course-info-bottom">Every Saturday. 12:00 PM - 3:00 PM</p>
-              </section>
-              <section className="uk-align-center uk-margin-remove course-info-section-3">
-                <h4 className="Heavy primary course-info-top">15</h4>
-                <h5 className="Medium black course-info-mid">seats</h5>
-                <p className="Light black course-info-bottom">Limited number of seats</p>
-              </section>
-              <section className="uk-align-center uk-margin-remove bg-primary course-info-section-4">
-                <h4 className="Heavy white course-info-top">100%</h4>
-                <h5 className="Medium black course-info-mid">scholarships</h5>
-                <p className="Light white course-info-bottom">Apply for a full scholoarship.</p>
-              </section>
-            </div>
+        <div className="uk-margin-auto uk-width-3-4@m uk-widthuk-card uk-card-default uk-card-body course-info-description">
+          <div className="uk-grid-collapse uk-grid-match uk-child-width-1-4@l uk-child-width-1-2@m" data-uk-grid="true">
+            <section className="uk-margin-remove course-info-section">
+              <h4 className="primary course-info-top">15th</h4>
+              <h5 className="black course-info-mid">april</h5>
+              <p className="black course-info-bottom">Start date for next cohort.</p>
+            </section>
+            <section className="uk-margin-remove course-info-section">
+              <h4 className="primary course-info-top">10</h4>
+              <h5 className="black course-info-mid">weeks</h5>
+              <p className="black course-info-bottom">Every Saturday. 12:00 PM - 3:00 PM</p>
+            </section>
+            <section className="uk-margin-remove course-info-section">
+              <h4 className="primary course-info-top">15</h4>
+              <h5 className="black course-info-mid">seats</h5>
+              <p className="black course-info-bottom">Limited number of seats</p>
+            </section>
+            <section className="uk-margin-remove bg-primary course-info-section">
+              <h4 className="white course-info-top">100%</h4>
+              <h5 className="black course-info-mid">scholarships</h5>
+              <p className="white course-info-bottom">Apply for a full scholoarship.</p>
+            </section>
           </div>
         </div>
         {/* course program */}
