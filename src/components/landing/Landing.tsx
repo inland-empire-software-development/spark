@@ -37,9 +37,9 @@ function Landing(): JSX.Element {
         {/* course program */}
         <div className="course-program light-gray">
           <div className="uk-margin-auto uk-width-3-4@m uk-card uk-card-default uk-card-body course-program-description">
-            <div className="uk-child-width-expand@l" uk-grid="true">
+            <div className="uk-child-width-expand@l" data-uk-grid="true">
               {/* course program description */}
-              <div className="uk-grid-match uk-child-width-1-4@s uk-height-small" uk-grid="true">
+              <div className="uk-grid-match uk-child-width-1-4@s uk-height-small" data-uk-grid="true">
                 <section className="uk-align-center uk-margin-remove course-program-section-1">
                   <h4 className="course-program-header">Course Program</h4>
                   <p className="black course-program-header-detail">Learn more about the details of our upcoming programs. </p>
@@ -80,7 +80,7 @@ function Landing(): JSX.Element {
 
 
       {/* Venue */}
-      <div className="uk-grid-collapse uk-child-width-1-2@s uk-text-center venue-section" uk-grid="true">
+      <div className="uk-grid-collapse uk-child-width-1-2@l uk-text-center venue-section" data-uk-grid="true">
         {/* Background image left  */}
         <div className="uk-background-contain uk-background-secondary uk-padding venue-image">
           <img src="" alt="Venue Image" />
@@ -105,17 +105,17 @@ function Landing(): JSX.Element {
 
       {/* Program */}
       <div className="uk-contianer">
-        <div className="uk-grid-collapse uk-child-width-1-2@s uk-text-center program-section" uk-grid="true">
+        <div className="uk-grid-collapse uk-child-width-1-2@l uk-text-center program-section" data-uk-grid="true">
           <div>
             {/* Program description left */}
-            <div className="uk-margin-auto uk-margin-auto-vertical uk-card uk-card-default uk-card-body uk-text-right program-body">
+            <div className="uk-margin-auto uk-margin-auto-vertical uk-card uk-card-default uk-card-body uk-text-left uk-text-right@l program-body">
               <h4 className="program-title">Program</h4>
               <p className="program-description black">Spark program is a community driven learning program that provides students a working set of skills to get started building useful applications. Our courses are realistically designed and we make no false promises.</p>
               <button className="uk-button uk-button-default request-button bg-primary white">Request Information</button>
             </div>
           </div>
           {/* Background image right  */}
-          <div className="uk-background-contain uk-background-secondary uk-padding program-image">
+          <div className="uk-background-contain uk-background-secondary uk-flex-first uk-padding program-image">
             <img src="" alt="Program Image" />
           </div>
 

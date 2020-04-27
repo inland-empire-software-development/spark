@@ -220,16 +220,19 @@
 
   //** Venue **//
 
+  .venue-body {
+    min-height: 300px;
+    padding-right: 48px;
+  }
+
   .venue-title {
     font-size: 48px;
     font-family: "Black", sans-serif;
   }
 
   .venue-description {
-    text-align: justify;
     font-size: 32px;
     font-family: "Book", sans-serif;
-    padding-right: 1.5em;
   }
 
   .venue-image {
@@ -254,6 +257,7 @@
 
   .program-body {
     min-height: 300px;
+    padding-left: 48px;
   }
 
   .program-title {
@@ -264,8 +268,6 @@
   .program-description {
     font-size: 32px;
     font-family: "Book", sans-serif;
-    text-align: justify;
-    padding-left: 1.5em;
   }
 
   .request-button {
