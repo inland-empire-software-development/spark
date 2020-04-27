@@ -41,34 +41,26 @@
     padding: 24px;
   }
 
-  // TODO - Media query for small devices < 960 px
+  // TODO - Media query for small devices < 960 px for this and program description
   .course-info-description {
     padding: 0;
     position: relative;
     top: 50%;
     transform: translate(0, -50%);
+    max-width: 1200px;
   }
 
   //** Course-Program **//
 
   .course-program-description {
-    // margin-top: 40px;
-    // padding: 0px 10px 0px 0px;
-    // padding: 0;
-    // position: relative;
-    // top: 0;
-    // left: 40%;
-    // transform: translate(-60%, -40%);
-    // min-height: 200px;
     margin-top: 40px;
     padding: 0 10px 0 0;
     padding: 0;
     position: relative;
     top: 0;
-    left: 40%;
-    transform: translate(-54%, -40%);
+    transform: translate(0, -40%);
     min-height: 200px;
-    min-width: 72%;
+    max-width: 1200px;
   }
 
   .course-program-section-1,
@@ -98,8 +90,8 @@
   // }
 
   .course-program-header {
-    font-size: 24px;
-    font-weight: 700;
+    font-size: 32px;
+    font-family: "Black", sans-serif;
     margin: 0;
     padding-top: 5px;
     position: relative;
@@ -107,26 +99,28 @@
   }
 
   .course-program-header-detail {
-    font-size: 14px;
-    font-weight: 400;
+    font-size: 24px;
+    font-family: "Book", sans-serif;
     margin: 10px 10px 0 0;
     padding: 0 50px 0 0;
   }
 
   .course-program-date-header {
-    font-size: 38px;
-    font-weight: 500;
+    font-size: 54px;
+    font-family: "Heavy", sans-serif;
     margin: 0;
   }
 
   .course-program-date {
-    font-size: 34px;
+    font-size: 46px;
+    font-family: "Book", sans-serif;
     margin: 0 0 20px 0;
     line-height: 0.7;
   }
 
   .course-program-time {
-    font-size: 10px;
+    font-size: 12px;
+    font-family: "Light", sans-serif;
     min-width: 100px;
   }
 
@@ -148,20 +142,21 @@
   }
 
   .course-program-detail {
-    font-size: 26px;
-    font-weight: 400;
+    font-size: 32px;
+    font-family: "Medium", sans-serif;
     margin: 0 0 5px 0;
     padding: 10px 10px 0 10px;
     flex-grow: 6;
   }
 
   .course-program-detail-list {
-    font-size: 10px;
+    font-size: 14px;
     padding-left: 0;
     margin: 0 0 10px 10px;
   }
 
   .course-program-detail-list > li {
+    font-family: "Light", sans-serif;
     margin-bottom: 2px;
   }
 
@@ -184,13 +179,15 @@
   //** Student Quote **//
 
   .student-quote {
-    font-size: 16px;
+    font-size: 20px;
+    font-family: "Light", sans-serif;
     text-align: center;
     max-width: 45%;
   }
 
   .student {
-    font-size: 12px;
+    font-size: 16px;
+    font-family: "Light", sans-serif;
     position: relative;
     top: 65%;
   }
@@ -208,13 +205,15 @@
   }
 
   .random-quote {
-    font-size: 17px;
+    font-size: 22px;
+    font-family: "Light", sans-serif;
     text-align: center;
     max-width: 45%;
   }
 
   .random-author {
-    font-size: 17px;
+    font-size: 22px;
+    font-family: "Light", sans-serif;
     position: relative;
     top: 65%;
   }
@@ -230,8 +229,8 @@
   }
 
   .venue-title {
-    font-size: 32px;
-    font-weight: 650;
+    font-size: 48px;
+    font-family: "Black", sans-serif;
     position: relative;
     top: 10%;
     left: 8%;
@@ -239,19 +238,23 @@
 
   .venue-description {
     text-align: left;
-    width: 70%;
+    font-size: 32px;
+    font-family: "Book", sans-serif;
+    // width: 70%;
     margin-left: 8px;
     margin-top: 50px;
   }
 
   .venue-street-address {
-    font-weight: bold;
+    font-family: "Medium", sans-serif;
+    font-size: 32px;
     text-align: left;
     margin: 0 0 0 8px;
   }
 
   .venue-county-state {
-    font-weight: bold;
+    font-family: "Medium", sans-serif;
+    font-size: 32px;
     text-align: left;
     margin: 0 0 0 8px;
   }
@@ -263,25 +266,27 @@
   }
 
   .program-title {
-    font-size: 32px;
-    font-weight: 650;
+    font-size: 48px;
+    font-family: "Black", sans-serif;
     position: relative;
     top: 10%;
     left: 64%;
   }
   // Help with alignment
   .program-description {
+    font-size: 32px;
+    font-family: "Book", sans-serif;
     text-align: justify;
-    width: 70%;
     margin-left: 150px;
     margin-right: 0;
     margin-top: 50px;
   }
 
   .request-button {
-    font-size: 12px;
+    font-size: 22px;
+    font-family: "Book", sans-serif;
     height: 42px;
-    width: 235px;
+    // width: 235px;
     position: relative;
     left: 26%;
   }

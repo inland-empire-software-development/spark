@@ -36,31 +36,31 @@ function Landing(): JSX.Element {
         </div>
         {/* course program */}
         <div className="course-program light-gray">
-          <div className="uk-margin-auto uk-width-2-3@s uk-card uk-card-default uk-card-body course-program-description">
+          <div className="uk-margin-auto uk-width-3-4@m uk-card uk-card-default uk-card-body course-program-description">
             <div className="uk-child-width-expand@l" uk-grid="true">
               {/* course program description */}
               <div className="uk-grid-match uk-child-width-1-4@s uk-height-small" uk-grid="true">
                 <section className="uk-align-center uk-margin-remove course-program-section-1">
-                  <h4 className="black course-program-header">Course Program</h4>
-                  <p className="Book black course-program-header-detail">Learn more about the details of our upcoming programs. </p>
+                  <h4 className="course-program-header">Course Program</h4>
+                  <p className="black course-program-header-detail">Learn more about the details of our upcoming programs. </p>
                 </section>
                 <section className="uk-align-center uk-margin-remove course-program-section-2">
-                  <h4 className="Heavy primary course-program-date-header">24th</h4>
-                  <h5 className="Book course-program-date">June</h5>
-                  <p className="Light black course-program-time">Every Saturday. 1:00 PM - 3:00 PM</p>
+                  <h4 className="primary course-program-date-header">24th</h4>
+                  <h5 className="course-program-date">June</h5>
+                  <p className="course-program-time">Every Saturday. 1:00 PM - 3:00 PM</p>
                 </section>
                 <hr className="uk-divider-vertical" />
                 {/* Need uk-grid-divider  */}
                 <section className="uk-align-center uk-margin-remove  uk-child-width-expand@l course-program-section-3">
-                  <h4 className="Medium black course-program-detail">React Fundamentals:</h4>
-                  <ul className="Light black course-program-detail-list">
-                    <li>
+                  <h4 className="black course-program-detail">React Fundamentals:</h4>
+                  <ul className="course-program-detail-list">
+                    <li className="light-gray">
                                             Basics of React
                     </li>
-                    <li>
+                    <li className="light-gray">
                                             Breakdown of the library
                     </li>
-                    <li>
+                    <li className="light-gray">
                                             Creating websites with the library
                     </li>
                   </ul>
