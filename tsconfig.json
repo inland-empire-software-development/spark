@@ -38,7 +38,8 @@
     "**/*.spec.ts",
     "**/*.spec.tsx",
     "**/*.test.ts",
-    "**/*.test.tsx"
+    "**/*.test.tsx",
+    "src/components/dashboard/panels/addCourse/AddCourse.tsx",
   ],
   "rules": {
     "@typescript-eslint/member-naming": [
