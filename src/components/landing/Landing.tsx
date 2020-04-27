@@ -113,11 +113,11 @@ function Landing(): JSX.Element {
             <div className="uk-margin-auto uk-margin-auto-vertical uk-card uk-card-default uk-card-body uk-text-left uk-text-right@l program-body">
               <h4 className="program-title">Program</h4>
               <p className="program-description black">Spark program is a community driven learning program that provides students a working set of skills to get started building useful applications. Our courses are realistically designed and we make no false promises.</p>
-              <button className="uk-button uk-button-default request-button bg-primary white">Request Information</button>
+              <button className="uk-button uk-button-default uk-align-center uk-align-right@l request-button bg-primary white">Request Information</button>
             </div>
           </div>
           {/* Background image right  */}
-          <div className="uk-background-contain uk-background-secondary uk-padding program-image">
+          <div className="uk-background-contain uk-background-secondary uk-flex-first uk-flex-last@l uk-padding program-image">
             <img src="" alt="Program Image" />
           </div>
 
