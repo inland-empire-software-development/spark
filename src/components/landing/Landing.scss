@@ -1,3 +1,5 @@
+$m-breakpoint: 960px;
+
 // 1440
 .landing-page {
   padding: 0;
@@ -13,13 +15,13 @@
   //** Course-Info **//
 
   .course-info {
-    background-color: lightgrey;
     min-height: 320px;
   }
 
   .course-info-top {
     font-size: 46px;
     font-family: "Heavy", sans-serif;
+    line-height: 0.7;
     margin: 0;
   }
 
@@ -33,11 +35,14 @@
     font-size: 14px;
     font-family: "Light", sans-serif;
     margin: 0;
-    padding-top: 10px;
+    margin-top: 18px;
   }
 
   .course-info-section {
     margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
     padding: 24px;
   }
 
@@ -45,64 +50,44 @@
   .course-info-description {
     padding: 0;
     position: relative;
-    top: 50%;
-    transform: translate(0, -50%);
-    max-width: 1200px;
+
+    @media screen and (min-width: $m-breakpoint) {
+      top: 50%;
+      transform: translate(0, -50%);
+      max-width: 1200px;
+    }
   }
 
   //** Course-Program **//
 
   .course-program-description {
-    margin-top: 40px;
-    padding: 0 10px 0 0;
-    padding: 0;
-    position: relative;
-    top: 0;
-    transform: translate(0, -40%);
-    min-height: 200px;
-    max-width: 1200px;
+    // margin: 40px 0 40px 0;
   }
 
   .course-program-section-1,
   .course-program-section-2,
   .course-program-section-3 {
-    padding: 20px 0 20px 40px;
-    // margin-bottom: 10px;
+    // padding: 20px 0 20px 40px;
+    // // margin-bottom: 10px;
   }
 
   .course-program-section-1 {
-    background-color: lightgray;
     max-width: 29%;
     min-height: 200px;
   }
 
   .course-program-section-2 {
-    padding-left: 20px;
-    padding-right: 20px;
-    max-width: 28px;
-  }
 
-  // .course-program-section-3 {
-  //   padding-top: 0;
-  //   position: relative;
-  //   top: -4%;
-  //   left: -20%;
-  // }
+  }
 
   .course-program-header {
     font-size: 32px;
     font-family: "Black", sans-serif;
-    margin: 0;
-    padding-top: 5px;
-    position: relative;
-    top: 2%;
   }
 
   .course-program-header-detail {
     font-size: 24px;
     font-family: "Book", sans-serif;
-    margin: 10px 10px 0 0;
-    padding: 0 50px 0 0;
   }
 
   .course-program-date-header {
@@ -121,25 +106,12 @@
   .course-program-time {
     font-size: 12px;
     font-family: "Light", sans-serif;
-    min-width: 100px;
   }
 
   .course-program-section-3 {
-    padding: 20px 0 0 0;
-    margin: 0;
-    position: relative;
-    top: -2%;
-    left: 18%;
   }
 
-  .uk-divider-vertical {
-    position: relative;
-    height: 140px;
-    top: 18%;
-    left: 14%;
-    max-width: 2px;
-    padding: 0;
-  }
+  .uk-divider-vertical {}
 
   .course-program-detail {
     font-size: 32px;

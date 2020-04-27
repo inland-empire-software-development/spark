@@ -10,8 +10,8 @@ function Landing(): JSX.Element {
       </div>
       {/* course info */}
       <div className="course-info">
-        <div className="uk-margin-auto uk-width-3-4@m uk-widthuk-card uk-card-default uk-card-body course-info-description">
-          <div className="uk-grid-collapse uk-grid-match uk-child-width-1-4@l uk-child-width-1-2@m" data-uk-grid="true">
+        <div className="uk-margin-auto uk-width-3-4@m uk-card uk-card-default uk-card-body course-info-description">
+          <div className="uk-grid-collapse uk-child-width-1-2@s uk-child-width-1-4@l" data-uk-grid="true">
             <section className="uk-margin-remove course-info-section">
               <h4 className="primary course-info-top">15th</h4>
               <h5 className="black course-info-mid">april</h5>
@@ -35,8 +35,8 @@ function Landing(): JSX.Element {
           </div>
         </div>
         {/* course program */}
-        <div className="course-program light-gray">
-          <div className="uk-margin-auto uk-width-3-4@m uk-card uk-card-default uk-card-body course-program-description">
+        <div className="course-program">
+          <div className="uk-margin-auto uk-width-3-4@m course-program-description">
             <div className="uk-child-width-expand@l" data-uk-grid="true">
               {/* course program description */}
               <div className="uk-grid-match uk-child-width-1-4@s uk-height-small" data-uk-grid="true">
