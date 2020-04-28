@@ -1,4 +1,5 @@
 $m-breakpoint: 960px;
+$l-breakpoint: 1200px;
 
 // 1440
 .landing-page {
@@ -14,9 +15,7 @@ $m-breakpoint: 960px;
 
   //** Course-Info **//
 
-  .course-info {
-    min-height: 320px;
-  }
+  // .course-info {}
 
   .course-info-top {
     font-size: 46px;
@@ -50,16 +49,44 @@ $m-breakpoint: 960px;
     padding: 0;
 
     @media screen and (min-width: $m-breakpoint) {
-      top: 50%;
+      transform: translate(0, -25%);
+      max-width: 1200px;
+    }
+
+    @media screen and (min-width: $l-breakpoint) {
       transform: translate(0, -50%);
       max-width: 1200px;
     }
   }
 
   //** Course-Program **//
+  .course-program {
+    margin-top: 0;
+    margin-bottom: 48px;
+    max-width: 1200px;
 
-  .course-program-section1 {
-    min-height: 200px;
+    @media screen and (max-width: ($m-breakpoint - 1px)) {
+      margin-top: 64px;
+      margin-bottom: 64px;
+    }
+  }
+
+  .course-program-description {
+    align-items: center;
+  }
+
+  .course-program-label {
+    @media screen and (max-width: $m-breakpoint - 1px) {
+      margin-left: 16px;
+      margin-right: 16px;
+    }
+  }
+
+  .course-program-card {
+    @media screen and (max-width: $m-breakpoint - 1px) {
+      margin-left: 16px;
+      margin-right: 16px;
+    }
   }
 
   .course-program-header {
@@ -88,6 +115,7 @@ $m-breakpoint: 960px;
   .course-program-time {
     font-size: 12px;
     font-family: "Light", sans-serif;
+    margin-top: 40px;
   }
 
   .course-program-detail {
@@ -195,7 +223,7 @@ $m-breakpoint: 960px;
 
   .program-body {
     min-height: 300px;
-    padding-left: 48px;
+    // padding-left: 48px;
   }
 
   .program-title {
