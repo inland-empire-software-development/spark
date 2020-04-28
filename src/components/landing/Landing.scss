@@ -46,10 +46,8 @@ $m-breakpoint: 960px;
     padding: 24px;
   }
 
-  // TODO - Media query for small devices < 960 px for this and program description
   .course-info-description {
     padding: 0;
-    position: relative;
 
     @media screen and (min-width: $m-breakpoint) {
       top: 50%;
@@ -60,24 +58,8 @@ $m-breakpoint: 960px;
 
   //** Course-Program **//
 
-  .course-program-description {
-    // margin: 40px 0 40px 0;
-  }
-
-  .course-program-section-1,
-  .course-program-section-2,
-  .course-program-section-3 {
-    // padding: 20px 0 20px 40px;
-    // // margin-bottom: 10px;
-  }
-
-  .course-program-section-1 {
-    max-width: 29%;
+  .course-program-section1 {
     min-height: 200px;
-  }
-
-  .course-program-section-2 {
-
   }
 
   .course-program-header {
@@ -108,17 +90,11 @@ $m-breakpoint: 960px;
     font-family: "Light", sans-serif;
   }
 
-  .course-program-section-3 {
-  }
-
-  .uk-divider-vertical {}
-
   .course-program-detail {
     font-size: 32px;
     font-family: "Medium", sans-serif;
     margin: 0 0 5px 0;
     padding: 10px 10px 0 10px;
-    flex-grow: 6;
   }
 
   .course-program-detail-list {

@@ -11,7 +11,7 @@ function Landing(): JSX.Element {
       {/* course info */}
       <div className="course-info">
         <div className="uk-margin-auto uk-width-3-4@m uk-card uk-card-default uk-card-body course-info-description">
-          <div className="uk-grid-collapse uk-child-width-1-2@s uk-child-width-1-4@l" data-uk-grid="true">
+          <div className="uk-grid-collapse uk-child-width-1-2@s uk-child-width-1-4@l" data-uk-grid>
             <section className="uk-margin-remove course-info-section">
               <h4 className="primary course-info-top">15th</h4>
               <h5 className="black course-info-mid">april</h5>
@@ -35,35 +35,35 @@ function Landing(): JSX.Element {
           </div>
         </div>
         {/* course program */}
-        <div className="course-program">
-          <div className="uk-margin-auto uk-width-3-4@m course-program-description">
-            <div className="uk-child-width-expand@l" data-uk-grid="true">
-              {/* course program description */}
-              <div className="uk-grid-match uk-child-width-1-4@s uk-height-small" data-uk-grid="true">
-                <section className="uk-align-center uk-margin-remove course-program-section-1">
-                  <h4 className="course-program-header">Course Program</h4>
-                  <p className="black course-program-header-detail">Learn more about the details of our upcoming programs. </p>
-                </section>
-                <section className="uk-align-center uk-margin-remove course-program-section-2">
-                  <h4 className="primary course-program-date-header">24th</h4>
-                  <h5 className="course-program-date">June</h5>
-                  <p className="course-program-time">Every Saturday. 1:00 PM - 3:00 PM</p>
-                </section>
-                <hr className="uk-divider-vertical" />
-                {/* Need uk-grid-divider  */}
-                <section className="uk-align-center uk-margin-remove  uk-child-width-expand@l course-program-section-3">
-                  <h4 className="black course-program-detail">React Fundamentals:</h4>
-                  <ul className="course-program-detail-list">
-                    <li className="light-gray">
-                                            Basics of React
-                    </li>
-                    <li className="light-gray">
-                                            Breakdown of the library
-                    </li>
-                    <li className="light-gray">
-                                            Creating websites with the library
-                    </li>
-                  </ul>
+        <div className="course-program uk-margin-auto uk-width-3-4@m ">
+          {/* course program description */}
+          <div className="uk-grid-large uk-grid-match course-program-description" data-uk-grid>
+            <section className="uk-align-center uk-margin-remove uk-width-1-3 course-program-section-1">
+              <h4 className="course-program-header">Course Program</h4>
+              <p className="black course-program-header-detail">Learn more about the details of our upcoming programs. </p>
+            </section>
+            <div className="uk-width-2-3">
+              <div className="uk-card uk-card-default uk-card-body">
+                <section className="uk-grid-divider uk-grid-match" data-uk-grid>
+                  <section className="uk-align-center uk-margin-remove uk-width-1-3 course-program-section-2">
+                    <h4 className="primary course-program-date-header">24th</h4>
+                    <h5 className="course-program-date">June</h5>
+                    <p className="course-program-time">Every Saturday. 1:00 PM - 3:00 PM</p>
+                  </section>
+                  <section className="uk-align-center uk-margin-remove uk-width-2-3 course-program-section-3">
+                    <h4 className="black course-program-detail">React Fundamentals:</h4>
+                    <ul className="course-program-detail-list">
+                      <li className="light-gray">
+                                                Basics of React
+                      </li>
+                      <li className="light-gray">
+                                                Breakdown of the library
+                      </li>
+                      <li className="light-gray">
+                                                Creating websites with the library
+                      </li>
+                    </ul>
+                  </section>
                 </section>
               </div>
             </div>
@@ -82,7 +82,7 @@ function Landing(): JSX.Element {
 
 
       {/* Venue */}
-      <div className="uk-grid-collapse uk-child-width-1-2@l uk-text-center venue-section" data-uk-grid="true">
+      <div className="uk-grid-collapse uk-child-width-1-2@l uk-text-center venue-section" data-uk-grid>
         {/* Background image left  */}
         <div className="uk-background-contain uk-background-secondary uk-padding venue-image">
           <img src="" alt="Venue Image" />
@@ -107,7 +107,7 @@ function Landing(): JSX.Element {
 
       {/* Program */}
       <div className="uk-contianer">
-        <div className="uk-grid-collapse uk-child-width-1-2@l uk-text-center program-section" data-uk-grid="true">
+        <div className="uk-grid-collapse uk-child-width-1-2@l uk-text-center program-section" data-uk-grid>
           <div>
             {/* Program description left */}
             <div className="uk-margin-auto uk-margin-auto-vertical uk-card uk-card-default uk-card-body uk-text-left uk-text-right@l program-body">
