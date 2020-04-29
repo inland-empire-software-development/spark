@@ -1,5 +1,5 @@
 import SEO from "../../next-seo.config";
-import { DefaultSeo } from "next-seo";
+import {DefaultSeo} from "next-seo";
 // import Footer from '../../src/components/global/Footer/Footer';
 import Navigation from "../../src/components/global/Navigation/Navigation";
 import Title from "../user/title";

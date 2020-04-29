@@ -1,3 +1,9 @@
+@import '../../style/variables.scss';
+
+$bullet-offset: 30px; // offset of .data-containers from left edge
+$bullet-radius: 9px;
+$line-width: 6px; // width of vertical lines that connect bullet points
+
 #timeline {
   .medium-family {
     font-family: 'medium', sans-serif;
@@ -7,103 +13,39 @@
     font-family: 'book', sans-serif;
   }
 
-  /* The actual timeline (the vertical ruler) */
-  .timeline {
+  /* Container around content including offsets for target bullet-points */
+  .data-container {
     position: relative;
-    max-width: 1200px;
-    margin: 0 auto;
-  }
+    left: $bullet-offset;
+    padding-bottom: 30px;
 
-  /* The actual timeline (the vertical ruler) */
-  .timeline::after {
-    content: "";
-    position: absolute;
-    width: 6px;
-    background-color: gainsboro;
-    top: 0;
-    bottom: 0;
-    left: 5%;
-    margin-left: -3px;
-  }
-
-  /* Container around content */
-  .Data-container {
-    padding: 10px 40px;
-    position: relative;
-    background-color: inherit;
-    width: 90%;
-  }
-
-  /* Place the container to the right */
-  .right {
-    left: 5%;
-  }
-
-  // red target
-  #target {
-    width: 28px;
-    height: 28px;
-    border-radius: 50%;
-    background-color: red;
-    left: -55px;
-    position: relative;
-    z-index: 1;
-    top: -10px;
-    opacity: 0.8;
-
-    @media screen and (max-width: 321px) {
-      left: -37px;
+    &::after {
+      content: url('/images/svgs/target.svg');
+      position: absolute;
+      left: -$bullet-offset; // $bulletOffset - 18/2 (target radius) + 6/2 border width
+      top: 0;
     }
 
-    @media screen and (min-width: 322px) and (max-width: 639px) {
-      left: -43px;
-    }
-  }
-
-  #target::before {
-    content: "";
-    z-index: 1;
-    display: block;
-    height: 0.97em;
-    width: 0.97em;
-    background: red;
-    border-radius: 50%;
-    position: relative;
-    top: 6.6px;
-    left: 6.5px;
-  }
-
-  #target::after {
-    content: "";
-    display: block;
-    background: white;
-    width: 22px;
-    height: 22px;
-    top: -12.2px;
-    left: 2.9px;
-    border-radius: 50%;
-    position: relative;
-  }
-
-  /* The actual content */
-  .contents {
-    position: relative;
-    border-radius: 6px;
-    top: -30px;
-  }
-
-  /* Media queries - Responsive timeline on screens less than 600px wide */
-  @media screen and (max-width: 600px) {
-    /* Place the timelime to the left */
-    .timeline::after {
-      left: 31px;
+    &::before {
+      content: "";
+      position: absolute;
+      left: -$bullet-offset - $line-width / 2 + $bullet-radius; /* Lines up center of vertical line with center of bullet */
+      border-left: 6px solid gainsboro;
+      height: 100%;
     }
 
-    /* Full-width containers */
-    .container {
-      width: 100%;
-      padding-left: 70px;
-      padding-right: 25px;
+    // get rid of vertical line that sticks out above first bullet
+    &:first-child {
+      &::before {
+        top: 9px; // radius of bullet
+      }
+    }
+
+    // get rid of vertical line that sticks out below the last bullet
+    &:last-child {
+      &::before {
+        height: 9px; //radius of bullet
+      }
     }
   }
 }
