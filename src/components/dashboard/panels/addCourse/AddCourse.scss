@@ -8,3 +8,14 @@
 .arrowIcon {
   margin-left: 10px;
 }
+
+#course-picture {
+  float: none;
+}
+
+@media only screen and (max-width: 639px) {
+  #courseStart,
+  #courseExpire {
+    max-width: 245px;
+  }
+}
