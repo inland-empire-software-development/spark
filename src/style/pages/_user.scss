@@ -39,7 +39,7 @@
   // Banner css
   #title {
     height: 240px;
-    background-image: url("/images/code.png");
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url("/images/code.png");
     position: relative;
 
     @media screen and (max-width: 959px) {
