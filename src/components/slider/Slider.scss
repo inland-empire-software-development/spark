@@ -23,8 +23,12 @@
   }
 
   .uk-slidenav:hover {
-    background-color: rgba(238, 108, 103, 0.75);
+    background-color: rgb(238, 108, 103);
     color: white;
+
+    @media screen and (max-width: 1199px) {
+      background-color: rgba(238, 108, 103, 0.75);
+    }
   }
 
   //preview
