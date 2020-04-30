@@ -4,17 +4,17 @@ import "./AddCourse.scss";
 function AddCourse(): JSX.Element {
   const submitData: Function = (event: FormEvent<HTMLFormElement>) => {
     const courseTitle = document.getElementById(
-        "courseTitle"
+      "courseTitle"
     ) as HTMLInputElement;
     const cohortID = document.getElementById("cohortID") as HTMLInputElement;
     const courseStart = document.getElementById(
-        "courseStart"
+      "courseStart"
     ) as HTMLInputElement;
     const courseExpire = document.getElementById(
-        "courseExpire"
+      "courseExpire"
     ) as HTMLInputElement;
     const courseDescription = document.getElementById(
-        "courseDescription"
+      "courseDescription"
     ) as HTMLInputElement;
     // console.log(courseTitle.value);
     // console.log(cohortID.value);
@@ -50,7 +50,7 @@ function AddCourse(): JSX.Element {
           <form id="sendInfo" onSubmit={(e) => submitData(e)}>
             <section className="uk-form-horizontal">
               <section className="uk-margin uk-grid">
-                <section className="uk-width-1-1 uk-width-1-2@s">
+                <section className="uk-width-1-1 uk-width-1-2@s uk-margin-bottom">
                   <label className="uk-form-label" htmlFor="Course Title">
                     Course Title{" "}
                   </label>
@@ -61,7 +61,7 @@ function AddCourse(): JSX.Element {
                     name="Course Title"
                   />
                 </section>
-                <section className="uk-width-1-1 uk-width-1-2@s">
+                <section className="uk-width-1-1 uk-width-1-2@s uk-margin-bottom">
                   <label className="uk-form-label" htmlFor="Cohort ID">
                     Cohort ID{" "}
                   </label>
@@ -74,7 +74,7 @@ function AddCourse(): JSX.Element {
                 </section>
               </section>
               <section className="uk-margin uk-grid">
-                <section className="uk-width-1-1 uk-width-1-2@s">
+                <section className="uk-width-1-1 uk-width-1-2@s uk-margin-bottom">
                   <label className="uk-form-label" htmlFor="Course start">
                     Course Start{" "}
                   </label>
@@ -86,7 +86,7 @@ function AddCourse(): JSX.Element {
                     name="Course Start"
                   />
                 </section>
-                <section className="uk-width-1-1 uk-width-1-2@s">
+                <section className="uk-width-1-1 uk-width-1-2@s uk-margin-bottom">
                   <label className="uk-form-label" htmlFor="Course expire">
                     Course End{" "}
                   </label>
@@ -100,7 +100,7 @@ function AddCourse(): JSX.Element {
                 </section>
               </section>
               <section className="uk-margin uk-grid">
-                <section className="uk-width-1-2">
+                <section className="uk-width-1-1 uk-width-1-2@s">
                   <label className="uk-form-label" htmlFor="Instructor">
                     Instructor{" "}
                   </label>
@@ -111,15 +111,20 @@ function AddCourse(): JSX.Element {
                     name="Instructor"
                   />
                 </section>
+                <section className="uk-width-1-2 "></section>
               </section>
 
               {/* drop and drag files */}
               <section className="uk-margin uk-grid">
                 <section className="uk-width-1-1">
-                  <label id="course-picture" className="uk-form-label" htmlFor="Course Picture">
+                  <label
+                    id="course-picture"
+                    className="uk-form-label"
+                    htmlFor="Course Picture"
+                  >
                     Course picture
                   </label>
-                  <section className="js-upload uk-placeholder uk-text-center ">
+                  <section className="js-upload uk-placeholder uk-text-center uk-height-small">
                     <span uk-icon="icon: cloud-upload"></span>
                     <span className="uk-text-middle">
                       {" "}
@@ -144,7 +149,7 @@ function AddCourse(): JSX.Element {
             <h2>Description</h2>
             <section className="uk-form-horizontal">
               <section className="uk-margin uk-grid">
-                <section className="uk-width-1">
+                <section className="uk-width-1-1 uk-width-1-2@s uk-width-1-3@m">
                   <label className="uk-form-label" htmlFor="Category">
                     Category
                   </label>
@@ -153,6 +158,7 @@ function AddCourse(): JSX.Element {
                     <option>Lloan buddie</option>
                   </select>
                 </section>
+                <section className="uk-width-1-2@s uk-width-2-3@m"></section>
               </section>
               <section className="uk-margin uk-grid">
                 <section className="uk-width-1">
@@ -166,7 +172,7 @@ function AddCourse(): JSX.Element {
                   ></textarea>
                 </section>
               </section>
-              <section className="w-20">
+              <section className="w-100">
                 <button
                   className="w-100 uk-button uk-button-default saveButton"
                   type="submit"
