@@ -23,5 +23,5 @@ const pool = mysql.createPool({
 // SQL query just so we don't have to rewrite the following repeatedly
 
 export type SqlQuery = string | mysql.QueryOptions;
-export const queryAsync = promisify<SqlQuery, any>(pool.query);
+export const queryAsync = promisify<SqlQuery, any>(pool.query).bind(pool);
 // export default pool;

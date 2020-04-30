@@ -2,7 +2,6 @@
 /* eslint-disable @typescript-eslint/camelcase */
 import {Message, ArrayIndexedWithStrings, DBUpdateUser} from '..';
 import fetch from 'isomorphic-unfetch';
-import {fsyncSync} from 'fs';
 
 const escape = require('sql-string-escape');
 const bcrypt = require('bcryptjs');
@@ -271,7 +270,7 @@ db.updateUser = function(
   return new Promise((resolve, reject) => {
     db.query(sql, function(error: { sqlMessage: any }, results: object) {
       if (error) reject(error.sqlMessage ? error.sqlMessage : error);
-
+      console.log(results);
       // check update result?
 
       resolve({
