@@ -32,25 +32,17 @@ class Course {
   async getByID(id: string): Promise<CourseEntity> {
     try {
       const data = await this.query({
-        sql: `SELECT * FROM ${process.env.DBNAME}.courses WHERE course_id = ?`,
+        sql: `SELECT * FROM ${process.env.DBNAME}.course WHERE course_id = ?`,
         values: [id],
       });
 
-      console.log(data);
-
-      return {
-        id: 0,
-        code: "",
-        status: 0,
-        name: "",
-        instructor: "",
-      };
+      return this.dataToEntity(data[0]);
     } catch (e) {
       throw new Error('Unable to get user by ID');
     }
   }
 
-  private dataToEntity(data: any): CourseEntity {
+  dataToEntity(data: any): CourseEntity {
     return {
       id: data.course_id,
       code: data.code,

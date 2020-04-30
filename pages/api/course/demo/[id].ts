@@ -1,10 +1,8 @@
 import {NextApiResponse, NextApiRequest} from 'next';
-import course from '../../../lib/entities/course';
+import course from '../../../../lib/entities/course';
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
-  console.log("Incoming request body: ", req.body);
-
-  const data = await course.getAll();
-
+  const id = req.query.id as string;
+  const data = await course.getByID(id);
   res.send(data);
 };
