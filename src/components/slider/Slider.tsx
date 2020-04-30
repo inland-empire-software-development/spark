@@ -13,7 +13,7 @@ function Slider(): JSX.Element {
           </h2>
           {/* slider */}
           <section uk-slider="" className="uk-slider uk-margin-large-bottom uk-margin-auto uk-width-5-6@l">
-            <section className="uk-position-relative">
+            <section className="uk-position-relative uk-visible-toggle">
               <section className="uk-slider-container ">
                 {/* how many slide per viewport size */}
                 <ul
@@ -141,7 +141,7 @@ function Slider(): JSX.Element {
               <section className="uk-hidden@l uk-light">
                 <a
                   id="prev-slide"
-                  className="uk-position-center-left uk-position-small uk-icon uk-slidenav-previous uk-slidenav"
+                  className="uk-position-center-left uk-position-small uk-icon uk-slidenav uk-slidenav uk-hidden-hover"
                   href="#"
                   uk-slider-item="previous"
                 >
@@ -149,7 +149,7 @@ function Slider(): JSX.Element {
                 </a>
                 <a
                   id="next-slide"
-                  className="uk-position-center-right uk-position-small uk-icon uk-slidenav-next uk-slidenav"
+                  className="uk-position-center-right uk-position-small uk-icon uk-slidenav uk-slidenav uk-hidden-hover"
                   href="#"
                   uk-slider-item="next"
                 >
@@ -160,7 +160,7 @@ function Slider(): JSX.Element {
               <section className="uk-visible@l">
                 <a
                   id="prev-slide"
-                  className="uk-position-center-left-out uk-position-large uk-icon uk-slidenav-previous uk-slidenav uk-card uk-card-default"
+                  className="uk-position-center-left-out uk-position-large uk-icon uk-slidenav uk-slidenav uk-card uk-card-default"
                   href="#"
                   uk-slider-item="previous"
                 >
@@ -168,7 +168,7 @@ function Slider(): JSX.Element {
                 </a>
                 <a
                   id="next-slide"
-                  className="uk-position-center-right-out uk-position-large uk-icon uk-slidenav-next uk-slidenav uk-card uk-card-default"
+                  className="uk-position-center-right-out uk-position-large uk-icon uk-slidenav uk-slidenav uk-card uk-card-default"
                   href="#"
                   uk-slider-item="next"
                 >

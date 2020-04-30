@@ -10,29 +10,23 @@
     padding: 20px 0 0 0;
     font-size: 30px;
   }
-  //next button
-  .uk-slidenav-next {
+
+  .uk-slidenav {
     background-color: white;
     color: rgb(238, 108, 103);
     border-radius: 10%;
+
+    @media screen and (max-width: 1199px) {
+      background-color: rgba(200, 200, 200, 0.1);
+      text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.08);
+    }
   }
 
-  .uk-slidenav-next:hover {
-    background-color: rgb(238, 108, 103);
+  .uk-slidenav:hover {
+    background-color: rgba(238, 108, 103, 0.75);
     color: white;
   }
 
-  // Previous button
-  .uk-slidenav-previous {
-    background-color: white;
-    color: rgb(238, 108, 103);
-    border-radius: 10%;
-  }
-
-  .uk-slidenav-previous:hover {
-    background-color: rgb(238, 108, 103);
-    color: white;
-  }
   //preview
   .project-preview {
     height: 200px;
