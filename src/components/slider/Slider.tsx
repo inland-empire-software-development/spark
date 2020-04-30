@@ -12,7 +12,7 @@ function Slider(): JSX.Element {
               Projects by AndyMendez
           </h2>
           {/* slider */}
-          <section uk-slider="" className="uk-slider uk-margin-large-bottom">
+          <section uk-slider="" className="uk-slider uk-margin-large-bottom uk-margin-auto uk-width-5-6@l">
             <section className="uk-position-relative">
               <section className="uk-slider-container ">
                 {/* how many slide per viewport size */}
@@ -145,7 +145,7 @@ function Slider(): JSX.Element {
                   href="#"
                   uk-slider-item="previous"
                 >
-                  <span>&#8592;</span>
+                  <div>&#8592;</div>
                 </a>
                 <a
                   id="next-slide"
@@ -153,7 +153,7 @@ function Slider(): JSX.Element {
                   href="#"
                   uk-slider-item="next"
                 >
-                  <span>&#8594;</span>
+                  <div>&#8594;</div>
                 </a>
               </section>
               {/* outer buttons */}
@@ -164,7 +164,7 @@ function Slider(): JSX.Element {
                   href="#"
                   uk-slider-item="previous"
                 >
-                  <span>&#8592;</span>
+                  <div>&#8592;</div>
                 </a>
                 <a
                   id="next-slide"
@@ -172,7 +172,7 @@ function Slider(): JSX.Element {
                   href="#"
                   uk-slider-item="next"
                 >
-                  <span>&#8594;</span>
+                  <div>&#8594;</div>
                 </a>
               </section>
             </section>
