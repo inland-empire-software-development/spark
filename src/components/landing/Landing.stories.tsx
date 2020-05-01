@@ -5,9 +5,10 @@ export default {
   title: "Landing Page",
   decorators: [],
   excludeStories: /.*Data$/,
-
 };
 
 export const DefaultLandingPage = () => {
-  return <Landing />;
+  return <Landing
+    coverImage="/images/landing/landingcover.jpg"
+  />;
 };

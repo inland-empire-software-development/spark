@@ -1,12 +1,16 @@
 import React from 'react';
 import './Landing.scss';
 
-function Landing(): JSX.Element {
+interface LandingProps {
+  coverImage: string;
+}
+
+const Landing: React.FC<LandingProps> = (props) => {
   return (
     <div className="landing-page">
       {/* top background image */}
-      <div className="uk-background-secondary uk-light uk-padding uk-panel uk-height-small top-image">
-        <img className="uk-h8"></img>
+      <div className="uk-background-secondary uk-light uk-padding uk-panel uk-cover-container uk-height-small top-image">
+        <img className="" src={props.coverImage} data-uk-cover></img>
       </div>
       {/* course info */}
       <section className="course-info">
@@ -129,6 +133,6 @@ function Landing(): JSX.Element {
       </section>
     </div>
   );
-}
+};
 
 export default Landing;
