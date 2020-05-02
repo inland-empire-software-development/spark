@@ -1,5 +1,6 @@
 import React from 'react';
-import Landing, {CourseDetails, LandingProps} from '../landing/Landing';
+import Landing, {LandingProps} from '../landing/Landing';
+import {CourseProgramProps} from './CourseProgramCard';
 
 export default {
   title: "Landing Page",
@@ -7,7 +8,7 @@ export default {
   excludeStories: /.*Data$/,
 };
 
-const coursesData: CourseDetails[] = [
+const coursesData: CourseProgramProps[] = [
   {
     id: "1",
     title: "React Fundamentals",
@@ -23,13 +24,25 @@ const coursesData: CourseDetails[] = [
   {
     id: "2",
     title: "GraphQL",
-    nextDay: "24th",
+    nextDay: "23th",
     nextMonth: "June",
     classTimeString: "Every Friday. 3:00 PM - 5:00 PM",
     contents: [
       "Understanding queries",
       "Creating a GraphQL Server",
       "Client-side libaries",
+    ],
+  },
+  {
+    id: "3",
+    title: "Databases",
+    nextDay: "22th",
+    nextMonth: "June",
+    classTimeString: "Every Thursday. 7:00 PM - 9:00 PM",
+    contents: [
+      "SQL Training",
+      "NoSQL vs SQL",
+      "Cloud-managed databases",
     ],
   },
 ];

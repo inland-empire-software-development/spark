@@ -87,6 +87,10 @@ $l-breakpoint: 1200px;
       margin-left: 16px;
       margin-right: 16px;
     }
+
+    .uk-dotnav > .uk-active > * {
+      background-color: $primary;
+    }
   }
 
   .course-program-header {

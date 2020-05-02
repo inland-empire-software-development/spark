@@ -1,5 +1,6 @@
 import React from 'react';
 import './Landing.scss';
+import CourseProgramCard, {CourseProgramProps} from './CourseProgramCard';
 
 export interface LandingProps {
   coverImage: string;
@@ -12,7 +13,7 @@ export interface LandingProps {
     classTimeString: string;
     seats: number;
   };
-  courses: CourseDetails[];
+  courses: CourseProgramProps[];
   studentQuote: string;
   studentQuoteAuthor: string;
   venueDescription: string;
@@ -28,14 +29,6 @@ export interface LandingProps {
   inspirationalQuoteAuthor: string;
 }
 
-export interface CourseDetails {
-  id: string;
-  title: string;
-  contents: string[];
-  nextDay: string;
-  nextMonth: string;
-  classTimeString: string;
-}
 
 const Landing: React.FC<LandingProps> = (props) => {
   return (
@@ -81,36 +74,18 @@ const Landing: React.FC<LandingProps> = (props) => {
             <p className="black course-program-header-detail">Learn more about the details of our upcoming programs.</p>
           </div>
           <div className="uk-width-3-4@l course-program-card">
-            {/* <div className="uk-position-relative uk-visible-toggle uk-dark" data-tabindex="-1" data-uk-slider>
-              <ul className="uk-slider-items">
-                <li>
-                  <p>A paragraph</p>
-                </li>
-                <li>
-                  <p>Another paragraph</p>
-                </li>
-              </ul>
-              <a className="uk-position-center-left uk-position-small uk-hidden-hover" href="#" data-uk-slidenav-previous data-uk-slideshow-item="previous"></a>
-              <a className="uk-position-center-right uk-position-small uk-hidden-hover" href="#" data-uk-slidenav-next data-uk-slideshow-item="next"></a>
-
-            </div> */}
-            <div className="uk-card uk-card-default uk-card-body">
-              <div className="uk-grid-divider uk-grid-match" data-uk-grid>
-                <div className="uk-align-center uk-margin-remove uk-width-1-3@m">
-                  <h4 className="primary course-program-date-header">{props.courses[0].nextDay}</h4>
-                  <h5 className="course-program-date">{props.courses[0].nextMonth}</h5>
-                  <p className="course-program-time">{props.courses[0].classTimeString}</p>
-                </div>
-                <div className="uk-align-center uk-margin-remove uk-width-2-3@m">
-                  <h4 className="black course-program-detail">{props.courses[0].title}</h4>
-                  <ul className="course-program-detail-list">
-                    {props.courses[0].contents.map((item, index) => (
-                      <li key={index} className="light-gray">{item}</li>
-                    ),
-                    )}
-                  </ul>
-                </div>
+            <div data-uk-slider>
+              <div className="uk-position-relative uk-visible-toggle uk-dark" data-tabindex="-1">
+                <ul className="uk-slider-items uk-child-width-1-1 uk-grid">
+                  {props.courses.map((course) => (
+                    <li key={course.id} >
+                      <CourseProgramCard {...course} />
+                    </li>) )}
+                </ul>
+                <a className="uk-position-center-left uk-position-small uk-hidden-hover" href="#" data-uk-slidenav-previous data-uk-slider-item="previous"></a>
+                <a className="uk-position-center-right uk-position-small uk-hidden-hover" href="#" data-uk-slidenav-next data-uk-slider-item="next"></a>
               </div>
+              <ul className="uk-slider-nav uk-dotnav uk-flex-center uk-margin"></ul>
             </div>
           </div>
         </div>
