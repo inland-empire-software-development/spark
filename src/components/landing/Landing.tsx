@@ -1,7 +1,7 @@
 import React from 'react';
 import './Landing.scss';
 
-interface LandingProps {
+export interface LandingProps {
   coverImage: string;
   venueImage: string;
   programImage: string;
@@ -14,6 +14,7 @@ interface LandingProps {
   };
   courses: CourseDetails[];
   studentQuote: string;
+  studentQuoteAuthor: string;
   venueDescription: string;
   venueAddress: {
     street1: string;
@@ -22,10 +23,13 @@ interface LandingProps {
     state: string;
     zip: string;
   };
+  programDescription: string;
   inspirationalQuote: string;
+  inspirationalQuoteAuthor: string;
 }
 
-interface CourseDetails {
+export interface CourseDetails {
+  id: string;
   title: string;
   contents: string[];
   nextDay: string;
@@ -80,22 +84,17 @@ const Landing: React.FC<LandingProps> = (props) => {
             <div className="uk-card uk-card-default uk-card-body">
               <div className="uk-grid-divider uk-grid-match" data-uk-grid>
                 <div className="uk-align-center uk-margin-remove uk-width-1-3@m">
-                  <h4 className="primary course-program-date-header">24th</h4>
-                  <h5 className="course-program-date">June</h5>
-                  <p className="course-program-time">Every Saturday. 1:00 PM - 3:00 PM</p>
+                  <h4 className="primary course-program-date-header">{props.courses[0].nextDay}</h4>
+                  <h5 className="course-program-date">{props.courses[0].nextMonth}</h5>
+                  <p className="course-program-time">{props.courses[0].classTimeString}</p>
                 </div>
                 <div className="uk-align-center uk-margin-remove uk-width-2-3@m">
-                  <h4 className="black course-program-detail">React Fundamentals:</h4>
+                  <h4 className="black course-program-detail">{props.courses[0].title}</h4>
                   <ul className="course-program-detail-list">
-                    <li className="light-gray">
-                                                Basics of React
-                    </li>
-                    <li className="light-gray">
-                                                Breakdown of the library
-                    </li>
-                    <li className="light-gray">
-                                                Creating websites with the library
-                    </li>
+                    {props.courses[0].contents.map((item, index) => (
+                      <li key={index} className="light-gray">{item}</li>
+                    ),
+                    )}
                   </ul>
                 </div>
               </div>
@@ -108,8 +107,8 @@ const Landing: React.FC<LandingProps> = (props) => {
 
       <section className="uk-card uk-card-default uk-card-body uk-flex uk-flex-column uk-flex-center student-quote-section">
         <div className="uk-margin-large-bottom uk-margin-large-top">
-          <p className="uk-text-center student-quote black uk-margin-auto">&quot;This program changed my life. Oh em gee. The instructor is amazing and the students are all passionate.&quot;</p>
-          <p className="uk-text-center student black uk-margin-auto">-Cutie Pie, Student</p>
+          <p className="uk-text-center student-quote black uk-margin-auto">&quot;{props.studentQuote}&quot;</p>
+          <p className="uk-text-center student black uk-margin-auto">-{props.studentQuoteAuthor}</p>
         </div>
       </section>
 
@@ -125,16 +124,17 @@ const Landing: React.FC<LandingProps> = (props) => {
 
         <div className="uk-margin-auto uk-margin-auto-vertical uk-card uk-card-default uk-card-body uk-text-left venue-body">
           <h4 className="venue-title black">Venue</h4>
-          <p className="venue-description black">Our program will take place at one of the fastest growing incubators in the city of Riverside. It can host large meetings, be used as a co-hosting space, and is at the center of the bustling city.</p>
-          <p className="venue-street-address black">3499 Tenth St.</p>
-          <p className="venue-county-state black">Riverside, CA 92501</p>
+          <p className="venue-description black">{props.venueDescription}</p>
+          <p className="venue-street-address black">{props.venueAddress.street1}</p>
+          {props.venueAddress.street2 && <p className="venue-street-address black">{props.venueAddress.street2}</p>}
+          <p className="venue-county-state black">{props.venueAddress.city}, {props.venueAddress.state} {props.venueAddress.zip}</p>
         </div>
 
       </section>
       {/* Random quote */}
 
       <section className="uk-card uk-card-default uk-card-body random-quote-section bg-light-gray">
-        <p className="uk-margin-auto uk-margin-large-top uk-margin-large-bottom uk-text-center white random-quote">&quot;Education is the passport to the future, for tomorrow belongs to those who prepare for it today.&quot; - Malcom X</p>
+        <p className="uk-margin-auto uk-margin-large-top uk-margin-large-bottom uk-text-center white random-quote">{props.inspirationalQuote}&quot; - {props.inspirationalQuoteAuthor}</p>
       </section>
 
 
@@ -144,7 +144,7 @@ const Landing: React.FC<LandingProps> = (props) => {
           {/* Program description left */}
           <div className="uk-margin-auto uk-margin-auto-vertical uk-card uk-card-default uk-card-body uk-text-left uk-text-right@l program-body">
             <h4 className="program-title">Program</h4>
-            <p className="program-description black">Spark program is a community driven learning program that provides students a working set of skills to get started building useful applications. Our courses are realistically designed and we make no false promises.</p>
+            <p className="program-description black">{props.programDescription}</p>
             <button className="uk-button uk-button-default uk-align-center uk-align-right@l request-button bg-primary white">Request Information</button>
           </div>
         </div>
