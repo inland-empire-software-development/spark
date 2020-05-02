@@ -3,6 +3,8 @@ import './Landing.scss';
 
 interface LandingProps {
   coverImage: string;
+  venueImage: string;
+  programImage: string;
 }
 
 const Landing: React.FC<LandingProps> = (props) => {
@@ -10,7 +12,7 @@ const Landing: React.FC<LandingProps> = (props) => {
     <div className="landing-page">
       {/* top background image */}
       <div className="uk-background-secondary uk-light uk-padding uk-panel uk-cover-container uk-height-small top-image">
-        <img className="" src={props.coverImage} data-uk-cover></img>
+        <img src={props.coverImage} data-uk-cover></img>
       </div>
       {/* course info */}
       <section className="course-info">
@@ -89,8 +91,8 @@ const Landing: React.FC<LandingProps> = (props) => {
       {/* Venue */}
       <section className="uk-grid-collapse uk-child-width-1-2@l uk-text-center venue-section" data-uk-grid>
         {/* Background image left  */}
-        <div className="uk-background-contain uk-background-secondary uk-padding venue-image">
-          <img src="" alt="Venue Image" />
+        <div className="uk-background-contain uk-background-secondary uk-padding uk-cover-container venue-image">
+          <img src={props.venueImage} alt="Venue Image" data-uk-cover />
         </div>
 
         {/* Venue description right */}
@@ -121,8 +123,8 @@ const Landing: React.FC<LandingProps> = (props) => {
           </div>
         </div>
         {/* Background image right  */}
-        <div className="uk-background-contain uk-background-secondary uk-flex-first uk-flex-last@l uk-padding program-image">
-          <img src="" alt="Program Image" />
+        <div className="uk-background-contain uk-background-secondary uk-flex-first uk-flex-last@l program-image uk-cover-container">
+          <img src={props.programImage} alt="Program Image" data-uk-cover/>
         </div>
       </section>
 
