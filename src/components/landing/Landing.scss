@@ -133,23 +133,15 @@ $l-breakpoint: 1200px;
 
   .course-program-detail-list > li {
     font-family: "Light", sans-serif;
-    margin-bottom: 2px;
-  }
+    margin-bottom: 6px;
+    list-style-type: none;
 
-  ul li {
-    color: black;
-    list-style: none;
-    padding: 0;
-    position: relative;
-  }
-
-  ul li::before {
-    color: $primary;
-    content: "\2022";
-    font-size: 1.2em;
-    left: -1.1225em;
-    top: 0;
-    margin-right: 10px;
+    &::before {
+      color: $primary;
+      content: "\2022";
+      font-size: 14px;
+      margin-right: 10px;
+    }
   }
 
   //** Student Quote **//

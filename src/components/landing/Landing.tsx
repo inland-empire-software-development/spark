@@ -81,6 +81,19 @@ const Landing: React.FC<LandingProps> = (props) => {
             <p className="black course-program-header-detail">Learn more about the details of our upcoming programs.</p>
           </div>
           <div className="uk-width-3-4@l course-program-card">
+            {/* <div className="uk-position-relative uk-visible-toggle uk-dark" data-tabindex="-1" data-uk-slider>
+              <ul className="uk-slider-items">
+                <li>
+                  <p>A paragraph</p>
+                </li>
+                <li>
+                  <p>Another paragraph</p>
+                </li>
+              </ul>
+              <a className="uk-position-center-left uk-position-small uk-hidden-hover" href="#" data-uk-slidenav-previous data-uk-slideshow-item="previous"></a>
+              <a className="uk-position-center-right uk-position-small uk-hidden-hover" href="#" data-uk-slidenav-next data-uk-slideshow-item="next"></a>
+
+            </div> */}
             <div className="uk-card uk-card-default uk-card-body">
               <div className="uk-grid-divider uk-grid-match" data-uk-grid>
                 <div className="uk-align-center uk-margin-remove uk-width-1-3@m">
