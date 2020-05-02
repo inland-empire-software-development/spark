@@ -5,6 +5,32 @@ interface LandingProps {
   coverImage: string;
   venueImage: string;
   programImage: string;
+  cohortInfo: {
+    startDay: string;
+    startMonth: string;
+    durationWeeks: number;
+    classTimeString: string;
+    seats: number;
+  };
+  courses: CourseDetails[];
+  studentQuote: string;
+  venueDescription: string;
+  venueAddress: {
+    street1: string;
+    street2?: string;
+    city: string;
+    state: string;
+    zip: string;
+  };
+  inspirationalQuote: string;
+}
+
+interface CourseDetails {
+  title: string;
+  contents: string[];
+  nextDay: string;
+  nextMonth: string;
+  classTimeString: string;
 }
 
 const Landing: React.FC<LandingProps> = (props) => {
@@ -19,17 +45,17 @@ const Landing: React.FC<LandingProps> = (props) => {
         <div className="uk-margin-auto uk-width-3-4@m uk-card uk-card-default uk-card-body course-info-description">
           <div className="uk-grid-collapse uk-child-width-1-2@s uk-child-width-1-4@l" data-uk-grid>
             <div className="uk-margin-remove course-info-section">
-              <h4 className="primary course-info-top">15th</h4>
-              <h5 className="black course-info-mid">april</h5>
+              <h4 className="primary course-info-top">{props.cohortInfo.startDay}</h4>
+              <h5 className="black course-info-mid">{props.cohortInfo.startMonth.toLowerCase()}</h5>
               <p className="black course-info-bottom">Start date for next cohort.</p>
             </div>
             <div className="uk-margin-remove course-info-section">
-              <h4 className="primary course-info-top">10</h4>
+              <h4 className="primary course-info-top">{props.cohortInfo.durationWeeks}</h4>
               <h5 className="black course-info-mid">weeks</h5>
-              <p className="black course-info-bottom">Every Saturday. 12:00 PM - 3:00 PM</p>
+              <p className="black course-info-bottom">{props.cohortInfo.classTimeString}</p>
             </div>
             <div className="uk-margin-remove course-info-section">
-              <h4 className="primary course-info-top">15</h4>
+              <h4 className="primary course-info-top">{props.cohortInfo.seats}</h4>
               <h5 className="black course-info-mid">seats</h5>
               <p className="black course-info-bottom">Limited number of seats</p>
             </div>
