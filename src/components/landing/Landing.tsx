@@ -74,18 +74,18 @@ const Landing: React.FC<LandingProps> = (props) => {
             <p className="black course-program-header-detail">Learn more about the details of our upcoming programs.</p>
           </div>
           <div className="uk-width-3-4@l course-program-card">
-            <div data-uk-slider>
+            <div data-uk-slideshow>
               <div className="uk-position-relative uk-visible-toggle uk-dark" data-tabindex="-1">
-                <ul className="uk-slider-items uk-child-width-1-1 uk-grid">
+                <ul className="uk-slideshow-items">
                   {props.courses.map((course) => (
                     <li key={course.id} >
                       <CourseProgramCard {...course} />
                     </li>) )}
                 </ul>
-                <a className="uk-position-center-left uk-position-small uk-hidden-hover" href="#" data-uk-slidenav-previous data-uk-slider-item="previous"></a>
-                <a className="uk-position-center-right uk-position-small uk-hidden-hover" href="#" data-uk-slidenav-next data-uk-slider-item="next"></a>
+                <a className="uk-position-center-left uk-position-small uk-hidden-hover" href="#" data-uk-slidenav-previous data-uk-slideshow-item="previous"></a>
+                <a className="uk-position-center-right uk-position-small uk-hidden-hover" href="#" data-uk-slidenav-next data-uk-slideshow-item="next"></a>
               </div>
-              <ul className="uk-slider-nav uk-dotnav uk-flex-center uk-margin"></ul>
+              <ul className="uk-slideshow-nav uk-dotnav uk-flex-center uk-margin"></ul>
             </div>
           </div>
         </div>
