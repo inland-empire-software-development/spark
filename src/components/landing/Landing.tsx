@@ -27,6 +27,8 @@ export interface LandingProps {
   programDescription: string;
   inspirationalQuote: string;
   inspirationalQuoteAuthor: string;
+  onCourseSelected: (id: string) => void;
+  onInformationRequested: () => void;
 }
 
 
@@ -79,7 +81,7 @@ const Landing: React.FC<LandingProps> = (props) => {
                 <ul className="uk-slider-items uk-child-width-1-1 uk-grid">
                   {props.courses.map((course) => (
                     <li key={course.id} >
-                      <CourseProgramCard {...course} />
+                      <CourseProgramCard onClick={props.onCourseSelected(course.id)} {...course} />
                     </li>) )}
                 </ul>
                 <a className="uk-position-center-left uk-position-small uk-hidden-hover" href="#" data-uk-slidenav-previous data-uk-slider-item="previous"></a>
@@ -133,7 +135,10 @@ const Landing: React.FC<LandingProps> = (props) => {
           <div className="uk-margin-auto uk-margin-auto-vertical uk-card uk-card-default uk-card-body uk-text-left uk-text-right@l program-body">
             <h4 className="program-title">Program</h4>
             <p className="program-description black">{props.programDescription}</p>
-            <button className="uk-button uk-button-default uk-align-center uk-align-right@l request-button bg-primary white">Request Information</button>
+            <button
+              className="uk-button uk-button-default uk-align-center uk-align-right@l request-button bg-primary white"
+              onClick={() => props.onInformationRequested()}
+            >Request Information</button>
           </div>
         </div>
         {/* Background image right  */}

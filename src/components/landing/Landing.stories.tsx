@@ -1,5 +1,6 @@
 import React from 'react';
-import Landing, {LandingProps} from '../landing/Landing';
+import {action} from "@storybook/addon-actions";
+import Landing from '../landing/Landing';
 import {CourseProgramProps} from './CourseProgramCard';
 
 export default {
@@ -47,7 +48,7 @@ const coursesData: CourseProgramProps[] = [
   },
 ];
 
-const landingDefaultData: LandingProps = {
+const landingDefaultData = {
   coverImage: "/images/landing/landingcover.jpg",
   venueImage: "/images/landing/riverside-sample.jpg",
   programImage: "/images/spark.png",
@@ -73,8 +74,14 @@ const landingDefaultData: LandingProps = {
   inspirationalQuoteAuthor: "Malcom X",
 };
 
+const actionsData = {
+  onCourseSelected: action("onCourseSelected"),
+  onInformationRequested: action("onInformationRequested"),
+};
+
 export const DefaultLandingPage = () => {
   return <Landing
     {...landingDefaultData}
+    {...actionsData}
   />;
 };
