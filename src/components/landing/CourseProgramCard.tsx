@@ -9,7 +9,7 @@ export interface CourseProgramProps {
   classTimeString: string;
 }
 
-const CourseProgramCard: React.FC<CourseProgramProps> = (props) => (
+const CourseProgramCard: React.FC<CourseProgramProps & React.HTMLAttributes<HTMLDivElement>> = (props) => (
   <div className="uk-card uk-card-default uk-card-body">
     <div className="uk-grid-divider uk-grid-match" data-uk-grid>
       <div className="uk-align-center uk-margin-remove uk-width-1-3@m">

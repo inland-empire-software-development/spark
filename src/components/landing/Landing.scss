@@ -83,6 +83,10 @@ $l-breakpoint: 1200px;
   }
 
   .course-program-card {
+    li {
+      cursor: pointer;
+    }
+
     .uk-slider {
       @media screen and (max-width: $m-breakpoint - 1px) {
         margin-left: 16px;

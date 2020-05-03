@@ -80,8 +80,8 @@ const Landing: React.FC<LandingProps> = (props) => {
               <div className="uk-position-relative uk-visible-toggle uk-dark" data-tabindex="-1">
                 <ul className="uk-slider-items uk-child-width-1-1 uk-grid">
                   {props.courses.map((course) => (
-                    <li key={course.id} >
-                      <CourseProgramCard onClick={props.onCourseSelected(course.id)} {...course} />
+                    <li key={course.id} onClick={() => props.onCourseSelected(course.id)}>
+                      <CourseProgramCard {...props} {...course} />
                     </li>) )}
                 </ul>
                 <a className="uk-position-center-left uk-position-small uk-hidden-hover" href="#" data-uk-slidenav-previous data-uk-slider-item="previous"></a>
