@@ -44,9 +44,9 @@ function AddCourse(): JSX.Element {
       <section className="uk-grid">
         <section className="uk-width-1-1 uk-first-column">
           <section className="dashTitle">
-            <h1 className="page-title">Add Course</h1>
+            <h1 className="page-title ">Add Course</h1>
           </section>
-          <h3 className="page-title">Basic info</h3>
+          <h3 className="page-title uk-text-center uk-text-left@s">Basic info</h3>
           <form id="sendInfo" onSubmit={(e) => submitData(e)}>
             <section className="uk-form-horizontal">
               <section className="uk-margin uk-grid">
