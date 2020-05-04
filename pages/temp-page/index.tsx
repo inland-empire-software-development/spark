@@ -1,5 +1,6 @@
 import React from "react";
 import DashboardLayout from "../../src/components/layouts/DashboardLayout";
+import SubmitProject from "../../src/components/course-lesson/SubmitProject";
 
 const Lessons: React.FC = () => (
   <DashboardLayout>
@@ -44,19 +45,7 @@ const Lessons: React.FC = () => (
           pretium vulputate. Orci porta non pulvinar neque laoreet suspendisse
           interdum consectetur.
         </p>
-        <div>
-          <p>Submit Project:</p>
-          <div className="js-upload uk-placeholder uk-text-center">
-            <span uk-icon="icon: cloud-upload"></span>
-            <span className="uk-text-middle">
-              Attach binaries by dropping them here or{" "}
-            </span>
-            <div className="uk-form-custom">
-              <input type="file" multiple />
-              <span className="uk-link">selecting one</span>
-            </div>
-          </div>
-        </div>
+        <SubmitProject></SubmitProject>
       </div>
 
       <div className="uk-background-default uk-width-2-3 uk-padding-small">
