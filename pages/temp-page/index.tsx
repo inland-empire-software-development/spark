@@ -1,6 +1,7 @@
 import React from "react";
 import DashboardLayout from "../../src/components/layouts/DashboardLayout";
 import SubmitProject from "../../src/components/course-lesson/SubmitProject";
+import ResourceModule from "../../src/components/course-lesson/Resource";
 
 const Lessons: React.FC = () => (
   <DashboardLayout>
@@ -66,40 +67,11 @@ const Lessons: React.FC = () => (
           </div>
         </form>
 
-        <div>
-          <div className="uk-flex uk-flex-between uk-padding-small uk-padding-remove-vertical">
-            <p>Adobe XD Docs</p>
-            <i className="fal fa-heart"></i>
-          </div>
-          <hr></hr>
-        </div>
-        <div>
-          <div className="uk-flex uk-flex-between uk-padding-small uk-padding-remove-vertical">
-            <p>Design Fundamentals</p>
-            <i className="fal fa-heart"></i>
-          </div>
-          <hr></hr>
-        </div>
-        <div>
-          <div className="uk-flex uk-flex-between uk-padding-small uk-padding-remove-vertical">
-            <p>Color Theory</p>
-            <i className="fal fa-heart"></i>
-          </div>
-          <hr></hr>
-        </div>
-        <div>
-          <div className="uk-flex uk-flex-between uk-padding-small uk-padding-remove-vertical">
-            <p>Bootstrap</p>
-            <i className="fal fa-heart"></i>
-          </div>
-          <hr></hr>
-        </div>
-        <div>
-          <div className="uk-flex uk-flex-between uk-padding-small uk-padding-remove-vertical">
-            <p>Other Resource</p>
-            <i className="fal fa-heart"></i>
-          </div>
-        </div>
+        <ResourceModule></ResourceModule>
+        <ResourceModule></ResourceModule>
+        <ResourceModule></ResourceModule>
+        <ResourceModule></ResourceModule>
+        <ResourceModule></ResourceModule>
       </div>
     </div>
   </DashboardLayout>
