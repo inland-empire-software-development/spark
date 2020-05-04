@@ -2,6 +2,7 @@ import React from "react";
 import DashboardLayout from "../../src/components/layouts/DashboardLayout";
 import SubmitProject from "../../src/components/course-lesson/SubmitProject";
 import ResourceModule from "../../src/components/course-lesson/Resource";
+import CourseDescription from "../../src/components/course-lesson/CourseDescription";
 
 const Lessons: React.FC = () => (
   <DashboardLayout>
@@ -23,15 +24,8 @@ const Lessons: React.FC = () => (
           </li>
         </ul>
       </div>
-      <div className="uk-background-default uk-flex uk-flex-between uk-flex-middle uk-width-2-3 uk-padding-small uk-margin-medium-bottom">
-        <div>
-          <p>Project #2 - Restaurant User Interface w/ Interaction</p>
-          <p className="uk-text-meta">WD105</p>
-        </div>
-        <div>
-          <i className="fal fa-bookmark"></i>
-        </div>
-      </div>
+
+      <CourseDescription></CourseDescription>
 
       <div className="uk-background-default uk-width-2-3 uk-padding-small uk-margin-medium-bottom">
         <p>Overview</p>
