@@ -5,6 +5,7 @@ import ProjectOverview from "../../src/components/single-course-project/project-
 import ProjectResources from "../../src/components/single-course-project/project-resources/ProjectResources";
 import SubmitProject from "../../src/components/single-course-project/project-overview/SubmitProject";
 import ProjectDirectory from "../../src/components/single-course-project/project-directory/ProjectDirectory";
+import ResourceModule from "../../src/components/single-course-project/project-resources/ResourceModule";
 
 const Lessons: React.FC = () => (
   <DashboardLayout>
@@ -17,7 +18,13 @@ const Lessons: React.FC = () => (
         <SubmitProject></SubmitProject>
       </ProjectOverview>
 
-      <ProjectResources></ProjectResources>
+      <ProjectResources>
+        <ResourceModule></ResourceModule>
+        <ResourceModule></ResourceModule>
+        <ResourceModule></ResourceModule>
+        <ResourceModule></ResourceModule>
+        <ResourceModule></ResourceModule>
+      </ProjectResources>
     </div>
   </DashboardLayout>
 );
