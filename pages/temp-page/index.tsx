@@ -1,10 +1,10 @@
 import React from "react";
 import DashboardLayout from "../../src/components/layouts/DashboardLayout";
-import CourseDescription from "../../src/components/course-lesson/CourseDescription";
-import ProjectOverview from "../../src/components/course-lesson/ProjectOverview";
-import ProjectResources from "../../src/components/course-lesson/ProjectResources";
-import SubmitProject from "../../src/components/course-lesson/SubmitProject";
-import ProjectDirectory from "../../src/components/course-lesson/ProjectDirectory";
+import CourseDescription from "../../src/components/single-course-project/ProjectDescription";
+import ProjectOverview from "../../src/components/single-course-project/ProjectOverview";
+import ProjectResources from "../../src/components/single-course-project/ProjectResources";
+import SubmitProject from "../../src/components/single-course-project/SubmitProject";
+import ProjectDirectory from "../../src/components/single-course-project/ProjectDirectory";
 
 const Lessons: React.FC = () => (
   <DashboardLayout>
