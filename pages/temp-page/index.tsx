@@ -5,7 +5,7 @@ import ProjectOverview from "../../src/components/single-course-project/project-
 import ProjectResources from "../../src/components/single-course-project/project-resources/ProjectResources";
 import SubmitProject from "../../src/components/single-course-project/project-overview/SubmitProject";
 import ProjectDirectory from "../../src/components/single-course-project/project-directory/ProjectDirectory";
-import ResourceModule from "../../src/components/single-course-project/project-resources/ResourceModule";
+import ResourceModule from "../../src/components/single-course-project/resource-module/ResourceModule";
 
 const Lessons: React.FC = () => (
   <DashboardLayout>
