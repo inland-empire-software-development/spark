@@ -1,0 +1,18 @@
+.title {
+  color: #333;
+  font-size: 20px;
+  font-family: "Heavy", sans-serif;
+}
+
+.dropdown-button {
+  font-family: "Book", sans-serif;
+  border-radius: 5px;
+  font-size: 20px;
+  height: 45px;
+  background-color: #eceff6;
+  border: none;
+
+  .fa-chevron-down {
+    font-size: 10px;
+  }
+}
