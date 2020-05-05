@@ -1,6 +1,6 @@
 import React from "react";
 
-const ProjectOverview: React.SFC = ({ children }) => {
+const ProjectOverview: React.SFC = ({children}) => {
   return (
     <div className="uk-background-default uk-width-2-3 uk-padding-small uk-margin-medium-bottom">
       <p>Overview</p>

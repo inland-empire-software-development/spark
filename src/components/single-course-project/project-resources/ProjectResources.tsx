@@ -1,7 +1,6 @@
 import React from "react";
-import ResourceModule from "./ResourceModule";
 
-const ProjectResources: React.SFC = () => {
+const ProjectResources: React.SFC = ({children}) => {
   return (
     <div className="uk-background-default uk-width-2-3 uk-padding-small">
       <p>Resources</p>
@@ -21,11 +20,7 @@ const ProjectResources: React.SFC = () => {
         </div>
       </form>
 
-      <ResourceModule></ResourceModule>
-      <ResourceModule></ResourceModule>
-      <ResourceModule></ResourceModule>
-      <ResourceModule></ResourceModule>
-      <ResourceModule></ResourceModule>
+      {children}
     </div>
   );
 };
