@@ -1,16 +1,19 @@
 import React from "react";
 
-const ProjectResources: React.SFC = ({children}) => {
+const ProjectResources: React.SFC = ({ children }) => {
   return (
     <div className="uk-background-default uk-width-2-3 uk-padding-small">
-      <p>Resources</p>
+      <h3>Resources</h3>
       <form>
-        <div uk-form-custom="target: > * > span:first-child">
-          <select className="uk-width-1-1 uk-select uk-background-muted">
+        <div
+          className="uk-width-1-1 uk-padding-small uk-padding-remove-horizontal uk-padding-remove-top"
+          uk-form-custom="target: > * > span:first-child"
+        >
+          <select>
             <option>All Resources</option>
           </select>
           <button
-            className="uk-button uk-button-default"
+            className="uk-width-1-1 uk-flex uk-flex-between uk-flex-middle uk-button uk-button-default uk-background-muted"
             type="button"
             tabIndex={-1}
           >
