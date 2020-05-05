@@ -1,7 +1,6 @@
 import React from "react";
-import SubmitProject from "./SubmitProject";
 
-const ProjectOverview: React.SFC = () => {
+const ProjectOverview: React.SFC = ({ children }) => {
   return (
     <div className="uk-background-default uk-width-2-3 uk-padding-small uk-margin-medium-bottom">
       <p>Overview</p>
@@ -16,7 +15,7 @@ const ProjectOverview: React.SFC = () => {
         vulputate. Orci porta non pulvinar neque laoreet suspendisse interdum
         consectetur.
       </p>
-      <SubmitProject></SubmitProject>
+      {children}
     </div>
   );
 };
