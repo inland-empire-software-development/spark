@@ -3,7 +3,7 @@ import React from "react";
 const ResourceModule: React.SFC = () => {
   return (
     <div>
-      <div className="uk-flex uk-flex-between uk-padding-small uk-padding-remove-vertical">
+      <div className="uk-flex uk-flex-between uk-padding-small uk-padding-remove-bottom">
         <p>Adobe XD Docs</p>
         <i className="fal fa-heart"></i>
       </div>
