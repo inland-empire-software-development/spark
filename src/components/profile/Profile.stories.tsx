@@ -6,8 +6,5 @@ export default {
 };
 
 export const DefaultProfile = () => (
-  <Profile
-  //   courses={coursesData}
-  //   {...actionsData}
-  />
+  <Profile/>
 );
