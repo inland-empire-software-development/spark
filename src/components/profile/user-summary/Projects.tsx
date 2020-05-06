@@ -1,3 +1,4 @@
+import React from "react";
 // render projects page.
 function Projects(): JSX.Element {
   return (

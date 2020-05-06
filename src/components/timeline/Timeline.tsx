@@ -1,3 +1,4 @@
+import React from "react";
 import "./Timeline.scss";
 // render timeline page.
 function Timeline(): JSX.Element {

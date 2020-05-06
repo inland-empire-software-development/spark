@@ -1,3 +1,4 @@
+import React from "react";
 // render InfoCard page.
 function InfoCard(): JSX.Element {
   return (

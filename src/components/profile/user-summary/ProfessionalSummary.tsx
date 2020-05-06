@@ -1,3 +1,4 @@
+import React from "react";
 // render Professional_Summary page.
 function ProfessionalSummary(): JSX.Element {
   return (

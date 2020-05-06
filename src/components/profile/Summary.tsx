@@ -1,6 +1,7 @@
-import ProfessionalSummary from "./user-summary/professional_summary";
+import React from "react";
+import ProfessionalSummary from "./user-summary/ProfessionalSummary";
 import Timeline from "../../components/timeline/Timeline";
-import InfoCard from "./user-summary/card";
+import InfoCard from "./user-summary/Card";
 // import Projects from "./user-summary/projects";
 // render Summary page.
 function Summary(): JSX.Element {

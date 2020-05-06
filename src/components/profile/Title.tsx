@@ -1,3 +1,4 @@
+import React from "react";
 // render Title page.
 function Title(): JSX.Element {
   return (

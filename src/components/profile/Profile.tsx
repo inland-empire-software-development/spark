@@ -1,6 +1,6 @@
 import React from "react";
-import Title from "./title";
-import Summary from "./summary";
+import Title from "./Title";
+import Summary from "./Summary";
 import Slider from "../slider/Slider";
 
 // render Profile page.

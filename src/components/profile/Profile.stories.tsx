@@ -1,10 +1,10 @@
 import React from "react";
-import Profile from "./Profile";
+import Login from "./Profile";
 
 export default {
   title: "Profile",
 };
 
 export const DefaultProfile = () => (
-  <Profile/>
+  <Login/>
 );
