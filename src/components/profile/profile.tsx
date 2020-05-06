@@ -1,9 +1,10 @@
-import Title from "../profile/title";
-import Summary from "../profile/summary";
+import React from "react";
+import Title from "./title";
+import Summary from "./summary";
 import Slider from "../slider/Slider";
 
 // render Profile page.
-function Profile(): JSX.Element {
+const Profile: React.FC<{}> = () => {
   return (
     <section id="profile">
       <section className="container-full">
@@ -15,6 +16,6 @@ function Profile(): JSX.Element {
       </section>
     </section>
   );
-}
+};
 
 export default Profile;

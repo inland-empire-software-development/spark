@@ -2,7 +2,7 @@ import SEO from "../../next-seo.config";
 import {DefaultSeo} from "next-seo";
 // import Footer from '../../src/components/global/Footer/Footer';
 import Navigation from "../../src/components/global/Navigation/Navigation";
-import Profile from "../../src/components/profile/profile";
+import Profile from "../../src/components/profile/Profile";
 
 // render Profile page.
 function ProfilePage(): JSX.Element {
