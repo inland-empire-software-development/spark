@@ -1,11 +1,11 @@
 // render Professional_Summary page.
-function Professional_Summary(): JSX.Element {
+function ProfessionalSummary(): JSX.Element {
   return (
     <section id="professional_Summary" className="">
       <h2 className="font20 uk-text-bold">Hello! This is my story</h2>
       <p className=" font14 uk-text-muted">
         is simply dummy text of the printing and typesetting industry. Lorem
-        Ipsum has been the industry's standard dummy text ever since the 1500s,
+        Ipsum has been the indush andard dummy text ever since the 1500s,
         when an unknown printer took a galley of type and scrambled it to make a
         type specimen book. It has survived not only five centuries, but also
         the leap into electronic typesetting, remaining essentially unchanged.
@@ -25,4 +25,4 @@ function Professional_Summary(): JSX.Element {
   );
 }
 
-export default Professional_Summary;
+export default ProfessionalSummary;
