@@ -7,6 +7,7 @@
     "url": "https://github.com/inland-empire-software-development/spark"
   },
   "scripts": {
+    "dbSetup": "ts-node dbSetup.ts",
     "dev": "next dev",
     "setup": "node setup.js",
     "development": "next start -p 6001",
@@ -52,8 +53,10 @@
     "react": "16.12.0",
     "react-image-crop": "^8.6.2",
     "redis": "^2.8.0",
+    "reflect-metadata": "^0.1.13",
     "sass": "^1.25.0",
     "sql-string-escape": "^1.1.6",
+    "typeorm": "^0.2.24",
     "typescript": "^3.7.3",
     "uikit": "^3.3.6"
   },
@@ -95,6 +98,7 @@
     "eslint-plugin-react-hooks": "^2.2.0",
     "jest": "^24.9.0",
     "marked": "^0.8.0",
+    "nodemon": "^2.0.3",
     "postcss-loader": "^3.0.0",
     "react-addons-test-utils": "^15.6.2",
     "react-dom": "16.12.0",
@@ -108,6 +112,7 @@
     "stylelint-prettier": "^1.1.1",
     "stylelint-scss": "^3.13.0",
     "stylelint-webpack-plugin": "^1.1.2",
-    "ts-jest": "^24.3.0"
+    "ts-jest": "^24.3.0",
+    "ts-node": "^8.10.1"
   }
 }
