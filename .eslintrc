@@ -43,7 +43,8 @@
         "react/react-in-jsx-scope": 0,
         "strict": 2,
         "camelcase": 0,
-        "linebreak-style": 0
+        "linebreak-style": 0,
+        "new-cap": 0
     },
     "overrides": []
 }
