@@ -1,7 +1,8 @@
+import {Version} from "./version.entity";
 import {Entity, PrimaryGeneratedColumn, Column} from "typeorm";
 
 @Entity()
-export class CourseDemo {
+export class CourseDemo extends Version {
   @PrimaryGeneratedColumn()
   id!: number;
 
@@ -13,7 +14,4 @@ export class CourseDemo {
 
   @Column()
   name!: string;
-
-  @Column("int")
-  instructor!: number;
 }

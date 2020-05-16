@@ -1,7 +1,7 @@
 import "reflect-metadata";
 // import {createConnection} from "typeorm";
 import {getConnectionManager} from "typeorm";
-import {CourseDemo} from "./entity";
+import {CourseDemo, UserDemo} from "./entity";
 
 // Option 1 initizlie with createConnection - makes getConnection available through app
 // Concerned this may try to initialize the connection many times
@@ -34,7 +34,6 @@ import {CourseDemo} from "./entity";
 // Option 2 initialize a ConnectionManager. Export this manager and use "get" to get connection
 // in the application
 
-console.log(`In connection manager: synchronize: ${process.env.NODE_ENV === "development"}`);
 
 const connectionManager = getConnectionManager();
 const connection = connectionManager.create({
@@ -47,6 +46,7 @@ const connection = connectionManager.create({
   synchronize: process.env.NODE_ENV === "development",
   entities: [
     CourseDemo,
+    UserDemo,
   ],
   // migrations: [
   //   "lib/migration/**/*.ts",
