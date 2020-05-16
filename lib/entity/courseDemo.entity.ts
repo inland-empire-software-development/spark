@@ -1,19 +1,19 @@
 import {Entity, PrimaryGeneratedColumn, Column} from "typeorm";
 
-function EatTacos() {
-  console.log("eat tacos");
-}
-
-EatTacos();
-
 @Entity()
 export class CourseDemo {
   @PrimaryGeneratedColumn()
   id!: number;
 
-  @Column()
+  @Column("int")
   code!: string;
 
   @Column()
+  status!: number;
+
+  @Column()
   name!: string;
+
+  @Column("int")
+  instructor!: number;
 }
