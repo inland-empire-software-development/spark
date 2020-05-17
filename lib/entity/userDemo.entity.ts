@@ -1,5 +1,5 @@
 import {Entity, PrimaryGeneratedColumn, Column} from "typeorm";
-import {Version} from "./version.entity";
+import {Version} from "./version";
 
 @Entity()
 export class UserDemo extends Version {

@@ -7,6 +7,10 @@ const escape = require('sql-string-escape');
 const bcrypt = require('bcryptjs');
 const mysql = require('mysql');
 
+import connectionManager from "./connectionManager";
+
+console.log(connectionManager.get());
+
 const db = mysql.createConnection({
   host: process.env.DBHOST,
   user: process.env.DBUSER,

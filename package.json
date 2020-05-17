@@ -7,7 +7,6 @@
     "url": "https://github.com/inland-empire-software-development/spark"
   },
   "scripts": {
-    "dbSetup": "ts-node dbSetup.ts",
     "dev": "next dev",
     "setup": "node setup.js",
     "development": "next start -p 6001",
@@ -22,7 +21,8 @@
     "storybook": "start-storybook -s ./public HOST=http://localhost:3000/ -p 6006 -c .storybook",
     "sbdev": "start-storybook -s ./public HOST=http://localhost:6001/ -p 7001 -c .storybook",
     "sbstg": "start-storybook -s ./public HOST=http://localhost:6002/ -p 7002 -c .storybook",
-    "sbprod": "start-storybook -s ./public HOST=http://localhost:6003/ -p 7003 -c .storybook"
+    "sbprod": "start-storybook -s ./public HOST=http://localhost:6003/ -p 7003 -c .storybook",
+    "typeorm": "node_modules/.bin/ts-node --project tsconfig.typeorm.json ./node_modules/typeorm/cli.js" 
   },
   "dependencies": {
     "@types/react-image-crop": "^8.1.2",
