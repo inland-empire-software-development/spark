@@ -1,11 +1,11 @@
 import {Entity, PrimaryGeneratedColumn, Column, OneToOne, JoinColumn, ManyToMany, JoinTable} from "typeorm";
-import {Version} from "./version";
+import {DateCols} from "./version";
 import {UserMetaDemo} from "./userMetaDemo.entity";
 import {CourseDemo} from "./courseDemo.entity";
 
 
 @Entity()
-export class UserDemo extends Version {
+export class UserDemo extends DateCols {
   @PrimaryGeneratedColumn({unsigned: true, comment: "Unique user ID to identify a single unique user"})
   id!: number;
 
@@ -30,6 +30,9 @@ export class UserDemo extends Version {
 
   @Column({nullable: true})
   passwordToken!: string;
+
+  @Column()
+  lastLogin!: Date;
 
   @OneToOne(() => UserMetaDemo)
   @JoinColumn()

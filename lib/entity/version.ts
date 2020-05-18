@@ -1,6 +1,6 @@
-import {CreateDateColumn, UpdateDateColumn, DeleteDateColumn, VersionColumn} from "typeorm";
+import {CreateDateColumn, UpdateDateColumn, DeleteDateColumn} from "typeorm";
 
-export abstract class Version {
+export abstract class DateCols {
   @CreateDateColumn()
   createdAt!: Date
 
@@ -9,7 +9,4 @@ export abstract class Version {
 
   @DeleteDateColumn()
   deletedAt!: Date
-
-  @VersionColumn()
-  version!: number
 }

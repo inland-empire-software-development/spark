@@ -1,9 +1,9 @@
 import {Entity, PrimaryGeneratedColumn, Column} from "typeorm";
-import {Version} from "./version";
+import {DateCols} from "./version";
 
 
 @Entity()
-export class UserMetaDemo extends Version {
+export class UserMetaDemo extends DateCols {
   @PrimaryGeneratedColumn({unsigned: true})
   id!: number;
 

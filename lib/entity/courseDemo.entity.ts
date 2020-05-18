@@ -1,8 +1,8 @@
 import {Entity, PrimaryGeneratedColumn, Column} from "typeorm";
-import {Version} from "./version";
+import {DateCols} from "./version";
 
 @Entity()
-export class CourseDemo extends Version {
+export class CourseDemo extends DateCols {
   @PrimaryGeneratedColumn()
   id!: number;
 
