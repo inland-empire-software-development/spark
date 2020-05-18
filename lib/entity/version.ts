@@ -1,9 +1,6 @@
-import {Column, CreateDateColumn, UpdateDateColumn, DeleteDateColumn, VersionColumn} from "typeorm";
+import {CreateDateColumn, UpdateDateColumn, DeleteDateColumn, VersionColumn} from "typeorm";
 
 export abstract class Version {
-  @Column("int")
-  instructor!: number;
-
   @CreateDateColumn()
   createdAt!: Date
 

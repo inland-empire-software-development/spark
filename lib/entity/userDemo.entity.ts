@@ -1,30 +1,41 @@
-import {Entity, PrimaryGeneratedColumn, Column} from "typeorm";
+import {Entity, PrimaryGeneratedColumn, Column, OneToOne, JoinColumn, ManyToMany, JoinTable} from "typeorm";
 import {Version} from "./version";
+import {UserMetaDemo} from "./userMetaDemo.entity";
+import {CourseDemo} from "./courseDemo.entity";
+
 
 @Entity()
 export class UserDemo extends Version {
-  @PrimaryGeneratedColumn()
+  @PrimaryGeneratedColumn({unsigned: true, comment: "Unique user ID to identify a single unique user"})
   id!: number;
 
-  @Column()
+  @Column({length: 35, unique: true, comment: "Username should be unique"})
   username!: string;
 
   @Column()
   password!: string;
 
-  @Column()
+  @Column({unique: true, length: 100})
   email!: string;
 
-  // TODO - some sort of enum
-  @Column()
+  // TODO - Create role types - use enum and maybe a user roles table for getting permissions
+  @Column({length: 45})
   role!: string;
 
-  @Column()
+  @Column({length: 50})
   confirmation!: string;
 
-  @Column("tinyint")
+  @Column({type: "tinyint"})
   passwordReset!: number;
 
-  @Column()
+  @Column({nullable: true})
   passwordToken!: string;
+
+  @OneToOne(() => UserMetaDemo)
+  @JoinColumn()
+  userMeta!: UserMetaDemo
+
+  @ManyToMany(() => CourseDemo)
+  @JoinTable({name: "course_users_demo"})
+  courses!: CourseDemo[];
 }

@@ -5,7 +5,7 @@ module.exports = {
   username: process.env.DBUSER,
   password: process.env.DBPASSWORD,
   database: process.env.DBNAME,
-  synchronize: process.env.NODE_ENV === "development",
+  // synchronize: process.env.NODE_ENV === "development",
   entities: [
     "lib/entity/**/*entity.ts",
   ],

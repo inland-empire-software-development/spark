@@ -6,12 +6,15 @@ export class CourseDemo extends Version {
   @PrimaryGeneratedColumn()
   id!: number;
 
-  @Column("int")
+  @Column({length: 45, unique: true})
   code!: string;
 
-  @Column()
+  @Column("tinyint")
   status!: number;
 
-  @Column()
+  @Column({unique: true})
   name!: string;
+
+  @Column({length: 20})
+  instructor!: string;
 }
