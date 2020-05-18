@@ -7,18 +7,18 @@ export class UserMetaDemo extends DateCols {
   @PrimaryGeneratedColumn({unsigned: true})
   id!: number;
 
-  @Column()
+  @Column({nullable: true})
   firstName!: string;
 
-  @Column()
+  @Column({nullable: true})
   lastName!: string
 
-  @Column()
+  @Column({nullable: true})
   avatarUrl!: string;
 
-  @Column()
+  @Column({nullable: true})
   status!: string;
 
-  @Column()
+  @Column({nullable: true})
   website!: string;
 }
