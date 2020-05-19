@@ -1,11 +1,12 @@
 import {NextApiResponse, NextApiRequest} from 'next';
-import {getConnectionManager, Repository} from "typeorm";
+import {getConnection, Connection} from "typeorm";
 import {CourseDemo} from '../../../lib/entity';
 // import CourseCategories from '../../courses/categories';
 import dbInit from "../../../lib/dbInit";
 
 
-const getAllCoursesByInstructor = async (teacherID: string, courseRepository: Repository<CourseDemo>) => {
+const getAllCoursesByInstructor = async (teacherID: string, connection: Connection) => {
+  const courseRepository = connection.getRepository(CourseDemo);
   const courses = await courseRepository.find({
     where: {instructor: teacherID},
     relations: ["users", "users.userMeta"],
@@ -15,12 +16,7 @@ const getAllCoursesByInstructor = async (teacherID: string, courseRepository: Re
 
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
-  await dbInit(); // established a connection if one does not yet exist
-  const currentConnectionManager = getConnectionManager().get();
-  console.log(currentConnectionManager);
-  const courseRepository = getConnectionManager().get().getRepository(CourseDemo);
-  // const user = req.cookies['portal-user'];
-  // const userID = req.cookies['portal-user-id'];
+  const connection = await dbInit(); // established a connection if one does not yet exist
 
   const user = "blabla";
   const userID = "2";
@@ -34,7 +30,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     switch (req.method) {
       case "GET":
         try {
-          const courses = await getAllCoursesByInstructor(userID, courseRepository);
+          const courses = await getAllCoursesByInstructor(userID, connection);
           res.status(200).send(courses);
         } catch (e) {
           console.error(e);
