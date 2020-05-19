@@ -1,7 +1,6 @@
 import {NextApiResponse, NextApiRequest} from 'next';
-import {getConnection, Connection} from "typeorm";
+import {Connection} from "typeorm";
 import {CourseDemo} from '../../../lib/entity';
-// import CourseCategories from '../../courses/categories';
 import dbInit from "../../../lib/dbInit";
 
 
@@ -18,8 +17,8 @@ const getAllCoursesByInstructor = async (teacherID: string, connection: Connecti
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   const connection = await dbInit(); // established a connection if one does not yet exist
 
-  const user = "blabla";
-  const userID = "2";
+  const user = req.cookies['portal-user'];
+  const userID = req.cookies['portal-user-id'];
 
   if (!user || !userID) {
     // TODO: Verifiy user's role is teacher/admin
