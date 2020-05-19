@@ -8,12 +8,14 @@ export interface DashboardHomeProps {
     name: string;
     updates: Update[];
   };
+  onSummaryItemClicked: (id: string) => void;
 }
 
 interface SummaryItem {
   title: string;
   count: number;
   icon: string; // FontAwesome icon string (pro icons available)
+  url: string;
 }
 
 interface Notification {
@@ -30,13 +32,17 @@ interface Update {
 
 const DashboardHome: React.FC<DashboardHomeProps> = (props) => {
   const summaryItems = props.summaryItems.map((item) => (
-    <div key={item.title} className="uk-flex uk-flex-around uk-flex-between@s uk-flex-middle">
-      <div>
-        <div className="summary-item-title light-gray">{item.title}</div>
-        <div className="summary-item-count dark-gray">{item.count}</div>
-      </div>
-      <div>
-        <i className={`${item.icon} primary fa-3x`}></i>
+    <div key={item.title}>
+      <div
+        className="uk-flex uk-flex-around uk-flex-between@s uk-flex-middle summary-item uk-padding-small"
+        onClick={() => props.onSummaryItemClicked(item.url)}>
+        <div>
+          <div className="summary-item-title light-gray">{item.title}</div>
+          <div className="summary-item-count dark-gray">{item.count}</div>
+        </div>
+        <div>
+          <i className={`${item.icon} primary fa-3x`}></i>
+        </div>
       </div>
     </div>
   ));

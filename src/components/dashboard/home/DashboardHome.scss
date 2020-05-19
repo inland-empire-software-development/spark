@@ -2,6 +2,10 @@
   padding-top: 1em;
 
   .summary {
+    .summary-item {
+      cursor: pointer;
+    }
+
     .summary-item-title {
       font-family: "Light", sans-serif;
       font-size: 16px;

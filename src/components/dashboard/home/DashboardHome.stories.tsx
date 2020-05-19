@@ -1,33 +1,38 @@
 import React from "react";
 
 import DashboardHome, {DashboardHomeProps} from "./DashboardHome";
-// import {action} from "@storybook/addon-actions";
+import {action} from "@storybook/addon-actions";
 
 export default {
   title: "Dashboard Home",
 };
 
 const dashboardData: DashboardHomeProps = {
+  onSummaryItemClicked: action('summaryItemClicked'),
   summaryItems: [
     {
       title: "Messages",
       count: 45,
       icon: "fal fa-comments-alt",
+      url: "dashboard/messages",
     },
     {
       title: "Students",
       count: 54,
       icon: "fal fa-user-friends",
+      url: "dashboard/students",
     },
     {
       title: "Courses",
       count: 16,
       icon: "fal fa-chalkboard-teacher",
+      url: "dashboard/courses",
     },
     {
       title: "Bookmarks",
       count: 27,
       icon: "fal fa-heart",
+      url: "dashboard/bookmarks",
     },
   ],
   notifications: [
