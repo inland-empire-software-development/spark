@@ -22,7 +22,9 @@
     "sbdev": "start-storybook -s ./public HOST=http://localhost:6001/ -p 7001 -c .storybook",
     "sbstg": "start-storybook -s ./public HOST=http://localhost:6002/ -p 7002 -c .storybook",
     "sbprod": "start-storybook -s ./public HOST=http://localhost:6003/ -p 7003 -c .storybook",
-    "typeorm": "node_modules/.bin/ts-node --project tsconfig.typeorm.json ./node_modules/typeorm/cli.js" 
+    "typeorm": "node_modules/.bin/ts-node --project tsconfig.typeorm.json ./node_modules/typeorm/cli.js",
+    "db:migration:generate": "yarn typeorm migration:generate -n",
+    "db:migration:run": "yarn typeorm migration:run"
   },
   "dependencies": {
     "@types/react-image-crop": "^8.1.2",
