@@ -12,22 +12,22 @@ const dashboardData: DashboardHomeProps = {
     {
       title: "Messages",
       count: 45,
-      icon: "",
+      icon: "fal fa-comments-alt",
     },
     {
       title: "Students",
       count: 54,
-      icon: "",
+      icon: "fal fa-user-friends",
     },
     {
       title: "Courses",
       count: 16,
-      icon: "",
+      icon: "fal fa-chalkboard-teacher",
     },
     {
       title: "Bookmarks",
       count: 27,
-      icon: "",
+      icon: "fal fa-heart",
     },
   ],
   notifications: [
