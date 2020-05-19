@@ -38,7 +38,7 @@ export class UserDemo extends DateCols {
   @JoinColumn()
   userMeta!: UserMetaDemo
 
-  @ManyToMany(() => CourseDemo)
+  @ManyToMany(() => CourseDemo, (course) => course.users)
   @JoinTable({name: "course_users_demo"})
   courses!: CourseDemo[];
 }

@@ -1,5 +1,6 @@
-import {Entity, PrimaryGeneratedColumn, Column} from "typeorm";
+import {Entity, PrimaryGeneratedColumn, Column, ManyToMany} from "typeorm";
 import {DateCols} from "./version";
+import {UserDemo} from "./userDemo.entity";
 
 @Entity()
 export class CourseDemo extends DateCols {
@@ -17,4 +18,7 @@ export class CourseDemo extends DateCols {
 
   @Column({length: 20})
   instructor!: string;
+
+  @ManyToMany(() => UserDemo, (user) => user.courses)
+  users!: UserDemo[];
 }
