@@ -1,11 +1,11 @@
 import {Entity, PrimaryGeneratedColumn, Column, OneToOne, JoinColumn, ManyToMany, JoinTable} from "typeorm";
 import {DateCols} from "./version";
-import {UserMetaDemo} from "./userMetaDemo.entity";
-import {CourseDemo} from "./courseDemo.entity";
+import {UserMeta} from "./userMeta.entity";
+import {Course} from "./course.entity";
 
 
 @Entity()
-export class UserDemo extends DateCols {
+export class User extends DateCols {
   @PrimaryGeneratedColumn({unsigned: true, comment: "Unique user ID to identify a single unique user"})
   id!: number;
 
@@ -15,7 +15,7 @@ export class UserDemo extends DateCols {
   @Column()
   password!: string;
 
-  @Column({unique: true, length: 100})
+  @Column({unique: true})
   email!: string;
 
   // TODO - Create role types - use enum and maybe a user roles table for getting permissions
@@ -34,11 +34,11 @@ export class UserDemo extends DateCols {
   @Column()
   lastLogin!: Date;
 
-  @OneToOne(() => UserMetaDemo)
+  @OneToOne(() => UserMeta)
   @JoinColumn()
-  userMeta!: UserMetaDemo
+  userMeta!: UserMeta
 
-  @ManyToMany(() => CourseDemo, (course) => course.users)
-  @JoinTable({name: "course_users_demo"})
-  courses!: CourseDemo[];
+  @ManyToMany(() => Course, (course) => course.users)
+  @JoinTable({name: "course_users"})
+  courses!: Course[];
 }

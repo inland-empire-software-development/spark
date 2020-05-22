@@ -1,4 +1,4 @@
-export * from "./courseDemo.entity";
-export * from "./userDemo.entity";
-export * from "./userMetaDemo.entity";
+export * from "./course.entity";
+export * from "./user.entity";
+export * from "./userMeta.entity";
 

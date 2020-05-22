@@ -3,7 +3,7 @@ import {DateCols} from "./version";
 
 
 @Entity()
-export class UserMetaDemo extends DateCols {
+export class UserMeta extends DateCols {
   @PrimaryGeneratedColumn({unsigned: true})
   id!: number;
 

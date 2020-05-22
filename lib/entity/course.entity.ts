@@ -1,10 +1,10 @@
 import {Entity, PrimaryGeneratedColumn, Column, ManyToMany} from "typeorm";
 import {DateCols} from "./version";
-import {UserDemo} from "./userDemo.entity";
+import {User} from "./user.entity";
 
 @Entity()
-export class CourseDemo extends DateCols {
-  @PrimaryGeneratedColumn()
+export class Course extends DateCols {
+  @PrimaryGeneratedColumn({unsigned: true})
   id!: number;
 
   @Column({length: 45, unique: true})
@@ -19,6 +19,6 @@ export class CourseDemo extends DateCols {
   @Column({length: 20})
   instructor!: string;
 
-  @ManyToMany(() => UserDemo, (user) => user.courses)
-  users!: UserDemo[];
+  @ManyToMany(() => User, (user) => user.courses)
+  users!: User[];
 }
