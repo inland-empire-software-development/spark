@@ -22,7 +22,7 @@ export class Course extends DateCols {
 
   @OneToOne(() => CourseMeta)
   @JoinColumn()
-  userMeta!: CourseMeta
+  courseMeta!: CourseMeta
 
   @ManyToMany(() => User, (user) => user.courses)
   users!: User[];
