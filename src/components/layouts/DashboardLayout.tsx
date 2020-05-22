@@ -1,18 +1,18 @@
-import {useContext} from 'react';
-import {useRouter} from 'next/router';
-import {Context, SidebarOptions} from '../../context';
-import {DefaultSeo} from "next-seo";
+import { useContext } from 'react';
+import { useRouter } from 'next/router';
+import { Context, SidebarOptions } from '../../context';
+import { DefaultSeo } from "next-seo";
 import SEO from "../../../next-seo.config";
 import Sidebar from '../../components/global/Sidebar/Sidebar';
 import Navigation from '../../components/global/Navigation/Navigation';
 import "./DashboardLayout.scss";
 
-const Dashboard: React.FC = function(props) {
+const Dashboard: React.FC = function (props) {
   const context = useContext(Context);
   const router = useRouter();
-  const {user, sidebarIsOpen} = context;
-  const {children} = props;
-  const {account, main} = SidebarOptions; // TODO: add ability to save data into DB and retrieve for menu generaetion
+  const { user, sidebarIsOpen } = context;
+  const { children } = props;
+  const { account, main } = SidebarOptions; // TODO: add ability to save data into DB and retrieve for menu generaetion
 
   const onNavigate = (path: string) => {
     context.setContextProperty({
@@ -29,7 +29,7 @@ const Dashboard: React.FC = function(props) {
   // TODO: Create system to pull contents of correct panel based on context.
 
   const menuToggleIcon = sidebarIsOpen ?
-    null: (
+    null : (
       <div
         className="icon-button-container"
         onClick={() => handleOpenSidebar()}
@@ -44,7 +44,7 @@ const Dashboard: React.FC = function(props) {
 
   return (
     <main>
-      <Navigation/>
+      <Navigation />
       {/* // TODO: Need to make it so we just need to call <Sidebar> - low priority. */}
 
       <div id="dashboard-container" className="uk-flex">

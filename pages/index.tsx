@@ -1,3 +1,4 @@
+
 import SEO from "../next-seo.config";
 import {DefaultSeo} from "next-seo";
 import Footer from '../src/components/global/Footer/Footer';
