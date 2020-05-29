@@ -10,38 +10,38 @@ export class Message extends DateCols {
   timestamp!: Date;
 
   // TODO: Relation to user
-  @Column({type: 'int'})
+  @Column({name: 'sender_id', type: 'int'})
   senderId!: number;
 
   // TODO: Relation to user
-  @Column({type: 'int'})
+  @Column({name: 'recipient_id', type: 'int'})
   recipientId!: number;
 
   @Column()
   body!: string;
 
-  @Column({nullable: true, type: 'tinyint', default: 0})
+  @Column({name: 'is_read', nullable: true, type: 'tinyint', default: 0})
   isRead!: number;
 
-  @Column({nullable: true})
+  @Column({name: 'expiry_date', nullable: true})
   expiryDate!: Date;
 
-  @Column({nullable: true, type: 'longtext'})
+  @Column({name: 'recipient_group', nullable: true, type: 'longtext'})
   recipientGroup!: string;
 
-  @Column({nullable: true, type: 'tinyint', default: 0})
+  @Column({name: 'is_reminder', nullable: true, type: 'tinyint', default: 0})
   isReminder!: number;
 
-  @Column({nullable: true})
+  @Column({name: 'next_remind_date', nullable: true})
   nextRemindDate!: Date;
 
-  @Column({nullable: true, type: 'int'})
+  @Column({name: 'reminder_frequency_id', nullable: true, type: 'int'})
   reminderFrequencyId!: number;
 
   @Column({nullable: true, type: 'tinyint', default: 0})
   ephemeral!: number;
 
-  @Column({nullable: true})
+  @Column({name: 'removal_date', nullable: true})
   removalDate!: Date;
 
   @Column({type: 'tinyint', unsigned: true, default: 0})
