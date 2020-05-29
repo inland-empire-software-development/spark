@@ -9,16 +9,18 @@ export class Message extends DateCols {
   @Column({type: 'timestamp', default: () => 'CURRENT_TIMESTAMP'})
   timestamp!: Date;
 
+  // TODO: Relation to user
   @Column({type: 'int'})
   senderId!: number;
 
+  // TODO: Relation to user
   @Column({type: 'int'})
   recipientId!: number;
 
   @Column()
   body!: string;
 
-  @Column({nullable: true, type: 'tinyint', default: () => 0})
+  @Column({nullable: true, type: 'tinyint', default: 0})
   isRead!: number;
 
   @Column({nullable: true})
@@ -27,7 +29,7 @@ export class Message extends DateCols {
   @Column({nullable: true, type: 'longtext'})
   recipientGroup!: string;
 
-  @Column({nullable: true, type: 'tinyint', default: () => 0})
+  @Column({nullable: true, type: 'tinyint', default: 0})
   isReminder!: number;
 
   @Column({nullable: true})
@@ -36,12 +38,12 @@ export class Message extends DateCols {
   @Column({nullable: true, type: 'int'})
   reminderFrequencyId!: number;
 
-  @Column({nullable: true, type: 'tinyint', default: () => 0})
+  @Column({nullable: true, type: 'tinyint', default: 0})
   ephemeral!: number;
 
   @Column({nullable: true})
   removalDate!: Date;
 
-  @Column({type: 'tinyint', unsigned: true, default: () => 0})
+  @Column({type: 'tinyint', unsigned: true, default: 0})
   type!: number;
 }
