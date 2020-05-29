@@ -25,17 +25,17 @@ export class User extends DateCols {
   @Column({length: 50})
   confirmation!: string;
 
-  @Column({type: "tinyint"})
+  @Column({name: "password_reset", type: "tinyint"})
   passwordReset!: number;
 
-  @Column({nullable: true})
+  @Column({name: "password_token", nullable: true})
   passwordToken!: string;
 
-  @Column()
+  @Column({name: "last_login"})
   lastLogin!: Date;
 
   @OneToOne(() => UserMeta)
-  @JoinColumn()
+  @JoinColumn({name: 'user_meta_id'})
   userMeta!: UserMeta
 
   @ManyToMany(() => Course, (course) => course.users)
