@@ -1,5 +1,5 @@
 import {Entity, PrimaryGeneratedColumn, Column, ManyToMany, OneToOne, JoinColumn} from "typeorm";
-import {DateCols} from "./version";
+import {DateCols} from "./DateCols";
 import {User} from "./user.entity";
 import {CourseMeta} from "./courseMeta.entity";
 

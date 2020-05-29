@@ -1,5 +1,5 @@
 import {Entity, PrimaryGeneratedColumn, Column} from "typeorm";
-import {DateCols} from "./version";
+import {DateCols} from "./DateCols";
 
 @Entity()
 export class LessonMeta extends DateCols {

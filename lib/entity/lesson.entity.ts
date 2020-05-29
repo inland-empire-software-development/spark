@@ -1,5 +1,5 @@
 import {Entity, PrimaryGeneratedColumn, Column, OneToOne, JoinColumn} from "typeorm";
-import {DateCols} from "./version";
+import {DateCols} from "./DateCols";
 import {LessonMeta} from "./lessonMeta.entity";
 
 @Entity()
