@@ -8,7 +8,7 @@ export class Notification extends DateCols {
   id!: number;
 
   // TODO: Add many-to-one relation for messages-to-user
-  @Column({type: 'int'})
+  @Column({name: 'user_id', type: 'int'})
   userId!: number;
 
   @Column()
@@ -17,9 +17,9 @@ export class Notification extends DateCols {
   @Column()
   message!: string;
 
-  @Column({type: 'tinyint', default: 0})
+  @Column({name: 'is_read', type: 'tinyint', default: 0})
   isRead!: number;
 
-  @Column({type: 'tinyint', default: 0})
+  @Column({name: 'type_id', type: 'tinyint', default: 0})
   typeId!: number;
 }
