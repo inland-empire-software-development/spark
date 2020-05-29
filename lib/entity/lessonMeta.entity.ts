@@ -7,10 +7,10 @@ export class LessonMeta extends DateCols {
   id!: number;
 
   // TODO - Determine properties for actual application
-  @Column({nullable: true})
+  @Column({name: 'lesson_date', nullable: true})
   lessonDate!: Date;
 
-  @Column({nullable: true})
+  @Column({name: 'due_date', nullable: true})
   dueDate!: Date
 
   @Column({nullable: true})

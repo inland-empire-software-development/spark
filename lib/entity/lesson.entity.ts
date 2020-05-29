@@ -17,6 +17,6 @@ export class Lesson extends DateCols {
   name!: string;
 
   @OneToOne(() => LessonMeta)
-  @JoinColumn()
+  @JoinColumn({name: 'lesson_meta_id'})
   lessonMeta!: LessonMeta
 }
