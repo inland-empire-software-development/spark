@@ -1,13 +1,13 @@
 import {NextApiResponse, NextApiRequest} from 'next';
 import {Connection} from "typeorm";
-import {CourseDemo} from '../../../lib/entity';
+import {Course} from '../../../lib/entity';
 // import {CourseDemo, UserDemo} from '../../../lib/entity';
 import dbInit from "../../../lib/dbInit";
 // import userMeta from '../../../models/userMeta';
 
 
 const getAllCoursesByInstructor = async (teacherID: string, connection: Connection) => {
-  const courseRepository = connection.getRepository(CourseDemo);
+  const courseRepository = connection.getRepository(Course);
 
   const courses =
     await courseRepository.createQueryBuilder("course")
