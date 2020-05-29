@@ -6,16 +6,16 @@ export class CourseMeta extends DateCols {
   @PrimaryGeneratedColumn({unsigned: true})
   id!: number;
 
-  @Column({nullable: true})
+  @Column({name: 'hero_image', nullable: true})
   heroImage!: string;
 
   @Column({nullable: true})
   status!: string;
 
-  @Column({nullable: true})
+  @Column({name: 'user_ranking', nullable: true})
   userRanking!: string;
 
-  @Column({nullable: true})
+  @Column({name: 'user_comments', nullable: true})
   userComments!: string;
 
   @Column({nullable: true})
@@ -24,6 +24,6 @@ export class CourseMeta extends DateCols {
   @Column({nullable: true})
   resources!: string;
 
-  @Column({nullable: true})
+  @Column({name: 'card_image', nullable: true})
   cardImage!: string;
 }

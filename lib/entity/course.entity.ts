@@ -21,7 +21,7 @@ export class Course extends DateCols {
   instructor!: string;
 
   @OneToOne(() => CourseMeta)
-  @JoinColumn()
+  @JoinColumn({name: 'course_meta_id'})
   courseMeta!: CourseMeta
 
   @ManyToMany(() => User, (user) => user.courses)
