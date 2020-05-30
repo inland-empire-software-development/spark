@@ -15,26 +15,26 @@ function getMobileToggle() {
   );
 }
 
-function getUserImage(userDetails: { avatar_url: any; first_name: any; last_name: any; status?: undefined }) {
+function getUserImage(userDetails: { avatarUrl: any; firstName: any; lastName: any; status?: undefined }) {
   return (
     <Link href="/user-profile">
       <a className="white">
-        <img src={userDetails && userDetails.avatar_url ? process.env.HOST + userDetails.avatar_url : process.env.HOST + "images/logo/spark-360x360.png"}
+        <img src={userDetails && userDetails.avatarUrl ? userDetails.avatarUrl : process.env.HOST + "images/logo/spark-360x360.png"}
           alt="user profile image"
           className="bg-white"
-          title={userDetails ? userDetails?.first_name + " " + userDetails?.last_name : "user profile image"}
+          title={userDetails ? userDetails?.firstName + " " + userDetails?.lastName : "user profile image"}
         />
       </a>
     </Link>
   );
 }
 
-function getUserFirstName(userDetails: { avatar_url?: undefined; first_name: any; last_name?: undefined; status?: undefined }) {
-  return userDetails ? userDetails?.first_name : "pal";
+function getUserFirstName(userDetails: { avatarUrl?: undefined; firstName: any; lastName?: undefined; status?: undefined }) {
+  return userDetails ? userDetails?.firstName : "pal";
 }
 
-function getUserLastName(userDetails: { avatar_url?: undefined; first_name: any; last_name?: undefined; status?: undefined }) {
-  return userDetails ? userDetails?.last_name : "";
+function getUserLastName(userDetails: { avatarUrl?: undefined; firstName: any; lastName?: undefined; status?: undefined }) {
+  return userDetails ? userDetails?.lastName : "";
 }
 
 function getLoginLink(color: string): JSX.Element {
@@ -48,34 +48,39 @@ function getLoginLink(color: string): JSX.Element {
 function User(props: { isMobile?: boolean }): JSX.Element {
   const {isMobile = false} = props;
   const {user, userID, access} = useContext(Context);
-  const data = {
-    key: ["avatar_url", "first_name", "last_name", "status"],
-    table: "user_meta",
-    identifier: "user_ID",
-    value: userID,
-  };
+  // const data = {
+  //   key: ["avatar_url", "first_name", "last_name", "status"],
+  //   table: "user_meta",
+  //   identifier: "user_ID",
+  //   value: userID,
+  // };
 
   const [userDetails, setUserDetails] = useState({
-    "avatar_url": undefined,
-    "first_name": undefined,
-    "last_name": undefined,
-    "status": undefined,
+    avatarUrl: undefined,
+    firstName: undefined,
+    lastName: undefined,
+    status: undefined,
   });
 
   useEffect(() => {
     const abortController = new AbortController();
 
     if (userID !== undefined) {
-      fetch(process.env.HOST + "api/meta", {
-        method: 'POST',
+      fetch(process.env.HOST + "api/user/me", {
+        method: 'GET',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(data),
       })
           .then((response) => response.json())
           .then((response) => {
-            setUserDetails(response);
+            console.log('user response:', response);
+            setUserDetails({
+              avatarUrl: response.userMeta.avatarUrl,
+              firstName: response.userMeta.firstName,
+              lastName: response.userMeta.lastName,
+              status: response.userMeta.status,
+            });
           });
     }
 
@@ -146,7 +151,7 @@ function User(props: { isMobile?: boolean }): JSX.Element {
         </ul>
       )}
 
-      {userDetails.first_name == undefined && isMobile && !access && (
+      {userDetails.firstName == undefined && isMobile && !access && (
         <>
           <img
             src="/images/logo/spark-text-carbon.svg"
@@ -159,7 +164,7 @@ function User(props: { isMobile?: boolean }): JSX.Element {
         </>
       )}
 
-      {userDetails.first_name !== undefined && isMobile && access && (
+      {userDetails.firstName !== undefined && isMobile && access && (
         <>
           <span id="mobile-user-nav-toggle">
             <i className="fas fa-caret-right primary" uk-toggle="target: .toggle-user-nav-mobile; animation: uk-animation-slide-right" />
