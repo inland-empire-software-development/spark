@@ -1,6 +1,16 @@
 import "reflect-metadata";
 import {Connection, ConnectionManager} from "typeorm";
-import {User, Course, UserMeta} from "./entity";
+import {
+  User,
+  UserMeta,
+  Course,
+  CourseMeta,
+  Lesson,
+  LessonMeta,
+  Message,
+  Notification,
+  Options,
+} from "./entity";
 
 // We have a duplicate config here because of issues with this file accessing the ormconfig.js file. 🤷🏻‍♀️
 const connectionManager = new ConnectionManager(); // has issues with loading Connections if we use getConnectionManager
@@ -13,8 +23,14 @@ const connection = connectionManager.has("default") ?
       password: process.env.DBPASSWORD,
       database: process.env.DBNAME,
       entities: [
-        User,
         Course,
+        CourseMeta,
+        Lesson,
+        LessonMeta,
+        Message,
+        Notification,
+        Options,
+        User,
         UserMeta,
       ],
     });
