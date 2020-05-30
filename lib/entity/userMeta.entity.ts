@@ -7,13 +7,13 @@ export class UserMeta extends DateCols {
   @PrimaryGeneratedColumn({unsigned: true})
   id!: number;
 
-  @Column({nullable: true})
+  @Column({name: 'first_name', nullable: true})
   firstName!: string;
 
-  @Column({nullable: true})
+  @Column({name: 'last_name', nullable: true})
   lastName!: string
 
-  @Column({nullable: true})
+  @Column({name: 'avatar_url', nullable: true})
   avatarUrl!: string;
 
   @Column({nullable: true})
