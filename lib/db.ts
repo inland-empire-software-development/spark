@@ -268,7 +268,7 @@ db.updateUser = function(
   );
 
   return new Promise((resolve, reject) => {
-    db.query(sql, function(error: { sqlMessage: any }, results: object) {
+    db.query(sql, function(error: { sqlMessage: any }) {
       if (error) reject(error.sqlMessage ? error.sqlMessage : error);
 
       // check update result?
