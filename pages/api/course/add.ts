@@ -10,7 +10,7 @@ export default async (req: any) => {
 
   console.log(query);
 
-  db.query(query, (error, response) => {
+  db.query(query, (error: any, response: any) => {
     if (error) throw error;
     console.log(response);
   });
