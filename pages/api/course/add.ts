@@ -1,6 +1,6 @@
 import db from "../../../lib/db";
 
-export default async (req: any, res: any) => {
+export default async (req: any) => {
   const data = JSON.parse(req.body);
   const {courseTitle, cohortID, courseStart, courseExpire, courseDescription} = data;
 
