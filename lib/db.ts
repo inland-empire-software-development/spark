@@ -2,7 +2,6 @@
 /* eslint-disable @typescript-eslint/camelcase */
 import {Message, ArrayIndexedWithStrings, DBUpdateUser} from '..';
 import fetch from 'isomorphic-unfetch';
-import {fsyncSync} from 'fs';
 
 const escape = require('sql-string-escape');
 const bcrypt = require('bcryptjs');
