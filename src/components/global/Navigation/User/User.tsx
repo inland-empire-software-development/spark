@@ -74,7 +74,6 @@ function User(props: { isMobile?: boolean }): JSX.Element {
       })
           .then((response) => response.json())
           .then((response) => {
-            console.log('user response:', response);
             setUserDetails({
               avatarUrl: response.userMeta.avatarUrl,
               firstName: response.userMeta.firstName,
