@@ -1,0 +1,56 @@
+#dashboard-home {
+  padding-top: 1em;
+
+  .summary {
+    .summary-item {
+      cursor: pointer;
+    }
+
+    .summary-item-title {
+      font-family: "Light", sans-serif;
+      font-size: 16px;
+    }
+
+    .summary-item-count {
+      font-family: "Medium", sans-serif;
+      font-size: 26px;
+    }
+  }
+
+  .notifications {
+    .notification-header {
+      font-family: "Medium", sans-serif;
+      font-size: 20px;
+    }
+
+    .notification-title {
+      font-family: "Book", sans-serif;
+      font-size: 16px;
+      font-weight: bold;
+    }
+
+    .notification-content {
+      font-family: "Light", sans-serif;
+      font-size: 14px
+    }
+  }
+
+  // TODO - cleanup duplicate styles in cohort and notifications
+  .cohort {
+    .cohort-header {
+      font-family: "Medium", sans-serif;
+      font-size: 20px;
+    }
+
+    .cohort-title {
+      font-family: "Book", sans-serif;
+      font-size: 16px;
+      font-weight: bold;
+    }
+
+    .cohort-content {
+      font-family: "Light", sans-serif;
+      font-size: 14px
+    }
+  }
+}

@@ -28,6 +28,7 @@
     "db:migration:create": "yarn typeorm migration:create -n"
   },
   "dependencies": {
+    "@types/formidable": "^1.0.31",
     "@types/react-image-crop": "^8.1.2",
     "@types/uikit": "^2.27.7",
     "@zeit/next-css": "^1.0.1",
