@@ -17,7 +17,7 @@ export interface ListObject {
 const identifyLink = (url: string) => url.indexOf(`${process.env.HOST}`);
 
 const renderLink = (obj: ListObject, opts: object) => {
-  const { url = undefined } = obj;
+  const {url = undefined} = obj;
   return identifyLink(url ? url : '') !== -1 ?
     <Link href={url ? url : ''}>
       <a {...opts}>{obj.label}</a>
@@ -28,8 +28,8 @@ const renderLink = (obj: ListObject, opts: object) => {
 };
 
 const createListItem = (
-  obj: ListObject,
-  mobile = false,
+    obj: ListObject,
+    mobile = false,
 ) => {
   const opts = {} as Options;
 
@@ -76,15 +76,15 @@ const createListObject = ({
   icon = false,
   children = false,
   target,
-}: ListObject) => ({ label, url, icon, children, target });
+}: ListObject) => ({label, url, icon, children, target});
 
 
 function Navigation(): JSX.Element {
   const navigation: Array<object> = [
-    { label: "Home", url: "/" },
-    { label: "Cohorts", url: "/cohorts" },
-    { label: "Blog", url: "https://www.iesd.com/#blog", target: "_blank" },
-    { label: "Contact", url: "mailto:community@iesd.com", target: "_blank" },
+    {label: "Home", url: "/"},
+    {label: "Cohorts", url: "/cohorts"},
+    {label: "Blog", url: "https://www.iesd.com/#blog", target: "_blank"},
+    {label: "Contact", url: "mailto:community@iesd.com", target: "_blank"},
   ].map((item) => createListObject(item));
 
   return (
