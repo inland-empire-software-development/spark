@@ -25,10 +25,10 @@ export class User extends DateCols {
   @Column()
   confirmation!: string;
 
-  @Column({name: "password_reset", type: "tinyint"})
+  @Column({name: "password_reset", type: "tinyint", default: 0})
   passwordReset!: number;
 
-  @Column({name: "password_token", nullable: true})
+  @Column({name: "password_token", nullable: true, default: null})
   passwordToken!: string;
 
   @Column({name: "last_login"})
