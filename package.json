@@ -60,7 +60,7 @@
     "reflect-metadata": "^0.1.13",
     "sass": "^1.25.0",
     "sql-string-escape": "^1.1.6",
-    "typeorm": "^0.2.24",
+    "typeorm": "^0.2.25",
     "typescript": "^3.7.3",
     "uikit": "^3.3.6"
   },
