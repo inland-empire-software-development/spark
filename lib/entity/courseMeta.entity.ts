@@ -31,9 +31,9 @@ export class CourseMeta extends DateCols {
   @Column({name: 'cohort_id', nullable: true, type: 'integer'})
   cohortID!: number;
 
-  @Column({name: 'course_start'})
+  @Column({name: 'course_start', default: null})
   courseStart!: Date;
 
-  @Column({name: 'course_expire'})
+  @Column({name: 'course_expire', default: null})
   courseExpire!: Date;
 }
