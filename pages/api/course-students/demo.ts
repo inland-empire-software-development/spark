@@ -1,37 +1,6 @@
 import {NextApiResponse, NextApiRequest} from 'next';
-import {Connection} from "typeorm";
-import {Course} from '../../../lib/entity';
-// import {CourseDemo, UserDemo} from '../../../lib/entity';
 import dbInit from "../../../lib/dbInit";
-// import userMeta from '../../../models/userMeta';
-
-
-const getAllCoursesByInstructor = async (teacherID: string, connection: Connection) => {
-  const courseRepository = connection.getRepository(Course);
-
-  const courses =
-    await courseRepository.createQueryBuilder("course")
-        .select(
-            ["course", "user.id", "user.email", "userMeta.id", "userMeta.firstName", "userMeta.lastName", "userMeta.avatarUrl", "userMeta.status"],
-        )
-        .leftJoin("course.users", "user")
-        .leftJoin("user.userMeta", "userMeta")
-        .where("instructor = :id", {id: teacherID})
-        .getMany();
-  // const courses = await courseRepository.find({
-  //   where: {instructor: teacherID},
-  //   select: ["id", "code", "name"],
-  //   // relations: ["users", "users.userMeta"],
-  //   join: {
-  //     alias: "course",
-  //     leftJoin: {
-  //       users: "course.users",
-  //       userMeta: "users.userMeta",
-  //     },
-  //   },
-  // });
-  return courses;
-};
+import {getAllCoursesByInstructor} from '../../../lib/dbUtil';
 
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
