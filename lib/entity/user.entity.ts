@@ -9,7 +9,7 @@ export class User extends DateCols {
   @PrimaryGeneratedColumn({unsigned: true, comment: "Unique user ID to identify a single unique user"})
   id!: number;
 
-  @Column({length: 35, unique: true, comment: "Username should be unique"})
+  @Column({unique: true, comment: "Username should be unique"})
   username!: string;
 
   @Column()
@@ -19,10 +19,10 @@ export class User extends DateCols {
   email!: string;
 
   // TODO - Create role types - use enum and maybe a user roles table for getting permissions
-  @Column({length: 45})
+  @Column()
   role!: string;
 
-  @Column({length: 50})
+  @Column()
   confirmation!: string;
 
   @Column({name: "password_reset", type: "tinyint"})

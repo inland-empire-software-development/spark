@@ -7,7 +7,7 @@ export class Lesson extends DateCols {
   @PrimaryGeneratedColumn({unsigned: true})
   id!: number;
 
-  @Column({length: 45, unique: true, nullable: true})
+  @Column({unique: true, nullable: true})
   code!: string;
 
   @Column({type: "tinyint"})

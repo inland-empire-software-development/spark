@@ -8,7 +8,7 @@ export class Course extends DateCols {
   @PrimaryGeneratedColumn({unsigned: true})
   id!: number;
 
-  @Column({length: 45, unique: true})
+  @Column({unique: true})
   code!: string;
 
   @Column("tinyint")
@@ -17,7 +17,7 @@ export class Course extends DateCols {
   @Column({unique: true})
   name!: string;
 
-  @Column({length: 20})
+  @Column()
   instructor!: string;
 
   @OneToOne(() => CourseMeta)
