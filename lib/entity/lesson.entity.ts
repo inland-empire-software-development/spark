@@ -4,7 +4,7 @@ import {LessonMeta} from "./lessonMeta.entity";
 
 @Entity()
 export class Lesson extends DateCols {
-  @PrimaryGeneratedColumn({unsigned: true})
+  @PrimaryGeneratedColumn()
   id!: number;
 
   @Column({unique: true, nullable: true})

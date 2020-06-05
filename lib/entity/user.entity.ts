@@ -6,7 +6,7 @@ import {Course} from "./course.entity";
 
 @Entity()
 export class User extends DateCols {
-  @PrimaryGeneratedColumn({unsigned: true, comment: "Unique user ID to identify a single unique user"})
+  @PrimaryGeneratedColumn()
   id!: number;
 
   @Column({unique: true, comment: "Username should be unique"})

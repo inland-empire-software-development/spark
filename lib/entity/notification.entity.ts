@@ -4,7 +4,7 @@ import {DateCols} from "./DateCols";
 
 @Entity()
 export class Notification extends DateCols {
-  @PrimaryGeneratedColumn({unsigned: true})
+  @PrimaryGeneratedColumn()
   id!: number;
 
   // TODO: Add many-to-one relation for messages-to-user

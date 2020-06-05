@@ -3,7 +3,7 @@ import {DateCols} from "./DateCols";
 
 @Entity()
 export class CourseMeta extends DateCols {
-  @PrimaryGeneratedColumn({unsigned: true})
+  @PrimaryGeneratedColumn()
   id!: number;
 
   @Column({name: 'hero_image', nullable: true})
@@ -26,4 +26,14 @@ export class CourseMeta extends DateCols {
 
   @Column({name: 'card_image', nullable: true})
   cardImage!: string;
+
+  // TODO: connect/relate to a cohort entity
+  @Column({name: 'cohort_id', nullable: true, type: 'integer'})
+  cohortID!: number;
+
+  @Column({name: 'course_start'})
+  courseStart!: Date;
+
+  @Column({name: 'course_expire'})
+  courseExpire!: Date;
 }

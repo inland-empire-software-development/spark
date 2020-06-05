@@ -4,7 +4,7 @@ import {DateCols} from "./DateCols";
 
 @Entity()
 export class UserMeta extends DateCols {
-  @PrimaryGeneratedColumn({unsigned: true})
+  @PrimaryGeneratedColumn()
   id!: number;
 
   @Column({name: 'first_name', nullable: true})

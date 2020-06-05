@@ -3,7 +3,7 @@ import {DateCols} from "./DateCols";
 
 @Entity()
 export class Message extends DateCols {
-  @PrimaryGeneratedColumn({unsigned: true})
+  @PrimaryGeneratedColumn()
   id!: number;
 
   @Column({type: 'timestamp', default: () => 'CURRENT_TIMESTAMP'})
@@ -44,6 +44,6 @@ export class Message extends DateCols {
   @Column({name: 'removal_date', nullable: true})
   removalDate!: Date;
 
-  @Column({type: 'tinyint', unsigned: true, default: 0})
+  @Column({type: 'tinyint', default: 0})
   type!: number;
 }

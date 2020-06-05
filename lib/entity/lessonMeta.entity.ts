@@ -3,7 +3,7 @@ import {DateCols} from "./DateCols";
 
 @Entity()
 export class LessonMeta extends DateCols {
-  @PrimaryGeneratedColumn({unsigned: true})
+  @PrimaryGeneratedColumn()
   id!: number;
 
   // TODO - Determine properties for actual application
