@@ -1,10 +1,15 @@
-import db from '../../../lib/db';
+// import db from '../../../lib/db';
+import dbInit from "../../../lib/dbInit";
 import auth from '../../../lib/auth';
 import client from '../../../lib/redis';
 import {Message} from '../../..';
 import {NextApiResponse, NextApiRequest} from 'next';
+import {User} from "../../../lib/entity";
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
+  const connection = await dbInit();
+  const userRepository = connection.getRepository(User);
+
   // set headers
   res.setHeader("Cache-Control", "no-store, no-cache, must-revalidate, proxy-revalidate");
   res.setHeader("Content-Type", "json/javascript");
@@ -26,7 +31,8 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   // Get credentials from JSON body
   const {username, password} = req.body;
 
-  const user = await db.getUser(escape(username));
+  // const user = await db.getUser(escape(username));
+  const user = await userRepository.findOne({username: username});
 
   res.status(200);
 
@@ -34,7 +40,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   if (!user) {
     res.send(invalid);
     res.end();
-    return false;
+    return;
   }
 
   // if user found, verify password matches
@@ -47,9 +53,10 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       client.setToken(token, {user: username, userID: user.id});
 
       // update last login with true flag
-      const updateLoginResp = await db.updateUser(user.id, {}, true);
+      const updateLoginResp = await userRepository.update(user.id, {lastLogin: () => "CURRENT_TIMESTAMP"});
+      // const updateLoginResp = await db.updateUser(user.id, {}, true);
 
-      if (!updateLoginResp.status) {
+      if (!updateLoginResp.affected) {
         res.send(invalid);
         res.end();
       }
