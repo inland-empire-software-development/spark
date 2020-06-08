@@ -21,7 +21,7 @@ const mapDataToCourseProps = (data: any): ManageStudentsCourse[] => {
   }));
 };
 
-const Students = () => {
+const Students: React.FC<{}> = () => {
   const [courses, setCourses] = useState<ManageStudentsCourse[]>([]);
   const router = useRouter();
 
