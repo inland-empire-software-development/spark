@@ -52,7 +52,7 @@
     "path": "^0.12.7",
     "react": "16.12.0",
     "react-image-crop": "^8.6.2",
-    "redis": "^2.8.0",
+    "redis": "^3.1.1",
     "sass": "^1.25.0",
     "sql-string-escape": "^1.1.6",
     "typescript": "^3.7.3",
