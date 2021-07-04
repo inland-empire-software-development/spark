@@ -1,0 +1,61 @@
+//slider projects css
+#slider {
+  background-color: #f5f5f5;
+
+  #prev-slide,
+  #next-slide {
+    height: 45px;
+    width: 45px;
+    text-decoration: none;
+    padding: 20px 0 0 10px;
+    font-size: 30px;
+  }
+  //next button
+  .uk-slidenav-next {
+    background-color: white;
+    color: rgb(238, 108, 103);
+    border-radius: 10%;
+  }
+
+  .uk-slidenav-next:hover {
+    background-color: rgb(238, 108, 103);
+    color: white;
+  }
+
+  // Previous button
+  .uk-slidenav-previous {
+    background-color: white;
+    color: rgb(238, 108, 103);
+    border-radius: 10%;
+  }
+
+  .uk-slidenav-previous:hover {
+    background-color: rgb(238, 108, 103);
+    color: white;
+  }
+  //preview
+  .porject-preview {
+    height: 200px;
+    width: auto;
+    background-color: black;
+
+    @media screen and (max-width: 960px) {
+      height: 140px;
+    }
+  }
+  //card shadow
+  .uk-card,
+  .uk-card-default {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+  }
+
+  //padding for card content
+  .card-body {
+    padding: 15px 20px;
+  }
+  //horizontal Rule
+  .hr-slider {
+    margin: 0;
+    padding: 10px;
+  }
+}

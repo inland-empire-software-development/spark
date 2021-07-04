@@ -1,0 +1,108 @@
+#profile {
+  //fonts
+  .font34 {
+    font-size: 34px;
+  }
+
+  .font26 {
+    font-size: 26px;
+  }
+
+  .font20 {
+    font-size: 20px;
+  }
+
+  .font18 {
+    font-size: 18px;
+  }
+
+  .font16 {
+    font-size: 16px;
+  }
+
+  .font14 {
+    font-size: 14px;
+  }
+
+  .medium-family {
+    font-family: "medium", sans-serif;
+  }
+
+  .book-family {
+    font-family: "book", sans-serif;
+  }
+
+  .smallPadingTop {
+    margin-top: 20px;
+  }
+
+  // Banner css
+  #title {
+    height: 240px;
+    background-image: url("/images/code.png");
+    position: relative;
+
+    @media screen and (max-width: 959px) {
+      max-height: 200px;
+    }
+
+    .profile-title {
+      color: white;
+      font-family: "medium";
+      margin: 0;
+      text-decoration: none;
+    }
+
+    .profile-sub-title {
+      font-family: "light", sans-serif;
+    }
+
+    .role-Color {
+      color: white;
+    }
+
+    #profilepic {
+      position: relative;
+      top: calc(100% - 80px);
+      width: 150px;
+      height: 150px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      box-shadow: 0 0 0 1px #fff;
+    }
+  }
+
+  // boddy css
+  #Summary {
+    min-height: 500px;
+    padding-top: 80px;
+
+    @media screen and (max-width: 640px) {
+      padding-top: 6%;
+    }
+
+    // Summary block
+    #professional_Summary {
+      color: black;
+      font-family: "medium", sans-serif;
+    }
+
+    #infoCard {
+      color: black;
+
+      .borderCard {
+        border-radius: 5px;
+        border: 2px solid rgba(0, 0, 0, 0.1);
+
+        @media screen and (min-width: 400px) and (max-width: 639px) {
+          max-width: 70%;
+        }
+
+        @media screen and (max-width: 639px) {
+          margin: 0 auto 0 auto;
+        }
+      }
+    }
+  }
+}
